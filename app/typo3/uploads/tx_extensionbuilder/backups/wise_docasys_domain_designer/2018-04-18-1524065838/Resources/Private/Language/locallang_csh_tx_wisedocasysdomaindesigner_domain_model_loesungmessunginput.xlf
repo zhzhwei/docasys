@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-18T17:22:34Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="messungtyp.description">
+				<source>messungtyp</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

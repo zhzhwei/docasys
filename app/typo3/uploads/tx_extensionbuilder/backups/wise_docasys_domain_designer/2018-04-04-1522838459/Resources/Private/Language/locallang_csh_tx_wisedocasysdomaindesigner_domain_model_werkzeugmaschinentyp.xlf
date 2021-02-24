@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-04T12:39:27Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="typbezeichnung.description">
+				<source>typbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="einsatzzweck.description">
+				<source>einsatzzweck</source>
+			</trans-unit>
+			<trans-unit id="eigenschaften.description">
+				<source>eigenschaften</source>
+			</trans-unit>
+			<trans-unit id="steuerungstyp.description">
+				<source>steuerungstyp</source>
+			</trans-unit>
+			<trans-unit id="antrieb.description">
+				<source>antrieb</source>
+			</trans-unit>
+			<trans-unit id="fuerung.description">
+				<source>fuerung</source>
+			</trans-unit>
+			<trans-unit id="gestell.description">
+				<source>gestell</source>
+			</trans-unit>
+			<trans-unit id="werkzeugsystem.description">
+				<source>werkzeugsystem</source>
+			</trans-unit>
+			<trans-unit id="sonstige.description">
+				<source>sonstige</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

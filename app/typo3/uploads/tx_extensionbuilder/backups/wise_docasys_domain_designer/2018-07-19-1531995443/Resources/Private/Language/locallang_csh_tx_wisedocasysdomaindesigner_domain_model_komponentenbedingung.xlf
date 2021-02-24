@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-07-19T12:12:50Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="operator.description">
+				<source>operator</source>
+			</trans-unit>
+			<trans-unit id="wert.description">
+				<source>wert</source>
+			</trans-unit>
+			<trans-unit id="objekt.description">
+				<source>objekt</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

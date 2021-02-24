@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-05-22T17:51:51Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="pruefbezeichnung.description">
+				<source>pruefbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="datum.description">
+				<source>datum</source>
+			</trans-unit>
+			<trans-unit id="ort.description">
+				<source>ort</source>
+			</trans-unit>
+			<trans-unit id="verantwortlicher.description">
+				<source>verantwortlicher</source>
+			</trans-unit>
+			<trans-unit id="vorgehensbeschreibung.description">
+				<source>vorgehensbeschreibung</source>
+			</trans-unit>
+			<trans-unit id="nutzt_pruefwerkstueck.description">
+				<source>nutztPruefwerkstueck</source>
+			</trans-unit>
+			<trans-unit id="pruefobjekte.description">
+				<source>pruefobjekte</source>
+			</trans-unit>
+			<trans-unit id="ergebniszusammenfassung.description">
+				<source>ergebniszusammenfassung</source>
+			</trans-unit>
+			<trans-unit id="parameter1.description">
+				<source>parameter1</source>
+			</trans-unit>
+			<trans-unit id="ergebnis_parameter1.description">
+				<source>ergebnisParameter1</source>
+			</trans-unit>
+			<trans-unit id="parameter2.description">
+				<source>parameter2</source>
+			</trans-unit>
+			<trans-unit id="ergebnis_parameter2.description">
+				<source>ergebnisParameter2</source>
+			</trans-unit>
+			<trans-unit id="parameter3.description">
+				<source>parameter3</source>
+			</trans-unit>
+			<trans-unit id="ergebnis_parameter3.description">
+				<source>ergebnisParameter3</source>
+			</trans-unit>
+			<trans-unit id="parameter4.description">
+				<source>parameter4</source>
+			</trans-unit>
+			<trans-unit id="ergebnis_parameter4.description">
+				<source>ergebnisParameter4</source>
+			</trans-unit>
+			<trans-unit id="parameter5.description">
+				<source>parameter5</source>
+			</trans-unit>
+			<trans-unit id="ergebnis_parameter5.description">
+				<source>ergebnisParameter5</source>
+			</trans-unit>
+			<trans-unit id="verfahren.description">
+				<source>verfahren</source>
+			</trans-unit>
+			<trans-unit id="gepruefter_lastfall.description">
+				<source>gepruefterLastfall</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

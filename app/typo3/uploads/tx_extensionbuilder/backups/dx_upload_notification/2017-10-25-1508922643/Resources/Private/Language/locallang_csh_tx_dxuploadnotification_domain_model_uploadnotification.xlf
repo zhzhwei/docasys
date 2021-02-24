@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2017-10-25T10:44:43Z" product-name="dx_upload_notification">
+		<header/>
+		<body>
+			<trans-unit id="tx_dx_upload_notification_domain_model_uploadinfo">
+				<source>Upload-Info</source>
+			</trans-unit>
+			<trans-unit id="tx_dx_upload_notification_domain_model_uploadinfo.description">
+				<source>Backend-Modul, um Frontend-Nutzer zu informieren, wenn auf einer Seite neue Dateien hochgeladen wurden.</source>
+			</trans-unit>
+			<trans-unit id="subject.description">
+				<source>subject</source>
+			</trans-unit>
+			<trans-unit id="body.description">
+				<source>body</source>
+			</trans-unit>
+			<trans-unit id="timestamp.description">
+				<source>timestamp</source>
+			</trans-unit>
+			<trans-unit id="fe_group_id.description">
+				<source>feGroupId</source>
+			</trans-unit>
+			<trans-unit id="fe_group_name.description">
+				<source>feGroupName</source>
+			</trans-unit>
+			<trans-unit id="sys_collection_id.description">
+				<source>sysCollectionId</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

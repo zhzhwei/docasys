@@ -1,0 +1,50 @@
+<f:layout name="Modeler" /> 
+<f:section name="content">
+    <h1>{language}-Modell bearbeiten</h1>
+    <f:form name="save-xml" action="update" method="post" id="save-form">
+        <f:form.hidden property="filename" value="{xmlFile}" />
+        <div class="hide">
+            <f:form.textarea property="xml" id="modeler-save-value" />
+            <f:form.submit value="XML speichern" id="modeler-save-submit" />
+        </div>
+    </f:form>
+
+    <div id="canvas-wrapper">
+        <div id="canvas"></div>
+    </div>
+
+    <f:switch expression="{language}">
+        <f:case value="BPMN">
+            <script>
+                var diagramUrl = '{xmlFilePath}';
+            </script>
+            <script src="{f:uri.resource(path: 'JavaScript/BpmnModeler.js')}"></script>
+        </f:case>
+        <f:case value="CMMN">
+            <script>
+                var diagramUrl = '{xmlFilePath}';
+            </script>
+            <script src="{f:uri.resource(path: 'JavaScript/CmmnModeler.js')}"></script>           
+        </f:case>
+        <f:case value="DMN">
+            <script>
+                var diagramUrl = '{xmlFilePath}';
+            </script>
+            <script src="{f:uri.resource(path: 'JavaScript/DmnModeler.js')}"></script>           
+        </f:case>
+    </f:switch>
+
+    <script>
+        $.get(diagramUrl, openDiagram, 'text');
+
+        $('a.modeler-save').click(function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+
+            exportDiagram();
+            if($('textarea#modeler-save-value').val() != '') {
+                $('form#save-form').submit();
+            }
+        });
+    </script>
+</f:section>

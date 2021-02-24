@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-20T13:32:49Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="loesungsbezeichnung.description">
+				<source>loesungsbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="teilprojektnummer.description">
+				<source>teilprojektnummer</source>
+			</trans-unit>
+			<trans-unit id="gestaltungsweise.description">
+				<source>gestaltungsweise</source>
+			</trans-unit>
+			<trans-unit id="betrifft_hersteller.description">
+				<source>betrifftHersteller</source>
+			</trans-unit>
+			<trans-unit id="betrifft_betreiber.description">
+				<source>betrifftBetreiber</source>
+			</trans-unit>
+			<trans-unit id="bemerkung.description">
+				<source>bemerkung</source>
+			</trans-unit>
+			<trans-unit id="risiko.description">
+				<source>risiko</source>
+			</trans-unit>
+			<trans-unit id="blocker.description">
+				<source>blocker</source>
+			</trans-unit>
+			<trans-unit id="loesungsklasse.description">
+				<source>loesungsklasse</source>
+			</trans-unit>
+			<trans-unit id="phase_der_thermischen_wirkkette.description">
+				<source>phaseDerThermischenWirkkette</source>
+			</trans-unit>
+			<trans-unit id="gestaltungsart.description">
+				<source>gestaltungsart</source>
+			</trans-unit>
+			<trans-unit id="wirkungsziel.description">
+				<source>wirkungsziel</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

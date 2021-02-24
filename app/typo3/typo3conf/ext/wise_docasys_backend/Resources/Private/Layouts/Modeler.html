@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <link rel="stylesheet" type="text/css" href="sysext/t3skin/stylesheets/sprites/t3skin.css?1507965001" media="all">
+        <link rel="stylesheet" type="text/css" href="sysext/t3skin/Resources/Public/Css/backend.css?1507964998" media="all">  
+        <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'StyleSheets/Module.css')}" media="all">
+        
+        <f:switch expression="{language}">
+            <f:case value="BPMN">
+                <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'BpmnJs/assets/diagram-js.css')}" media="all">
+                <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'BpmnJs/assets/bpmn-font/css/bpmn-embedded.css')}" media="all">
+    
+                <script src="{f:uri.resource(path: 'BpmnJs/bpmn-modeler.development.js')}"></script>
+            </f:case>
+            <f:case value="CMMN">
+                <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'CmmnJs/assets/diagram-js.css')}" media="all">
+                <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'CmmnJs/assets/cmmn-font/css/cmmn.css')}" media="all">
+
+                <script src="{f:uri.resource(path: 'CmmnJs/cmmn-modeler.development.js')}"></script>
+            </f:case>
+            <f:case value="DMN">
+                <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'DmnJs/assets/diagram-js.css')}" media="all">
+                <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'DmnJs/assets/dmn-js-drd.css')}" media="all">
+                <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'DmnJs/assets/dmn-js-decision-table.css')}" media="all">
+                <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'DmnJs/assets/dmn-js-decision-table-controls.css')}" media="all">
+                <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'DmnJs/assets/dmn-js-literal-expression.css')}" media="all">
+                <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'DmnJs/assets/dmn-font/css/dmn.css')}" media="all">
+            
+                <script src="{f:uri.resource(path: 'DmnJs/dmn-modeler.development.js')}"></script>
+            </f:case>
+        </f:switch>
+        <script src="{f:uri.resource(path: 'JavaScript/jquery-3.3.1.min.js')}"></script>
+        <script src="{f:uri.resource(path: 'JavaScript/Module.js')}"></script>
+    </head>                                                                                
+    <body>
+        <div class="module">
+            <div class="module-docheader">
+                <div class="typo3-docheader-functions">
+                    <div class="module-docheader-bar module-docheader-bar-navigation">
+                        <div class="module-docheader-bar-column-left">
+                            <div class="btn-toolbar">
+                                <f:be.buttons.icon uri="{f:uri.action(action:'list')}" icon="actions-system-options-view" title="Übersicht" additionalAttributes="{class: 'btn btn-default dx-labeled-buttons'}" />
+                                <f:if condition="{modelcontext}">
+                                    <f:be.buttons.icon uri="{f:uri.action(action:'save')}" icon="actions-document-save" title="Speichern" additionalAttributes="{class: 'btn btn-default modeler-save dx-labeled-buttons'}" />
+                                </f:if>
+                            </div>
+                        </div>
+                        <div class="module-docheader-bar-column-right"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-body">
+                <f:flashMessages />
+                <f:render section="content"/>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-20T14:15:11Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="typbezeichnung.description">
+				<source>typbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="einsatzzweck.description">
+				<source>einsatzzweck</source>
+			</trans-unit>
+			<trans-unit id="eigenschaften.description">
+				<source>eigenschaften</source>
+			</trans-unit>
+			<trans-unit id="komponente_antriebstyp.description">
+				<source>komponenteAntriebstyp</source>
+			</trans-unit>
+			<trans-unit id="komponente_fuehrungstyp.description">
+				<source>komponenteFuehrungstyp</source>
+			</trans-unit>
+			<trans-unit id="komponente_gestelltyp.description">
+				<source>komponenteGestelltyp</source>
+			</trans-unit>
+			<trans-unit id="komponente_lagertyp.description">
+				<source>komponenteLagertyp</source>
+			</trans-unit>
+			<trans-unit id="komponente_getrieb.description">
+				<source>komponenteGetrieb</source>
+			</trans-unit>
+			<trans-unit id="komponente_messsystem.description">
+				<source>komponenteMesssystem</source>
+			</trans-unit>
+			<trans-unit id="steuerungstyp.description">
+				<source>steuerungstyp</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

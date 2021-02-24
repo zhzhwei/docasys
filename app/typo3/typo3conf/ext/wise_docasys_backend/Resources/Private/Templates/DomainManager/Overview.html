@@ -1,0 +1,24 @@
+<f:layout name="DomainManager" /> 
+<f:section name="content">
+    <h1>Domain Manager</h1>
+
+    <table class="table table-hover">
+        <f:for each="{tree}" as="page">
+            <tr>
+                <td>
+                    <f:if condition="{page.level} == 0">
+                        <f:then>
+                            <h3 style="margin: 0;"><a href="{page.pagelink}">{page.row.title}</a></h3>
+                        </f:then>
+                        <f:else>
+                            <a href="{page.pagelink}" style="padding-left: {page.level}px;">{page.row.title}</a>
+                        </f:else>
+                    </f:if>
+                </td>
+                <td class="col-control" nowrap="nowrap">
+                    <f:be.buttons.icon uri="{page.pagelink}" icon="actions-view" title="Seite anzeigen" additionalAttributes="{class: 'btn btn-default'}" />
+                </td>
+            </tr>
+        </f:for>
+    </table>
+</f:section>

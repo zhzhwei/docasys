@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-05-23T15:15:45Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="randbedingungen.description">
+				<source>randbedingungen</source>
+			</trans-unit>
+			<trans-unit id="ist_anwendbar.description">
+				<source>istAnwendbar</source>
+			</trans-unit>
+			<trans-unit id="hat_anpassungsnotwendigkeit.description">
+				<source>hatAnpassungsnotwendigkeit</source>
+			</trans-unit>
+			<trans-unit id="anpassungsgrad.description">
+				<source>anpassungsgrad</source>
+			</trans-unit>
+			<trans-unit id="beschreibung.description">
+				<source>beschreibung</source>
+			</trans-unit>
+			<trans-unit id="loesungsbeziehungsart.description">
+				<source>loesungsbeziehungsart</source>
+			</trans-unit>
+			<trans-unit id="quelle.description">
+				<source>quelle</source>
+			</trans-unit>
+			<trans-unit id="senke.description">
+				<source>senke</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

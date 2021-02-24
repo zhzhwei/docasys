@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-20T14:55:26Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="szenariobezeichnung.description">
+				<source>szenariobezeichnung</source>
+			</trans-unit>
+			<trans-unit id="beschreibung.description">
+				<source>beschreibung</source>
+			</trans-unit>
+			<trans-unit id="beispiel.description">
+				<source>beispiel</source>
+			</trans-unit>
+			<trans-unit id="losgroesse.description">
+				<source>losgroesse</source>
+			</trans-unit>
+			<trans-unit id="genauigkeitsklasse.description">
+				<source>genauigkeitsklasse</source>
+			</trans-unit>
+			<trans-unit id="randbedingungen.description">
+				<source>randbedingungen</source>
+			</trans-unit>
+			<trans-unit id="anwendungsfall.description">
+				<source>anwendungsfall</source>
+			</trans-unit>
+			<trans-unit id="werkstueck.description">
+				<source>werkstueck</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

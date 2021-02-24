@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-20T11:58:10Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung">
+				<source>Loesung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.loesungsbezeichnung">
+				<source>Loesungsbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.teilprojektnummer">
+				<source>Teilprojektnummer</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.gestaltungsweise">
+				<source>Gestaltungsweise</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.betrifft_hersteller">
+				<source>Betrifft Hersteller</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.betrifft_betreiber">
+				<source>Betrifft Betreiber</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.bemerkung">
+				<source>Bemerkung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.risiko">
+				<source>Risiko</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.blocker">
+				<source>Blocker</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.loesungsklasse">
+				<source>Loesungsklasse</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.phase_der_thermischen_wirkkette">
+				<source>Phase Der Thermischen Wirkkette</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.gestaltungsart">
+				<source>Gestaltungsart</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

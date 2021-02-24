@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-18T19:02:32Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="messtyp_bezeichnung.description">
+				<source>messtypBezeichnung</source>
+			</trans-unit>
+			<trans-unit id="zweck.description">
+				<source>zweck</source>
+			</trans-unit>
+			<trans-unit id="messsoftware.description">
+				<source>messsoftware</source>
+			</trans-unit>
+			<trans-unit id="messparameter.description">
+				<source>messparameter</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

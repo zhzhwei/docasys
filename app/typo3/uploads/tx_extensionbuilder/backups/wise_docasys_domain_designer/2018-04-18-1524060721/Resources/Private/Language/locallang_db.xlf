@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-18T15:46:08Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung">
+				<source>Loesung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.globale_auswirkung">
+				<source>Globale Auswirkung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.lokale_auswirkung">
+				<source>Lokale Auswirkung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_auswirkung">
+				<source>Auswirkung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_auswirkung.wirkungsziel">
+				<source>Wirkungsziel</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_wirkungsziel">
+				<source>Wirkungsziel</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_komponentenauswirkung">
+				<source>Komponentenauswirkung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_komponentenauswirkung.wirkungsziel">
+				<source>Wirkungsziel</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

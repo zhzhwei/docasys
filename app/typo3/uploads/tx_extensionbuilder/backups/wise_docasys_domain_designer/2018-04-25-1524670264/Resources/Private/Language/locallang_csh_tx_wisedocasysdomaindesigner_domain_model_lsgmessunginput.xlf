@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-19T11:01:04Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="phase_thermische_wirkkette.description">
+				<source>phaseThermischeWirkkette</source>
+			</trans-unit>
+			<trans-unit id="struktur.description">
+				<source>struktur</source>
+			</trans-unit>
+			<trans-unit id="messungtyp.description">
+				<source>messungtyp</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

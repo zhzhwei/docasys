@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-20T13:37:30Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="modellbezeichnung.description">
+				<source>modellbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="anfangsbedingungen.description">
+				<source>anfangsbedingungen</source>
+			</trans-unit>
+			<trans-unit id="modellierungszweck.description">
+				<source>modellierungszweck</source>
+			</trans-unit>
+			<trans-unit id="randbedingungen.description">
+				<source>randbedingungen</source>
+			</trans-unit>
+			<trans-unit id="erforderliche_modellguete.description">
+				<source>erforderlicheModellguete</source>
+			</trans-unit>
+			<trans-unit id="modellierungssoftware.description">
+				<source>modellierungssoftware</source>
+			</trans-unit>
+			<trans-unit id="modelltyp.description">
+				<source>modelltyp</source>
+			</trans-unit>
+			<trans-unit id="abbildungsbereich.description">
+				<source>abbildungsbereich</source>
+			</trans-unit>
+			<trans-unit id="modellumfang.description">
+				<source>modellumfang</source>
+			</trans-unit>
+			<trans-unit id="modellstruktur.description">
+				<source>modellstruktur</source>
+			</trans-unit>
+			<trans-unit id="parametrierungsart.description">
+				<source>parametrierungsart</source>
+			</trans-unit>
+			<trans-unit id="erforderliches_modell.description">
+				<source>erforderlichesModell</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

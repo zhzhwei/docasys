@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-18T17:57:56Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="loesungsbezeichnung.description">
+				<source>loesungsbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="teilprojektnummer.description">
+				<source>teilprojektnummer</source>
+			</trans-unit>
+			<trans-unit id="gestaltungsanforderungen.description">
+				<source>gestaltungsanforderungen</source>
+			</trans-unit>
+			<trans-unit id="betrifft_hersteller.description">
+				<source>betrifftHersteller</source>
+			</trans-unit>
+			<trans-unit id="betrifft_betreiber.description">
+				<source>betrifftBetreiber</source>
+			</trans-unit>
+			<trans-unit id="realisierungsrisiko.description">
+				<source>realisierungsrisiko</source>
+			</trans-unit>
+			<trans-unit id="bemerkung.description">
+				<source>bemerkung</source>
+			</trans-unit>
+			<trans-unit id="loesungsklasse.description">
+				<source>loesungsklasse</source>
+			</trans-unit>
+			<trans-unit id="phase_der_thermischen_wirkkette.description">
+				<source>phaseDerThermischenWirkkette</source>
+			</trans-unit>
+			<trans-unit id="physikalischer_effekt.description">
+				<source>physikalischerEffekt</source>
+			</trans-unit>
+			<trans-unit id="globale_auswirkung.description">
+				<source>globaleAuswirkung</source>
+			</trans-unit>
+			<trans-unit id="lokale_auswirkung.description">
+				<source>lokaleAuswirkung</source>
+			</trans-unit>
+			<trans-unit id="primaerer_einsatzort.description">
+				<source>primaererEinsatzort</source>
+			</trans-unit>
+			<trans-unit id="gestaltungsart.description">
+				<source>gestaltungsart</source>
+			</trans-unit>
+			<trans-unit id="entscheidungen.description">
+				<source>entscheidungen</source>
+			</trans-unit>
+			<trans-unit id="ablauf.description">
+				<source>ablauf</source>
+			</trans-unit>
+			<trans-unit id="repraesentierende_lastfaelle.description">
+				<source>repraesentierendeLastfaelle</source>
+			</trans-unit>
+			<trans-unit id="komponententyp_input.description">
+				<source>komponententypInput</source>
+			</trans-unit>
+			<trans-unit id="komponententyp_output.description">
+				<source>komponententypOutput</source>
+			</trans-unit>
+			<trans-unit id="ressourcentyp_input.description">
+				<source>ressourcentypInput</source>
+			</trans-unit>
+			<trans-unit id="ressourcentyp_output.description">
+				<source>ressourcentypOutput</source>
+			</trans-unit>
+			<trans-unit id="messungstyp_input.description">
+				<source>messungstypInput</source>
+			</trans-unit>
+			<trans-unit id="messungstyp_output.description">
+				<source>messungstypOutput</source>
+			</trans-unit>
+			<trans-unit id="modelltyp_input.description">
+				<source>modelltypInput</source>
+			</trans-unit>
+			<trans-unit id="modelltyp_output.description">
+				<source>modelltypOutput</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

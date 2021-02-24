@@ -1,0 +1,128 @@
+<f:layout name="SolutionOverview" /> 
+<f:section name="content">
+    <h1>Messkurve</h1>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="table table-striped">
+                <tr>
+                    <th style="width: 25%">L&ouml;sung:</th>
+                    <th style="width: 25%">Lastfall:</th>
+                    <th style="width: 25%">Untersuchungstr&auml;ger:</th>
+                    <th style="width: 25%">Parameter:</th>
+                </tr>
+                <tr>
+                    <td>
+                        <f:if condition="{solution}">
+                            {solution.teilprojektnummer} | {solution.loesungsbezeichnung}
+                        </f:if>    
+                    </td>
+                    <td>
+                        <f:if condition="{loadcase}">
+                            {loadcase.fallbezeichnung}
+                        </f:if>    
+                    </td>
+                    <td>
+                        <f:if condition="{machine}">
+                            {machine.bezeichnung}
+                        </f:if>    
+                    </td>
+                    <td>
+                        <f:for each="{parameters}" as="parameter">
+                            {parameter.parametername}&nbsp;[{parameter.einheit.einheitenname}] 
+                        </f:for>    
+                    </td>
+                </tr>
+            </table>
+        </div>    
+    </div>
+    <div class="row">
+        <div class="col-sm-8">
+            <div style="width: 100%;">
+                <canvas id="canvas"></canvas>
+            </div>
+            <script>
+                var xData = [<f:format.raw>{dates}</f:format.raw>];
+                var config = {
+                    type: 'line',
+                    data: {
+                        labels: [<f:format.raw>{dates}</f:format.raw>],
+                        datasets: [
+                            <f:for each="{data}" as="datapoint" key="datakey"> 
+                                <f:format.raw>
+                                {
+                                </f:format.raw>
+                                    label: '{datakey}',
+                                    fill: false,
+                                    backgroundColor: window.chartColors.<f:for each="{dataColors}" as="dc" key="dcK"><f:if condition="{dcK} == {datakey}"><f:if condition="{dc} != ''"><f:then>{dc}</f:then>red<f:else></f:else></f:if></f:if></f:for>,
+                                    borderColor: window.chartColors.<f:for each="{dataColors}" as="dc" key="dcK"><f:if condition="{dcK} == {datakey}"><f:if condition="{dc} != ''"><f:then>{dc}</f:then>red<f:else></f:else></f:if></f:if></f:for>,    
+                                    data: [
+                                    <f:for each="{datapoint}" as="datapointItem">
+                                        <f:format.number decimals="2" decimalSeparator=".">{datapointItem}</f:format.number>,
+                                    </f:for>    
+                                    ],
+                                <f:format.raw>
+                                },
+                                </f:format.raw>
+                            </f:for>                           
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        title: {
+                            display: true,
+                            text: '<f:format.raw>{solution.teilprojektnummer} auf Versuchstraeger {machine.bezeichnung} mit Lastfall "{loadcase.fallbezeichnung}"</f:format.raw>'
+                        },
+                        scales: {
+                            xAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Datum'
+                                }
+                            }],
+                            yAxes: [{
+                                display: true,
+                                scaleLabel: {
+                                    display: true,
+                                    labelString: 'Ergebnis'
+                                }
+                            }]
+                        },
+                        tooltips: {
+                            mode: 'index',
+                            intersect: false,
+                        },
+                        hover: {
+                            mode: 'nearest',
+                            intersect: true
+                        },
+                    }
+                };
+
+                window.onload = function() {
+                    var ctx = document.getElementById('canvas').getContext('2d');
+                    window.myLine = new Chart(ctx, config);
+                };
+            </script> 
+        </div>
+        <div class="col-sm-4">
+            <table class="table table-striped">
+                <f:for each="{examinations}" as="examination">
+                    <tr>
+                        <th><f:format.date format="d.m.y">{examination.datum}</f:format.date></th>
+                        <f:for each="{examination.parameterpruefungen}" as="parameterpruefung">   
+                            <td class="right">{parameterpruefung.messparameter.parametername}</td>
+                            <td class="right"><f:format.number decimals="2" decimalSeparator=",">{parameterpruefung.ergebnis}</f:format.number></td>
+                        </f:for>
+                    </tr> 
+                </f:for>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 right">
+            <p class="back-link"><a href="{f:uri.action(action:'examinations')}">Zur&uuml;ck zur &Uuml;bersicht</a></p>
+        </div>
+    </div>
+</f:section>

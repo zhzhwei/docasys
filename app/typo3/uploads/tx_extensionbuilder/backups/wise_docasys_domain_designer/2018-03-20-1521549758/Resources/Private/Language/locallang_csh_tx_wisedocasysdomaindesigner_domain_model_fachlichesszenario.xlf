@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-20T13:41:43Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="losgroesse.description">
+				<source>losgroesse</source>
+			</trans-unit>
+			<trans-unit id="genauigkeitsklasse.description">
+				<source>genauigkeitsklasse</source>
+			</trans-unit>
+			<trans-unit id="anwendungsfall.description">
+				<source>anwendungsfall</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

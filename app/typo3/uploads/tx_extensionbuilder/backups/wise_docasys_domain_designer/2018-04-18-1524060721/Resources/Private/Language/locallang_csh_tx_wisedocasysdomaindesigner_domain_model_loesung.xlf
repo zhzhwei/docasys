@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-18T15:46:08Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="globale_auswirkung.description">
+				<source>globaleAuswirkung</source>
+			</trans-unit>
+			<trans-unit id="lokale_auswirkung.description">
+				<source>lokaleAuswirkung</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,52 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<table class="tx-dx-upload-notification" >
+	<tr>
+		<td>
+			<f:translate key="tx_dxuploadnotification_domain_model_uploadnotification.subject" />
+		</td>
+		<td>
+		{uploadNotification.subject}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_dxuploadnotification_domain_model_uploadnotification.body" />
+		</td>
+		<td>
+		{uploadNotification.body}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_dxuploadnotification_domain_model_uploadnotification.timestamp" />
+		</td>
+		<td>
+		{uploadNotification.timestamp -> f:format.date()}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_dxuploadnotification_domain_model_uploadnotification.fe_group_id" />
+		</td>
+		<td>
+		{uploadNotification.feGroupId}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_dxuploadnotification_domain_model_uploadnotification.fe_group_name" />
+		</td>
+		<td>
+		{uploadNotification.feGroupName}
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<f:translate key="tx_dxuploadnotification_domain_model_uploadnotification.sys_collection_id" />
+		</td>
+		<td>
+		{uploadNotification.sysCollectionId}
+		</td>
+	</tr>
+</table>
+</html>

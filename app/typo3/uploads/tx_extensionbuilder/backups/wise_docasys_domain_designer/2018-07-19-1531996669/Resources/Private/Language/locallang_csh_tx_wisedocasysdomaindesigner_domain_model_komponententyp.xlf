@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-07-19T12:35:25Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="bezeichnung.description">
+				<source>bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="beschreibung.description">
+				<source>beschreibung</source>
+			</trans-unit>
+			<trans-unit id="komponentenart.description">
+				<source>komponentenart</source>
+			</trans-unit>
+			<trans-unit id="achsenanzahl.description">
+				<source>achsenanzahl</source>
+			</trans-unit>
+			<trans-unit id="fuehrungsart.description">
+				<source>fuehrungsart</source>
+			</trans-unit>
+			<trans-unit id="antriebsart.description">
+				<source>antriebsart</source>
+			</trans-unit>
+			<trans-unit id="bestandteile.description">
+				<source>bestandteile</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

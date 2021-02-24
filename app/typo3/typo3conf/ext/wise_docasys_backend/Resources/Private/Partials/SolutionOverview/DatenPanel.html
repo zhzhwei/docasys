@@ -1,0 +1,18 @@
+{namespace wise=Wise\WiseDocasysBackend\ViewHelpers}
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <span class="pull-right">Daten</span>
+        <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_daten][{daten.uid}]=edit">
+            {daten.bezeichnung}
+        </wise:be.editLink>
+    </div>
+    <div class="panel-body">
+        <dl>
+            <dt>Obligatorisch:</dt>
+            <dd>{f:if(condition: '{modellContainer.istObligatorisch} == 1', then: 'Ja', else: 'Nein')}</dd>
+            <dt>Art:</dt>
+            <dd><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:datentyp.{daten.datentyp}" /></dd>
+        </dl>
+    </div>
+</div>

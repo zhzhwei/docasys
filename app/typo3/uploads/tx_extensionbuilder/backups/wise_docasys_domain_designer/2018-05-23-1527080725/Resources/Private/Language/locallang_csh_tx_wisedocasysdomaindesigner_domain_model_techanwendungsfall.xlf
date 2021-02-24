@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-05-23T15:03:55Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="bezeichnung.description">
+				<source>bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="beschreibung.description">
+				<source>beschreibung</source>
+			</trans-unit>
+			<trans-unit id="werkzeuganzahl.description">
+				<source>werkzeuganzahl</source>
+			</trans-unit>
+			<trans-unit id="werkzeugwechselanteil.description">
+				<source>werkzeugwechselanteil</source>
+			</trans-unit>
+			<trans-unit id="zerspanvolumen.description">
+				<source>zerspanvolumen</source>
+			</trans-unit>
+			<trans-unit id="werkzeuge.description">
+				<source>werkzeuge</source>
+			</trans-unit>
+			<trans-unit id="mengenleistung.description">
+				<source>mengenleistung</source>
+			</trans-unit>
+			<trans-unit id="fertigungsflexibilitaet.description">
+				<source>fertigungsflexibilitaet</source>
+			</trans-unit>
+			<trans-unit id="werkzeugwechselhaeufigkeit.description">
+				<source>werkzeugwechselhaeufigkeit</source>
+			</trans-unit>
+			<trans-unit id="repraesentierende_lastfaelle.description">
+				<source>repraesentierendeLastfaelle</source>
+			</trans-unit>
+			<trans-unit id="schnittgeschwindigkeit.description">
+				<source>schnittgeschwindigkeit</source>
+			</trans-unit>
+			<trans-unit id="drehzahlbereich.description">
+				<source>drehzahlbereich</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

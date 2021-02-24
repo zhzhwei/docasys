@@ -1,0 +1,98 @@
+{namespace wise=Wise\WiseDocasysBackend\ViewHelpers}
+
+<f:layout name="SolutionOverview" />
+<f:section name="content">
+    <h1>Anwendungsf&auml;lle</h1>
+    <h2>Anwendungsf&auml;lle und L&ouml;sungen</h2>
+    <div class="table-fit">
+        <table class="table">
+            <tr>
+                <th class="matrix-title matrix-header" style="width: {matrixFirstWidth}%"></th>
+                <f:for each="{applicationCases}" as="applicationCase">
+                    <th class="center matrix-header" style="width: {matrixWidth}%">
+                        <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_fachanwendungsfall][{applicationCase.uid}]=edit">
+                            {applicationCase.bezeichnung}
+                        </wise:be.editLink>
+                    </th>
+                </f:for>
+            </tr>
+            <f:for each="{solutions}" as="solution">
+                <tr>
+                    <td class="matrix-title matrix-title matrix-blockline" rowspan="2">
+                        <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_loesung][{solution.solution.uid}]=edit">
+                            {solution.solution.teilprojektnummer} {solution.solution.loesungsbezeichnung}
+                        </wise:be.editLink>
+                    </td>
+                    <f:for each="{applicationCases}" as="applicationCase">
+                        <td class="center">
+                            <f:for each="{solution.aptitudes}" as="aptitude">
+                                <f:for each="{aptitude.anwendungsfall}" as="aptitudeApplicationCase">
+                                    <f:if condition="{aptitudeApplicationCase} == {applicationCase}">
+                                        <div class="alert alert-{f:if(condition: '{aptitude.eignungsgrad} <= 2', then: 'danger', else: 'success')}">
+                                            <strong><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:eignungsgrad.{aptitude.eignungsgrad}" /></strong><br>
+                                            <small>(<f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:eignungsprofilstatus.{aptitude.eignungsprofilstatus}" />)</small>
+                                        </div>
+                                    </f:if>
+                                </f:for>
+                            </f:for>
+                        </td>
+                    </f:for>
+                </tr>
+                <tr>
+                    <f:for each="{applicationCases}" as="applicationCase">
+                        <td class="center matrix-blockline">
+                            <f:for each="{solution.applicationCasesByLoadCases}" as="loadCaseApplicationCase"> 
+                                <f:if condition="{loadCaseApplicationCase.applicationCase} == {applicationCase}">
+                                    <div class="alert alert-info">
+                                        <small>Untersuchungen fanden statt zu:</small><br>
+                                        <strong>
+                                            <f:for each="{loadCaseApplicationCase.loadCases}" as="loadCase">   
+                                                {loadCase.fallbezeichnung}&nbsp;   
+                                            </f:for> 
+                                        </strong>
+                                    </div>
+                                </f:if>
+                            </f:for>   
+                        </td>
+                    </f:for>
+                </tr>
+            </f:for>
+        </table>
+    </div>
+
+    <h2 class="margin-top">Anwendungsf&auml;lle und repr&auml;sentierende Lastf&auml;lle</h2>
+    <div class="table-fit">
+        <table class="table table-striped table-hover">
+            <tr>
+                <th class="matrix-title matrix-header" style="width: {matrixFirstWidth}%"></th>
+                <f:for each="{applicationCases}" as="applicationCase">
+                    <th class="center matrix-header" style="width: {matrixWidth}%">
+                        <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_fachanwendungsfall][{applicationCase.uid}]=edit">
+                            {applicationCase.bezeichnung}
+                        </wise:be.editLink>
+                    </th>
+                </f:for>
+            </tr>
+            <f:for each="{loadCases}" as="loadCase">
+                <tr>
+                    <td class="matrix-title matrix-title">
+                        <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_lastfall][{loadCase.uid}]=edit">
+                            {loadCase.fallbezeichnung}
+                        </wise:be.editLink>
+                    </td>
+                    <f:for each="{applicationCases}" as="applicationCase">
+                        <td class="center">
+                            <f:for each="{applicationCase.technologischenAnwendungsfall}" as="technologyCase">
+                                <f:for each="{technologyCase.repraesentierendeLastfaelle}" as="loadCaseOfTechnologyCase">
+                                    <f:if condition="{loadCaseOfTechnologyCase} == {loadCase}">
+                                        <span class="sign">&bull;</span>
+                                    </f:if>
+                                </f:for>    
+                            </f:for>    
+                        </td>
+                    </f:for>
+                </tr>
+            </f:for>
+        </table>
+    </div>
+</f:section>

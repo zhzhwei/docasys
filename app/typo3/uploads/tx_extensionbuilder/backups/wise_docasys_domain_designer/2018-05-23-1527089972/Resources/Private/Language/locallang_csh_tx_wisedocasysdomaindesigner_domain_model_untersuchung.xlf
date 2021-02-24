@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-05-23T16:48:21Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="verfahrensbezeichnung.description">
+				<source>verfahrensbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="untersuchungsart.description">
+				<source>untersuchungsart</source>
+			</trans-unit>
+			<trans-unit id="lastfall.description">
+				<source>lastfall</source>
+			</trans-unit>
+			<trans-unit id="untersuchte_loesung.description">
+				<source>untersuchteLoesung</source>
+			</trans-unit>
+			<trans-unit id="vorgehen.description">
+				<source>vorgehen</source>
+			</trans-unit>
+			<trans-unit id="entscheidungen.description">
+				<source>entscheidungen</source>
+			</trans-unit>
+			<trans-unit id="untersuchte_komponente.description">
+				<source>untersuchteKomponente</source>
+			</trans-unit>
+			<trans-unit id="untersuchte_maschine.description">
+				<source>untersuchteMaschine</source>
+			</trans-unit>
+			<trans-unit id="erforderliche_ressourcen.description">
+				<source>erforderlicheRessourcen</source>
+			</trans-unit>
+			<trans-unit id="erforderliche_messmittel.description">
+				<source>erforderlicheMessmittel</source>
+			</trans-unit>
+			<trans-unit id="erforderliche_modelle.description">
+				<source>erforderlicheModelle</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

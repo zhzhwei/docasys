@@ -1,0 +1,48 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+<f:layout name="Default" />
+
+This Template is responsible for creating a table of domain objects.
+
+If you modify this template, do not forget to change the overwrite settings
+in /Configuration/ExtensionBuilder/settings.yaml:
+  Resources:
+    Private:
+      Templates:
+        List.html: keep
+
+Otherwise your changes will be overwritten the next time you save the extension in the extension builder
+
+<f:section name="main">
+<h1>Listing for UploadNotification</h1>
+
+<f:flashMessages />
+
+<table  class="tx_dxuploadnotification" >
+	<tr>
+		<th><f:translate key="tx_dxuploadnotification_domain_model_uploadnotification.subject" /></th>
+		<th><f:translate key="tx_dxuploadnotification_domain_model_uploadnotification.body" /></th>
+		<th><f:translate key="tx_dxuploadnotification_domain_model_uploadnotification.timestamp" /></th>
+		<th><f:translate key="tx_dxuploadnotification_domain_model_uploadnotification.fe_group_id" /></th>
+		<th><f:translate key="tx_dxuploadnotification_domain_model_uploadnotification.fe_group_name" /></th>
+		<th><f:translate key="tx_dxuploadnotification_domain_model_uploadnotification.sys_collection_id" /></th>
+		<th> </th>
+		<th> </th>
+	</tr>
+
+	<f:for each="{uploadNotifications}" as="uploadNotification">
+		<tr>
+			<td><f:link.action action="show" arguments="{uploadNotification : uploadNotification}"> {uploadNotification.subject}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{uploadNotification : uploadNotification}"> {uploadNotification.body}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{uploadNotification : uploadNotification}"> {uploadNotification.timestamp -> f:format.date()}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{uploadNotification : uploadNotification}"> {uploadNotification.feGroupId}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{uploadNotification : uploadNotification}"> {uploadNotification.feGroupName}</f:link.action></td>
+			<td><f:link.action action="show" arguments="{uploadNotification : uploadNotification}"> {uploadNotification.sysCollectionId}</f:link.action></td>
+			<td><f:link.action action="edit" arguments="{uploadNotification : uploadNotification}">Edit</f:link.action></td>
+			<td><f:link.action action="delete" arguments="{uploadNotification : uploadNotification}">Delete</f:link.action></td>
+		</tr>
+	</f:for>
+</table>
+
+<f:link.action action="new">New UploadNotification</f:link.action>
+</f:section>
+</html>

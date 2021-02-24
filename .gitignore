@@ -1,0 +1,9 @@
+!*/**/.gitkeep
+.DS_Store
+*.bak
+*.log
+mysql/data/*
+mysql/init/*
+mysql/run/*
+!mysql/init/dump-*.sql
+app/typo3/typo3temp/*

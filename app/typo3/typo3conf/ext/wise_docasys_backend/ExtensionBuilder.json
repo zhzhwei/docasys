@@ -1,0 +1,50 @@
+{
+    "modules": [],
+    "properties": {
+        "backendModules": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "index => overview,model"
+                },
+                "description": "",
+                "key": "wisebackend",
+                "mainModule": "web",
+                "name": "BPMN Modeler",
+                "tabLabel": "BPMN Modeler"
+            }
+        ],
+        "description": "",
+        "emConf": {
+            "category": "module",
+            "custom_category": "",
+            "dependsOn": "typo3 => 7.6.0-7.6.99\n",
+            "disableLocalization": false,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": false,
+            "sourceLanguage": "en",
+            "state": "stable",
+            "targetVersion": "7.6.0-7.6.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "wise_docasys_backend",
+        "name": "BPMN Modeler",
+        "originalExtensionKey": "",
+        "originalVendorName": "",
+        "persons": [
+            {
+                "company": "TU Dresden, Lehrstuhl f\u00fcr Wirtschaftsinformatik, insb. Systementwicklung",
+                "email": "richard.braun@tu-dresden.de",
+                "name": "Dr. Richard Braun",
+                "role": "Developer"
+            }
+        ],
+        "plugins": [],
+        "vendorName": "Wise"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2018-03-21 03:03",
+        "extension_builder_version": "7.6.18",
+        "be_user": " (1)"
+    }
+}

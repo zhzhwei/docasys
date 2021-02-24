@@ -1,0 +1,54 @@
+TCA:
+--                                
+- Select-Werte global (Repo) aus TCA?!
+
+Rule Engine:
+--
+- Input Nodes = TCA (Klassen)
+- Wertauspräfungen = TCA (Objekte), freie Werte je Literal
+- (!) Integration in Camunda Suite (separater Editor Test-Modus)
+- Eingabe-Dummy
+- XOR, OR, AND in Entscheidungstabellen kapseln
+
+Recommender:
+-- 
+- Eingabe-Assistenz, Prio, Entscheider 
+
+Gesamtansatz:
+--
+
+Dokumentation der Lösungsverfahren (Innensicht):
+- Imperativ (Fertigung, Voraus): BPMN
+- Deklarativ (Leitplanken, erlaubte): CMMN
+- Entscheidungen im Detail: DMN
+
+Roundtrip TCA im Domain Designer
+Wichtig: nur TCAs betroffen
+
+Vorbereitung Domain Engineering (UML):
+(1) Fachmodellierung in UML
+(2) Transformierung per UML2ERD in Implementierungsmodell
+    - PK/FK-Beziehungen
+    - Aufklösung der Vererbungen
+    - ENUM-Einordnung
+    - Sonderzeichen
+    - De-CamelCase
+    - Mapping der Datentypen
+(3) "Abmodellieren" in Typo3-Struktur in Kickstarter
+    - Basis ist Modell oder SQL-Exports
+    - Grafische Strukturierung gemäß Fachmodell
+    - Alternativ (TODO): SQL/ERD - Kickstarter-JSON-Export (domainspezifischer Mapper)
+    - Stereotypes sind Ordner / Hauptbereiche
+
+Domain Engineering:
+--
+
+CREATE:
+- TCA nachträglich anpassen
+- Select, Labels, Required etc.
+
+CHANGE:
+- TCA-Ordner backuppen
+- Extension Builder ausführen
+- Wenn unberührt: TCAs aus Backuo-Ordner kopieren
+- Wenn berührt: TCAs aus Backup-Ordner diffen

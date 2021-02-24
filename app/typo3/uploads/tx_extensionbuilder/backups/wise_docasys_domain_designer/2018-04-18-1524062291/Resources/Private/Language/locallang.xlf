@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-18T16:16:47Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung">
+				<source>Loesung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.globale_auswirkung">
+				<source>Globale Auswirkung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.lokale_auswirkung">
+				<source>Lokale Auswirkung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.primaerer_einsatzort">
+				<source>Primaerer Einsatzort</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.input_komponententyp">
+				<source>Input Komponententyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.output_komponententyp">
+				<source>Output Komponententyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.input_ressourcentyp">
+				<source>Input Ressourcentyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.output_ressourcentyp">
+				<source>Output Ressourcentyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.input_messungstyp">
+				<source>Input Messungstyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.output_messungstyp">
+				<source>Output Messungstyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.input_modelltyp">
+				<source>Input Modelltyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.output_modelltyp">
+				<source>Output Modelltyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.gestaltungsart">
+				<source>Gestaltungsart</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.entscheidungen">
+				<source>Entscheidungen</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.vorgehen">
+				<source>Vorgehen</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_auswirkung">
+				<source>Auswirkung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_auswirkung.wirkungsziel">
+				<source>Wirkungsziel</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_wirkungsziel">
+				<source>Wirkungsziel</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_komponentenauswirkung">
+				<source>Komponentenauswirkung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_komponentenauswirkung.wirkungsziel">
+				<source>Wirkungsziel</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_komponentenauswirkung.komponententyp">
+				<source>Komponententyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_komponententyp">
+				<source>Komponententyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_komponententyp.bestandteile">
+				<source>Bestandteile</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_ioschnittstelle">
+				<source>Io Schnittstelle</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_ioschnittstelle.strukturkomponente">
+				<source>Strukturkomponente</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_ressourcentyp">
+				<source>Ressourcentyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_messungstyp">
+				<source>Messungstyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_messungstyp.messparameter">
+				<source>Messparameter</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_modelltyp">
+				<source>Modelltyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_messparameter">
+				<source>Messparameter</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_messparameter.einheit">
+				<source>Einheit</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_parametereinheit">
+				<source>Parametereinheit</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_werkzeugmaschine">
+				<source>Werkzeugmaschine</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_werkzeugmaschine.werkzeugmaschinentyp">
+				<source>Werkzeugmaschinentyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_werkzeugmaschine.komponenten">
+				<source>Komponenten</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_werkzeugmaschine.steuerung">
+				<source>Steuerung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_komponente">
+				<source>Komponente</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_komponente.komponententyp">
+				<source>Komponententyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_maschinensteuerung">
+				<source>Maschinensteuerung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_maschinensteuerung.komponententyp">
+				<source>Komponententyp</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesungsbeziehung">
+				<source>Loesungsbeziehung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesungsbeziehung.quelle">
+				<source>Quelle</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesungsbeziehung.senke">
+				<source>Senke</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_gestaltungsart">
+				<source>Gestaltungsart</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_entscheidungsbeschreibung">
+				<source>Entscheidungsbeschreibung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_vorgehensbeschreibung">
+				<source>Vorgehensbeschreibung</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

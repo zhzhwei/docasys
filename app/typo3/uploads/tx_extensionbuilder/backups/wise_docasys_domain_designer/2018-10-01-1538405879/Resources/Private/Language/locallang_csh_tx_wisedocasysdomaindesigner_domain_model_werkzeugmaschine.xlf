@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-09-19T17:02:23Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="bezeichnung.description">
+				<source>bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="hersteller.description">
+				<source>hersteller</source>
+			</trans-unit>
+			<trans-unit id="preis.description">
+				<source>preis</source>
+			</trans-unit>
+			<trans-unit id="kinematik.description">
+				<source>kinematik</source>
+			</trans-unit>
+			<trans-unit id="schmierungsart.description">
+				<source>schmierungsart</source>
+			</trans-unit>
+			<trans-unit id="maschinenkomponenten.description">
+				<source>maschinenkomponenten</source>
+			</trans-unit>
+			<trans-unit id="maschinensteuerung.description">
+				<source>maschinensteuerung</source>
+			</trans-unit>
+			<trans-unit id="messkomponente.description">
+				<source>messkomponente</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

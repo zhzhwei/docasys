@@ -1,0 +1,53 @@
+body {
+    font-size: 16px;
+}
+
+a, a:hover, a:focus, a:active {
+    text-decoration: none;
+    color: #138f25;
+}
+
+.center {
+    text-align: center;   
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.no-padding-right {
+    padding-right: 0px;
+}
+
+.no-padding-left {
+    padding-left: 0px;
+}
+
+.unbold {
+    font-weight: 400;
+}
+
+.bold, b, strong {
+    font-weight: 700;
+}
+
+.extrabold {
+    font-weight: 800;
+}
+
+.table-scrollable {
+    width: 100%;
+    overflow-y: auto;
+}
+
+.table-scrollable table {
+    margin-bottom: 0;
+}
+
+.table-scrollable {
+    margin-bottom: 30px;
+}

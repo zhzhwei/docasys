@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-07-27T14:16:03Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="bezeichnung.description">
+				<source>bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="beschreibung.description">
+				<source>beschreibung</source>
+			</trans-unit>
+			<trans-unit id="ist_optional.description">
+				<source>istOptional</source>
+			</trans-unit>
+			<trans-unit id="dauer_in_tagen.description">
+				<source>dauerInTagen</source>
+			</trans-unit>
+			<trans-unit id="dauer_in_tagen_von.description">
+				<source>dauerInTagenVon</source>
+			</trans-unit>
+			<trans-unit id="dauer_in_tagen_bis.description">
+				<source>dauerInTagenBis</source>
+			</trans-unit>
+			<trans-unit id="verbesserungspotential_realbetrieb.description">
+				<source>verbesserungspotentialRealbetrieb</source>
+			</trans-unit>
+			<trans-unit id="arbeitsschrittart.description">
+				<source>arbeitsschrittart</source>
+			</trans-unit>
+			<trans-unit id="bestandteile.description">
+				<source>bestandteile</source>
+			</trans-unit>
+			<trans-unit id="in_ressourcen.description">
+				<source>inRessourcen</source>
+			</trans-unit>
+			<trans-unit id="in_modelle.description">
+				<source>inModelle</source>
+			</trans-unit>
+			<trans-unit id="in_messmittel.description">
+				<source>inMessmittel</source>
+			</trans-unit>
+			<trans-unit id="in_daten.description">
+				<source>inDaten</source>
+			</trans-unit>
+			<trans-unit id="in_methoden.description">
+				<source>inMethoden</source>
+			</trans-unit>
+			<trans-unit id="out_ressourcen.description">
+				<source>outRessourcen</source>
+			</trans-unit>
+			<trans-unit id="out_modelle.description">
+				<source>outModelle</source>
+			</trans-unit>
+			<trans-unit id="out_messmittel.description">
+				<source>outMessmittel</source>
+			</trans-unit>
+			<trans-unit id="out_daten.description">
+				<source>outDaten</source>
+			</trans-unit>
+			<trans-unit id="out_methoden.description">
+				<source>outMethoden</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

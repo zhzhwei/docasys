@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-05-23T14:48:47Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="pruefbezeichnung.description">
+				<source>pruefbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="datum.description">
+				<source>datum</source>
+			</trans-unit>
+			<trans-unit id="ort.description">
+				<source>ort</source>
+			</trans-unit>
+			<trans-unit id="verantwortlicher.description">
+				<source>verantwortlicher</source>
+			</trans-unit>
+			<trans-unit id="ergebniszusammenfassung.description">
+				<source>ergebniszusammenfassung</source>
+			</trans-unit>
+			<trans-unit id="untersuchung.description">
+				<source>untersuchung</source>
+			</trans-unit>
+			<trans-unit id="lastfall.description">
+				<source>lastfall</source>
+			</trans-unit>
+			<trans-unit id="parameterpruefungen.description">
+				<source>parameterpruefungen</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

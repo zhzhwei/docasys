@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-19T11:24:36Z" product-name="dx_psw_products">
+		<header/>
+		<body>
+			<trans-unit id="tx_dx_psw_products_domain_model_products">
+				<source>Angebote</source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_products.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_filter">
+				<source>Filter</source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_filter.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_detailheader">
+				<source>Detail-Header</source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_detailheader.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_detailform">
+				<source>Detail-Formular</source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_detailform.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="name.description">
+				<source>name</source>
+			</trans-unit>
+			<trans-unit id="prename.description">
+				<source>prename</source>
+			</trans-unit>
+			<trans-unit id="postalcontact.description">
+				<source>postalcontact</source>
+			</trans-unit>
+			<trans-unit id="street.description">
+				<source>street</source>
+			</trans-unit>
+			<trans-unit id="zip.description">
+				<source>zip</source>
+			</trans-unit>
+			<trans-unit id="city.description">
+				<source>city</source>
+			</trans-unit>
+			<trans-unit id="callback.description">
+				<source>callback</source>
+			</trans-unit>
+			<trans-unit id="telephone.description">
+				<source>telephone</source>
+			</trans-unit>
+			<trans-unit id="message.description">
+				<source>message</source>
+			</trans-unit>
+			<trans-unit id="email.description">
+				<source>email</source>
+			</trans-unit>
+			<trans-unit id="user.description">
+				<source>user</source>
+			</trans-unit>
+			<trans-unit id="product.description">
+				<source>product</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

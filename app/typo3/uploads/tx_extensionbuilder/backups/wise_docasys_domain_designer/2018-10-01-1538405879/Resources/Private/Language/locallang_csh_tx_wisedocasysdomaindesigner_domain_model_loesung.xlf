@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-09-19T17:02:23Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="loesungsbezeichnung.description">
+				<source>loesungsbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="teilprojektnummer.description">
+				<source>teilprojektnummer</source>
+			</trans-unit>
+			<trans-unit id="gestaltungsanforderungen.description">
+				<source>gestaltungsanforderungen</source>
+			</trans-unit>
+			<trans-unit id="betrifft_hersteller.description">
+				<source>betrifftHersteller</source>
+			</trans-unit>
+			<trans-unit id="betrifft_betreiber.description">
+				<source>betrifftBetreiber</source>
+			</trans-unit>
+			<trans-unit id="realisierungsrisiko.description">
+				<source>realisierungsrisiko</source>
+			</trans-unit>
+			<trans-unit id="bemerkung.description">
+				<source>bemerkung</source>
+			</trans-unit>
+			<trans-unit id="loesungsklasse.description">
+				<source>loesungsklasse</source>
+			</trans-unit>
+			<trans-unit id="phase_der_thermischen_wirkkette.description">
+				<source>phaseDerThermischenWirkkette</source>
+			</trans-unit>
+			<trans-unit id="physikalischer_effekt.description">
+				<source>physikalischerEffekt</source>
+			</trans-unit>
+			<trans-unit id="invasivitaetsgrad.description">
+				<source>invasivitaetsgrad</source>
+			</trans-unit>
+			<trans-unit id="wartungsintervall.description">
+				<source>wartungsintervall</source>
+			</trans-unit>
+			<trans-unit id="loesungsart.description">
+				<source>loesungsart</source>
+			</trans-unit>
+			<trans-unit id="gestaltungsart.description">
+				<source>gestaltungsart</source>
+			</trans-unit>
+			<trans-unit id="arbeitsschritte.description">
+				<source>arbeitsschritte</source>
+			</trans-unit>
+			<trans-unit id="derzeitiger_einsatzort.description">
+				<source>derzeitigerEinsatzort</source>
+			</trans-unit>
+			<trans-unit id="komponentenauswirkung.description">
+				<source>komponentenauswirkung</source>
+			</trans-unit>
+			<trans-unit id="auswirkung.description">
+				<source>auswirkung</source>
+			</trans-unit>
+			<trans-unit id="ablauf.description">
+				<source>ablauf</source>
+			</trans-unit>
+			<trans-unit id="entscheidungen.description">
+				<source>entscheidungen</source>
+			</trans-unit>
+			<trans-unit id="input_ressource.description">
+				<source>inputRessource</source>
+			</trans-unit>
+			<trans-unit id="input_modell.description">
+				<source>inputModell</source>
+			</trans-unit>
+			<trans-unit id="input_messmittel.description">
+				<source>inputMessmittel</source>
+			</trans-unit>
+			<trans-unit id="input_daten.description">
+				<source>inputDaten</source>
+			</trans-unit>
+			<trans-unit id="output_ressource.description">
+				<source>outputRessource</source>
+			</trans-unit>
+			<trans-unit id="output_modell.description">
+				<source>outputModell</source>
+			</trans-unit>
+			<trans-unit id="output_daten.description">
+				<source>outputDaten</source>
+			</trans-unit>
+			<trans-unit id="output_messmittel.description">
+				<source>outputMessmittel</source>
+			</trans-unit>
+			<trans-unit id="output_methoden.description">
+				<source>outputMethoden</source>
+			</trans-unit>
+			<trans-unit id="komponentenbedingung.description">
+				<source>komponentenbedingung</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

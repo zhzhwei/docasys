@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-07-27T14:13:45Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="vorgehenstitel.description">
+				<source>vorgehenstitel</source>
+			</trans-unit>
+			<trans-unit id="bpmn_modell.description">
+				<source>bpmnModell</source>
+			</trans-unit>
+			<trans-unit id="cmmn_modell.description">
+				<source>cmmn</source>
+			</trans-unit>
+			<trans-unit id="zusammenfassung.description">
+				<source>zusammenfassung</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

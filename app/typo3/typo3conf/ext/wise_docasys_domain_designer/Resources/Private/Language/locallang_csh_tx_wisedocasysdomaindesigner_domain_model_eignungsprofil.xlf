@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-01-31T09:00:39Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="bemerkung.description">
+				<source>bemerkung</source>
+			</trans-unit>
+			<trans-unit id="eignungsprofilstatus.description">
+				<source>eignungsprofilstatus</source>
+			</trans-unit>
+			<trans-unit id="eignungsgrad.description">
+				<source>eignungsgrad</source>
+			</trans-unit>
+			<trans-unit id="loesung.description">
+				<source>loesung</source>
+			</trans-unit>
+			<trans-unit id="anwendungsfall.description">
+				<source>anwendungsfall</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

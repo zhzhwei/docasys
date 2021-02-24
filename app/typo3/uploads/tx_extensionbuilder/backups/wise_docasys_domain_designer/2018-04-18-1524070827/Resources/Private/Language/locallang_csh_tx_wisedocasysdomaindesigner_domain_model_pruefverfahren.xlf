@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-18T18:56:30Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="verfahrensbezeichnung.description">
+				<source>verfahrensbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="pruefverfahrensart.description">
+				<source>pruefverfahrensart</source>
+			</trans-unit>
+			<trans-unit id="pruef_komponententypen.description">
+				<source>pruefKomponententypen</source>
+			</trans-unit>
+			<trans-unit id="pruef_ressourcentypen.description">
+				<source>pruefRessourcentypen</source>
+			</trans-unit>
+			<trans-unit id="pruef_messungtypen.description">
+				<source>pruefMessungtypen</source>
+			</trans-unit>
+			<trans-unit id="pruef_modelltypen.description">
+				<source>pruefModelltypen</source>
+			</trans-unit>
+			<trans-unit id="entscheidungen.description">
+				<source>entscheidungen</source>
+			</trans-unit>
+			<trans-unit id="vorgehen.description">
+				<source>vorgehen</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

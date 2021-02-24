@@ -1,0 +1,39 @@
+version: "3"
+services: 
+  docasys-app:
+    container_name: docasys-app
+    build: 
+      context: ./app
+    volumes:
+      - ./app/typo3:/var/www/html
+    ports:
+      - 80:80
+    networks: 
+      docasys.net:
+        ipv4_address: 172.16.235.2
+    extra_hosts: 
+      - docasys-db.local:172.16.235.3
+  docasys-db:
+    container_name: docasys-db
+    image: mariadb:10.4
+    restart: on-failure
+    volumes:
+      - ./mysql/data:/var/lib/mysql
+      - ./mysql/run:/var/run/mysqld
+      - ./mysql/init:/docker-entrypoint-initdb.d
+    environment: 
+      MYSQL_ROOT_PASSWORD: "root"
+      MYSQL_DATABASE: "cs-326244_doca"
+      MYSQL_USER: "cs-32_doca_u"
+      MYSQL_PASSWORD: "cs-32_doca_u"
+    ports:
+      - 3306:3306
+    networks: 
+      docasys.net:
+        ipv4_address: 172.16.235.3
+networks:
+  docasys.net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.235.0/24

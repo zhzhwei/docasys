@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-20T12:22:12Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="zielbezeichnung.description">
+				<source>zielbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="beschreibung.description">
+				<source>beschreibung</source>
+			</trans-unit>
+			<trans-unit id="einheit.description">
+				<source>einheit</source>
+			</trans-unit>
+			<trans-unit id="wertebereich.description">
+				<source>wertebereich</source>
+			</trans-unit>
+			<trans-unit id="quantifizierbarkeit.description">
+				<source>quantifizierbarkeit</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

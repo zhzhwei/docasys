@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-19T11:39:24Z" product-name="dx_psw_products">
+		<header/>
+		<body>
+			<trans-unit id="tx_dx_psw_products_domain_model_products">
+				<source>Angebote</source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_products.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_filter">
+				<source>Filter</source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_filter.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_detailheader">
+				<source>Detail-Header</source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_detailheader.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_detailform">
+				<source>Detail-Formular</source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_detailform.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_productcategory">
+				<source>Productcategory</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_productcategory.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_product">
+				<source>Product</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_product.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_product.partnername">
+				<source>Partnername</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_product.logo">
+				<source>Logo</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_product.category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_product.detailpage">
+				<source>Detailpage</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_inquiry">
+				<source>Inquiry</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_inquiry.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_inquiry.prename">
+				<source>Prename</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_inquiry.postalcontact">
+				<source>Postalcontact</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_inquiry.street">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_inquiry.zip">
+				<source>Zip</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_inquiry.city">
+				<source>City</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_inquiry.callback">
+				<source>Callback</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_inquiry.telephone">
+				<source>Telephone</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_inquiry.message">
+				<source>Message</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_inquiry.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_inquiry.product">
+				<source>Product</source>
+			</trans-unit>
+			<trans-unit id="tx_dxpswproducts_domain_model_inquiry.user">
+				<source>User</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,5 @@
+# cat=basic; type=string; label=LLL:EXT:wise_docasys_backend/Resources/Private/Language/locallang_wisebackend.xlf:configuration_options.storage
+storage =
+
+# cat=basic; type=string; label=LLL:EXT:wise_docasys_backend/Resources/Private/Language/locallang_wisebackend.xlf:configuration_options.areas
+rootPid =

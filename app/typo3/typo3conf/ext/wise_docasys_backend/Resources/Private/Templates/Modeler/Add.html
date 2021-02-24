@@ -1,0 +1,61 @@
+<f:layout name="Modeler" /> 
+<f:section name="content">
+    <h1>{language}-Modell erstellen</h1>
+    <f:form name="save-xml" action="save" method="post" id="save-form" style="width: 100%;">
+        <label>Dateiname:</label>
+        <div class="row">
+            <div class="form-group col-md-2">
+                <f:form.textfield property="prefix" type="text" required="true" class="form-control" placeholder="Präfix" maxlength="4" />
+            </div>
+            <div class="form-group col-md-10">
+                <f:form.textfield property="title" type="text" required="true" class="form-control" placeholder="Name" />
+            </div>
+        </div>
+        <div class="hide">
+            <f:form.hidden property="type" value="{language -> f:format.case(mode: 'lower')}" />
+            <f:form.textarea property="xml" id="modeler-save-value" />
+            <f:form.submit value="XML speichern" id="modeler-save-submit" />
+        </div>
+    </f:form>
+
+    <div class="canvas-wrapper-{language -> f:format.case(mode: 'lower')}" id="canvas-wrapper">
+        <div id="canvas"></div>
+    </div>
+
+    <f:switch expression="{language}">
+        <f:case value="BPMN">
+            <script>
+                var diagramUrl = '<f:uri.resource path="BpmnJs/empty.bpmn" />';
+            </script>
+            <script src="{f:uri.resource(path: 'JavaScript/BpmnModeler.js')}"></script>
+        </f:case>
+        <f:case value="CMMN">
+             <script>
+                var diagramUrl = '<f:uri.resource path="CmmnJs/empty.cmmn" />';
+            </script>
+            <script src="{f:uri.resource(path: 'JavaScript/CmmnModeler.js')}"></script>           
+        </f:case>
+        <f:case value="DMN">
+             <script>
+                var diagramUrl = '<f:uri.resource path="DmnJs/empty.dmn" />';
+            </script>
+            <script src="{f:uri.resource(path: 'JavaScript/DmnModeler.js')}"></script>           
+        </f:case>
+    </f:switch>
+    
+    <script>
+        $.get(diagramUrl, openDiagram, 'text');
+
+        $('a.modeler-save').click(function(e) {
+            e.stopPropagation();
+            e.preventDefault();
+
+            if(confirm('Soll das Modell jetzt gespeichert werden?')) {
+                exportDiagram(); 
+                if($('textarea#modeler-save-value').val() != '') {
+                    $('form#save-form').submit();
+                }
+            } 
+        });  
+    </script>
+</f:section>

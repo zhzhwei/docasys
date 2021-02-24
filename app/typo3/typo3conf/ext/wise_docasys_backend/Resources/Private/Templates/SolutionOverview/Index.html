@@ -1,0 +1,69 @@
+{namespace core = TYPO3\CMS\Core\ViewHelpers}
+<f:layout name="SolutionOverview" />
+<f:section name="content">
+    <script>
+        $(document).ready(function(){
+            $('[data-toggle="tooltip"]').tooltip(); 
+
+            $('#reference-machine-image-displayer').click(function() {
+                $(this).toggleClass('active');
+                $('.reference-machine-link a.circle-link').toggleClass('active'); 
+            });  
+        });
+    </script>
+    <h1>DOCASYS - Documentation and Assistance System</h1>
+    <p><a href="#" class="btn btn-secondary" id="reference-machine-image-displayer">Alle einblenden</a></p>
+    <h2>L&ouml;sungs&uuml;bersicht</h2>
+    <div class="reference-machine-image">
+        <div class="reference-machine-image-container" style="background-image: url('{f:uri.resource(path: 'Images/Machine/wzm-struktur-v1-1.png')}')">
+            <f:for each="{componentTypes}" as="ct" iteration="j">
+                <div class="reference-machine-link" title="{ct.obj.bezeichnung}" data-toggle="tooltip" style="margin-top: {ct.obj.aufVisualisierungY}px; margin-left: {ct.obj.aufVisualisierungX}px; width: {ct.obj.aufVisualisierungBreite}px; height: {ct.obj.aufVisualisierungHoehe}px; z-index: {j.index}">
+                    <f:for each="{ct.solutions}" as="solution">
+                        <a href="{f:uri.action(action:'summary', arguments: '{solution: \'{solution.uid}\'}' )}" title="{solution.loesungsbezeichnung}" class="circle-link">{solution.teilprojektnummer}</a>    
+                    </f:for>
+                </div>
+            </f:for>
+            <img src="{f:uri.resource(path: 'Images/Machine/wzm-struktur-v1-1.png')}">    
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="dx-user-head">
+                <core:icon identifier="content-special-menu" size="large" />
+                <h1>Strukturen</h1>
+            </div>
+            <div class="list-group">   
+                <a href="{f:uri.action(action:'referencemachine')}" class="list-group-item" title="Referenzmaschine">
+                    <h4 class="list-group-item-heading">Referenzmaschine</h4>
+                    <p class="list-group-item-text">Struktur aller Maschinenkomponenten und die derzeit daran wirkenden L&ouml;sungen</p>
+                </a>
+                <a href="{f:uri.action(action:'matrix')}" class="list-group-item" title="Anwendungsf&auml;lle">
+                    <h4 class="list-group-item-heading">Anwendungsf&auml;lle</h4>
+                    <p class="list-group-item-text">Anwendungsf&auml;lle und ihre repr&auml;sentierenden Lastf&auml;lle in einer Matrix</p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="dx-user-head">
+                <core:icon identifier="content-plugin" size="large" />
+                <h1>L&ouml;sungen</h1>
+            </div>
+            <div class="list-group">   
+                <a href="{f:uri.action(action:'summary')}" class="list-group-item" title="L&ouml;sungen">
+                    <h4 class="list-group-item-heading">L&ouml;sungen</h4>
+                    <p class="list-group-item-text">Detaillierte Informationen zu jeder L&ouml;sung</p>
+                </a>
+                <a href="{f:uri.action(action:'network')}" class="list-group-item" title="Input-Output-Netzwerk">
+                    <h4 class="list-group-item-heading">Input-Output-Netzwerk</h4>
+                    <p class="list-group-item-text">Darstellung aller Abh&auml;ngigkeiten und Austauschbeziehungen zwischen L&ouml;sungen</p>
+                </a>
+                <a href="{f:uri.action(action:'examinations')}" class="list-group-item" title="Untersuchungen">
+                    <h4 class="list-group-item-heading">Untersuchungen</h4>
+                    <p class="list-group-item-text">Dokumentation von Untersuchungen an Demonstratoren, Ergebnisfilterung und Visualisierung der Ergebnisentwicklung</p>
+                </a>
+            </div>
+        </div>    
+    </div>
+
+    <!-- Skizze Entwurf Empfehlungssystem > RECOMMENDER -->
+</f:section>

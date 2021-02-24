@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-07-19T12:12:50Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="bemerkung.description">
+				<source>bemerkung</source>
+			</trans-unit>
+			<trans-unit id="wirkungsgradtendenz.description">
+				<source>wirkungsgradtendenz</source>
+			</trans-unit>
+			<trans-unit id="wirkungsziel.description">
+				<source>wirkungsziel</source>
+			</trans-unit>
+			<trans-unit id="komponente.description">
+				<source>komponente</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

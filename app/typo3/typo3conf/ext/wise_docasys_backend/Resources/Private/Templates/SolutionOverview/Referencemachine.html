@@ -1,0 +1,68 @@
+<f:layout name="SolutionOverview" /> 
+<f:section name="content">
+    <h1>{referenceMachine.bezeichnung} - Hierarchische Struktur</h1>
+    <div class="reference-machine-structure">
+        <div class="panel-group">
+            <div class="panel panel-default">
+                <f:for each="{referenceMachine.bestandteile}" as="component" iteration="i">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <f:if condition="{component.bestandteile -> f:count()} > 0">
+                                <f:then>
+                                    <a data-toggle="collapse" href="#collapse{i.index}">{component.bezeichnung} ({component.bestandteile -> f:count()})</a>
+                                </f:then>
+                                <f:else>
+                                    {component.bezeichnung} 
+                                </f:else>
+                            </f:if> 
+                            <f:for each="{solutionComponents}" as="solutionComponent" key="scK">
+                                <f:if condition="{component.uid} == {scK}">
+                                    <f:for each="{solutionComponent}" as="solution">
+                                        <span class="badge pull-right">{solution}</span>
+                                    </f:for>
+                                </f:if>
+                            </f:for>
+                        </h4>
+                    </div>
+                    <div id="collapse{i.index}" class="panel-collapse collapse">
+                        <f:for each="{component.bestandteile}" as="subComponent" iteration="iSub">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    <f:if condition="{subComponent.bestandteile -> f:count()} > 0">
+                                        <f:then>
+                                            <a data-toggle="collapse" href="#collapse{i.index}-{iSub.index}">{subComponent.bezeichnung} ({subComponent.bestandteile -> f:count()})</a>
+                                        </f:then>
+                                        <f:else>
+                                            {subComponent.bezeichnung} 
+                                        </f:else>
+                                    </f:if>
+                                    <f:for each="{solutionComponents}" as="solutionComponent" key="scK">
+                                        <f:if condition="{subComponent.uid} == {scK}">
+                                            <f:for each="{solutionComponent}" as="solution">
+                                                <span class="badge pull-right">{solution}</span>
+                                            </f:for>
+                                        </f:if>
+                                    </f:for>
+                                </h4>
+                            </div>
+                            <div id="collapse{i.index}-{iSub.index}" class="panel-collapse collapse">
+                                <f:for each="{subComponent.bestandteile}" as="subSubComponent">
+                                    <li class="list-group-item">
+                                        {subSubComponent.bezeichnung} 
+                                        <f:for each="{solutionComponents}" as="solutionComponent" key="scK">
+                                            <f:if condition="{subSubComponent.uid} == {scK}">
+                                                <f:for each="{solutionComponent}" as="solution">
+                                                    <span class="badge pull-right">{solution}</span>
+                                                </f:for>
+                                            </f:if>
+                                        </f:for>
+                                    </li>
+                                </f:for>
+                            </div>
+                        </f:for>
+                    </div>
+                </f:for>
+            </div>
+        </div>
+    </div>
+</f:section>

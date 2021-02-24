@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+        <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'Bootstrap/bootstrap.min.css')}" media="all">
+        <link rel="stylesheet" type="text/css" href="sysext/t3skin/stylesheets/sprites/t3skin.css?1507965001" media="all">
+        <link rel="stylesheet" type="text/css" href="sysext/t3skin/Resources/Public/Css/backend.css?1507964998" media="all">  
+        <link rel="stylesheet" type="text/css" href="{f:uri.resource(path: 'StyleSheets/Module.css')}" media="all">
+
+        <script src="{f:uri.resource(path: 'JavaScript/jquery-3.3.1.min.js')}"></script>
+        <script src="{f:uri.resource(path: 'JavaScript/Module.js')}"></script>
+        <script src="{f:uri.resource(path: 'Bootstrap/bootstrap.min.js')}"></script>
+    </head>
+    <body>
+        <div class="module">
+            <div class="module-docheader hidden-print">
+                <div class="typo3-docheader-functions">
+                    <div class="module-docheader-bar module-docheader-bar-navigation">
+                        <div class="module-docheader-bar-column-left">
+                            <div class="btn-toolbar">
+                                <f:be.buttons.icon uri="{f:uri.action(action:'index')}" icon="actions-system-options-view" title="Übersicht" additionalAttributes="{class: 'btn btn-default dx-labeled-buttons'}" />
+                            </div>
+                        </div>
+                        <div class="module-docheader-bar-column-right"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="module-body">
+                <f:flashMessages />
+                <f:render section="content"/> 
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-18T16:12:01Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="globale_auswirkung.description">
+				<source>globaleAuswirkung</source>
+			</trans-unit>
+			<trans-unit id="lokale_auswirkung.description">
+				<source>lokaleAuswirkung</source>
+			</trans-unit>
+			<trans-unit id="primaerer_einsatzort.description">
+				<source>primaererEinsatzort</source>
+			</trans-unit>
+			<trans-unit id="input_komponententyp.description">
+				<source>inputKomponententyp</source>
+			</trans-unit>
+			<trans-unit id="output_komponententyp.description">
+				<source>outputKomponententyp</source>
+			</trans-unit>
+			<trans-unit id="input_ressourcentyp.description">
+				<source>inputRessourcentyp</source>
+			</trans-unit>
+			<trans-unit id="output_ressourcentyp.description">
+				<source>outputRessourcentyp</source>
+			</trans-unit>
+			<trans-unit id="input_messungstyp.description">
+				<source>inputMessungstyp</source>
+			</trans-unit>
+			<trans-unit id="output_messungstyp.description">
+				<source>outputMessungstyp</source>
+			</trans-unit>
+			<trans-unit id="input_modelltyp.description">
+				<source>inputModelltyp</source>
+			</trans-unit>
+			<trans-unit id="output_modelltyp.description">
+				<source>outputModelltyp</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

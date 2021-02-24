@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-01-30T11:37:13Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="entscheidungstitel.description">
+				<source>entscheidungstitel</source>
+			</trans-unit>
+			<trans-unit id="zusammenfassung.description">
+				<source>zusammenfassung</source>
+			</trans-unit>
+			<trans-unit id="dmn_modell.description">
+				<source>dmnModell</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-06-13T15:24:18Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="bezeichnung.description">
+				<source>bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="beschreibung.description">
+				<source>beschreibung</source>
+			</trans-unit>
+			<trans-unit id="dauer_in_minuten.description">
+				<source>dauerInMinuten</source>
+			</trans-unit>
+			<trans-unit id="ist_optional.description">
+				<source>istOptional</source>
+			</trans-unit>
+			<trans-unit id="arbeitsschrittart.description">
+				<source>arbeitsschrittart</source>
+			</trans-unit>
+			<trans-unit id="bestandteile.description">
+				<source>bestandteile</source>
+			</trans-unit>
+			<trans-unit id="erforderliche_ressourcen.description">
+				<source>erforderlicheRessourcen</source>
+			</trans-unit>
+			<trans-unit id="erforderliche_messmittel.description">
+				<source>erforderlicheMessmittel</source>
+			</trans-unit>
+			<trans-unit id="erforderliche_modelle.description">
+				<source>erforderlicheModelle</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

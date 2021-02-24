@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-07-19T15:09:49Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="verfahrensbezeichnung.description">
+				<source>verfahrensbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="untersuchungsart.description">
+				<source>untersuchungsart</source>
+			</trans-unit>
+			<trans-unit id="messprinzip.description">
+				<source>messprinzip</source>
+			</trans-unit>
+			<trans-unit id="messgenauigkeit.description">
+				<source>messgenauigkeit</source>
+			</trans-unit>
+			<trans-unit id="messgroesse.description">
+				<source>messgroesse</source>
+			</trans-unit>
+			<trans-unit id="messablauf.description">
+				<source>messablauf</source>
+			</trans-unit>
+			<trans-unit id="vorgehen.description">
+				<source>vorgehen</source>
+			</trans-unit>
+			<trans-unit id="entscheidungen.description">
+				<source>entscheidungen</source>
+			</trans-unit>
+			<trans-unit id="erforderliche_ressourcen.description">
+				<source>erforderlicheRessourcen</source>
+			</trans-unit>
+			<trans-unit id="erforderliche_modelle.description">
+				<source>erforderlicheModelle</source>
+			</trans-unit>
+			<trans-unit id="erforderliche_messverfahren.description">
+				<source>erforderlicheMessverfahren</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-03-19T11:39:24Z" product-name="dx_psw_products">
+		<header/>
+		<body>
+			<trans-unit id="tx_dx_psw_products_domain_model_products">
+				<source>Angebote</source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_products.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_filter">
+				<source>Filter</source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_filter.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_detailheader">
+				<source>Detail-Header</source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_detailheader.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_detailform">
+				<source>Detail-Formular</source>
+			</trans-unit>
+			<trans-unit id="tx_dx_psw_products_domain_model_detailform.description">
+				<source></source>
+			</trans-unit>
+			<trans-unit id="name.description">
+				<source>name</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-01-30T11:27:15Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="bezeichnung.description">
+				<source>bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="beschreibung.description">
+				<source>beschreibung</source>
+			</trans-unit>
+			<trans-unit id="ist_optional.description">
+				<source>istOptional</source>
+			</trans-unit>
+			<trans-unit id="dauer_in_tagen.description">
+				<source>dauerInTagen</source>
+			</trans-unit>
+			<trans-unit id="dauer_in_tagen_von.description">
+				<source>dauerInTagenVon</source>
+			</trans-unit>
+			<trans-unit id="dauer_in_tagen_bis.description">
+				<source>dauerInTagenBis</source>
+			</trans-unit>
+			<trans-unit id="verbesserungspotential_realbetrieb.description">
+				<source>verbesserungspotentialRealbetrieb</source>
+			</trans-unit>
+			<trans-unit id="arbeitsschrittart.description">
+				<source>arbeitsschrittart</source>
+			</trans-unit>
+			<trans-unit id="bestandteile.description">
+				<source>bestandteile</source>
+			</trans-unit>
+			<trans-unit id="i_re.description">
+				<source>iRe</source>
+			</trans-unit>
+			<trans-unit id="i_mo.description">
+				<source>iMo</source>
+			</trans-unit>
+			<trans-unit id="i_me.description">
+				<source>iMe</source>
+			</trans-unit>
+			<trans-unit id="i_da.description">
+				<source>iDa</source>
+			</trans-unit>
+			<trans-unit id="i_mt.description">
+				<source>iMt</source>
+			</trans-unit>
+			<trans-unit id="o_re.description">
+				<source>oRe</source>
+			</trans-unit>
+			<trans-unit id="o_mo.description">
+				<source>oMo</source>
+			</trans-unit>
+			<trans-unit id="o_me.description">
+				<source>oMe</source>
+			</trans-unit>
+			<trans-unit id="o_da.description">
+				<source>oDa</source>
+			</trans-unit>
+			<trans-unit id="o_mt.description">
+				<source>oMt</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-04T12:39:27Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="lastfallart.description">
+				<source>lastfallart</source>
+			</trans-unit>
+			<trans-unit id="fallbezeichnung.description">
+				<source>fallbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="beschreibung.description">
+				<source>beschreibung</source>
+			</trans-unit>
+			<trans-unit id="ist_theoretisch.description">
+				<source>istTheoretisch</source>
+			</trans-unit>
+			<trans-unit id="ist_praktisch.description">
+				<source>istPraktisch</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

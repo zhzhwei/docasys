@@ -1,0 +1,551 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2018-04-18T19:14:21Z" product-name="wise_docasys_domain_designer">
+        <header/>
+        <body>
+            <trans-unit id="empty">
+                <source>Kein Wert</source>
+            </trans-unit>
+            <trans-unit id="loesungsklasse.1">
+                <source>Korrektur</source>
+            </trans-unit>
+            <trans-unit id="loesungsklasse.2">
+                <source>Kompensation</source>
+            </trans-unit>
+            <trans-unit id="phase_thermische_wirkkette.1">
+                <source>Fehler am TCP</source>
+            </trans-unit>
+            <trans-unit id="phase_thermische_wirkkette.2">
+                <source>Temperaturfeld</source>
+            </trans-unit>
+            <trans-unit id="phase_thermische_wirkkette.3">
+                <source>Verlustleistung</source>
+            </trans-unit>
+            <trans-unit id="phase_thermische_wirkkette.4">
+                <source>Wärmestrom</source>
+            </trans-unit>
+            <trans-unit id="phase_thermische_wirkkette.5">
+                <source>Verformungsfeld</source>
+            </trans-unit>
+            <trans-unit id="physikalischer_effekt.1">
+                <source>Externe Kühlung</source>
+            </trans-unit>
+            <trans-unit id="physikalischer_effekt.2">
+                <source>Thermische Kapazität</source>
+            </trans-unit>
+            <trans-unit id="physikalischer_effekt.3">
+                <source>Messen und Berechnung</source>
+            </trans-unit>
+            <trans-unit id="physikalischer_effekt.4">
+                <source>Optisches Messen</source>
+            </trans-unit>
+            <trans-unit id="fertigungsflexibilitaet.1">
+                <source>Nicht vorhanden</source>
+            </trans-unit>
+            <trans-unit id="fertigungsflexibilitaet.2">
+                <source>Gering</source>
+            </trans-unit>
+            <trans-unit id="fertigungsflexibilitaet.3">
+                <source>Durchschnittlich</source>
+            </trans-unit>
+            <trans-unit id="fertigungsflexibilitaet.4">
+                <source>Hoch</source>
+            </trans-unit>
+            <trans-unit id="fertigungsflexibilitaet.5">
+                <source>Unendlich</source>
+            </trans-unit>
+            <trans-unit id="werkzeugwechselhaeufigkeit.1">
+                <source>Extrem gering</source>
+            </trans-unit>
+            <trans-unit id="werkzeugwechselhaeufigkeit.2">
+                <source>Sehr gering</source>
+            </trans-unit>
+            <trans-unit id="werkzeugwechselhaeufigkeit.3">
+                <source>Gering</source>
+            </trans-unit>
+            <trans-unit id="werkzeugwechselhaeufigkeit.4">
+                <source>Durchschnittlich</source>
+            </trans-unit>
+            <trans-unit id="werkzeugwechselhaeufigkeit.5">
+                <source>Hoch</source>
+            </trans-unit>
+            <trans-unit id="werkzeugwechselhaeufigkeit.6">
+                <source>Sehr Hoch</source>
+            </trans-unit>
+            <trans-unit id="werkzeugwechselhaeufigkeit.7">
+                <source>Extrem hoch</source>
+            </trans-unit>
+            <trans-unit id="genauigkeitsklasse.1">
+                <source>P0</source>
+            </trans-unit>
+            <trans-unit id="genauigkeitsklasse.2">
+                <source>P1</source>
+            </trans-unit>
+            <trans-unit id="genauigkeitsklasse.3">
+                <source>P2</source>
+            </trans-unit>
+            <trans-unit id="genauigkeitsklasse.4">
+                <source>P3</source>
+            </trans-unit>
+            <trans-unit id="genauigkeitsklasse.5">
+                <source>P4</source>
+            </trans-unit>
+            <trans-unit id="genauigkeitsklasse.6">
+                <source>P5</source>
+            </trans-unit>
+            <trans-unit id="genauigkeitsklasse.7">
+                <source>P6</source>
+            </trans-unit>
+            <trans-unit id="wirkungsgradtendenz.1">
+                <source>Sehr schwach</source>
+            </trans-unit>
+            <trans-unit id="wirkungsgradtendenz.2">
+                <source>Schwach</source>
+            </trans-unit>
+            <trans-unit id="wirkungsgradtendenz.3">
+                <source>Indifferent</source>
+            </trans-unit>
+            <trans-unit id="wirkungsgradtendenz.4">
+                <source>Stark</source>
+            </trans-unit>
+            <trans-unit id="wirkungsgradtendenz.5">
+                <source>Sehr stark</source>
+            </trans-unit>
+            <trans-unit id="wirkungsgradtendenz.6">
+                <source>Unklar</source>
+            </trans-unit>
+            <trans-unit id="losgroesse.1">
+                <source>Genau 1</source>
+            </trans-unit>
+            <trans-unit id="losgroesse.2">
+                <source>2 bis 20</source>
+            </trans-unit>
+            <trans-unit id="losgroesse.3">
+                <source>21 bis 1000</source>
+            </trans-unit>
+            <trans-unit id="losgroesse.4">
+                <source>Über 1000</source>
+            </trans-unit>
+            <trans-unit id="loesungsbeziehungsart.1">
+                <source>Voraussetzung</source>
+            </trans-unit>
+            <trans-unit id="loesungsbeziehungsart.2">
+                <source>Ausschluss</source>
+            </trans-unit>
+            <trans-unit id="loesungsbeziehungsart.3">
+                <source>Substitution</source>
+            </trans-unit>
+            <trans-unit id="loesungsbeziehungsart.4">
+                <source>Alternativ</source>
+            </trans-unit>
+            <trans-unit id="loesungsbeziehungsart.5">
+                <source>Behinderung</source>
+            </trans-unit>
+            <trans-unit id="struktur.1">
+                <source>Antriebssystem</source>
+            </trans-unit>
+            <trans-unit id="struktur.2">
+                <source>Aufstellung</source>
+            </trans-unit>
+            <trans-unit id="struktur.3">
+                <source>Bewegungssystem</source>
+            </trans-unit>
+            <trans-unit id="struktur.4">
+                <source>Fluidsystem</source>
+            </trans-unit>
+            <trans-unit id="struktur.5">
+                <source>Messsystem</source>
+            </trans-unit>
+            <trans-unit id="struktur.6">
+                <source>Steuerung</source>
+            </trans-unit>
+            <trans-unit id="struktur.7">
+                <source>Tragstrukturen</source>
+            </trans-unit>
+            <trans-unit id="struktur.8">
+                <source>Umgebung</source>
+            </trans-unit>
+            <trans-unit id="struktur.9">
+                <source>Verbindungsstellen</source>
+            </trans-unit>
+            <trans-unit id="struktur.10">
+                <source>Werkzeug</source>
+            </trans-unit>
+            <trans-unit id="struktur.11">
+                <source>Zerspanprozess</source>
+            </trans-unit>
+            <trans-unit id="modellart.1">
+                <source>Gleichung</source>
+            </trans-unit>
+            <trans-unit id="modellart.2">
+                <source>Finite Elemente</source>
+            </trans-unit>
+            <trans-unit id="modellart.3">
+                <source>Knoten-Element-Netzwerk</source>
+            </trans-unit>
+            <trans-unit id="modellart.4">
+                <source>Mehrkörpersystem</source>
+            </trans-unit>
+            <trans-unit id="modellart.5">
+                <source>Kennfeld</source>
+            </trans-unit>
+            <trans-unit id="modellart.6">
+                <source>Neuronales Netz</source>
+            </trans-unit>
+            <trans-unit id="modellart.7">
+                <source>Simulationsmodell</source>
+            </trans-unit>
+            <trans-unit id="abbildungsbereich.1">
+                <source>Physikalische Domäne</source>
+            </trans-unit>
+            <trans-unit id="abbildungsbereich.2">
+                <source>Verhaltensbereiche</source>
+            </trans-unit>
+            <trans-unit id="abbildungsbereich.3">
+                <source>Steuerung</source>
+            </trans-unit>
+            <trans-unit id="abbildungsbereich.4">
+                <source>Regelung</source>
+            </trans-unit>
+            <trans-unit id="abbildungsbereich.5">
+                <source>Technologie</source>
+            </trans-unit>
+            <trans-unit id="abbildungsbereich.6">
+                <source>Wirtschaftliche Aspekte</source>
+            </trans-unit>
+            <trans-unit id="abbildungsbereich.7">
+                <source>Geometrie</source>
+            </trans-unit>
+            <trans-unit id="modellumfang.1">
+                <source>Bauteil</source>
+            </trans-unit>
+            <trans-unit id="modellumfang.2">
+                <source>Baugruppe</source>
+            </trans-unit>
+            <trans-unit id="modellumfang.3">
+                <source>Maschine</source>
+            </trans-unit>
+            <trans-unit id="modellumfang.4">
+                <source>Werkzeug</source>
+            </trans-unit>
+            <trans-unit id="modellumfang.5">
+                <source>Werkstück</source>
+            </trans-unit>
+            <trans-unit id="modellumfang.6">
+                <source>Steuerung</source>
+            </trans-unit>
+            <trans-unit id="modellumfang.7">
+                <source>Umgebung</source>
+            </trans-unit>
+            <trans-unit id="modellumfang.8">
+                <source>Technologie</source>
+            </trans-unit>
+            <trans-unit id="modellumfang.9">
+                <source>Organisation</source>
+            </trans-unit>
+            <trans-unit id="modellstruktur.1">
+                <source>Teilmodelle</source>
+            </trans-unit>
+            <trans-unit id="modellstruktur.2">
+                <source>Verknüpfungen</source>
+            </trans-unit>
+            <trans-unit id="modellstruktur.3">
+                <source>Kopplungen</source>
+            </trans-unit>
+            <trans-unit id="parametrierungsart.1">
+                <source>abstrakt</source>
+            </trans-unit>
+            <trans-unit id="parametrierungsart.2">
+                <source>integral</source>
+            </trans-unit>
+            <trans-unit id="parametrierungsart.3">
+                <source>empirisch</source>
+            </trans-unit>
+            <trans-unit id="parametrierungsart.4">
+                <source>physikalisch interpretierbar</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.1">
+                <source>Human</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.2">
+                <source>Material</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.3">
+                <source>Software</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.4">
+                <source>Algorithmus</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.5">
+                <source>Informationsobjekt</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.6">
+                <source>Prozesswissen</source>
+            </trans-unit>
+             <trans-unit id="ressourcenart.7">
+                <source>Messmittel</source>
+            </trans-unit>
+            <trans-unit id="lastfallart.1">
+                <source>Abkühlung</source>
+            </trans-unit>
+            <trans-unit id="lastfallart.2">
+                <source>Achsbewegung x</source>
+            </trans-unit>
+            <trans-unit id="lastfallart.3">
+                <source>Achsbewegung xy</source>
+            </trans-unit>
+            <trans-unit id="lastfallart.4">
+                <source>Achsbewegung xyz</source>
+            </trans-unit>
+            <trans-unit id="lastfallart.5">
+                <source>Achsbewegung xz</source>
+            </trans-unit>
+            <trans-unit id="lastfallart.6">
+                <source>Achsbewegung yz</source>
+            </trans-unit>
+            <trans-unit id="lastfallart.7">
+                <source>Erwärmung</source>
+            </trans-unit>
+            <trans-unit id="lastfallart.8">
+                <source>Kraftaufbringung</source>
+            </trans-unit>
+            <trans-unit id="untersuchungsart.1">
+                <source>Erprobung</source>
+            </trans-unit>
+            <trans-unit id="untersuchungsart.2">
+                <source>Messung</source>
+            </trans-unit>
+            <trans-unit id="untersuchungsart.3">
+                <source>Versuch</source>
+            </trans-unit>
+            <trans-unit id="untersuchungsart.4">
+                <source>Simulation</source>
+            </trans-unit>
+            <trans-unit id="arbeitsschrittart.1">
+                <source>Manuell</source>
+            </trans-unit>
+            <trans-unit id="arbeitsschrittart.2">
+                <source>Halbautomatisch</source>
+            </trans-unit>
+            <trans-unit id="arbeitsschrittart.3">
+                <source>Automatisch</source>
+            </trans-unit>
+            <trans-unit id="arbeitszeitregime.1">
+                <source>1 Schicht</source>
+            </trans-unit>
+            <trans-unit id="arbeitszeitregime.2">
+                <source>2 Schicht</source>
+            </trans-unit>
+            <trans-unit id="arbeitszeitregime.3">
+                <source>3 Schicht</source>
+            </trans-unit>
+            <trans-unit id="komponentenart.0">
+                <source>Komponente</source>
+            </trans-unit>
+            <trans-unit id="komponentenart.1">
+                <source>Gesamtmaschine</source>
+            </trans-unit>
+            <trans-unit id="komponentenart.2">
+                <source>Integrationsobjekt</source>
+            </trans-unit>
+            <trans-unit id="komponentenart.3">
+                <source>Baugruppe</source>
+            </trans-unit>
+            <trans-unit id="komponentenart.4">
+                <source>Steuerung</source>
+            </trans-unit>
+            <trans-unit id="komponentenart.5">
+                <source>Umgebung</source>
+            </trans-unit>
+            <trans-unit id="komponentenart.6">
+                <source>Referenz-Gesamtmaschine</source>
+            </trans-unit>
+            <trans-unit id="invasivitaetsgrad.1">
+                <source>Keiner</source>
+            </trans-unit>
+            <trans-unit id="invasivitaetsgrad.2">
+                <source>Erweiterung</source>
+            </trans-unit>
+            <trans-unit id="invasivitaetsgrad.3">
+                <source>Eingriff Komponente</source>
+            </trans-unit>
+            <trans-unit id="invasivitaetsgrad.4">
+                <source>Eingriff Baugruppe</source>
+            </trans-unit>
+            <trans-unit id="invasivitaetsgrad.5">
+                <source>Eingriff Gesamtmaschine</source>
+            </trans-unit>
+            <trans-unit id="invasivitaetsgrad.6">
+                <source>Komplette Neugestaltung</source>
+            </trans-unit>
+            <trans-unit id="wartungsintervall.1">
+                <source>Monatlich</source>
+            </trans-unit>
+            <trans-unit id="wartungsintervall.2">
+                <source>Quartalsweise</source>
+            </trans-unit>
+            <trans-unit id="wartungsintervall.3">
+                <source>Halbjährlich</source>
+            </trans-unit>
+            <trans-unit id="wartungsintervall.4">
+                <source>Jährlich</source>
+            </trans-unit>
+            <trans-unit id="wartungsintervall.5">
+                <source>Zweijährlich</source>
+            </trans-unit>
+            <trans-unit id="messart.1">
+                <source>Messsystem</source>
+            </trans-unit>
+            <trans-unit id="messart.2">
+                <source>Messverfahren</source>
+            </trans-unit>
+            <trans-unit id="loesungsart.0">
+                <source>Lösung</source>
+            </trans-unit>
+            <trans-unit id="loesungsart.1">
+                <source>Service</source>
+            </trans-unit>
+            <trans-unit id="operator.1">
+                <source>gleich</source>
+            </trans-unit>
+            <trans-unit id="operator.2">
+                <source>ungleich</source>
+            </trans-unit>
+            <trans-unit id="operator.3">
+                <source>größer als</source>
+            </trans-unit>
+            <trans-unit id="operator.4">
+                <source>kleiner als</source>
+            </trans-unit>
+            <trans-unit id="operator.5">
+                <source>in (komma-separiert)</source>
+            </trans-unit>
+            <trans-unit id="kinematik.1">
+                <source>Bauform</source>
+            </trans-unit>
+            <trans-unit id="kinematik.2">
+                <source>Seriell</source>
+            </trans-unit>
+            <trans-unit id="kinematik.3">
+                <source>Parallel</source>
+            </trans-unit>
+            <trans-unit id="kinematik.4">
+                <source>Aufbau</source>
+            </trans-unit>
+            <trans-unit id="achsenanzahl.1">
+                <source>Translatorisch</source>
+            </trans-unit>
+            <trans-unit id="achsenanzahl.2">
+                <source>Rotatorisch</source>
+            </trans-unit>
+            <trans-unit id="fuehrungsart.1">
+                <source>Gleitführung</source>
+            </trans-unit>
+            <trans-unit id="fuehrungsart.2">
+                <source>Wälzführung</source>
+            </trans-unit>
+            <trans-unit id="schmierungsart.1">
+                <source>Trocken</source>
+            </trans-unit>
+            <trans-unit id="schmierungsart.2">
+                <source>Minimalmengenschmierung</source>
+            </trans-unit>
+            <trans-unit id="schmierungsart.3">
+                <source>Nass</source>
+            </trans-unit>
+            <trans-unit id="messart.1">
+                <source>Messdorn</source>
+            </trans-unit>
+            <trans-unit id="messart.2">
+                <source>Messtaster in Maschine</source>
+            </trans-unit>
+            <trans-unit id="kuehlungsart.1">
+                <source>Kühlungsart 1</source>
+            </trans-unit>
+            <trans-unit id="kuehlungsart.2">
+                <source>Kühlungsart 2</source>
+            </trans-unit>
+            <trans-unit id="kuehlungsart.3">
+                <source>Kühlungsart 3</source>
+            </trans-unit>
+            <trans-unit id="werkzeuganzahl.1">
+                <source>Unter 5</source>
+            </trans-unit>
+            <trans-unit id="werkzeuganzahl.2">
+                <source>Zwischen 5 und 20</source>
+            </trans-unit>
+            <trans-unit id="werkzeuganzahl.3">
+                <source>Über 20</source>
+            </trans-unit>
+            <trans-unit id="zeitspanvolumen.1">
+                <source>Gering</source>
+            </trans-unit>
+            <trans-unit id="zeitspanvolumen.2">
+                <source>Mittel</source>
+            </trans-unit>
+            <trans-unit id="zeitspanvolumen.3">
+                <source>Hoch</source>
+            </trans-unit>
+            <trans-unit id="iso_2768_1.1">
+                <source>F (fein)</source>
+            </trans-unit>
+            <trans-unit id="iso_2768_1.2">
+                <source>M (mittel)</source>
+            </trans-unit>
+            <trans-unit id="iso_2768_1.3">
+                <source>C (grob)</source>
+            </trans-unit>
+            <trans-unit id="iso_2768_2.1">
+                <source>H</source>
+            </trans-unit>
+            <trans-unit id="iso_2768_2.2">
+                <source>K</source>
+            </trans-unit>
+            <trans-unit id="iso_2768_2.3">
+                <source>L</source>
+            </trans-unit>
+            <trans-unit id="iso_286.1">
+                <source>IT01 bis IT2 Präzision</source>
+            </trans-unit>
+            <trans-unit id="iso_286.2">
+                <source>IT3 bis IT 9 Standard</source>
+            </trans-unit>
+            <trans-unit id="iso_286.3">
+                <source>IT 10 bis IT18 Grob</source>
+            </trans-unit>
+            <trans-unit id="hallenklimatisierung.1">
+                <source>Hallenklimatisierung</source>
+            </trans-unit>
+            <trans-unit id="hallenklimatisierung.2">
+                <source>Ohne Hallenklimatisierung</source>
+            </trans-unit>
+            <trans-unit id="hallenklimatisierung.3">
+                <source>Ohne Hallenklimatisierung Temperaturhub unter 3 K</source>
+            </trans-unit>
+            <trans-unit id="hallenklimatisierung.4">
+                <source>Ohne Hallenklimatisierung Temperaturhub unter 5 K</source>
+            </trans-unit>
+            <trans-unit id="hallenklimatisierung.5">
+                <source>Lokale Erwärmung temporäre Sonneneinstrahlung</source>
+            </trans-unit>
+            <trans-unit id="kantlaenge.1">
+                <source>unter 100 mm</source>
+            </trans-unit>
+            <trans-unit id="kantlaenge.2">
+                <source>zwischen 100 und 500 mm</source>
+            </trans-unit>
+            <trans-unit id="kantlaenge.3">
+                <source>zwischen 500 und 2000mm</source>
+            </trans-unit>
+            <trans-unit id="kantlaenge.4">
+                <source>über 2000mm</source>
+            </trans-unit>
+            <trans-unit id="antriebsart.1">
+                <source>Rotativ</source>
+            </trans-unit>
+            <trans-unit id="antriebsart.2">
+                <source>Linear</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

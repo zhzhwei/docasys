@@ -1,0 +1,16 @@
+{namespace wise=Wise\WiseDocasysBackend\ViewHelpers}
+
+<div class="panel panel-info">
+    <div class="panel-heading">
+        <span class="pull-right">Methoden</span>
+        <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_methoden][{daten.uid}]=edit">
+            {methode.bezeichnung}
+        </wise:be.editLink>
+    </div>
+    <div class="panel-body">
+        <dl>
+            <dt>Obligatorisch:</dt>
+            <dd>{f:if(condition: '{methodenContainer.istObligatorisch} == 1', then: 'Ja', else: 'Nein')}</dd>
+        </dl>
+    </div>
+</div>

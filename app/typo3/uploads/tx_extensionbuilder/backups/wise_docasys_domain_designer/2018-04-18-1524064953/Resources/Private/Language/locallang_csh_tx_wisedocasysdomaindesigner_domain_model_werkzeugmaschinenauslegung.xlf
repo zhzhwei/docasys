@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-04-18T17:11:22Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="werkzeugmaschinentyp.description">
+				<source>werkzeugmaschinentyp</source>
+			</trans-unit>
+			<trans-unit id="komponenten.description">
+				<source>komponenten</source>
+			</trans-unit>
+			<trans-unit id="steuerung.description">
+				<source>steuerung</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

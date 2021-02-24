@@ -1,0 +1,68 @@
+{namespace core = TYPO3\CMS\Core\ViewHelpers}
+<f:layout name="DomainManager" /> 
+<f:section name="content">
+    <div class="row">
+        <div class="col-md-12" style="text-align: center; margin-bottom: 20px;">
+            <h1>DOCASYS - Documentation and Assistance System</h1>
+            <h3>System zur Dokumentation und Bewertung von Verfahren des SFB/Transregio 96</h3>
+        </div>    
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="dx-user-head">
+                <core:icon identifier="status-user-admin" size="large" />
+                <h1>Administratoren</h1>
+            </div>  
+            <div class="list-group">   
+                <a href="{moduleLinks.domainManager}" class="list-group-item" title="Domain Manager">
+                    <h4 class="list-group-item-heading">Domain Manager</h4>
+                    <p class="list-group-item-text">Bewertung, Stammdaten</p>
+                </a>
+                <a href="{moduleLinks.modeler}" class="list-group-item" title="Modeler">
+                    <h4 class="list-group-item-heading">Modeler</h4>
+                    <p class="list-group-item-text">Dokumentation</p>
+                </a>
+                <a href="{moduleLinks.ruleEngine}" class="list-group-item" title="Rule Engine">
+                    <h4 class="list-group-item-heading">Rule Engine</h4>
+                    <p class="list-group-item-text">Regeldefinition</p>
+                </a>
+            </div>
+        </div> 
+        <div class="col-md-4">
+            <div class="dx-user-head">
+                <core:icon identifier="status-user-backend" size="large" />
+                <h1>SFB-Mitarbeiter</h1>
+            </div>  
+            <div class="list-group">   
+                <a href="{moduleLinks.domainManager}" class="list-group-item" title="Domain Manager">
+                    <h4 class="list-group-item-heading">Domain Manager</h4>
+                    <p class="list-group-item-text">Dokumentation</p>
+                </a>
+                <a href="{moduleLinks.modeler}" class="list-group-item" title="Modeler">
+                    <h4 class="list-group-item-heading">Modeler</h4>
+                    <p class="list-group-item-text">Dokumentation</p>
+                </a>
+                <a href="{moduleLinks.solutionOverview}" class="list-group-item" title="Solution Overview">
+                    <h4 class="list-group-item-heading">Solution Overview</h4>
+                    <p class="list-group-item-text">Gesamtüberblick und Reporting</p>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="dx-user-head">
+                <core:icon identifier="status-user-frontend" size="large" />
+                <h1>Praxis-Anwender</h1>
+            </div>  
+            <div class="list-group">   
+                <a href="{moduleLinks.domainManager}" class="list-group-item" title="Domain Manager">
+                    <h4 class="list-group-item-heading">Domain Manager</h4>
+                    <p class="list-group-item-text">Anwendungsfälle und Randbedingungen</p>
+                </a>
+                <a href="{moduleLinks.recommender}" class="list-group-item" title="Recommender">
+                    <h4 class="list-group-item-heading">Recommender</h4>
+                    <p class="list-group-item-text">Empfehlungssystem und Auswahl</p>
+                </a>
+            </div>
+        </div>
+    </div>
+</f:section>

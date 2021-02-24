@@ -1,0 +1,146 @@
+{
+    "modules": [
+        {
+            "config": {
+                "position": [
+                    357,
+                    92
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": true,
+                    "_default1_show": true,
+                    "_default2_new_create": true,
+                    "_default3_edit_update": true,
+                    "_default4_delete": true,
+                    "customActions": [
+                        "overview",
+                        "send"
+                    ]
+                },
+                "name": "UploadNotification",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": false,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "446686679902"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "subject",
+                            "propertyType": "String",
+                            "uid": "1149423213104"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "body",
+                            "propertyType": "RichText",
+                            "uid": "273443266126"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "timestamp",
+                            "propertyType": "DateTime",
+                            "uid": "674087248151"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "feGroupId",
+                            "propertyType": "Integer",
+                            "uid": "866931329017"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "feGroupName",
+                            "propertyType": "String",
+                            "uid": "1222648861194"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "sysCollectionId",
+                            "propertyType": "Integer",
+                            "uid": "1085588942690"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
+        }
+    ],
+    "properties": {
+        "backendModules": [],
+        "description": "Backend-Modul, um Frontend-Nutzer zu informieren, wenn auf einer Seite neue Dateien hochgeladen wurden.",
+        "emConf": {
+            "category": "be",
+            "custom_category": "",
+            "dependsOn": "typo3 => 7.6.0-7.6.99\n",
+            "disableLocalization": true,
+            "disableVersioning": false,
+            "skipGenerateDocumentationTemplate": true,
+            "sourceLanguage": "en",
+            "state": "stable",
+            "targetVersion": "7.6.0-7.6.99",
+            "version": "1.0.0"
+        },
+        "extensionKey": "dx_upload_notification",
+        "name": "Upload Notification",
+        "originalExtensionKey": "",
+        "originalVendorName": "",
+        "persons": [],
+        "plugins": [
+            {
+                "actions": {
+                    "controllerActionCombinations": "UploadNotification => overview, send",
+                    "noncacheableActions": "UploadNotification => overview, send",
+                    "switchableActions": "Alle anzeigen\nUploadNotification->overview;\nNotifikation senden\nUploadNotification->send;"
+                },
+                "key": "uploadinfo",
+                "name": "Upload-Info"
+            }
+        ],
+        "vendorName": "Digiturax"
+    },
+    "wires": [],
+    "log": {
+        "last_modified": "2017-10-25 10:44",
+        "extension_builder_version": "7.6.18",
+        "be_user": " (1)"
+    }
+}

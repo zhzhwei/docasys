@@ -1,0 +1,302 @@
+### ##########################################################
+### Configuration
+### ##########################################################
+config {
+    doctype = html5
+    baseURL = {$tud.baseUrl}
+    tx_realurl_enable = 1
+    absRelPath = /
+    
+    language = de
+    locale_all = de_DE
+    htmlTag_langKey = de
+    
+    spamProtectEmailAddresses = 0
+    disablePrefixComment = 1
+    simulateStaticDocuments = 0
+    
+    extTarget = _blank
+    fileTarget = _blank
+    
+    no_cache = 0
+    cache = 1
+}
+
+### ##########################################################
+### Header
+### ##########################################################
+page = PAGE
+page.typeNum = 0
+page {
+    meta {
+        X-UA-Compatible = IE=edge
+        X-UA-Compatible.httpEquivalent = 1
+        viewport = width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no
+        author = {$tud.author}
+        keywords.field = keywords
+        description.field = description
+        robots = index, follow
+    }  
+    
+    includeCSS {
+        file10 = EXT:wise_docasys_design/Resources/Public/StyleSheets/Bootstrap/bootstrap.min.css         
+        file20 = EXT:wise_docasys_design/Resources/Public/StyleSheets/Bootstrap/ie10-viewport-bug-workaround.css
+        file20 = EXT:wise_docasys_design/Resources/Public/StyleSheets/theme.css
+        file30 = EXT:wise_docasys_design/Resources/Public/StyleSheets/Fontawesome/fontawesome-all.min.css
+    }
+    
+    includeJS {
+        file1 = https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js
+        file1.allWrap = <!--[if lt IE 9]>|
+        file2 = https://oss.maxcdn.com/respond/1.4.2/respond.min.js
+        file2.allWrap = |<![endif]-->   
+    }
+    
+    includeJS {
+        file10 = EXT:wise_docasys_design/Resources/Public/JavaScripts/Jquery/1.12.4/jquery.min.js
+        file20 = EXT:wise_docasys_design/Resources/Public/JavaScripts/Bootstrap/bootstrap.min.js
+        file30 = EXT:wise_docasys_design/Resources/Public/JavaScripts/Bootstrap/ie10-viewport-bug-workaround.js
+        file40 = EXT:wise_docasys_design/Resources/Public/JavaScripts/theme.js
+    } 
+    
+    shortcutIcon = EXT:dx_kws_design/Resources/Public/Images/Favicon/favicon.ico   
+}
+
+### ##########################################################
+### Template
+### ##########################################################
+page.10 = FLUIDTEMPLATE
+page.10 {
+    format = html
+    file = EXT:wise_docasys_design/Resources/Private/Templates/Default.html
+            
+    layoutRootPath = EXT:wise_docasys_design/Resources/Private/Layouts/
+    partialRootPath = EXT:wise_docasys_design/Resources/Private/Partials/
+    
+    variables {
+        contentMain < styles.content.get
+        contentMain.select.where = colPos = 0
+    }
+}  
+
+### ##########################################################
+### Hauptnavigation
+### ##########################################################
+lib.mainMenu = COA
+lib.mainMenu.1 = HMENU
+lib.mainMenu.1 {
+    1 = TMENU
+    1 {
+        expAll = 0
+        NO = 1
+        NO {
+            allWrap = <li class="first">|</li> |*| <li>|</li> |*| <li>|</li> || <li>|</li> 
+            ATagBeforeWrap = 1
+            ATagTitle.field = title 
+        }
+        
+        ACT < .NO
+        ACT = 1
+        ACT.allWrap = <li class="first active">|</li> |*| <li class="active">|</li> |*| <li class="active">|</li> || <li class="active">|</li> 
+    }
+    wrap = <ul class="nav navbar-nav">|</ul>
+}
+
+### ##########################################################
+### Footer
+### ##########################################################
+lib.footernavMenu = COA
+lib.footernavMenu.1 = HMENU
+lib.footernavMenu.1 {
+    special = directory
+    special.value = {$tud.pids.storages.footernav}
+    1 = TMENU
+    1 {
+        NO = 1
+        NO.allWrap = <li>|</li>
+        NO.ATagTitle.field = title
+    }
+    wrap = <ul>|</ul>
+}
+
+### ##########################################################
+### Grid Content Element: 100
+### ##########################################################
+tt_content.gridelements_pi1.20.10.setup {
+    1 < lib.gridelements.defaultGridSetup
+    1 {
+        innerWrap.cObject = COA
+        innerWrap.cObject.10 =< lib.stdheader
+        innerWrap.cObject.10.stdWrap.wrap = |
+        
+        columns {
+            1 < .default
+        }
+        
+        wrap = <div class="row"><div class="col-md-12">|</div></div>
+    }
+}
+
+### ##########################################################
+### Grid Content Element: 50-50
+### ##########################################################
+tt_content.gridelements_pi1.20.10.setup {
+    2 < lib.gridelements.defaultGridSetup
+    2 {
+        innerWrap.cObject = COA
+        innerWrap.cObject.10 =< lib.stdheader
+        innerWrap.cObject.10.stdWrap.wrap = <div class="col-md-12">|</div>
+        
+        columns {
+            1 < .default
+            1.wrap = <div class="col-md-6">|</div>
+            2 < .default
+            2.wrap = <div class="col-md-6">|</div>
+        }
+        
+        wrap = <div class="row">|</div>
+    }
+}
+
+### ##########################################################
+### Grid Content Element: 33-33-33
+### ##########################################################
+tt_content.gridelements_pi1.20.10.setup {
+    3 < lib.gridelements.defaultGridSetup
+    3 {
+        innerWrap.cObject = COA
+        innerWrap.cObject.10 =< lib.stdheader
+        innerWrap.cObject.10.stdWrap.wrap = <div class="col-md-12">|</div>
+        
+        columns {
+            1 < .default
+            1.wrap = <div class="col-md-4">|</div>
+            2 < .default
+            2.wrap = <div class="col-md-4">|</div>
+            3 < .default
+            3.wrap = <div class="col-md-4">|</div>   
+        }
+        
+        wrap = <div class="row">|</div>
+    }
+}
+
+### ##########################################################
+### Grid Content Element: 25-25-25-25
+### ##########################################################
+tt_content.gridelements_pi1.20.10.setup {
+    4 < lib.gridelements.defaultGridSetup
+    4 {
+        innerWrap.cObject = COA
+        innerWrap.cObject.10 =< lib.stdheader
+        innerWrap.cObject.10.stdWrap.wrap = <div class="col-md-12">|</div>
+        
+        columns {
+            1 < .default
+            1.wrap = <div class="col-md-3 col-sm-6">|</div>
+            2 < .default
+            2.wrap = <div class="col-md-3 col-sm-6">|</div>
+            3 < .default
+            3.wrap = <div class="col-md-3 col-sm-6">|</div>   
+            4 < .default
+            4.wrap = <div class="col-md-3 col-sm-6">|</div>          
+        }
+        
+        wrap = <div class="row">|</div>
+    }
+}
+
+### ##########################################################
+### Grid Content Element: 33-66
+### ##########################################################
+tt_content.gridelements_pi1.20.10.setup {
+    5 < lib.gridelements.defaultGridSetup
+    5 {
+        innerWrap.cObject = COA
+        innerWrap.cObject.10 =< lib.stdheader
+        innerWrap.cObject.10.stdWrap.wrap = <div class="col-md-12">|</div>
+        
+        columns {
+            1 < .default
+            1.wrap = <div class="col-md-4">|</div>
+            2 < .default
+            2.wrap = <div class="col-md-8">|</div>
+        }
+        
+        wrap = <div class="row">|</div>
+    }
+}
+
+### ##########################################################
+### Grid Content Element: 66-33
+### ##########################################################
+tt_content.gridelements_pi1.20.10.setup {
+    6 < lib.gridelements.defaultGridSetup
+    6 {
+        innerWrap.cObject = COA
+        innerWrap.cObject.10 =< lib.stdheader
+        innerWrap.cObject.10.stdWrap.wrap = <div class="col-md-12">|</div>
+        
+        columns {
+            1 < .default
+            1.wrap = <div class="col-md-8">|</div>
+            2 < .default
+            2.wrap = <div class="col-md-4">|</div>
+        }
+        
+        wrap = <div class="row">|</div>
+    }
+}
+
+### ##########################################################
+### Grid Content Element: 25-75
+### ##########################################################
+tt_content.gridelements_pi1.20.10.setup {
+    7 < lib.gridelements.defaultGridSetup
+    7 {
+        innerWrap.cObject = COA
+        innerWrap.cObject.10 =< lib.stdheader
+        innerWrap.cObject.10.stdWrap.wrap = <div class="col-md-12">|</div>
+        
+        columns {
+            1 < .default
+            1.wrap = <div class="col-md-3">|</div>
+            2 < .default
+            2.wrap = <div class="col-md-9">|</div>
+        }
+        
+        wrap = <div class="row">|</div>
+    }
+}
+
+### ##########################################################
+### Grid Content Element: 75-25
+### ##########################################################
+tt_content.gridelements_pi1.20.10.setup {
+    8 < lib.gridelements.defaultGridSetup
+    8 {
+        innerWrap.cObject = COA
+        innerWrap.cObject.10 =< lib.stdheader
+        innerWrap.cObject.10.stdWrap.wrap = <div class="col-md-12">|</div>
+        
+        columns {
+            1 < .default
+            1.wrap = <div class="col-md-9">|</div>
+            2 < .default
+            2.wrap = <div class="col-md-3">|</div>
+        }
+        
+        wrap = <div class="row">|</div>
+    }
+}
+
+### ##########################################################
+### Content Layouts
+### ##########################################################
+tt_content.stdWrap.innerWrap.cObject = CASE
+tt_content.stdWrap.innerWrap.cObject {
+    key.field = layout
+    
+    0 = TEXT
+    0.value = |
+}

@@ -1,0 +1,100 @@
+{namespace wise=Wise\WiseDocasysBackend\ViewHelpers}
+
+<f:layout name="SolutionOverview" /> 
+<f:section name="content">
+    <h1>Untersuchungen</h1>
+    <h2>Alle Untersuchungen</h2>
+
+    <f:widget.paginate objects="{examinations}" as="paginatedExaminations" configuration="{itemsPerPage: 20, insertAbove: 0, insertBelow: 1, maximumNumberOfLinks: 5}">
+        <div class="table-fit">
+            <table class="table table-striped table-hover">
+                <tr>
+                    <th>L&ouml;sung</th>
+                    <th>Datum</th>
+                    <th>Ort</th>
+                    <th>Lastfall</th>
+                    <th>Untersuchungstr&auml;ger</th>
+                    <th>Untersuchungsmethode</th>
+                    <f:for each="{parameters}" as="parameter">
+                        <th class="right" style="width: 5%">{parameter.parametername}</th>
+                    </f:for>
+                    <th></th>
+                </tr>
+                <f:form name="examinationsFilter" action="examinationsFilter" method="post" class="hidden-print">
+                    <tr>
+                        <td>
+                            <f:form.select name="filterLoesung" options="{loesungen}" value="{solutionId}" prependOptionLabel="Zeige alle" class="form-control" />
+                        </td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <f:form.select name="filterLastfall" options="{lastfaelle}" prependOptionLabel="Zeige alle" class="form-control" />
+                        </td>
+                        <td>
+                            <f:form.select name="filterUntersuchungstraeger" options="{untersuchungstraeger}" prependOptionLabel="Zeige alle" class="form-control" />
+                        </td>
+                        <td></td>
+                        <f:for each="{parameters}" as="parameter">
+                            <td class="right">
+                                <f:form.checkbox property="filterParameter" value="{parameter.uid}" multiple="1" />    
+                            </td>
+                        </f:for>
+                        <td class="right">
+                            <f:form.submit value="Filtern" id="network-submit" class="btn btn-primary" />    
+                        </td>
+                    </tr>
+                </f:form>
+                <f:for each="{paginatedExaminations}" as="examination">
+                    <tr>
+                        <td>
+                            <f:if condition="{examination.untersuchteLoesung.teilprojektnummer}">
+                                <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_loesung][{examination.untersuchteLoesung.uid}]=edit">
+                                    {examination.untersuchteLoesung.teilprojektnummer}
+                                </wise:be.editLink>
+                            </f:if>
+                        </td>
+                        <td>
+                            <f:format.date format="d.m.Y">{examination.datum}</f:format.date>
+                        </td>
+                        <td>{examination.ort}</td>
+                        <td>
+                            <f:if condition="{examination.untersuchterLastfall.fallbezeichnung}">
+                                <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_lastfall][{examination.untersuchterLastfall.uid}]=edit">
+                                    {examination.untersuchterLastfall.fallbezeichnung}
+                                </wise:be.editLink>
+                            </f:if>
+                        </td>
+                        <td>
+                            <f:if condition="{examination.untersuchungstraeger.bezeichnung}">
+                                <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_werkzeugmaschine][{examination.untersuchungstraeger.uid}]=edit">
+                                    {examination.untersuchungstraeger.bezeichnung}
+                                </wise:be.editLink>
+                            </f:if>
+                        </td>
+                        <td>
+                            <f:if condition="{examination.untersuchungsmethode.verfahrensbezeichnung}">
+                                <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_untersuchung][{examination.untersuchungsmethode.uid}]=edit">
+                                    {examination.untersuchungsmethode.verfahrensbezeichnung}
+                                </wise:be.editLink>
+                            </f:if>
+                        </td>
+                        <f:for each="{parameters}" as="parameter">
+                            <td class="right">
+                                <f:for each="{examination.parameterpruefungen}" as="parameterpruefung">   
+                                    <f:if condition="{parameterpruefung.messparameter} == {parameter}">
+                                        <f:format.number decimals="3" decimalSeparator=",">{parameterpruefung.ergebnis}</f:format.number><br>
+                                    </f:if>
+                                </f:for> 
+                            </td>
+                        </f:for>
+                        <td class="right">
+                            <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_loesungsuntersuchung][{examination.uid}]=edit">
+                                <span class="btn btn-primary">Detail</span>
+                            </wise:be.editLink>
+                        </td>
+                    </tr>
+                </f:for>
+            </table>
+        </div>
+    </f:widget.paginate>  
+</f:section>

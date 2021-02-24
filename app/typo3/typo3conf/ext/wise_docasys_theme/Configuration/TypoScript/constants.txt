@@ -1,0 +1,14 @@
+##########################################################
+### Configuration
+##########################################################
+tud {
+    baseUrl = http://sfb.h163153.server56.campusspeicher.de/
+    author = TU Dresden, Lehrstuhl für Wirtschaftsinformatik, insb. Systementwicklung
+    pids {
+        pages {
+            home = 1
+        }
+        storages {
+        }
+    }
+}

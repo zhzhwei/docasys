@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-05-22T18:51:42Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="loesungsbezeichnung.description">
+				<source>loesungsbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="teilprojektnummer.description">
+				<source>teilprojektnummer</source>
+			</trans-unit>
+			<trans-unit id="gestaltungsanforderungen.description">
+				<source>gestaltungsanforderungen</source>
+			</trans-unit>
+			<trans-unit id="betrifft_hersteller.description">
+				<source>betrifftHersteller</source>
+			</trans-unit>
+			<trans-unit id="betrifft_betreiber.description">
+				<source>betrifftBetreiber</source>
+			</trans-unit>
+			<trans-unit id="realisierungsrisiko.description">
+				<source>realisierungsrisiko</source>
+			</trans-unit>
+			<trans-unit id="bemerkung.description">
+				<source>bemerkung</source>
+			</trans-unit>
+			<trans-unit id="loesungsklasse.description">
+				<source>loesungsklasse</source>
+			</trans-unit>
+			<trans-unit id="phase_der_thermischen_wirkkette.description">
+				<source>phaseDerThermischenWirkkette</source>
+			</trans-unit>
+			<trans-unit id="physikalischer_effekt.description">
+				<source>physikalischerEffekt</source>
+			</trans-unit>
+			<trans-unit id="invasivitaetsgrad.description">
+				<source>invasivitaetsgrad</source>
+			</trans-unit>
+			<trans-unit id="wartungsintervall.description">
+				<source>wartungsintervall</source>
+			</trans-unit>
+			<trans-unit id="gestaltungsart.description">
+				<source>gestaltungsart</source>
+			</trans-unit>
+			<trans-unit id="lastfall.description">
+				<source>lastfall</source>
+			</trans-unit>
+			<trans-unit id="arbeitsschritte.description">
+				<source>arbeitsschritte</source>
+			</trans-unit>
+			<trans-unit id="primaerer_einsatzort.description">
+				<source>primaererEinsatzort</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

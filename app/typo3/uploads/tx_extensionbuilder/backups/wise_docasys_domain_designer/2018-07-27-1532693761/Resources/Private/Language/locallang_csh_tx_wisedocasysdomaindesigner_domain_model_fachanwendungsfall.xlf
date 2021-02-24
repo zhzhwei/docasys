@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-07-27T14:14:59Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="bezeichnung.description">
+				<source>bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="gueltigkeit_von.description">
+				<source>gueltigkeitVon</source>
+			</trans-unit>
+			<trans-unit id="gueltigkeit_bis.description">
+				<source>gueltigkeitBis</source>
+			</trans-unit>
+			<trans-unit id="hallenklimatisierung.description">
+				<source>hallenklimatisierung</source>
+			</trans-unit>
+			<trans-unit id="losgroesse.description">
+				<source>losgroesse</source>
+			</trans-unit>
+			<trans-unit id="arbeitszeitregime.description">
+				<source>arbeitszeitregime</source>
+			</trans-unit>
+			<trans-unit id="toleranzklasse_laengenmasse.description">
+				<source>toleranzklasseLaengenmasse</source>
+			</trans-unit>
+			<trans-unit id="toleranzklasse_geradheit.description">
+				<source>toleranzklasseGeradheit</source>
+			</trans-unit>
+			<trans-unit id="toleranzklasse_ebenheit.description">
+				<source>toleranzklasseEbenheit</source>
+			</trans-unit>
+			<trans-unit id="toleranzklasse_rechtwinkligkeit.description">
+				<source>toleranzklasseRechtwinkligkeit</source>
+			</trans-unit>
+			<trans-unit id="toleranzklasse_symmetrie.description">
+				<source>toleranzklasseSymmetrie</source>
+			</trans-unit>
+			<trans-unit id="toleranzklasse_passungen.description">
+				<source>toleranzklassePassungen</source>
+			</trans-unit>
+			<trans-unit id="szenarioart.description">
+				<source>szenarioart</source>
+			</trans-unit>
+			<trans-unit id="werkstoffe.description">
+				<source>werkstoffe</source>
+			</trans-unit>
+			<trans-unit id="technologischen_anwendungsfall.description">
+				<source>technologischenAnwendungsfall</source>
+			</trans-unit>
+			<trans-unit id="werkzeugmaschine.description">
+				<source>werkzeugmaschine</source>
+			</trans-unit>
+			<trans-unit id="besitzer.description">
+				<source>besitzer</source>
+			</trans-unit>
+			<trans-unit id="werkstueck.description">
+				<source>werkstueck</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

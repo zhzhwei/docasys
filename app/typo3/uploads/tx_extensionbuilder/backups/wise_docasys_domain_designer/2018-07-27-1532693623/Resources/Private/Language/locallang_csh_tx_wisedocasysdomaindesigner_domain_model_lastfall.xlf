@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2018-07-27T13:52:12Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="fallbezeichnung.description">
+				<source>fallbezeichnung</source>
+			</trans-unit>
+			<trans-unit id="beschreibung.description">
+				<source>beschreibung</source>
+			</trans-unit>
+			<trans-unit id="ist_kuenstlich.description">
+				<source>istKuenstlich</source>
+			</trans-unit>
+			<trans-unit id="ist_realistisch.description">
+				<source>istRealistisch</source>
+			</trans-unit>
+			<trans-unit id="typische_beharrungskurven.description">
+				<source>typischeBeharrungskurven</source>
+			</trans-unit>
+			<trans-unit id="lastfallart.description">
+				<source>lastfallart</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,61 @@
+RTE.classesAnchor {
+    internalLink {
+        name = Intern
+        class = internal-link
+        type = page
+        titleText >
+        image >
+    }
+    externalLink {
+        name = Extern
+        class = external-link
+        type = url
+        titleText >
+        image >
+    }
+    externalLinkInNewWindow {
+        name = Extern Blank
+        class = external-link-new-window
+        type = url
+        titleText >
+        image >
+    }
+    internalLinkInNewWindow {
+        name = Intern Blank
+        class = internal-link-new-window
+        type = page
+        titleText >
+        image >
+    }
+    download {
+        name = Download
+        class = download
+        type = file
+        titleText >
+        image >
+    }
+    mail {
+        name = Mail
+        class = mail
+        type = mail
+        titleText >
+        image >
+    }
+    moreLink {
+        name = More
+        class = more
+        type = page
+        titleText >
+        image >
+    }
+}
+
+RTE.default {
+    showButtons =  formatblock, bold, italic, subscript, superscript, orderedlist, unorderedlist, nsertcharacter, link, removeformat, undo, redo, chMode   
+    buttons.formatblock.removeItems = address, article, aside, blockquote, div, footer, header, h1, h5, h6, pre, nav, section
+    showStatusBar =  0
+    enableWordClean = 1
+    removeTrailingBR = 1
+    removeComments = 1
+}
+RTE.default.FE < RTE.default
