@@ -1,22 +1,22 @@
 # DOCASYS
 
-DOCASYS is an extension of Typo3 CMS realizing technical aspects of [SFB/Transregio 96 research project](http://141.76.19.93/SFBweb/).
+DOCASYS is an extension of the TYPO3 CMS realizing technical aspects of [SFB/Transregio 96 research project](http://141.76.19.93/SFBweb/).
 
 ## Usage
 
 ### Preconditions
 
 - [Git](https://git-scm.com/downloads) is installed and the repo has been cloned locally
-- [Docker](https://www.docker.com/) runtime environment is installed
+- [Docker](https://www.docker.com/) runtime environment is installed and started
 
 ### Startup
 
 Use the startup script to build the docker container and start the app.
-Simply open a terminal window, navigate the root directory of this
-repo, type `./start.sh` and press enter.
+Simply open a terminal window, navigate the root directory of this repo
+(e.g. `cd $HOME/transregio96-docasys/`), type `./start.sh` and press enter.
 
-After the containers has been build and started, indicated by the
-name of the container and suffixed with *done*, open a browser window
+After the containers have been build and started, which isindicated by the
+name of the container suffixed with *done*, open a browser window
 and navigate to <http://localhost/typo3/>. Use username `user26` and
 password `user26` for authentication. This user has admin rights.
 
@@ -24,8 +24,8 @@ password `user26` for authentication. This user has admin rights.
 
 Use the shutdown script to stop the running docker containers.
 Simply open a terminal window, navigate the root directory of this
-repo, type `./stop.sh` and press enter. Wait a moment until the
-command executed successfully.
+repo (e.g. `cd $HOME/transregio96-docasys/`), type `./stop.sh` and 
+press enter. Wait a moment until the command executed successfully.
 
 ## Configuration
 
@@ -36,5 +36,5 @@ repo root directory) are:
 and initialization
 - `app/typo3/typo3conf/LocalConfiguration.php`: See array *DB* for database configuration
 
-Note: All users except `user26` have been removed from the dump. For security reasons
-the database password has been changed too.
+Note: All users except `user26` have been removed from the database dump. For security 
+reasons the database password has been changed too.
