@@ -1,6 +1,6 @@
 # DOCASYS
 
-DOCASYS is an extension, using the [extension_builder Extension](https://extensions.typo3.org/extension/extension_builder/), of the [TYPO3 CMS](https://typo3.org/) realizing technical aspects of [SFB/Transregio 96 research project](http://141.76.19.93/SFBweb/).
+DOCASYS is an extension, using the [extension_builder Extension](https://extensions.typo3.org/extension/extension_builder/), of the [TYPO3 CMS](https://typo3.org/) realizing technical aspects of [SFB/Transregio 96 research project](https://transregio96.webspace.tu-dresden.de/).
 
 ## Usage
 
