@@ -1,21 +1,151 @@
-<f:layout name="DomainManager" /> 
+<f:layout name="DomainManager"/> 
 <f:section name="content">
+  <script src="{f:uri.resource(path: 'BpmnJs/jquery-3.3.1.min.js')}"></script>
     <h1>Rule Engine</h1>  
     <!-- Definition der Entscheidungsregeln für den Recommender -->
-<table>
-  <thead>
-    <tr>
-      <td>Unterkriterium</td>
-      <td>Punkt</td>
-      <td>Gewichtung</td>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-  </tbody>
-</table>
+    <div style="width: 70%; left: 25px; position: absolute;">           
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th width="40%">Unterkriterium</th>
+            <th width="30%">Punkte</th>
+            <th>Gewichtung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Materieller Ressourcebedarf</strong></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Material(Bedarf)</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Ingenieurstunden</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Technikerstunden</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr height="30px"></tr>
+          <tr>
+            <td><strong>Immaterieller Ressourcebedarf</strong></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Maschinenstillstandszeit</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Software-Lizenzen(Bedarf)</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Steuerungs-Lizenz(Bedarf)</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr height="30px"></tr>
+          <tr>
+            <td><strong>Langzeitaufwand</strong></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Wartungsaufwand</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Aufwand Anpassungsnotwendigkeit</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Steuerungs-Lizenz(Bedarf)</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr height="30px"></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="width: 25%; right: 25px; position: absolute;">
+        <p style="border:solid orange;">Die <strong>Gewichtung</strong>(links) dienen zur Berechnung der Aufwandsaussprägung der Bewertungskriterien für jedes Verfahren.</p>
+
+        <p style="margin-top: 15px;"><strong>Punkte</strong> mittels SMART-Methode vergeben: das wichtigste Kriterium bekommt 100 Punkte, die anderen bekommen je nach ihrer relativen Wichtigkeit in Bezug auf das wichtigste Kriterium Pukte zwischen 0 und 100 zugeordnet (100 = gleichwichtig, 50 = halb so wichtig etc.).</p>
+
+        <p style="margin-top: 15px; border: solid orange;">Diese <strong>Gewichtung</strong>(unten) werden für die vergleichende Bewertung der Verfahren untereinander genutzt.</p>
+
+        <p><strong>IS:</strong> Ingenieurstunden</p>
+        <p><strong>TS:</strong> Technikerstunden</p>
+        <p><strong>FA:</strong> Fehlerauswirkungen</p>
+        <p><strong>WA:</strong> Wartungsaufwand</p>
+        <p><strong>MSSZ:</strong> Maschinenstillstandszeit</p>
+        <p><strong>Material:</strong> Material(Bedarf) </p> 
+        <p><strong>Software:</strong> Software-Lizenzen(Bedarf)</p>
+        <p><strong>Steuerung:</strong> Steuerungs-Lizenz(Bedarf)</p>
+        <p><strong>AbA:</strong> Aufwand bei Anpassungsnotwendigkeit</p>
+    </div>
+    
+    <div style="padding-top: 520px; width: 100%;">           
+      <table class="table table-bordered table-hover">
+        <thead>
+          <tr>
+            <th class="text-center">Kriterium</th>
+            <th class="text-center" width="9%">Material</th>
+            <th class="text-center" width="9%">IS</th>
+            <th class="text-center" width="9%">TS</th>
+            <th class="text-center" width="9%">MSSZ</th>
+            <th class="text-center" width="9%">Software</th>
+            <th class="text-center" width="9%">Steuerung</th>
+            <th class="text-center" width="9%">WA</th>
+            <th class="text-center" width="9%">AbA</th>
+            <th class="text-center" width="9%">FA</th>
+            <th class="text-center" width="9%">Summe</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-center"><strong>Punkte</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td class="text-center"><strong>Gewichtung</strong></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      
+    </div>
+    
 </f:section>
