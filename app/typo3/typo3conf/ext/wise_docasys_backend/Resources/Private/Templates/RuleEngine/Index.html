@@ -1,79 +1,147 @@
 <f:layout name="DomainManager"/> 
 <f:section name="content">
-  <script src="{f:uri.resource(path: 'BpmnJs/jquery-3.3.1.min.js')}"></script>
+  <script>
+    function Validierungszahl(){
+      var Punkt_0 = Number(document.getElementById("Punkt_0").innerHTML);
+      var Punkt_1 = Number(document.getElementById("Punkt_1").innerHTML);
+      var Punkt_2 = Number(document.getElementById("Punkt_2").innerHTML);
+      var Punkt_3 = Number(document.getElementById("Punkt_3").innerHTML);
+      var Punkt_4 = Number(document.getElementById("Punkt_4").innerHTML);
+      var Punkt_5 = Number(document.getElementById("Punkt_5").innerHTML);
+      var Punkt_6 = Number(document.getElementById("Punkt_6").innerHTML);
+      var Punkt_7 = Number(document.getElementById("Punkt_7").innerHTML);
+      var Punkt_8 = Number(document.getElementById("Punkt_8").innerHTML);
+      if(Punkt_0<0 || Punkt_0>100 || Punkt_1<0 || Punkt_1>100 || Punkt_2<0 || Punkt_2>100 || Punkt_3<0 || Punkt_3>100 ||Punkt_4<0 || Punkt_4>100 || Punkt_5<0 || Punkt_5>100 || Punkt_6<0 || Punkt_6>100 || Punkt_7<0 || Punkt_7>100 || Punkt_8<0 || Punkt_8>100){
+        document.getElementById("Punktefehler").innerHTML = "<span style='color:#FF0000'> Validierung fehlgeschlagen. Die Werte dürfen nicht >100 oder <0 sein.</span>";
+      }
+      else{
+        document.getElementById("Punktefehler").innerHTML = " ";
+      }
+    }
+
+    function Validierungsgewichtung(){
+      var Gewi_0 = document.getElementById("Gewi_0").innerHTML.replace("%","")/100;
+      var Gewi_1 = document.getElementById("Gewi_1").innerHTML.replace("%","")/100;
+      var Gewi_2 = document.getElementById("Gewi_2").innerHTML.replace("%","")/100;
+      var Gewi_3 = document.getElementById("Gewi_3").innerHTML.replace("%","")/100;
+      var Gewi_4 = document.getElementById("Gewi_4").innerHTML.replace("%","")/100;
+      var Gewi_5 = document.getElementById("Gewi_5").innerHTML.replace("%","")/100;
+      var Gewi_6 = document.getElementById("Gewi_6").innerHTML.replace("%","")/100;
+      var Gewi_7 = document.getElementById("Gewi_7").innerHTML.replace("%","")/100;
+      var Gewi_8 = document.getElementById("Gewi_8").innerHTML.replace("%","")/100;
+      if((Gewi_0+Gewi_1+Gewi_2!=1) || (Gewi_3+Gewi_4+Gewi_5!=1) || (Gewi_6+Gewi_7+Gewi_8!=1)){
+        document.getElementById("Gewichtungsfehler").innerHTML = "<span style='color:#FF0000'> Validierung fehlgeschlagen. Die Gewichtung muss in Summe 100% ergeben. </span>";
+      }
+      else{
+        document.getElementById("Gewichtungsfehler").innerHTML = " ";
+      }
+    }
+
+    function Punktesumme(){
+      var Summe_0 = Number(document.getElementById("P_Material").innerHTML);
+      var Summe_1 = Number(document.getElementById("P_IS").innerHTML);
+      var Summe_2 = Number(document.getElementById("P_TS").innerHTML);
+      var Summe_3 = Number(document.getElementById("P_MSSZ").innerHTML);
+      var Summe_4 = Number(document.getElementById("P_Software").innerHTML);
+      var Summe_5 = Number(document.getElementById("P_Steuerung").innerHTML);
+      var Summe_6 = Number(document.getElementById("P_WA").innerHTML);
+      var Summe_7 = Number(document.getElementById("P_AbA").innerHTML);
+      var Summe_8 = Number(document.getElementById("P_FA").innerHTML);
+      var Summen = Summe_0 + Summe_1 + Summe_2 + Summe_3 + Summe_4 + Summe_5 + Summe_6 + Summe_7 + Summe_8;
+      document.getElementById("Punktesumme").innerHTML = Summen;
+    }
+
+    function Gewichtungssumme(){
+      var Summe_0 = document.getElementById("G_Material").innerHTML.replace("%","")/100;
+      var Summe_1 = document.getElementById("G_IS").innerHTML.replace("%","")/100;
+      var Summe_2 = document.getElementById("G_TS").innerHTML.replace("%","")/100;
+      var Summe_3 = document.getElementById("G_MSSZ").innerHTML.replace("%","")/100;
+      var Summe_4 = document.getElementById("G_Software").innerHTML.replace("%","")/100;
+      var Summe_5 = document.getElementById("G_Steuerung").innerHTML.replace("%","")/100;
+      var Summe_6 = document.getElementById("G_WA").innerHTML.replace("%","")/100;
+      var Summe_7 = document.getElementById("G_AbA").innerHTML.replace("%","")/100;
+      var Summe_8 = document.getElementById("G_FA").innerHTML.replace("%","")/100;
+      var Gewichtungssummen = Summe_0 + Summe_1 + Summe_2 + Summe_3 + Summe_4 + Summe_5 + Summe_6 + Summe_7 + Summe_8;
+      if(Gewichtungssummen > 1){
+        alert("Fehlgeschlagen. Die Gewichtung darf in Summe nicht größer als 100% ergeben")
+      }
+      else{
+        var Percent = Number((Gewichtungssummen*100).toFixed(1)) + "%";
+        document.getElementById("Gewichtungssumme").innerHTML = Percent;
+      }
+    }
+  </script>
     <h1>Rule Engine</h1>  
     <!-- Definition der Entscheidungsregeln für den Recommender -->
-    <div style="width: 70%; left: 25px; position: absolute;">           
-      <table class="table table-bordered table-hover">
+
+    <div style="width: 70%; left: 25px; position: absolute;">         
+      <table class="table table-bordered">
         <thead>
           <tr>
             <th width="40%">Unterkriterium</th>
-            <th width="30%">Punkte</th>
-            <th>Gewichtung</th>
+            <th class="text-center" width="30%">Punkte</th>
+            <th class="text-center">Gewichtung</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><strong>Materieller Ressourcebedarf</strong></td>
-            <td></td>
-            <td></td>
+            <td><strong>Materieller Ressourcenbedarf</strong></td>
+            <td colspan="2"></td>
           </tr>
           <tr>
             <td>Material(Bedarf)</td>
-            <td></td>
-            <td></td>
+            <td id="Punkt_0" onblur="Validierungszahl()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="Gewi_0" onblur="Validierungsgewichtung()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
           </tr>
           <tr>
             <td>Ingenieurstunden</td>
-            <td></td>
-            <td></td>
+            <td id="Punkt_1" onblur="Validierungszahl()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="Gewi_1" onblur="Validierungsgewichtung()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
           </tr>
           <tr>
             <td>Technikerstunden</td>
-            <td></td>
-            <td></td>
+            <td id="Punkt_2" onblur="Validierungszahl()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="Gewi_2" onblur="Validierungsgewichtung()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
           </tr>
-          <tr height="30px"></tr>
+          <tr><td colspan="3" id="Punktefehler" height="30px" align="center"></td></tr>
           <tr>
-            <td><strong>Immaterieller Ressourcebedarf</strong></td>
-            <td></td>
-            <td></td>
+            <td><strong>Immaterieller Ressourcenbedarf</strong></td>
+            <td colspan="2"></td>
           </tr>
           <tr>
             <td>Maschinenstillstandszeit</td>
-            <td></td>
-            <td></td>
+            <td id="Punkt_3" onblur="Validierungszahl()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="Gewi_3" onblur="Validierungsgewichtung()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
           </tr>
           <tr>
             <td>Software-Lizenzen(Bedarf)</td>
-            <td></td>
-            <td></td>
+            <td id="Punkt_4" onblur="Validierungszahl()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="Gewi_4" onblur="Validierungsgewichtung()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
           </tr>
           <tr>
             <td>Steuerungs-Lizenz(Bedarf)</td>
-            <td></td>
-            <td></td>
+            <td id="Punkt_5" onblur="Validierungszahl()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="Gewi_5" onblur="Validierungsgewichtung()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
           </tr>
-          <tr height="30px"></tr>
+          <tr><td colspan="3" id="Gewichtungsfehler" height="30px" align="center"></td></tr>
           <tr>
             <td><strong>Langzeitaufwand</strong></td>
-            <td></td>
-            <td></td>
+            <td colspan="2"></td>
           </tr>
           <tr>
             <td>Wartungsaufwand</td>
-            <td></td>
-            <td></td>
+            <td id="Punkt_6" onblur="Validierungszahl()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="Gewi_6" onblur="Validierungsgewichtung()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
           </tr>
           <tr>
             <td>Aufwand Anpassungsnotwendigkeit</td>
-            <td></td>
-            <td></td>
+            <td id="Punkt_7" onblur="Validierungszahl()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="Gewi_7" onblur="Validierungsgewichtung()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
           </tr>
           <tr>
             <td>Steuerungs-Lizenz(Bedarf)</td>
-            <td></td>
-            <td></td>
+            <td id="Punkt_8" onblur="Validierungszahl()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="Gewi_8" onblur="Validierungsgewichtung()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
           </tr>
           <tr height="30px"></tr>
         </tbody>
@@ -82,9 +150,9 @@
     <div style="width: 25%; right: 25px; position: absolute;">
         <p style="border:solid orange;">Die <strong>Gewichtung</strong>(links) dienen zur Berechnung der Aufwandsaussprägung der Bewertungskriterien für jedes Verfahren.</p>
 
-        <p style="margin-top: 15px;"><strong>Punkte</strong> mittels SMART-Methode vergeben: das wichtigste Kriterium bekommt 100 Punkte, die anderen bekommen je nach ihrer relativen Wichtigkeit in Bezug auf das wichtigste Kriterium Pukte zwischen 0 und 100 zugeordnet (100 = gleichwichtig, 50 = halb so wichtig etc.).</p>
+        <p style="margin-top: 0px;"><strong>Punkte</strong> mittels SMART-Methode vergeben: das wichtigste Kriterium bekommt 100 Punkte, die anderen bekommen je nach ihrer relativen Wichtigkeit in Bezug auf das wichtigste Kriterium Punkte zwischen 0 und 100 zugeordnet (100 = gleichwichtig, 50 = halb so wichtig etc.).</p>
 
-        <p style="margin-top: 15px; border: solid orange;">Diese <strong>Gewichtung</strong>(unten) werden für die vergleichende Bewertung der Verfahren untereinander genutzt.</p>
+        <p style="margin-top: 0px; border: solid orange;">Diese <strong>Gewichtung</strong>(unten) werden für die vergleichende Bewertung der Verfahren untereinander genutzt.</p>
 
         <p><strong>IS:</strong> Ingenieurstunden</p>
         <p><strong>TS:</strong> Technikerstunden</p>
@@ -98,10 +166,10 @@
     </div>
     
     <div style="padding-top: 520px; width: 100%;">           
-      <table class="table table-bordered table-hover">
+      <table class="table table-bordered">
         <thead>
           <tr>
-            <th class="text-center">Kriterium</th>
+            <th class="text-center" width="9%">Kriterium</th>
             <th class="text-center" width="9%">Material</th>
             <th class="text-center" width="9%">IS</th>
             <th class="text-center" width="9%">TS</th>
@@ -117,35 +185,32 @@
         <tbody>
           <tr>
             <td class="text-center"><strong>Punkte</strong></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td id="P_Material" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="P_IS" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="P_TS" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="P_MSSZ" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="P_Software" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="P_Steuerung" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="P_WA" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="P_AbA" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="P_FA" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="Punktesumme" onclick="Punktesumme()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
           </tr>
           <tr>
             <td class="text-center"><strong>Gewichtung</strong></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td id="G_Material" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="G_IS" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="G_TS" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="G_MSSZ" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="G_Software" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="G_Steuerung" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="G_WA" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="G_AbA" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="G_FA" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
+            <td id="Gewichtungssumme" onclick="Gewichtungssumme()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
           </tr>
         </tbody>
       </table>
-    </div>
-    <div>
-      
     </div>
     
 </f:section>
