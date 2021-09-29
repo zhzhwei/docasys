@@ -10,8 +10,7 @@
       var Punkt_5 = Number(document.getElementById("Punkt_5").innerHTML);
       var Punkt_6 = Number(document.getElementById("Punkt_6").innerHTML);
       var Punkt_7 = Number(document.getElementById("Punkt_7").innerHTML);
-      var Punkt_8 = Number(document.getElementById("Punkt_8").innerHTML);
-      if(Punkt_0<0 || Punkt_0>100 || Punkt_1<0 || Punkt_1>100 || Punkt_2<0 || Punkt_2>100 || Punkt_3<0 || Punkt_3>100 ||Punkt_4<0 || Punkt_4>100 || Punkt_5<0 || Punkt_5>100 || Punkt_6<0 || Punkt_6>100 || Punkt_7<0 || Punkt_7>100 || Punkt_8<0 || Punkt_8>100){
+      if(Punkt_0<0 || Punkt_0>100 || Punkt_1<0 || Punkt_1>100 || Punkt_2<0 || Punkt_2>100 || Punkt_3<0 || Punkt_3>100 ||Punkt_4<0 || Punkt_4>100 || Punkt_5<0 || Punkt_5>100 || Punkt_6<0 || Punkt_6>100 || Punkt_7<0 || Punkt_7>100){
         document.getElementById("Punktefehler").innerHTML = "<span style='color:#FF0000'> Validierung fehlgeschlagen. Die Werte dürfen nicht >100 oder <0 sein.</span>";
       }
       else{
@@ -28,10 +27,9 @@
       var Gewi_5 = document.getElementById("Gewi_5").innerHTML.replace("%","")/100;
       var Gewi_6 = document.getElementById("Gewi_6").innerHTML.replace("%","")/100;
       var Gewi_7 = document.getElementById("Gewi_7").innerHTML.replace("%","")/100;
-      var Gewi_8 = document.getElementById("Gewi_8").innerHTML.replace("%","")/100;
       if(((Gewi_0!=0 && Gewi_1!=0 && Gewi_2!=0) && (Gewi_0+Gewi_1+Gewi_2!=1)) || 
          ((Gewi_3!=0 && Gewi_4!=0 && Gewi_5!=0) && (Gewi_3+Gewi_4+Gewi_5!=1)) ||
-         ((Gewi_6!=0 && Gewi_7!=0 && Gewi_8!=0) && (Gewi_6+Gewi_7+Gewi_8!=1))){
+         ((Gewi_6!=0 && Gewi_7!=0!=0) && (Gewi_6+Gewi_7!=1))){
         document.getElementById("Gewichtungsfehler").innerHTML = "<span style='color:#FF0000'> Validierung fehlgeschlagen. Die Gewichtung muss in Summe 100% ergeben. </span>";
       }
       else{
@@ -151,11 +149,6 @@
             <td id="Punkt_7" onblur="Validierungszahl()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
             <td id="Gewi_7" onblur="Validierungsgewichtung()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
           </tr>
-          <tr>
-            <td>Steuerungs-Lizenz(Bedarf)</td>
-            <td id="Punkt_8" onblur="Validierungszahl()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
-            <td id="Gewi_8" onblur="Validierungsgewichtung()" class="text-center" contenteditable="true" style="background-color:#ffead8"></td>
-          </tr>
           <tr height="35px"></tr>
         </tbody>
       </table>
@@ -163,9 +156,9 @@
     <div style="width: 25%; right: 25px; position: absolute;">
         <p style="border:solid orange;">Die <strong>Gewichtung</strong>(links) dienen zur Berechnung der Aufwandsaussprägung der Bewertungskriterien für jedes Verfahren.</p>
 
-        <p style="margin-top: 22px;"><strong>Punkte</strong> mittels SMART-Methode vergeben: das wichtigste Kriterium bekommt 100 Punkte, die anderen bekommen je nach ihrer relativen Wichtigkeit in Bezug auf das wichtigste Kriterium Punkte zwischen 0 und 100 zugeordnet (100 = gleichwichtig, 50 = halb so wichtig etc.).</p>
+        <p style="margin-top: 0px;"><strong>Punkte</strong> mittels SMART-Methode vergeben: das wichtigste Kriterium bekommt 100 Punkte, die anderen bekommen je nach ihrer relativen Wichtigkeit in Bezug auf das wichtigste Kriterium Punkte zwischen 0 und 100 zugeordnet (100 = gleichwichtig, 50 = halb so wichtig etc.).</p>
 
-        <p style="margin-top: 22px; border: solid orange;">Diese <strong>Gewichtung</strong>(unten) werden für die vergleichende Bewertung der Verfahren untereinander genutzt.</p>
+        <p style="margin-top: 0px; border: solid orange;">Diese <strong>Gewichtung</strong>(unten) werden für die vergleichende Bewertung der Verfahren untereinander genutzt.</p>
 
         <p><strong>IS:</strong> Ingenieurstunden</p>
         <p><strong>TS:</strong> Technikerstunden</p>
