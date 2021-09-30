@@ -37,7 +37,7 @@
       }
     }
 
-    function Punktesumme(){
+    function Punktesummen(){
       var Summe_0 = Number(document.getElementById("P_Material").value);
       var Summe_1 = Number(document.getElementById("P_IS").value);
       var Summe_2 = Number(document.getElementById("P_TS").value);
@@ -56,7 +56,7 @@
       }
     }
 
-    function Gewichtungssumme(){
+    function Gewichtungssummen(){
       var Summe_0 = document.getElementById("G_Material").value.replace("%","")/100;
       var Summe_1 = document.getElementById("G_IS").value.replace("%","")/100;
       var Summe_2 = document.getElementById("G_TS").value.replace("%","")/100;
@@ -96,18 +96,18 @@
     </div>
     <div class="row">
       <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Material(Bedarf)</div>
-      <input id="Punkt_0" onblur="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" min="0" max="100" placeholder="0" />
-      <input id="Gewi_0" onblur="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <f:form.textfield id="Punkt_0" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" />
+      <f:form.textfield id="Gewi_0" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
     </div>
     <div class="row">
       <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Ingeniurstunden</div>
-      <input id="Punkt_1" onblur="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" min="0" max="100" placeholder="0"/>
-      <input id="Gewi_1"  onblur="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <f:form.textfield id="Punkt_1" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
+      <f:form.textfield id="Gewi_1"  onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
     </div>
     <div class="row">
       <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Technikerstunden</div>
-      <input id="Punkt_2" onblur="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" min="0" max="100" placeholder="0"/>
-      <input id="Gewi_2" onblur="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <f:form.textfield id="Punkt_2" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
+      <f:form.textfield id="Gewi_2" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
     </div>
     <div class="row">
       <label class="col-sm-7" style="height:2px;"/>
@@ -118,18 +118,18 @@
     </div>
     <div class="row">
       <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Maschinenstillstandszeit</div>
-      <input id="Punkt_3" onblur="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" min="0" max="100" placeholder="0"/>
-      <input id="Gewi_3" onblur="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <f:form.textfield id="Punkt_3" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
+      <f:form.textfield id="Gewi_3" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
     </div>
     <div class="row">
       <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Software-Lizenzen(Bedarf)</div>
-      <input id="Punkt_4" onblur="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" min="0" max="100" placeholder="0"/>
-      <input id="Gewi_4" onblur="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <f:form.textfield id="Punkt_4" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
+      <f:form.textfield id="Gewi_4" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
     </div>
     <div class="row">
       <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Steuerungs-Lizenz(Bedarf)</div>
-      <input id="Punkt_5" onblur="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" min="0" max="100" placeholder="0"/>
-      <input id="Gewi_5" onblur="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <f:form.textfield id="Punkt_5" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
+      <f:form.textfield id="Gewi_5" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
     </div>
     <div class="row">
       <label class="col-sm-7" style="height: 2px;"/>
@@ -140,13 +140,13 @@
     </div>
     <div class="row">
       <div class="col-sm-3 bg-warning" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Wartungsaufwand</div>
-      <input id="Punkt_6" onblur="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" min="0" max="100" placeholder="0"/>
-      <input id="Gewi_6" onblur="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <f:form.textfield id="Punkt_6" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
+      <f:form.textfield id="Gewi_6" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
     </div>
     <div class="row">
       <div class="col-sm-3 bg-warning" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Aufwand Anpassungsnotwendigkeit</div>
-      <input id="Punkt_7" onblur="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" min="0" max="100" placeholder="0"/>
-      <input id="Gewi_7" onblur="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <f:form.textfield id="Punkt_7" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
+      <f:form.textfield id="Gewi_7" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
     </div>
   </div>
 
@@ -163,7 +163,7 @@
     <p><strong>WA:</strong> Wartungsaufwand</p>
     <p><strong>AbA:</strong> Aufwand bei Anpassungsnotwendigkeit</p>
     <p><strong>MSSZ:</strong> Maschinenstillstandszeit</p>
-    <p><strong>Material:</strong> Material(Bedarf) </p> 
+    <p><strong>Material:</strong> Material(Bedarf) </p>
     <p><strong>Software:</strong> Software-Lizenzen(Bedarf)</p>
     <p><strong>Steuerung:</strong> Steuerungs-Lizenz(Bedarf)</p>
 
@@ -188,33 +188,32 @@
     </div>
     <div class="row">
       <label class="col-sm-2 text-center bg-success" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Punkte</label>
-      <input id="P_Material" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="P_IS" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="P_TS" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="P_MSSZ" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="P_Software" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="P_Steuerung" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="P_WA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="P_AbA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="P_FA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="Punktesumme" onclick="Punktesumme()" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="P_Material" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="P_IS" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="P_TS" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="P_MSSZ" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="P_Software" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="P_Steuerung" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="P_WA" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="P_AbA" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="P_FA" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="Punktesumme" onclick="Punktesummen()" class="col-sm-1 text-center bg-success" style="height: 32px; border: gray;"/>
     </div>
     <div class="row">
       <label class="col-sm-2 text-center bg-warning" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Gewichtung</label>
-      <input id="G_Material" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="G_IS" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="G_TS" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="G_MSSZ" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="G_Software" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="G_Steuerung" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="G_WA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="G_AbA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="G_FA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <input id="Gewichtungssumme" onclick="Gewichtungssumme()" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="G_Material" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="G_IS" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="G_TS" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="G_MSSZ" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="G_Software" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="G_Steuerung" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="G_WA" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="G_AbA" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="G_FA" class="col-sm-1 text-center" style="height: 32px;"/>
+      <f:form.textfield id="Gewichtungssumme" onclick="Gewichtungssummen()" class="col-sm-1 text-center bg-warning" style="height: 32px; border: gray;"/>
     </div>
     <div class="row">
       <label id="Gewichtungssummenfehler" class="col-sm-12 text-center" style="height: 35px; border:solid gray; display: flex; flex-direction: column;justify-content: center;"></label>
     </div>
   </div>
-
 </f:section>
