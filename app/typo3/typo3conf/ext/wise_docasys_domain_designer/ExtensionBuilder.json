@@ -1095,6 +1095,26 @@
                             "propertyName": "ressourcenart",
                             "propertyType": "Select",
                             "uid": "390834323097"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "wert",
+                            "propertyType": "Float",
+                            "uid": "160124623842"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "einheit",
+                            "propertyType": "Select",
+                            "uid": "388445647651"
                         }
                     ]
                 },
@@ -4525,7 +4545,7 @@
             "sourceLanguage": "en",
             "state": "stable",
             "targetVersion": "7.6.0-7.6.99",
-            "version": "1.0.6"
+            "version": "1.0.7"
         },
         "extensionKey": "wise_docasys_domain_designer",
         "name": "Domain Designer",
@@ -5517,8 +5537,8 @@
         }
     ],
     "log": {
-        "last_modified": "2019-01-31 09:00",
+        "last_modified": "2021-10-05 11:27",
         "extension_builder_version": "7.6.18",
-        "be_user": "C05 | Richard Braun (1)"
+        "be_user": "user26 (26)"
     }
 }

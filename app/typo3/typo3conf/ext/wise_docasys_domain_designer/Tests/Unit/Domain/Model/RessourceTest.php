@@ -172,4 +172,47 @@ class RessourceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     public function setRessourcenartForIntSetsRessourcenart()
     {
     }
+
+    /**
+     * @test
+     */
+    public function getWertReturnsInitialValueForFloat()
+    {
+        self::assertSame(
+            0.0,
+            $this->subject->getWert()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setWertForFloatSetsWert()
+    {
+        $this->subject->setWert(3.14159265);
+
+        self::assertAttributeEquals(
+            3.14159265,
+            'wert',
+            $this->subject,
+            '',
+            0.000000001
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function getEinheitReturnsInitialValueForInt()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setEinheitForIntSetsEinheit()
+    {
+    }
 }

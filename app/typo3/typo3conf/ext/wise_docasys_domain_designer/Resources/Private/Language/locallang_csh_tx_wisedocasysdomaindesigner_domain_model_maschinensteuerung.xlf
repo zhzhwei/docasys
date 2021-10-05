@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2019-01-31T09:00:39Z" product-name="wise_docasys_domain_designer">
+	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-05T11:27:38Z" product-name="wise_docasys_domain_designer">
 		<header/>
 		<body>
 			<trans-unit id="steuerungsname.description">

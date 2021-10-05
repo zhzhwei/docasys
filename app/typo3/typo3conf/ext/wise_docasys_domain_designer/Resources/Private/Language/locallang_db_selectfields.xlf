@@ -3,6 +3,12 @@
     <file source-language="en" datatype="plaintext" original="messages" date="2018-04-18T19:14:21Z" product-name="wise_docasys_domain_designer">
         <header/>
         <body>
+            <trans-unit id="unit.1">
+                <source>Dauer (in Stunden)</source>
+            </trans-unit>
+            <trans-unit id="unit.2">
+                <source>Kosten (in EUR)</source>
+            </trans-unit>
             <trans-unit id="empty">
                 <source>Kein Wert</source>
             </trans-unit>

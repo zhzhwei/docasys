@@ -61,6 +61,20 @@ class Ressource extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $ressourcenart = 0;
 
     /**
+     * wert
+     *
+     * @var float
+     */
+    protected $wert = 0.0;
+
+    /**
+     * einheit
+     *
+     * @var int
+     */
+    protected $einheit = 0;
+
+    /**
      * Returns the bezeichnung
      *
      * @return string $bezeichnung
@@ -194,5 +208,47 @@ class Ressource extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setRessourcenart($ressourcenart)
     {
         $this->ressourcenart = $ressourcenart;
+    }
+
+    /**
+     * Returns the wert
+     *
+     * @return float $wert
+     */
+    public function getWert()
+    {
+        return $this->wert;
+    }
+
+    /**
+     * Sets the wert
+     *
+     * @param float $wert
+     * @return void
+     */
+    public function setWert($wert)
+    {
+        $this->wert = $wert;
+    }
+
+    /**
+     * Returns the einheit
+     *
+     * @return int $einheit
+     */
+    public function getEinheit()
+    {
+        return $this->einheit;
+    }
+
+    /**
+     * Sets the einheit
+     *
+     * @param int $einheit
+     * @return void
+     */
+    public function setEinheit($einheit)
+    {
+        $this->einheit = $einheit;
     }
 }
