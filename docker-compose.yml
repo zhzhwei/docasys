@@ -6,6 +6,7 @@ services:
       context: ./app
     volumes:
       - ./app/typo3:/var/www/html
+      - ./app/php.ini:/usr/local/etc/php/conf.d/php.ini
     ports:
       - 80:80
     networks: 
@@ -15,7 +16,7 @@ services:
       - docasys-db.local:172.16.235.3
   docasys-db:
     container_name: docasys-db
-    image: mariadb:10.4
+    image: mysql:5.7
     restart: on-failure
     volumes:
       - ./mysql/data:/var/lib/mysql
