@@ -6,10 +6,57 @@
 
     class RecommenderController extends \Wise\WiseDocasysBackend\Controller\FilterController
     {
+        protected $Anwendungsfall = [
+            'Keine Auswahl',
+            'Einzelfertigung',
+            'Serienfertigung',
+        ];
+
+        protected $Flexibility = [
+            'Keine Auswahl',
+            'Maschinenspezifisch',
+            'Lastfallspezifisch',
+            'Bedingt Lastfallspezifisch',
+        ];
+
+        protected $Invasivity = [
+            'Keine Auswahl',
+            'Kein Eingriff',
+            'Eingriff Komponente',
+            'Eingriff Baugruppe',
+            'Eingriff Gesamtmaschine',
+            'Erweiterung',
+        ];
+
+        protected $Wartungsintervall = [
+            'Keine Auswahl',
+            'Quartalsweise',
+            'Halbjährlich',
+            'Jährlich',
+        ];
+
+        protected $Maschinensteuerung = [
+            'Keine Auswahl',
+            'Ja',
+            'Nein',
+        ];
+
+        protected $Maschinenstillstand = [
+            'Keine Auswahl',
+            'Ja',
+            'Nein',
+        ];
+
         public function indexAction()
-        {
-            parent::indexAction(); 
-            $this->view->assign('maxApplicationCases', array_fill(0, 1, null));  
+        {  
+            $this->view->assignMultiple([
+                'Anwendungsfall' => $this->Anwendungsfall,
+                'Flexibility' => $this->Flexibility,
+                'Invasivity' => $this->Invasivity,
+                'Wartungsintervall' => $this->Wartungsintervall,
+                'Maschinensteuerung' => $this->Maschinensteuerung,
+                'Maschinenstillstand' => $this->Maschinenstillstand,
+            ]);
         }
     }
 ?>
