@@ -1119,7 +1119,19 @@
                     ]
                 },
                 "relationGroup": {
-                    "relations": []
+                    "relations": [
+                        {
+                            "foreignRelationClass": "",
+                            "lazyLoading": false,
+                            "propertyIsExcludeField": true,
+                            "relationDescription": "",
+                            "relationName": "art",
+                            "relationType": "zeroToMany",
+                            "relationWire": "[wired]",
+                            "renderType": "selectSingle",
+                            "uid": "476119632385"
+                        }
+                    ]
                 }
             }
         },
@@ -4530,6 +4542,86 @@
                     ]
                 }
             }
+        },
+        {
+            "config": {
+                "position": [
+                    1134,
+                    437
+                ]
+            },
+            "name": "New Model Object",
+            "value": {
+                "actionGroup": {
+                    "_default0_list": false,
+                    "_default1_show": false,
+                    "_default2_new_create": false,
+                    "_default3_edit_update": false,
+                    "_default4_delete": false,
+                    "customActions": []
+                },
+                "name": "Ressourcenart",
+                "objectsettings": {
+                    "addDeletedField": true,
+                    "addHiddenField": true,
+                    "addStarttimeEndtimeFields": true,
+                    "aggregateRoot": false,
+                    "categorizable": false,
+                    "description": "",
+                    "mapToTable": "",
+                    "parentClass": "",
+                    "sorting": false,
+                    "type": "Entity",
+                    "uid": "1477466193699"
+                },
+                "propertyGroup": {
+                    "properties": [
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "name",
+                            "propertyType": "Select",
+                            "uid": "908345639091"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": true,
+                            "propertyName": "kategorie",
+                            "propertyType": "Select",
+                            "uid": "1171624273975"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "punkte",
+                            "propertyType": "Integer",
+                            "uid": "1377636058563"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "gewichtung",
+                            "propertyType": "Float",
+                            "uid": "222428503709"
+                        }
+                    ]
+                },
+                "relationGroup": {
+                    "relations": []
+                }
+            }
         }
     ],
     "properties": {
@@ -5534,10 +5626,22 @@
                 "terminal": "SOURCES",
                 "uid": "1297038228447"
             }
+        },
+        {
+            "src": {
+                "moduleId": 7,
+                "terminal": "relationWire_0",
+                "uid": "476119632385"
+            },
+            "tgt": {
+                "moduleId": 44,
+                "terminal": "SOURCES",
+                "uid": "1477466193699"
+            }
         }
     ],
     "log": {
-        "last_modified": "2021-10-05 11:27",
+        "last_modified": "2021-10-15 07:44",
         "extension_builder_version": "7.6.18",
         "be_user": "user26 (26)"
     }

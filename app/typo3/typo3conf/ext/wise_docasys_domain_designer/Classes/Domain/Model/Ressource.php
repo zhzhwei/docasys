@@ -75,6 +75,14 @@ class Ressource extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $einheit = 0;
 
     /**
+     * art
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Wise\WiseDocasysDomainDesigner\Domain\Model\Ressourcenart>
+     * @cascade remove
+     */
+    protected $art = null;
+
+    /**
      * Returns the bezeichnung
      *
      * @return string $bezeichnung
@@ -250,5 +258,70 @@ class Ressource extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setEinheit($einheit)
     {
         $this->einheit = $einheit;
+    }
+
+    /**
+     * __construct
+     */
+    public function __construct()
+    {
+        //Do not remove the next line: It would break the functionality
+        $this->initStorageObjects();
+    }
+
+    /**
+     * Initializes all ObjectStorage properties
+     * Do not modify this method!
+     * It will be rewritten on each save in the extension builder
+     * You may modify the constructor of this class instead
+     *
+     * @return void
+     */
+    protected function initStorageObjects()
+    {
+        $this->art = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
+
+    /**
+     * Adds a Ressourcenart
+     *
+     * @param \Wise\WiseDocasysDomainDesigner\Domain\Model\Ressourcenart $art
+     * @return void
+     */
+    public function addArt(\Wise\WiseDocasysDomainDesigner\Domain\Model\Ressourcenart $art)
+    {
+        $this->art->attach($art);
+    }
+
+    /**
+     * Removes a Ressourcenart
+     *
+     * @param \Wise\WiseDocasysDomainDesigner\Domain\Model\Ressourcenart $artToRemove The Ressourcenart to be removed
+     * @return void
+     */
+    public function removeArt(\Wise\WiseDocasysDomainDesigner\Domain\Model\Ressourcenart $artToRemove)
+    {
+        $this->art->detach($artToRemove);
+    }
+
+    /**
+     * Returns the art
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Wise\WiseDocasysDomainDesigner\Domain\Model\Ressourcenart> $art
+     */
+    public function getArt()
+    {
+        return $this->art;
+    }
+
+    /**
+     * Sets the art
+     *
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Wise\WiseDocasysDomainDesigner\Domain\Model\Ressourcenart> $art
+     * @return void
+     */
+    public function setArt(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $art)
+    {
+        $this->art = $art;
     }
 }

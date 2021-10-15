@@ -364,6 +364,7 @@ CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_ressource (
 	ressourcenart int(11) DEFAULT '0' NOT NULL,
 	wert double(11,2) DEFAULT '0.00' NOT NULL,
 	einheit int(11) DEFAULT '0' NOT NULL,
+	art int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -2023,6 +2024,50 @@ CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_eignungsprofil (
 );
 
 #
+# Table structure for table 'tx_wisedocasysdomaindesigner_domain_model_ressourcenart'
+#
+CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_ressourcenart (
+
+	uid int(11) NOT NULL auto_increment,
+	pid int(11) DEFAULT '0' NOT NULL,
+
+	ressource int(11) unsigned DEFAULT '0' NOT NULL,
+
+	name int(11) DEFAULT '0' NOT NULL,
+	kategorie int(11) DEFAULT '0' NOT NULL,
+	punkte int(11) DEFAULT '0' NOT NULL,
+	gewichtung double(11,2) DEFAULT '0.00' NOT NULL,
+
+	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
+	crdate int(11) unsigned DEFAULT '0' NOT NULL,
+	cruser_id int(11) unsigned DEFAULT '0' NOT NULL,
+	deleted tinyint(4) unsigned DEFAULT '0' NOT NULL,
+	hidden tinyint(4) unsigned DEFAULT '0' NOT NULL,
+	starttime int(11) unsigned DEFAULT '0' NOT NULL,
+	endtime int(11) unsigned DEFAULT '0' NOT NULL,
+
+	t3ver_oid int(11) DEFAULT '0' NOT NULL,
+	t3ver_id int(11) DEFAULT '0' NOT NULL,
+	t3ver_wsid int(11) DEFAULT '0' NOT NULL,
+	t3ver_label varchar(255) DEFAULT '' NOT NULL,
+	t3ver_state tinyint(4) DEFAULT '0' NOT NULL,
+	t3ver_stage int(11) DEFAULT '0' NOT NULL,
+	t3ver_count int(11) DEFAULT '0' NOT NULL,
+	t3ver_tstamp int(11) DEFAULT '0' NOT NULL,
+	t3ver_move_id int(11) DEFAULT '0' NOT NULL,
+
+	sys_language_uid int(11) DEFAULT '0' NOT NULL,
+	l10n_parent int(11) DEFAULT '0' NOT NULL,
+	l10n_diffsource mediumblob,
+
+	PRIMARY KEY (uid),
+	KEY parent (pid),
+	KEY t3ver_oid (t3ver_oid,t3ver_wsid),
+	KEY language (l10n_parent,sys_language_uid)
+
+);
+
+#
 # Table structure for table 'tx_wisedocasysdomaindesigner_domain_model_komponententyp'
 #
 CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_komponententyp (
@@ -2200,6 +2245,15 @@ CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_loesung (
 CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_komponententyp (
 
 	modell int(11) unsigned DEFAULT '0' NOT NULL,
+
+);
+
+#
+# Table structure for table 'tx_wisedocasysdomaindesigner_domain_model_ressourcenart'
+#
+CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_ressourcenart (
+
+	ressource int(11) unsigned DEFAULT '0' NOT NULL,
 
 );
 

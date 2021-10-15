@@ -297,6 +297,39 @@
              <trans-unit id="ressourcenart.7">
                 <source>Messmittel</source>
             </trans-unit>
+            <trans-unit id="ressourcenart.name.1">
+                <source>Materialbedarf</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.name.2">
+                <source>Ingenieurstunden</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.name.3">
+                <source>Technikerstunden</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.name.4">
+                <source>Maschinenstillstand</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.name.5">
+                <source>Software</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.name.6">
+                <source>Steuerungslizenzen</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.name.7">
+                <source>Wartungsaufwand</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.name.8">
+                <source>Aufwand Anpassungsnotwendigkeit</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.kategorie.1">
+                <source>Immaterieller Ressourcenbedarf</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.kategorie.2">
+                <source>Materieller Ressourcenbedarf</source>
+            </trans-unit>
+            <trans-unit id="ressourcenart.kategorie.3">
+                <source>Langzeitaufwand</source>
+            </trans-unit>
             <trans-unit id="lastfallart.1">
                 <source>Abkühlung</source>
             </trans-unit>

@@ -215,4 +215,70 @@ class RessourceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     public function setEinheitForIntSetsEinheit()
     {
     }
+
+    /**
+     * @test
+     */
+    public function getArtReturnsInitialValueForRessourcenart()
+    {
+        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        self::assertEquals(
+            $newObjectStorage,
+            $this->subject->getArt()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setArtForObjectStorageContainingRessourcenartSetsArt()
+    {
+        $art = new \Wise\WiseDocasysDomainDesigner\Domain\Model\Ressourcenart();
+        $objectStorageHoldingExactlyOneArt = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $objectStorageHoldingExactlyOneArt->attach($art);
+        $this->subject->setArt($objectStorageHoldingExactlyOneArt);
+
+        self::assertAttributeEquals(
+            $objectStorageHoldingExactlyOneArt,
+            'art',
+            $this->subject
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function addArtToObjectStorageHoldingArt()
+    {
+        $art = new \Wise\WiseDocasysDomainDesigner\Domain\Model\Ressourcenart();
+        $artObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['attach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $artObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($art));
+        $this->inject($this->subject, 'art', $artObjectStorageMock);
+
+        $this->subject->addArt($art);
+    }
+
+    /**
+     * @test
+     */
+    public function removeArtFromObjectStorageHoldingArt()
+    {
+        $art = new \Wise\WiseDocasysDomainDesigner\Domain\Model\Ressourcenart();
+        $artObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
+            ->setMethods(['detach'])
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $artObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($art));
+        $this->inject($this->subject, 'art', $artObjectStorageMock);
+
+        $this->subject->removeArt($art);
+
+    }
 }

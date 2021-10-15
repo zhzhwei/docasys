@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-05T11:27:38Z" product-name="wise_docasys_domain_designer">
+	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-15T07:44:37Z" product-name="wise_docasys_domain_designer">
 		<header/>
 		<body>
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_parametereinheit">
@@ -260,6 +260,9 @@
 			</trans-unit>
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_ressource.einheit">
 				<source>Einheit</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_ressource.art">
+				<source>Art</source>
 			</trans-unit>
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_techanwendungsfall">
 				<source>Tech Anwendungsfall</source>
@@ -932,6 +935,21 @@
 			</trans-unit>
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_eignungsprofil.anwendungsfall">
 				<source>Anwendungsfall</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_ressourcenart">
+				<source>Ressourcenart</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_ressourcenart.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_ressourcenart.kategorie">
+				<source>Kategorie</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_ressourcenart.punkte">
+				<source>Punkte</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_ressourcenart.gewichtung">
+				<source>Gewichtung</source>
 			</trans-unit>
 		</body>
 	</file>

@@ -17,16 +17,16 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'bezeichnung,zweck,beschreibung,ist_buendel,hersteller,ressourcenart,wert,einheit',
+		'searchFields' => 'bezeichnung,zweck,beschreibung,ist_buendel,hersteller,wert,einheit,art',
         'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_ressource.gif'
     ],
     'interface' => [
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bezeichnung, zweck, beschreibung, ist_buendel, hersteller, ressourcenart, wert, einheit',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bezeichnung, zweck, beschreibung, ist_buendel, hersteller, ressourcenart, wert, einheit, art',
     ],
     'types' => [
           '1' => ['showitem' => '
-              --div--; Allgemein, l10n_parent, l10n_diffsource, bezeichnung, zweck, beschreibung, 
-              --div--; Eigenschaften, ressourcenart, ist_buendel, hersteller, wert, einheit
+              --div--; Allgemein, l10n_parent, l10n_diffsource, bezeichnung, zweck, beschreibung,
+              --div--; Eigenschaften, ist_buendel, hersteller, wert, einheit, art
           '],
     ],
     'columns' => [
@@ -206,6 +206,19 @@ return [
 			    ],
 			    'size' => 1,
 			    'maxitems' => 1,
+			    'eval' => ''
+			],
+	    ],
+	    'art' => [
+	        'exclude' => true,
+	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressource.art',
+	        'config' => [
+			    'type' => 'select',
+			    'renderType' => 'selectSingle',
+			    'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_ressourcenart',
+			    'foreign_field' => 'ressource',
+			    'default' => '',
+			    'size' => 1,
 			    'eval' => ''
 			],
 	    ],
