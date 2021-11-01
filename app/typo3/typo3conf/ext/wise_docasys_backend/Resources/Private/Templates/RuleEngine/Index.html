@@ -1,7 +1,7 @@
 <f:layout name="DomainManager" /> 
 <f:section name="content">
   <script>
-    function Validierungszahl(){
+    function Oberetabelle(){
       var Punkt_0 = Number(document.getElementById("Punkt_0").value);
       var Punkt_1 = Number(document.getElementById("Punkt_1").value);
       var Punkt_2 = Number(document.getElementById("Punkt_2").value);
@@ -16,28 +16,24 @@
       else{
         document.getElementById("Punktefehler").innerHTML = " ";
       }
-    }
 
-    function Validierungsgewichtung(){
-      var Gewi_0 = document.getElementById("Gewi_0").value.replace("%","")/100;
-      var Gewi_1 = document.getElementById("Gewi_1").value.replace("%","")/100;
-      var Gewi_2 = document.getElementById("Gewi_2").value.replace("%","")/100;
-      var Gewi_3 = document.getElementById("Gewi_3").value.replace("%","")/100;
-      var Gewi_4 = document.getElementById("Gewi_4").value.replace("%","")/100;
-      var Gewi_5 = document.getElementById("Gewi_5").value.replace("%","")/100;
-      var Gewi_6 = document.getElementById("Gewi_6").value.replace("%","")/100;
-      var Gewi_7 = document.getElementById("Gewi_7").value.replace("%","")/100;
-      if(((Gewi_0!=0 && Gewi_1!=0 && Gewi_2!=0) && (Gewi_0+Gewi_1+Gewi_2!=1)) || 
-         ((Gewi_3!=0 && Gewi_4!=0 && Gewi_5!=0) && (Gewi_3+Gewi_4+Gewi_5!=1)) ||
-         ((Gewi_6!=0 && Gewi_7!=0!=0) && (Gewi_6+Gewi_7!=1))){
-        document.getElementById("Gewichtungsfehler").innerHTML = "<span style='color:#FF0000'> Validierung fehlgeschlagen. Die Gewichtung muss in Summe 100% ergeben. </span>";
+      if(Punkt_0!=0 || Punkt_1!=0 || Punkt_2!=0){
+        document.getElementById("Gewi_0").value = Number(Punkt_0/(Punkt_0+Punkt_1+Punkt_2)*100).toFixed(0) + "%";
+        document.getElementById("Gewi_1").value = Number(Punkt_1/(Punkt_0+Punkt_1+Punkt_2)*100).toFixed(0) + "%";
+        document.getElementById("Gewi_2").value = Number(Punkt_2/(Punkt_0+Punkt_1+Punkt_2)*100).toFixed(0) + "%";
       }
-      else{
-        document.getElementById("Gewichtungsfehler").innerHTML = " ";
+      if(Punkt_3!=0 || Punkt_4!=0 || Punkt_5!=0){
+        document.getElementById("Gewi_3").value = Number(Punkt_3/(Punkt_3+Punkt_4+Punkt_5)*100).toFixed(0) + "%";
+        document.getElementById("Gewi_4").value = Number(Punkt_4/(Punkt_3+Punkt_4+Punkt_5)*100).toFixed(0) + "%";
+        document.getElementById("Gewi_5").value = Number(Punkt_5/(Punkt_3+Punkt_4+Punkt_5)*100).toFixed(0) + "%";
+      }
+      if(Punkt_6!=0 || Punkt_7!=0){
+        document.getElementById("Gewi_6").value = Number(Punkt_6/(Punkt_6+Punkt_7)*100).toFixed(0) + "%";
+        document.getElementById("Gewi_7").value = Number(Punkt_7/(Punkt_6+Punkt_7)*100).toFixed(0) + "%";
       }
     }
 
-    function Punktesummen(){
+    function Unteretabelle(){
       var Summe_0 = Number(document.getElementById("P_Material").value);
       var Summe_1 = Number(document.getElementById("P_IS").value);
       var Summe_2 = Number(document.getElementById("P_TS").value);
@@ -54,32 +50,17 @@
       else{
         document.getElementById("Punktesumme").value = Punktesummen;
       }
-    }
 
-    function Gewichtungssummen(){
-      var Summe_0 = document.getElementById("G_Material").value.replace("%","")/100;
-      var Summe_1 = document.getElementById("G_IS").value.replace("%","")/100;
-      var Summe_2 = document.getElementById("G_TS").value.replace("%","")/100;
-      var Summe_3 = document.getElementById("G_MSSZ").value.replace("%","")/100;
-      var Summe_4 = document.getElementById("G_Software").value.replace("%","")/100;
-      var Summe_5 = document.getElementById("G_Steuerung").value.replace("%","")/100;
-      var Summe_6 = document.getElementById("G_WA").value.replace("%","")/100;
-      var Summe_7 = document.getElementById("G_AbA").value.replace("%","")/100;
-      var Summe_8 = document.getElementById("G_FA").value.replace("%","")/100;
-      var Gewichtungssummen = Summe_0 + Summe_1 + Summe_2 + Summe_3 + Summe_4 + Summe_5 + Summe_6 + Summe_7 + Summe_8;
-      if(Gewichtungssummen == 0){
-        document.getElementById("Gewichtungssumme").value = " ";
-        document.getElementById("Gewichtungssummenfehler").innerHTML = " ";
-      }
-      else if(Gewichtungssummen > 1){
-        document.getElementById("Gewichtungssumme").value = " ";
-        document.getElementById("Gewichtungssummenfehler").innerHTML = "<span style='color:#FF0000'> Fehlgeschlagen. Die Gewichtung darf in Summe nicht größer als 100% ergeben. </span>";
-      }
-      else{
-        var Percent = Number((Gewichtungssummen*100).toFixed(1)) + "%";
-        document.getElementById("Gewichtungssumme").value = Percent;
-        document.getElementById("Gewichtungssummenfehler").innerHTML = " ";
-      }
+      document.getElementById("G_Material").value = Number(Summe_0/Punktesummen*100).toFixed(0) + "%";
+      document.getElementById("G_IS").value = Number(Summe_1/Punktesummen*100).toFixed(0) + "%";
+      document.getElementById("G_TS").value = Number(Summe_2/Punktesummen*100).toFixed(0) + "%";
+      document.getElementById("G_MSSZ").value = Number(Summe_3/Punktesummen*100).toFixed(0) + "%";
+      document.getElementById("G_Software").value = Number(Summe_4/Punktesummen*100).toFixed(0) + "%";
+      document.getElementById("G_Steuerung").value = Number(Summe_5/Punktesummen*100).toFixed(0) + "%";
+      document.getElementById("G_WA").value = Number(Summe_6/Punktesummen*100).toFixed(0) + "%";
+      document.getElementById("G_AbA").value = Number(Summe_7/Punktesummen*100).toFixed(0) + "%";
+      document.getElementById("G_FA").value = Number(Summe_8/Punktesummen*100).toFixed(0) + "%";
+      document.getElementById("Gewichtungssumme").value = "100%";
     }
   </script>
   <h1>Rule Engine</h1>  
@@ -95,19 +76,19 @@
       <label id="Punktefehler" class="col-sm-4 text-center" style="height: 38px; border:solid gray;"/>
     </div>
     <div class="row">
-      <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Material(Bedarf)</div>
-      <f:form.textfield id="Punkt_0" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" />
-      <f:form.textfield id="Gewi_0" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Materialbedarf</div>
+      <f:form.textfield id="Punkt_0" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Material_Punkte}"/>
+      <f:form.textfield id="Gewi_0" class="col-sm-2 text-center" style="height: 35px;" value="{Material_Gewichtung}"/>
     </div>
     <div class="row">
       <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Ingeniurstunden</div>
-      <f:form.textfield id="Punkt_1" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
-      <f:form.textfield id="Gewi_1"  onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <f:form.textfield id="Punkt_1" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Ingeniur_Punkte}"/>
+      <f:form.textfield id="Gewi_1" class="col-sm-2 text-center" style="height: 35px;" value="{Ingeniur_Gewichtung}"/>
     </div>
     <div class="row">
       <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Technikerstunden</div>
-      <f:form.textfield id="Punkt_2" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
-      <f:form.textfield id="Gewi_2" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <f:form.textfield id="Punkt_2" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Techniker_Punkte}"/>
+      <f:form.textfield id="Gewi_2" class="col-sm-2 text-center" style="height: 35px;" value="{Techniker_Gewichtung}"/>
     </div>
     <div class="row">
       <label class="col-sm-7" style="height:2px;"/>
@@ -117,19 +98,19 @@
       <label class="col-sm-4 text-center" style="height: 35px; border:solid gray;"/>
     </div>
     <div class="row">
-      <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Maschinenstillstandszeit</div>
-      <f:form.textfield id="Punkt_3" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
-      <f:form.textfield id="Gewi_3" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Maschinenstillstand</div>
+      <f:form.textfield id="Punkt_3" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Maschinen_Punkte}"/>
+      <f:form.textfield id="Gewi_3" class="col-sm-2 text-center" style="height: 35px;" value="{Maschinen_Gewichtung}"/>
     </div>
     <div class="row">
-      <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Software-Lizenzen(Bedarf)</div>
-      <f:form.textfield id="Punkt_4" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
-      <f:form.textfield id="Gewi_4" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Software</div>
+      <f:form.textfield id="Punkt_4" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Software_Punkte}"/>
+      <f:form.textfield id="Gewi_4" class="col-sm-2 text-center" style="height: 35px;" value="{Software_Gewichtung}"/>
     </div>
     <div class="row">
-      <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Steuerungs-Lizenz(Bedarf)</div>
-      <f:form.textfield id="Punkt_5" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
-      <f:form.textfield id="Gewi_5" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Steuerungslizenzen</div>
+      <f:form.textfield id="Punkt_5" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Steuerung_Punkte}"/>
+      <f:form.textfield id="Gewi_5" class="col-sm-2 text-center" style="height: 35px;" value="{Steuerung_Gewichtung}"/>
     </div>
     <div class="row">
       <label class="col-sm-7" style="height: 2px;"/>
@@ -140,13 +121,13 @@
     </div>
     <div class="row">
       <div class="col-sm-3 bg-warning" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Wartungsaufwand</div>
-      <f:form.textfield id="Punkt_6" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
-      <f:form.textfield id="Gewi_6" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <f:form.textfield id="Punkt_6" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Wartung_Punkte}"/>
+      <f:form.textfield id="Gewi_6" class="col-sm-2 text-center" style="height: 35px;" value="{Wartung_Gewichtung}"/>
     </div>
     <div class="row">
       <div class="col-sm-3 bg-warning" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Aufwand Anpassungsnotwendigkeit</div>
-      <f:form.textfield id="Punkt_7" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
-      <f:form.textfield id="Gewi_7" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
+      <f:form.textfield id="Punkt_7" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Aufwand_Punkte}"/>
+      <f:form.textfield id="Gewi_7" class="col-sm-2 text-center" style="height: 35px;" value="{Aufwand_Gewichtung}"/>
     </div>
   </div>
 
@@ -188,32 +169,33 @@
     </div>
     <div class="row">
       <label class="col-sm-2 text-center bg-success" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Punkte</label>
-      <f:form.textfield id="P_Material" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_IS" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_TS" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_MSSZ" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_Software" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_Steuerung" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_WA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_AbA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_FA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="Punktesumme" onclick="Punktesummen()" class="col-sm-1 text-center bg-success" style="height: 32px; border: gray;"/>
+      <f:form.textfield id="P_Material" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_Material}"/>
+      <f:form.textfield id="P_IS" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_IS}"/>
+      <f:form.textfield id="P_TS" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_TS}"/>
+      <f:form.textfield id="P_MSSZ" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_MSSZ}"/>
+      <f:form.textfield id="P_Software" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_Software}"/>
+      <f:form.textfield id="P_Steuerung" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_Steuerung}"/>
+      <f:form.textfield id="P_WA" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_WA}"/>
+      <f:form.textfield id="P_AbA" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_AbA}"/>
+      <f:form.textfield id="P_FA" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_FA}"/>
+      <f:form.textfield id="Punktesumme" onclick="Unteretabelle()" class="col-sm-1 text-center bg-success" style="height: 32px; border: gray;"/>
     </div>
     <div class="row">
       <label class="col-sm-2 text-center bg-warning" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Gewichtung</label>
-      <f:form.textfield id="G_Material" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_IS" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_TS" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_MSSZ" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_Software" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_Steuerung" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_WA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_AbA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_FA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="Gewichtungssumme" onclick="Gewichtungssummen()" class="col-sm-1 text-center bg-warning" style="height: 32px; border: gray;"/>
+      <f:form.textfield id="G_Material" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_Material}"/>
+      <f:form.textfield id="G_IS" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_IS}"/>
+      <f:form.textfield id="G_TS" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_TS}"/>
+      <f:form.textfield id="G_MSSZ" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_MSSZ}"/>
+      <f:form.textfield id="G_Software" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_Software}"/>
+      <f:form.textfield id="G_Steuerung" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_Steuerung}"/>
+      <f:form.textfield id="G_WA" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_WA}"/>
+      <f:form.textfield id="G_AbA" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_AbA}"/>
+      <f:form.textfield id="G_FA" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_FA}"/>
+      <f:form.textfield id="Gewichtungssumme" class="col-sm-1 text-center bg-warning" style="height: 32px; border: gray;"/>
     </div>
     <div class="row">
       <label id="Gewichtungssummenfehler" class="col-sm-12 text-center" style="height: 35px; border:solid gray; display: flex; flex-direction: column;justify-content: center;"></label>
     </div>
   </div>
+
 </f:section>
