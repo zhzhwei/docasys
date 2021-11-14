@@ -1,68 +1,5 @@
 <f:layout name="DomainManager" /> 
 <f:section name="content">
-  <script>
-    function Oberetabelle(){
-      var Punkt_0 = Number(document.getElementById("Punkt_0").value);
-      var Punkt_1 = Number(document.getElementById("Punkt_1").value);
-      var Punkt_2 = Number(document.getElementById("Punkt_2").value);
-      var Punkt_3 = Number(document.getElementById("Punkt_3").value);
-      var Punkt_4 = Number(document.getElementById("Punkt_4").value);
-      var Punkt_5 = Number(document.getElementById("Punkt_5").value);
-      var Punkt_6 = Number(document.getElementById("Punkt_6").value);
-      var Punkt_7 = Number(document.getElementById("Punkt_7").value);
-      if(Punkt_0<0 || Punkt_0>100 || Punkt_1<0 || Punkt_1>100 || Punkt_2<0 || Punkt_2>100 || Punkt_3<0 || Punkt_3>100 ||Punkt_4<0 || Punkt_4>100 || Punkt_5<0 || Punkt_5>100 || Punkt_6<0 || Punkt_6>100 || Punkt_7<0 || Punkt_7>100){
-        document.getElementById("Punktefehler").innerHTML = "<span style='color:#FF0000'> Validierung fehlgeschlagen. Die Werte dürfen nicht >100 oder <0 sein.</span>";
-      }
-      else{
-        document.getElementById("Punktefehler").innerHTML = " ";
-      }
-
-      if(Punkt_0!=0 || Punkt_1!=0 || Punkt_2!=0){
-        document.getElementById("Gewi_0").value = Number(Punkt_0/(Punkt_0+Punkt_1+Punkt_2)*100).toFixed(0) + "%";
-        document.getElementById("Gewi_1").value = Number(Punkt_1/(Punkt_0+Punkt_1+Punkt_2)*100).toFixed(0) + "%";
-        document.getElementById("Gewi_2").value = Number(Punkt_2/(Punkt_0+Punkt_1+Punkt_2)*100).toFixed(0) + "%";
-      }
-      if(Punkt_3!=0 || Punkt_4!=0 || Punkt_5!=0){
-        document.getElementById("Gewi_3").value = Number(Punkt_3/(Punkt_3+Punkt_4+Punkt_5)*100).toFixed(0) + "%";
-        document.getElementById("Gewi_4").value = Number(Punkt_4/(Punkt_3+Punkt_4+Punkt_5)*100).toFixed(0) + "%";
-        document.getElementById("Gewi_5").value = Number(Punkt_5/(Punkt_3+Punkt_4+Punkt_5)*100).toFixed(0) + "%";
-      }
-      if(Punkt_6!=0 || Punkt_7!=0){
-        document.getElementById("Gewi_6").value = Number(Punkt_6/(Punkt_6+Punkt_7)*100).toFixed(0) + "%";
-        document.getElementById("Gewi_7").value = Number(Punkt_7/(Punkt_6+Punkt_7)*100).toFixed(0) + "%";
-      }
-    }
-
-    function Unteretabelle(){
-      var Summe_0 = Number(document.getElementById("P_Material").value);
-      var Summe_1 = Number(document.getElementById("P_IS").value);
-      var Summe_2 = Number(document.getElementById("P_TS").value);
-      var Summe_3 = Number(document.getElementById("P_MSSZ").value);
-      var Summe_4 = Number(document.getElementById("P_Software").value);
-      var Summe_5 = Number(document.getElementById("P_Steuerung").value);
-      var Summe_6 = Number(document.getElementById("P_WA").value);
-      var Summe_7 = Number(document.getElementById("P_AbA").value);
-      var Summe_8 = Number(document.getElementById("P_FA").value);
-      var Punktesummen = Summe_0 + Summe_1 + Summe_2 + Summe_3 + Summe_4 + Summe_5 + Summe_6 + Summe_7 + Summe_8;
-      if(Punktesummen == 0){
-        document.getElementById("Punktesumme").value = " ";
-      }
-      else{
-        document.getElementById("Punktesumme").value = Punktesummen;
-      }
-
-      document.getElementById("G_Material").value = Number(Summe_0/Punktesummen*100).toFixed(0) + "%";
-      document.getElementById("G_IS").value = Number(Summe_1/Punktesummen*100).toFixed(0) + "%";
-      document.getElementById("G_TS").value = Number(Summe_2/Punktesummen*100).toFixed(0) + "%";
-      document.getElementById("G_MSSZ").value = Number(Summe_3/Punktesummen*100).toFixed(0) + "%";
-      document.getElementById("G_Software").value = Number(Summe_4/Punktesummen*100).toFixed(0) + "%";
-      document.getElementById("G_Steuerung").value = Number(Summe_5/Punktesummen*100).toFixed(0) + "%";
-      document.getElementById("G_WA").value = Number(Summe_6/Punktesummen*100).toFixed(0) + "%";
-      document.getElementById("G_AbA").value = Number(Summe_7/Punktesummen*100).toFixed(0) + "%";
-      document.getElementById("G_FA").value = Number(Summe_8/Punktesummen*100).toFixed(0) + "%";
-      document.getElementById("Gewichtungssumme").value = "100%";
-    }
-  </script>
   <h1>Rule Engine</h1>  
   <!-- Definition der Entscheidungsregeln für den Recommender -->
   <div class="container" style="width: 97%; position: absolute;"> 
@@ -71,131 +8,82 @@
       <label class="col-sm-2 bg-success text-center" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Punkte</label>
       <label class="col-sm-2 bg-warning text-center" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Gewichtung</label>
     </div>
-    <div class="row">
-      <label class="col-sm-3" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Matrieller Ressourcenbedarf</label>
-      <label id="Punktefehler" class="col-sm-4 text-center" style="height: 38px; border:solid gray;"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Materialbedarf</div>
-      <f:form.textfield id="Punkt_0" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Material_Punkte}"/>
-      <f:form.textfield id="Gewi_0" class="col-sm-2 text-center" style="height: 35px;" value="{Material_Gewichtung}"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Ingeniurstunden</div>
-      <f:form.textfield id="Punkt_1" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Ingeniur_Punkte}"/>
-      <f:form.textfield id="Gewi_1" class="col-sm-2 text-center" style="height: 35px;" value="{Ingeniur_Gewichtung}"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Technikerstunden</div>
-      <f:form.textfield id="Punkt_2" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Techniker_Punkte}"/>
-      <f:form.textfield id="Gewi_2" class="col-sm-2 text-center" style="height: 35px;" value="{Techniker_Gewichtung}"/>
-    </div>
-    <div class="row">
-      <label class="col-sm-7" style="height:2px;"/>
-    </div>
-    <div class="row">
-      <label class="col-sm-3" style="height: 38px; display: flex; flex-direction: column;justify-content: center;">Immaterieller Ressourcenbedarf</label>
-      <label class="col-sm-4 text-center" style="height: 35px; border:solid gray;"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Maschinenstillstand</div>
-      <f:form.textfield id="Punkt_3" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Maschinen_Punkte}"/>
-      <f:form.textfield id="Gewi_3" class="col-sm-2 text-center" style="height: 35px;" value="{Maschinen_Gewichtung}"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Software</div>
-      <f:form.textfield id="Punkt_4" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Software_Punkte}"/>
-      <f:form.textfield id="Gewi_4" class="col-sm-2 text-center" style="height: 35px;" value="{Software_Gewichtung}"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Steuerungslizenzen</div>
-      <f:form.textfield id="Punkt_5" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Steuerung_Punkte}"/>
-      <f:form.textfield id="Gewi_5" class="col-sm-2 text-center" style="height: 35px;" value="{Steuerung_Gewichtung}"/>
-    </div>
-    <div class="row">
-      <label class="col-sm-7" style="height: 2px;"/>
-    </div>
-    <div class="row">
-      <label class="col-sm-3" style="height: 35px;display: flex; flex-direction: column;justify-content: center;">Langzeitaufwand</label>
-      <label id="Gewichtungsfehler" class="col-sm-4 text-center" style="height: 38px; border:solid gray;"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-warning" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Wartungsaufwand</div>
-      <f:form.textfield id="Punkt_6" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Wartung_Punkte}"/>
-      <f:form.textfield id="Gewi_6" class="col-sm-2 text-center" style="height: 35px;" value="{Wartung_Gewichtung}"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-warning" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Aufwand Anpassungsnotwendigkeit</div>
-      <f:form.textfield id="Punkt_7" onclick="Oberetabelle()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" value="{Aufwand_Punkte}"/>
-      <f:form.textfield id="Gewi_7" class="col-sm-2 text-center" style="height: 35px;" value="{Aufwand_Gewichtung}"/>
-    </div>
+    <f:for each="{ressourcenKategorien}" as="ressourcenKategorie" iteration="iterator">
+      <div class="row">
+        <label class="col-sm-3" style="height: 35px; display: flex; flex-direction: column;justify-content: center;"><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.kategorie.{ressourcenKategorie}" /></label>
+        <label id="Punktefehler" class="col-sm-4 text-center" style="height: 38px; border:solid gray;"/>
+      </div>
+      <f:for each="{ressourcenArten}" as="ressourcenArt">
+        <f:if condition="{ressourcenArt.kategorie} == {ressourcenKategorie}">
+          <div class="row">
+            <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;"><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.name.{ressourcenArt.name}" />
+            </div>
+            <f:form.textfield class="col-sm-2 text-center" style="height: 35px;" value="{ressourcenArt.punkte}"/>
+            <f:form.textfield class="col-sm-2 text-center" style="height: 35px;" value="{ressourcenArt.gewichtung}"/>
+          </div>
+        </f:if>
+    </f:for>
+    </f:for>
   </div>
 
   <div style="width: 38%; right:25px; position: absolute;">
-    <p style="border:solid orange;">Die <strong>Gewichtung</strong>(links) dienen zur Berechnung der Aufwandsaussprägung der Bewertungskriterien für jedes Verfahren.</p>
+    <p style="border:solid orange; width: 55%;">Die <strong>Gewichtung</strong>(links) dienen zur Berechnung der Aufwandsaussprägung der Bewertungskriterien für jedes Verfahren.</p>
     
-    <p style="margin-top: 25px;"><strong>Punkte</strong> mittels SMART-Methode vergeben: das wichtigste Kriterium bekommt 100 Punkte, die anderen bekommen je nach ihrer relativen Wichtigkeit in Bezug auf das wichtigste Kriterium Punkte zwischen 0 und 100 zugeordnet (100 = gleichwichtig, 50 = halb so wichtig etc.).</p>
+    <p style="margin-top: 35px; width: 55%;"><strong>Punkte</strong> mittels SMART-Methode vergeben: das wichtigste Kriterium bekommt 100 Punkte, die anderen bekommen je nach ihrer relativen Wichtigkeit in Bezug auf das wichtigste Kriterium Punkte zwischen 0 und 100 zugeordnet (100 = gleichwichtig, 50 = halb so wichtig etc.).</p>
 
-    <p style="margin-top: 25px; border: solid orange;">Diese <strong>Gewichtung</strong>(unten) werden für die vergleichende Bewertung der Verfahren untereinander genutzt.</p>
+    <p style="margin-top: 35px; width: 55%; border: solid orange;">Diese <strong>Gewichtung</strong>(unten) werden für die vergleichende Bewertung der Verfahren untereinander genutzt.</p>
       
-    <p style="margin-top:25px"><strong>IS:</strong> Ingenieurstunden</p>
-    <p><strong>TS:</strong> Technikerstunden</p>
-    <p><strong>FA:</strong> Fehlerauswirkungen</p>
-    <p><strong>WA:</strong> Wartungsaufwand</p>
-    <p><strong>AbA:</strong> Aufwand bei Anpassungsnotwendigkeit</p>
-    <p><strong>MSSZ:</strong> Maschinenstillstandszeit</p>
-    <p><strong>Material:</strong> Material(Bedarf) </p>
-    <p><strong>Software:</strong> Software-Lizenzen(Bedarf)</p>
-    <p><strong>Steuerung:</strong> Steuerungs-Lizenz(Bedarf)</p>
-
+    <p style="margin-top:35px"><strong>AAN:</strong> Aufwand Anpassungsnotwendigkeit</p>
+    <p><strong>IS:</strong> Ingenieurstunden <strong>TS:</strong> Technikerstunden</p>
+    <p><strong>FA:</strong> Fehlerauswirkungen <strong>WA:</strong> Wartungsaufwand</p>
+    <p><strong>MSS:</strong> Maschinenstillstand <strong>Material:</strong> Materialbedarf</p>
+    <p><strong>Software:</strong> Software <strong>Steuerung:</strong> Steuerungslizenzen</p>
   </div>
 
   <div class="container-fluid" style="padding-top: 480px;">  
     <div class="row bg-danger">
       <label class="col-sm-2 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Kriterium</label>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Material</div>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">IS</div>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">TS</div>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">MSSZ</div>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Software</div>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Steuerung</div>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">WA</div>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">AbA</div>
+      <f:for each="{ressourcenArten}" as="ressourcenArt">
+        <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">
+          <f:switch expression="{ressourcenArt.name}">
+            <f:case value="1">Material</f:case>
+            <f:case value="2">IS</f:case>
+            <f:case value="3">TS</f:case>
+            <f:case value="4">MSS</f:case>
+            <f:case value="5">Software</f:case>
+            <f:case value="6">Steuerung</f:case>
+            <f:case value="7">WA</f:case>
+            <f:case value="8">AAN</f:case>
+          </f:switch>
+        </div>
+      </f:for>
       <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">FA</div>
       <label class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Summe</label>
     </div>
+
     <div class="row">
       <label class="col-sm-12" style="height: 2px;"/>
     </div>
+
     <div class="row">
       <label class="col-sm-2 text-center bg-success" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Punkte</label>
-      <f:form.textfield id="P_Material" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_Material}"/>
-      <f:form.textfield id="P_IS" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_IS}"/>
-      <f:form.textfield id="P_TS" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_TS}"/>
-      <f:form.textfield id="P_MSSZ" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_MSSZ}"/>
-      <f:form.textfield id="P_Software" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_Software}"/>
-      <f:form.textfield id="P_Steuerung" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_Steuerung}"/>
-      <f:form.textfield id="P_WA" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_WA}"/>
-      <f:form.textfield id="P_AbA" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_AbA}"/>
-      <f:form.textfield id="P_FA" class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_FA}"/>
-      <f:form.textfield id="Punktesumme" onclick="Unteretabelle()" class="col-sm-1 text-center bg-success" style="height: 32px; border: gray;"/>
+      <f:for each="{ressourcenArten}" as="ressourcenArt">
+        <f:form.textfield class="col-sm-1 text-center" style="height: 32px;" value="{ressourcenArt.punkte}">
+        </f:form.textfield>
+      </f:for>
+      <f:form.textfield class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_FA}"/>
+      <f:form.textfield class="col-sm-1 text-center bg-success" style="height: 32px; border: gray;" value="{Punktesumme}"/>
     </div>
+
     <div class="row">
       <label class="col-sm-2 text-center bg-warning" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Gewichtung</label>
-      <f:form.textfield id="G_Material" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_Material}"/>
-      <f:form.textfield id="G_IS" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_IS}"/>
-      <f:form.textfield id="G_TS" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_TS}"/>
-      <f:form.textfield id="G_MSSZ" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_MSSZ}"/>
-      <f:form.textfield id="G_Software" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_Software}"/>
-      <f:form.textfield id="G_Steuerung" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_Steuerung}"/>
-      <f:form.textfield id="G_WA" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_WA}"/>
-      <f:form.textfield id="G_AbA" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_AbA}"/>
-      <f:form.textfield id="G_FA" class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_FA}"/>
-      <f:form.textfield id="Gewichtungssumme" class="col-sm-1 text-center bg-warning" style="height: 32px; border: gray;"/>
+      <f:for each="{ressourcenArten}" as="ressourcenArt">
+        <f:form.textfield class="col-sm-1 text-center" style="height: 32px;" value="{ressourcenArt.gewichtung}">
+        </f:form.textfield>
+      </f:for>
+      <f:form.textfield class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_FA}"/>
+      <f:form.textfield class="col-sm-1 text-center bg-warning" style="height: 32px; border: gray;" value="100%"/>
     </div>
-    <div class="row">
-      <label id="Gewichtungssummenfehler" class="col-sm-12 text-center" style="height: 35px; border:solid gray; display: flex; flex-direction: column;justify-content: center;"></label>
-    </div>
-  </div>
 
+  </div>
 </f:section>
