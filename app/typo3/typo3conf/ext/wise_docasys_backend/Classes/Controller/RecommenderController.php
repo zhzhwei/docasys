@@ -19,14 +19,14 @@
             'Bedingt Lastfallspezifisch',
         ];
 
-        protected $Invasivity = [
-            'Keine Auswahl',
-            'Kein Eingriff',
-            'Eingriff Komponente',
-            'Eingriff Baugruppe',
-            'Eingriff Gesamtmaschine',
-            'Erweiterung',
-        ];
+        // protected $Invasivity = [
+        //     'Keine Auswahl',
+        //     'Kein Eingriff',
+        //     'Eingriff Komponente',
+        //     'Eingriff Baugruppe',
+        //     'Eingriff Gesamtmaschine',
+        //     'Erweiterung',
+        // ];
 
         protected $Wartungsintervall = [
             'Keine Auswahl',
@@ -52,7 +52,7 @@
             $this->view->assignMultiple([
                 'Anwendungsfall' => $this->Anwendungsfall,
                 'Flexibility' => $this->Flexibility,
-                'Invasivity' => $this->Invasivity,
+                // 'Invasivity' => $this->Invasivity,
                 'Wartungsintervall' => $this->Wartungsintervall,
                 'Maschinensteuerung' => $this->Maschinensteuerung,
                 'Maschinenstillstand' => $this->Maschinenstillstand,

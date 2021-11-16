@@ -17,7 +17,8 @@
         * 
         * @return Array 
         */
-        public function findProfile($solutionId = 0, $applicationCaseId = 0, $rating = null, $status = null) {
+        public function findProfile($solutionId = 0, $applicationCaseId = 0, $rating = null, $status = null)
+        {
             if($solutionId < 1 || $applicationCaseId < 1) {
                 return;
             }

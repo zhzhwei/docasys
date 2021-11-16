@@ -30,7 +30,7 @@
                     Invasivit&auml;tsgrad:
                 </label>
                 <div class="col-sm-9">
-                    <f:form.select options="{Invasivity}" class="form-control" value="{values.operator.kind}" />
+                    <f:form.select property="invasivity" class="form-control" options="{wise:be.TcaOptions(property:'invasivitaetsgrad',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.invasivity}" />
                 </div>
             </div>
 
@@ -57,7 +57,8 @@
                     Notwendigkeit Maschinenstillstand:
                 </label>
                 <div class="col-sm-9">
-                    <f:form.select options="{Maschinenstillstand}" class="form-control" value="{values.operator.kind}" />
+                    <f:form.select property="kind" options="{Maschinenstillstand}" class="form-control" value="{values.kind}" />
+                    <!-- <f:form.select property="kind" class="form-control" options="{wise:be.TcaOptions(property:'loesungsart',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.kind}" /> -->
                 </div>
             </div>
         </div>

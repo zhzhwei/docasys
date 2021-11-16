@@ -15,7 +15,7 @@ Use the startup script to build the docker container and start the app.
 Simply open a terminal window, navigate the root directory of this repo
 (e.g. `cd $HOME/transregio96-docasys/`), type `./start.sh` and press enter.
 
-After the containers have been build and started, which isindicated by the
+After the containers have been build and started, which is indicated by the
 name of the container suffixed with *done*, open a browser window
 and navigate to <http://localhost/typo3/>. Use username `user26` and
 password `user26` for authentication. This user has admin rights.

@@ -1,87 +1,5 @@
 <f:layout name="DomainManager" /> 
 <f:section name="content">
-  <script>
-    function Validierungszahl(){
-      var Punkt_0 = Number(document.getElementById("Punkt_0").value);
-      var Punkt_1 = Number(document.getElementById("Punkt_1").value);
-      var Punkt_2 = Number(document.getElementById("Punkt_2").value);
-      var Punkt_3 = Number(document.getElementById("Punkt_3").value);
-      var Punkt_4 = Number(document.getElementById("Punkt_4").value);
-      var Punkt_5 = Number(document.getElementById("Punkt_5").value);
-      var Punkt_6 = Number(document.getElementById("Punkt_6").value);
-      var Punkt_7 = Number(document.getElementById("Punkt_7").value);
-      if(Punkt_0<0 || Punkt_0>100 || Punkt_1<0 || Punkt_1>100 || Punkt_2<0 || Punkt_2>100 || Punkt_3<0 || Punkt_3>100 ||Punkt_4<0 || Punkt_4>100 || Punkt_5<0 || Punkt_5>100 || Punkt_6<0 || Punkt_6>100 || Punkt_7<0 || Punkt_7>100){
-        document.getElementById("Punktefehler").innerHTML = "<span style='color:#FF0000'> Validierung fehlgeschlagen. Die Werte dürfen nicht >100 oder <0 sein.</span>";
-      }
-      else{
-        document.getElementById("Punktefehler").innerHTML = " ";
-      }
-    }
-
-    function Validierungsgewichtung(){
-      var Gewi_0 = document.getElementById("Gewi_0").value.replace("%","")/100;
-      var Gewi_1 = document.getElementById("Gewi_1").value.replace("%","")/100;
-      var Gewi_2 = document.getElementById("Gewi_2").value.replace("%","")/100;
-      var Gewi_3 = document.getElementById("Gewi_3").value.replace("%","")/100;
-      var Gewi_4 = document.getElementById("Gewi_4").value.replace("%","")/100;
-      var Gewi_5 = document.getElementById("Gewi_5").value.replace("%","")/100;
-      var Gewi_6 = document.getElementById("Gewi_6").value.replace("%","")/100;
-      var Gewi_7 = document.getElementById("Gewi_7").value.replace("%","")/100;
-      if(((Gewi_0!=0 && Gewi_1!=0 && Gewi_2!=0) && (Gewi_0+Gewi_1+Gewi_2!=1)) || 
-         ((Gewi_3!=0 && Gewi_4!=0 && Gewi_5!=0) && (Gewi_3+Gewi_4+Gewi_5!=1)) ||
-         ((Gewi_6!=0 && Gewi_7!=0!=0) && (Gewi_6+Gewi_7!=1))){
-        document.getElementById("Gewichtungsfehler").innerHTML = "<span style='color:#FF0000'> Validierung fehlgeschlagen. Die Gewichtung muss in Summe 100% ergeben. </span>";
-      }
-      else{
-        document.getElementById("Gewichtungsfehler").innerHTML = " ";
-      }
-    }
-
-    function Punktesummen(){
-      var Summe_0 = Number(document.getElementById("P_Material").value);
-      var Summe_1 = Number(document.getElementById("P_IS").value);
-      var Summe_2 = Number(document.getElementById("P_TS").value);
-      var Summe_3 = Number(document.getElementById("P_MSSZ").value);
-      var Summe_4 = Number(document.getElementById("P_Software").value);
-      var Summe_5 = Number(document.getElementById("P_Steuerung").value);
-      var Summe_6 = Number(document.getElementById("P_WA").value);
-      var Summe_7 = Number(document.getElementById("P_AbA").value);
-      var Summe_8 = Number(document.getElementById("P_FA").value);
-      var Punktesummen = Summe_0 + Summe_1 + Summe_2 + Summe_3 + Summe_4 + Summe_5 + Summe_6 + Summe_7 + Summe_8;
-      if(Punktesummen == 0){
-        document.getElementById("Punktesumme").value = " ";
-      }
-      else{
-        document.getElementById("Punktesumme").value = Punktesummen;
-      }
-    }
-
-    function Gewichtungssummen(){
-      var Summe_0 = document.getElementById("G_Material").value.replace("%","")/100;
-      var Summe_1 = document.getElementById("G_IS").value.replace("%","")/100;
-      var Summe_2 = document.getElementById("G_TS").value.replace("%","")/100;
-      var Summe_3 = document.getElementById("G_MSSZ").value.replace("%","")/100;
-      var Summe_4 = document.getElementById("G_Software").value.replace("%","")/100;
-      var Summe_5 = document.getElementById("G_Steuerung").value.replace("%","")/100;
-      var Summe_6 = document.getElementById("G_WA").value.replace("%","")/100;
-      var Summe_7 = document.getElementById("G_AbA").value.replace("%","")/100;
-      var Summe_8 = document.getElementById("G_FA").value.replace("%","")/100;
-      var Gewichtungssummen = Summe_0 + Summe_1 + Summe_2 + Summe_3 + Summe_4 + Summe_5 + Summe_6 + Summe_7 + Summe_8;
-      if(Gewichtungssummen == 0){
-        document.getElementById("Gewichtungssumme").value = " ";
-        document.getElementById("Gewichtungssummenfehler").innerHTML = " ";
-      }
-      else if(Gewichtungssummen > 1){
-        document.getElementById("Gewichtungssumme").value = " ";
-        document.getElementById("Gewichtungssummenfehler").innerHTML = "<span style='color:#FF0000'> Fehlgeschlagen. Die Gewichtung darf in Summe nicht größer als 100% ergeben. </span>";
-      }
-      else{
-        var Percent = Number((Gewichtungssummen*100).toFixed(1)) + "%";
-        document.getElementById("Gewichtungssumme").value = Percent;
-        document.getElementById("Gewichtungssummenfehler").innerHTML = " ";
-      }
-    }
-  </script>
   <h1>Rule Engine</h1>  
   <!-- Definition der Entscheidungsregeln für den Recommender -->
   <div class="container" style="width: 97%; position: absolute;"> 
@@ -90,130 +8,82 @@
       <label class="col-sm-2 bg-success text-center" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Punkte</label>
       <label class="col-sm-2 bg-warning text-center" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Gewichtung</label>
     </div>
-    <div class="row">
-      <label class="col-sm-3" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Matrieller Ressourcenbedarf</label>
-      <label id="Punktefehler" class="col-sm-4 text-center" style="height: 38px; border:solid gray;"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Material(Bedarf)</div>
-      <f:form.textfield id="Punkt_0" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0" />
-      <f:form.textfield id="Gewi_0" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Ingeniurstunden</div>
-      <f:form.textfield id="Punkt_1" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
-      <f:form.textfield id="Gewi_1"  onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Technikerstunden</div>
-      <f:form.textfield id="Punkt_2" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
-      <f:form.textfield id="Gewi_2" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
-    </div>
-    <div class="row">
-      <label class="col-sm-7" style="height:2px;"/>
-    </div>
-    <div class="row">
-      <label class="col-sm-3" style="height: 38px; display: flex; flex-direction: column;justify-content: center;">Immaterieller Ressourcenbedarf</label>
-      <label class="col-sm-4 text-center" style="height: 35px; border:solid gray;"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Maschinenstillstandszeit</div>
-      <f:form.textfield id="Punkt_3" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
-      <f:form.textfield id="Gewi_3" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Software-Lizenzen(Bedarf)</div>
-      <f:form.textfield id="Punkt_4" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
-      <f:form.textfield id="Gewi_4" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-success" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Steuerungs-Lizenz(Bedarf)</div>
-      <f:form.textfield id="Punkt_5" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
-      <f:form.textfield id="Gewi_5" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
-    </div>
-    <div class="row">
-      <label class="col-sm-7" style="height: 2px;"/>
-    </div>
-    <div class="row">
-      <label class="col-sm-3" style="height: 35px;display: flex; flex-direction: column;justify-content: center;">Langzeitaufwand</label>
-      <label id="Gewichtungsfehler" class="col-sm-4 text-center" style="height: 38px; border:solid gray;"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-warning" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Wartungsaufwand</div>
-      <f:form.textfield id="Punkt_6" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
-      <f:form.textfield id="Gewi_6" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
-    </div>
-    <div class="row">
-      <div class="col-sm-3 bg-warning" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Aufwand Anpassungsnotwendigkeit</div>
-      <f:form.textfield id="Punkt_7" onclick="Validierungszahl()" class="col-sm-2 text-center" style="height: 35px;" type="number" placeholder="0"/>
-      <f:form.textfield id="Gewi_7" onclick="Validierungsgewichtung()" class="col-sm-2 text-center" style="height: 35px;"/>
-    </div>
+    <f:for each="{ressourcenKategorien}" as="ressourcenKategorie" iteration="iterator">
+      <div class="row">
+        <label class="col-sm-3" style="height: 35px; display: flex; flex-direction: column;justify-content: center;"><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.kategorie.{ressourcenKategorie}" /></label>
+        <label id="Punktefehler" class="col-sm-4 text-center" style="height: 38px; border:solid gray;"/>
+      </div>
+      <f:for each="{ressourcenArten}" as="ressourcenArt">
+        <f:if condition="{ressourcenArt.kategorie} == {ressourcenKategorie}">
+          <div class="row">
+            <div class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;"><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.name.{ressourcenArt.name}" />
+            </div>
+            <f:form.textfield class="col-sm-2 text-center" style="height: 35px;" value="{ressourcenArt.punkte}"/>
+            <f:form.textfield class="col-sm-2 text-center" style="height: 35px;" value="{ressourcenArt.gewichtung}"/>
+          </div>
+        </f:if>
+    </f:for>
+    </f:for>
   </div>
 
   <div style="width: 38%; right:25px; position: absolute;">
-    <p style="border:solid orange;">Die <strong>Gewichtung</strong>(links) dienen zur Berechnung der Aufwandsaussprägung der Bewertungskriterien für jedes Verfahren.</p>
+    <p style="border:solid orange; width: 55%;">Die <strong>Gewichtung</strong>(links) dienen zur Berechnung der Aufwandsaussprägung der Bewertungskriterien für jedes Verfahren.</p>
     
-    <p style="margin-top: 25px;"><strong>Punkte</strong> mittels SMART-Methode vergeben: das wichtigste Kriterium bekommt 100 Punkte, die anderen bekommen je nach ihrer relativen Wichtigkeit in Bezug auf das wichtigste Kriterium Punkte zwischen 0 und 100 zugeordnet (100 = gleichwichtig, 50 = halb so wichtig etc.).</p>
+    <p style="margin-top: 35px; width: 55%;"><strong>Punkte</strong> mittels SMART-Methode vergeben: das wichtigste Kriterium bekommt 100 Punkte, die anderen bekommen je nach ihrer relativen Wichtigkeit in Bezug auf das wichtigste Kriterium Punkte zwischen 0 und 100 zugeordnet (100 = gleichwichtig, 50 = halb so wichtig etc.).</p>
 
-    <p style="margin-top: 25px; border: solid orange;">Diese <strong>Gewichtung</strong>(unten) werden für die vergleichende Bewertung der Verfahren untereinander genutzt.</p>
+    <p style="margin-top: 35px; width: 55%; border: solid orange;">Diese <strong>Gewichtung</strong>(unten) werden für die vergleichende Bewertung der Verfahren untereinander genutzt.</p>
       
-    <p style="margin-top:25px"><strong>IS:</strong> Ingenieurstunden</p>
-    <p><strong>TS:</strong> Technikerstunden</p>
-    <p><strong>FA:</strong> Fehlerauswirkungen</p>
-    <p><strong>WA:</strong> Wartungsaufwand</p>
-    <p><strong>AbA:</strong> Aufwand bei Anpassungsnotwendigkeit</p>
-    <p><strong>MSSZ:</strong> Maschinenstillstandszeit</p>
-    <p><strong>Material:</strong> Material(Bedarf) </p>
-    <p><strong>Software:</strong> Software-Lizenzen(Bedarf)</p>
-    <p><strong>Steuerung:</strong> Steuerungs-Lizenz(Bedarf)</p>
-
+    <p style="margin-top:35px"><strong>AAN:</strong> Aufwand Anpassungsnotwendigkeit</p>
+    <p><strong>IS:</strong> Ingenieurstunden <strong>TS:</strong> Technikerstunden</p>
+    <p><strong>FA:</strong> Fehlerauswirkungen <strong>WA:</strong> Wartungsaufwand</p>
+    <p><strong>MSS:</strong> Maschinenstillstand <strong>Material:</strong> Materialbedarf</p>
+    <p><strong>Software:</strong> Software <strong>Steuerung:</strong> Steuerungslizenzen</p>
   </div>
 
   <div class="container-fluid" style="padding-top: 480px;">  
     <div class="row bg-danger">
       <label class="col-sm-2 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Kriterium</label>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Material</div>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">IS</div>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">TS</div>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">MSSZ</div>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Software</div>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Steuerung</div>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">WA</div>
-      <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">AbA</div>
+      <f:for each="{ressourcenArten}" as="ressourcenArt">
+        <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">
+          <f:switch expression="{ressourcenArt.name}">
+            <f:case value="1">Material</f:case>
+            <f:case value="2">IS</f:case>
+            <f:case value="3">TS</f:case>
+            <f:case value="4">MSS</f:case>
+            <f:case value="5">Software</f:case>
+            <f:case value="6">Steuerung</f:case>
+            <f:case value="7">WA</f:case>
+            <f:case value="8">AAN</f:case>
+          </f:switch>
+        </div>
+      </f:for>
       <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">FA</div>
       <label class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Summe</label>
     </div>
+
     <div class="row">
       <label class="col-sm-12" style="height: 2px;"/>
     </div>
+
     <div class="row">
       <label class="col-sm-2 text-center bg-success" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Punkte</label>
-      <f:form.textfield id="P_Material" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_IS" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_TS" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_MSSZ" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_Software" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_Steuerung" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_WA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_AbA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="P_FA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="Punktesumme" onclick="Punktesummen()" class="col-sm-1 text-center bg-success" style="height: 32px; border: gray;"/>
+      <f:for each="{ressourcenArten}" as="ressourcenArt">
+        <f:form.textfield class="col-sm-1 text-center" style="height: 32px;" value="{ressourcenArt.punkte}">
+        </f:form.textfield>
+      </f:for>
+      <f:form.textfield class="col-sm-1 text-center" style="height: 32px;" value="{Punkte_FA}"/>
+      <f:form.textfield class="col-sm-1 text-center bg-success" style="height: 32px; border: gray;" value="{punkteSumme}"/>
     </div>
+
     <div class="row">
       <label class="col-sm-2 text-center bg-warning" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Gewichtung</label>
-      <f:form.textfield id="G_Material" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_IS" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_TS" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_MSSZ" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_Software" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_Steuerung" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_WA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_AbA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="G_FA" class="col-sm-1 text-center" style="height: 32px;"/>
-      <f:form.textfield id="Gewichtungssumme" onclick="Gewichtungssummen()" class="col-sm-1 text-center bg-warning" style="height: 32px; border: gray;"/>
+      <f:for each="{ressourcenArten}" as="ressourcenArt">
+        <f:form.textfield class="col-sm-1 text-center" style="height: 32px;" value="{ressourcenArt.gewichtung}">
+        </f:form.textfield>
+      </f:for>
+      <f:form.textfield class="col-sm-1 text-center" style="height: 32px;" value="{Gewichtung_FA}"/>
+      <f:form.textfield class="col-sm-1 text-center bg-warning" style="height: 32px; border: gray;" value="100%"/>
     </div>
-    <div class="row">
-      <label id="Gewichtungssummenfehler" class="col-sm-12 text-center" style="height: 35px; border:solid gray; display: flex; flex-direction: column;justify-content: center;"></label>
-    </div>
+
   </div>
 </f:section>

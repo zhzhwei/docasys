@@ -15,6 +15,7 @@ namespace Wise\WiseDocasysDomainDesigner\Domain\Repository;
 /**
  * The repository for Ressourcenarts
  */
-class RessourcenartRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class RessourcenartRepository extends \Wise\WiseDocasysDomainDesigner\Domain\Repository\AbstractRepository
 {
-    }
+    
+}
