@@ -77,7 +77,7 @@
                 'maxObjectives' => array_fill(0, self::MAX_OBJECTIVES, null),
                 'maxApplicationCases' => array_fill(0, self::MAX_APPLICATION_CASES, null),
                 'results' => (count($results) > 0) ? $results : null,
-                // 'values' => (isset($request['filter-submit'])) ? $request['filter-submit'] : null,
+                'values' => (isset($request['filter-submit'])) ? $request['filter-submit'] : null,
             ]);
         }
     }
