@@ -2,9 +2,7 @@
 return [
     'ctrl' => [
         'title'	=> 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesungsbeziehung',
-        'label' => 'quelle',
-        'label_alt' => 'senke',
-        'label_alt_force' => 1,
+        'label' => 'randbedingungen',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -25,11 +23,7 @@ return [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, randbedingungen, ist_anwendbar, hat_anpassungsnotwendigkeit, anpassungsgrad, beschreibung, loesungsbeziehungsart, quelle, senke',
     ],
     'types' => [
-        '1' => ['showitem' => '
-            --div--; Allgemein,         l10n_parent, l10n_diffsource, quelle, senke, loesungsbeziehungsart, beschreibung, 
-            --div--; Bedingungen,       ist_anwendbar, randbedingungen,
-            --div--; Anpassungen,       hat_anpassungsnotwendigkeit, anpassungsgrad,
-        '],
+		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, randbedingungen, ist_anwendbar, hat_anpassungsnotwendigkeit, anpassungsgrad, beschreibung, loesungsbeziehungsart, quelle, senke, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
 		'sys_language_uid' => [
@@ -119,7 +113,7 @@ return [
 	        'config' => [
 			    'type' => 'text',
 			    'cols' => 40,
-			    'rows' => 5,
+			    'rows' => 15,
 			    'eval' => 'trim'
 			]
 	    ],
@@ -164,7 +158,7 @@ return [
 	        'config' => [
 			    'type' => 'text',
 			    'cols' => 40,
-			    'rows' => 5,
+			    'rows' => 15,
 			    'eval' => 'trim'
 			]
 	    ],
@@ -175,14 +169,8 @@ return [
 			    'type' => 'select',
 			    'renderType' => 'selectSingle',
 			    'items' => [
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:not_applicable', -1],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsbeziehungsart.1', 1],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsbeziehungsart.2', 2],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsbeziehungsart.3', 3],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsbeziehungsart.4', 4],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsbeziehungsart.5', 5],
-                ],
+			        ['-- Label --', 0],
+			    ],
 			    'size' => 1,
 			    'maxitems' => 1,
 			    'eval' => ''
@@ -192,14 +180,12 @@ return [
 	        'exclude' => true,
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesungsbeziehung.quelle',
 	        'config' => [
-			    'type' => 'select',
-                'renderType' => 'selectSingle',
+			    'type' => 'inline',
 			    'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_loesung',
 			    'foreign_field' => 'loesungsbeziehung',
-			    'minitems' => 1,
-                'maxitems' => 1,
+			    'maxitems' => 9999,
 			    'appearance' => [
-			        'collapseAll' => 1,
+			        'collapseAll' => 0,
 			        'levelLinksPosition' => 'top',
 			        'showSynchronizationLink' => 1,
 			        'showPossibleLocalizationRecords' => 1,
@@ -211,14 +197,12 @@ return [
 	        'exclude' => true,
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesungsbeziehung.senke',
 	        'config' => [
-			    'type' => 'select',
-                'renderType' => 'selectSingle',
+			    'type' => 'inline',
 			    'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_loesung',
 			    'foreign_field' => 'loesungsbeziehung1',
-			    'minitems' => 1,
-                'maxitems' => 1,
+			    'maxitems' => 9999,
 			    'appearance' => [
-			        'collapseAll' => 1,
+			        'collapseAll' => 0,
 			        'levelLinksPosition' => 'top',
 			        'showSynchronizationLink' => 1,
 			        'showPossibleLocalizationRecords' => 1,

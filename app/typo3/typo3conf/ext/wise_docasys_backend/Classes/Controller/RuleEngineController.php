@@ -30,6 +30,9 @@
             foreach ($ressourcenArten as $art) {
                 $punkteSumme += $art->getPunkte();
             }
+            foreach ($ressourcenArten as $art) {
+                $art->setUntereGewichtung(round($art->getPunkte()/$punkteSumme,2));
+            }
 
             $request = $this->request->getArguments();
             if(isset($request['rule-submit'])) {

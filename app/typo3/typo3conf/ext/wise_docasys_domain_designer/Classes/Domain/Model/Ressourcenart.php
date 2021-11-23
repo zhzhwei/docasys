@@ -48,6 +48,13 @@ class Ressourcenart extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $gewichtung = 0.0;
 
     /**
+     * untereGewichtung
+     *
+     * @var float
+     */
+    protected $untereGewichtung = 0.0;
+
+    /**
      * Returns the name
      *
      * @return int $name
@@ -129,5 +136,26 @@ class Ressourcenart extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setGewichtung($gewichtung)
     {
         $this->gewichtung = $gewichtung;
+    }
+
+    /**
+     * Returns the untereGewichtung
+     *
+     * @return float $untereGewichtung
+     */
+    public function getUntereGewichtung()
+    {
+        return $this->untereGewichtung;
+    }
+
+    /**
+     * Sets the untereGewichtung
+     *
+     * @param float $untereGewichtung
+     * @return void
+     */
+    public function setUntereGewichtung($untereGewichtung)
+    {
+        $this->untereGewichtung = $untereGewichtung;
     }
 }

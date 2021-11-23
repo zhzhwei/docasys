@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-15T11:56:08Z" product-name="wise_docasys_domain_designer">
+	<file source-language="en" datatype="plaintext" original="messages" date="2021-11-23T20:04:27Z" product-name="wise_docasys_domain_designer">
 		<header/>
 		<body>
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_parametereinheit">
@@ -950,6 +950,9 @@
 			</trans-unit>
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_ressourcenart.gewichtung">
 				<source>Gewichtung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_ressourcenart.untere_gewichtung">
+				<source>Untere Gewichtung</source>
 			</trans-unit>
 		</body>
 	</file>

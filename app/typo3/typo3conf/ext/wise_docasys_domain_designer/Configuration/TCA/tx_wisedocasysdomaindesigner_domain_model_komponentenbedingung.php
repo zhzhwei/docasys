@@ -17,16 +17,13 @@ return [
             'endtime' => 'endtime',
         ],
 		'searchFields' => 'operator,wert,objekt',
-        'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_komponentenbedingung.gif',
-        'hideTable' => true,
+        'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_komponentenbedingung.gif'
     ],
     'interface' => [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, operator, wert, objekt',
     ],
     'types' => [
-		'1' => ['showitem' => '
-            l10n_parent, l10n_diffsource, objekt, operator, wert, 
-        '],
+		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, operator, wert, objekt, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
 		'sys_language_uid' => [
@@ -117,13 +114,7 @@ return [
 			    'type' => 'select',
 			    'renderType' => 'selectSingle',
 			    'items' => [
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:operator.1', 1],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:operator.2', 2],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:operator.3', 3],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:operator.4', 4],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:operator.5', 5],
-			        ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:operator.6', 6],
+			        ['-- Label --', 0],
 			    ],
 			    'size' => 1,
 			    'maxitems' => 1,
@@ -143,13 +134,12 @@ return [
 	        'exclude' => true,
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_komponentenbedingung.objekt',
 	        'config' => [
-                'type' => 'select',
-			    'renderType' => 'selectSingle',
+			    'type' => 'inline',
 			    'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_komponententyp',
 			    'minitems' => 0,
 			    'maxitems' => 1,
 			    'appearance' => [
-			        'collapseAll' => 1,
+			        'collapseAll' => 0,
 			        'levelLinksPosition' => 'top',
 			        'showSynchronizationLink' => 1,
 			        'showPossibleLocalizationRecords' => 1,

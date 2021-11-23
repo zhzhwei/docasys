@@ -23,9 +23,7 @@ return [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bezeichnung, messart',
     ],
     'types' => [
-        '1' => ['showitem' => '
-            --div--; Allgemein, bezeichnung, messart
-        '],
+		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bezeichnung, messart, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
 		'sys_language_uid' => [
@@ -125,11 +123,8 @@ return [
 			    'type' => 'select',
 			    'renderType' => 'selectSingle',
 			    'items' => [
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:not_applicable', -1],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:messart.1', 1],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:messart.2', 2],
-                ],
+			        ['-- Label --', 0],
+			    ],
 			    'size' => 1,
 			    'maxitems' => 1,
 			    'eval' => ''

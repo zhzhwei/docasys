@@ -16,14 +16,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-		'searchFields' => 'name,kategorie,punkte,gewichtung',
+		'searchFields' => 'name,kategorie,punkte,gewichtung,untere_gewichtung',
         'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_ressourcenart.gif'
     ],
     'interface' => [
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, kategorie, punkte, gewichtung',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, kategorie, punkte, gewichtung, untere_gewichtung',
     ],
     'types' => [
-		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, kategorie, punkte, gewichtung, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, kategorie, punkte, gewichtung, untere_gewichtung, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
 		'sys_language_uid' => [
@@ -114,15 +114,7 @@ return [
 			    'type' => 'select',
 			    'renderType' => 'selectSingle',
 			    'items' => [
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.name.1', 1],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.name.2', 2],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.name.3', 3],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.name.4', 4],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.name.5', 5],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.name.6', 6],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.name.7', 7],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.name.8', 8],
+			        ['-- Label --', 0],
 			    ],
 			    'size' => 1,
 			    'maxitems' => 1,
@@ -136,10 +128,7 @@ return [
 			    'type' => 'select',
 			    'renderType' => 'selectSingle',
 			    'items' => [
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.kategorie.1', 1],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.kategorie.2', 2],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.kategorie.3', 3],
+			        ['-- Label --', 0],
 			    ],
 			    'size' => 1,
 			    'maxitems' => 1,
@@ -151,13 +140,8 @@ return [
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressourcenart.punkte',
 	        'config' => [
 			    'type' => 'input',
-			    'size' => 3,
-			    'eval' => 'int',
-                'range' => [
-                    'lower' => 0,
-                    'upper' => 100
-                ],
-                'readOnly' => true
+			    'size' => 4,
+			    'eval' => 'int'
 			]
 	    ],
 	    'gewichtung' => [
@@ -165,13 +149,17 @@ return [
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressourcenart.gewichtung',
 	        'config' => [
 			    'type' => 'input',
-			    'size' => 3,
-			    'eval' => 'double2',
-                'range' => [
-                    'lower' => 0.0,
-                    'upper' => 1.0
-                ],
-                'readOnly' => true
+			    'size' => 30,
+			    'eval' => 'double2'
+			]
+	    ],
+	    'untere_gewichtung' => [
+	        'exclude' => false,
+	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressourcenart.untere_gewichtung',
+	        'config' => [
+			    'type' => 'input',
+			    'size' => 30,
+			    'eval' => 'double2'
 			]
 	    ],
         'ressource' => [

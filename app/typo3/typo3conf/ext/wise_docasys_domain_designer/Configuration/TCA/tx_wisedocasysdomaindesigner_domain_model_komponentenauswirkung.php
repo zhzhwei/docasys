@@ -17,17 +17,13 @@ return [
             'endtime' => 'endtime',
         ],
 		'searchFields' => 'bemerkung,wert,wert_von,wert_bis,komponente,zielparameter',
-        'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_komponentenauswirkung.gif',
-        'hideTable' => true,
+        'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_komponentenauswirkung.gif'
     ],
     'interface' => [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bemerkung, wert, wert_von, wert_bis, komponente, zielparameter',
     ],
     'types' => [
-        '1' => ['showitem' => '
-            --div--; Allgemein, l10n_parent, l10n_diffsource, komponente, bemerkung,
-            --div--; Wirkungsgrad, zielparameter, wert, wert_von, wert_bis,
-        '],
+		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bemerkung, wert, wert_von, wert_bis, komponente, zielparameter, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
 		'sys_language_uid' => [
@@ -117,7 +113,7 @@ return [
 	        'config' => [
 			    'type' => 'text',
 			    'cols' => 40,
-			    'rows' => 5,
+			    'rows' => 15,
 			    'eval' => 'trim'
 			]
 	    ],
@@ -152,13 +148,12 @@ return [
 	        'exclude' => true,
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_komponentenauswirkung.komponente',
 	        'config' => [
-			    'type' => 'select',
-                'renderType' => 'selectSingle',
+			    'type' => 'inline',
 			    'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_komponententyp',
-			    'minitems' => 0,
-                'maxitems' => 1,
+			    'foreign_field' => 'komponentenauswirkung',
+			    'maxitems' => 9999,
 			    'appearance' => [
-			        'collapseAll' => 1,
+			        'collapseAll' => 0,
 			        'levelLinksPosition' => 'top',
 			        'showSynchronizationLink' => 1,
 			        'showPossibleLocalizationRecords' => 1,
@@ -170,13 +165,12 @@ return [
 	        'exclude' => true,
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_komponentenauswirkung.zielparameter',
 	        'config' => [
-			    'type' => 'select',
-                'renderType' => 'selectSingle',
+			    'type' => 'inline',
 			    'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_zielparameter',
-			    'minitems' => 0,
-                'maxitems' => 1,
+			    'foreign_field' => 'komponentenauswirkung',
+			    'maxitems' => 9999,
 			    'appearance' => [
-			        'collapseAll' => 1,
+			        'collapseAll' => 0,
 			        'levelLinksPosition' => 'top',
 			        'showSynchronizationLink' => 1,
 			        'showPossibleLocalizationRecords' => 1,

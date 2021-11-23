@@ -6,8 +6,7 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
-        'versioningWS' => true,
-        'default_sortby' => 'ORDER BY bezeichnung ASC',
+		'versioningWS' => true,
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -17,17 +16,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-		'searchFields' => 'bezeichnung,zweck,beschreibung,ist_buendel,hersteller,wert,einheit,art',
+		'searchFields' => 'bezeichnung,zweck,beschreibung,ist_buendel,hersteller,ressourcenart,wert,einheit,art',
         'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_ressource.gif'
     ],
     'interface' => [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bezeichnung, zweck, beschreibung, ist_buendel, hersteller, ressourcenart, wert, einheit, art',
     ],
     'types' => [
-          '1' => ['showitem' => '
-              --div--; Allgemein, l10n_parent, l10n_diffsource, bezeichnung, zweck, beschreibung,
-              --div--; Eigenschaften, ist_buendel, hersteller, wert, einheit, art
-          '],
+		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bezeichnung, zweck, beschreibung, ist_buendel, hersteller, ressourcenart, wert, einheit, art, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
 		'sys_language_uid' => [
@@ -126,7 +122,7 @@ return [
 	        'config' => [
 			    'type' => 'text',
 			    'cols' => 40,
-			    'rows' => 5,
+			    'rows' => 15,
 			    'eval' => 'trim'
 			]
 	    ],
@@ -134,9 +130,8 @@ return [
 	        'exclude' => true,
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressource.beschreibung',
 	        'config' => [
-			    'type' => 'text',
-			    'cols' => 40,
-			    'rows' => 5,
+			    'type' => 'input',
+			    'size' => 30,
 			    'eval' => 'trim'
 			],
 	    ],
@@ -169,15 +164,7 @@ return [
 			    'type' => 'select',
 			    'renderType' => 'selectSingle',
 			    'items' => [
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:not_applicable', -1],
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.1', 1],
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.2', 2],
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.3', 3],
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.4', 4],
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.5', 5],
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.6', 6],
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.7', 7],
+			        ['-- Label --', 0],
 			    ],
 			    'size' => 1,
 			    'maxitems' => 1,
@@ -200,9 +187,7 @@ return [
 			    'type' => 'select',
 			    'renderType' => 'selectSingle',
 			    'items' => [
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:unit.1', 1],
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:unit.2', 2],
+			        ['-- Label --', 0],
 			    ],
 			    'size' => 1,
 			    'maxitems' => 1,
@@ -213,13 +198,17 @@ return [
 	        'exclude' => true,
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressource.art',
 	        'config' => [
-			    'type' => 'select',
-			    'renderType' => 'selectSingle',
+			    'type' => 'inline',
 			    'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_ressourcenart',
 			    'foreign_field' => 'ressource',
-			    'default' => '',
-			    'size' => 1,
-			    'eval' => ''
+			    'maxitems' => 9999,
+			    'appearance' => [
+			        'collapseAll' => 0,
+			        'levelLinksPosition' => 'top',
+			        'showSynchronizationLink' => 1,
+			        'showPossibleLocalizationRecords' => 1,
+			        'showAllLocalizationLink' => 1
+			    ],
 			],
 	    ],
         'lsgressourceinput' => [

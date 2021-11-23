@@ -17,5 +17,4 @@ namespace Wise\WiseDocasysDomainDesigner\Domain\Repository;
  */
 class RessourcenartRepository extends \Wise\WiseDocasysDomainDesigner\Domain\Repository\AbstractRepository
 {
-    
-}
+    }

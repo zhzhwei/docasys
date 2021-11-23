@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2021-10-15T11:56:08Z" product-name="wise_docasys_domain_designer">
+		<header/>
+		<body>
+			<trans-unit id="bezeichnung.description">
+				<source>bezeichnung</source>
+			</trans-unit>
+			<trans-unit id="beschreibung.description">
+				<source>beschreibung</source>
+			</trans-unit>
+			<trans-unit id="komponentenart.description">
+				<source>komponentenart</source>
+			</trans-unit>
+			<trans-unit id="achsenanzahl.description">
+				<source>achsenanzahl</source>
+			</trans-unit>
+			<trans-unit id="fuehrungsart.description">
+				<source>fuehrungsart</source>
+			</trans-unit>
+			<trans-unit id="antriebsart.description">
+				<source>antriebsart</source>
+			</trans-unit>
+			<trans-unit id="auf_visualisierung_anzeigen.description">
+				<source>aufVisualisierungAnzeigen</source>
+			</trans-unit>
+			<trans-unit id="auf_visualisierung_x.description">
+				<source>aufVisualisierungX</source>
+			</trans-unit>
+			<trans-unit id="auf_visualisierung_y.description">
+				<source>aufVisualisierungY</source>
+			</trans-unit>
+			<trans-unit id="auf_visualisierung_breite.description">
+				<source>aufVisualisierungBreite</source>
+			</trans-unit>
+			<trans-unit id="auf_visualisierung_hoehe.description">
+				<source>aufVisualisierungHoehe</source>
+			</trans-unit>
+			<trans-unit id="bestandteile.description">
+				<source>bestandteile</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

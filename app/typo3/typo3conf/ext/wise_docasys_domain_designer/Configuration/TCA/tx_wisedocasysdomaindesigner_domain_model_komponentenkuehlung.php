@@ -23,9 +23,7 @@ return [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, beschreibung, kuehlungsart',
     ],
     'types' => [
-		'1' => ['showitem' => '
-            --div--; Allgemein, l10n_parent, l10n_diffsource, kuehlungsart, beschreibung
-        '],
+		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, beschreibung, kuehlungsart, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
 		'sys_language_uid' => [
@@ -115,7 +113,7 @@ return [
 	        'config' => [
 			    'type' => 'text',
 			    'cols' => 40,
-			    'rows' => 5,
+			    'rows' => 15,
 			    'eval' => 'trim'
 			]
 	    ],
@@ -125,13 +123,9 @@ return [
 	        'config' => [
 			    'type' => 'select',
 			    'renderType' => 'selectSingle',
-                'items' => [
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:not_applicable', -1],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:kuehlungsart.1', 1],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:kuehlungsart.2', 2],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:kuehlungsart.3', 3],
-                ],
+			    'items' => [
+			        ['-- Label --', 0],
+			    ],
 			    'size' => 1,
 			    'maxitems' => 1,
 			    'eval' => ''

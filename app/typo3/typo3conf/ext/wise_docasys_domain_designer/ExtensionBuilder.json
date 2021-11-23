@@ -4615,6 +4615,16 @@
                             "propertyName": "gewichtung",
                             "propertyType": "Float",
                             "uid": "222428503709"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "untereGewichtung",
+                            "propertyType": "Float",
+                            "uid": "1146590182845"
                         }
                     ]
                 },
@@ -5641,7 +5651,7 @@
         }
     ],
     "log": {
-        "last_modified": "2021-10-15 11:56",
+        "last_modified": "2021-11-23 08:04",
         "extension_builder_version": "7.6.18",
         "be_user": "user26 (26)"
     }

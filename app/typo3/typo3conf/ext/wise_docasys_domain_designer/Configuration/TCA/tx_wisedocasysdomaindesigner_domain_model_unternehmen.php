@@ -7,7 +7,6 @@ return [
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
 		'versioningWS' => true,
-        'default_sortby' => 'ORDER BY unternehmensname ASC',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -17,18 +16,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-		'searchFields' => 'unternehmensname,werkzeugmaschinen,verfuegbare_ressourcen',
+		'searchFields' => 'unternehmensname,werkzeugmaschinen,verfuegbare_ressourcen,verfuegbare_messverfahren',
         'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_unternehmen.gif'
     ],
     'interface' => [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, unternehmensname, werkzeugmaschinen, verfuegbare_ressourcen, verfuegbare_messverfahren',
     ],
     'types' => [
-		'1' => ['showitem' => '
-            --div--; Allgemein, l10n_parent, l10n_diffsource, unternehmensname,
-            --div--; Verfügbare Ressourcen, werkzeugmaschinen, verfuegbare_ressourcen, 
-            --div--; Verfügbare Messverfahren, verfuegbare_messverfahren,
-        '],
+		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, unternehmensname, werkzeugmaschinen, verfuegbare_ressourcen, verfuegbare_messverfahren, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
 		'sys_language_uid' => [
@@ -130,7 +125,7 @@ return [
 			    'foreign_field' => 'unternehmen',
 			    'maxitems' => 9999,
 			    'appearance' => [
-			        'collapseAll' => 1,
+			        'collapseAll' => 0,
 			        'levelLinksPosition' => 'top',
 			        'showSynchronizationLink' => 1,
 			        'showPossibleLocalizationRecords' => 1,
@@ -150,7 +145,6 @@ return [
 			    'autoSizeMax' => 30,
 			    'maxitems' => 9999,
 			    'multiple' => 0,
-                'enableMultiSelectFilterTextfield' => true,
 			    'wizards' => [
 			        '_PADDING' => 1,
 			        '_VERTICAL' => 1,
@@ -159,7 +153,8 @@ return [
 			                'name' => 'wizard_edit',
 			            ],
 			            'type' => 'popup',
-                        'icon' => 'actions-open',
+			            'title' => 'Edit', // todo define label: LLL:EXT:.../Resources/Private/Language/locallang_tca.xlf:wizard.edit
+			            'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
 			            'popup_onlyOpenIfSelected' => 1,
 			            'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
 			        ],
@@ -168,7 +163,8 @@ return [
 			                'name' => 'wizard_add',
 			            ],
 			            'type' => 'script',
-                        'icon' => 'actions-add',
+			            'title' => 'Create new', // todo define label: LLL:EXT:.../Resources/Private/Language/locallang_tca.xlf:wizard.add
+			            'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
 			            'params' => [
 			                'table' => 'tx_wisedocasysdomaindesigner_domain_model_ressource',
 			                'pid' => '###CURRENT_PID###',
@@ -178,45 +174,47 @@ return [
 			    ],
 			],
 	    ],
-        'verfuegbare_messverfahren' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_unternehmen.verfuegbare_messverfahren',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectMultipleSideBySide',
-                'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_messverfahren',
-                'MM' => 'tx_wisedocasysdomaindesigner_unternehmen_messverfahren_mm',
-                'size' => 10,
-                'autoSizeMax' => 30,
-                'maxitems' => 9999,
-                'multiple' => 0,
-                'wizards' => [
-                    '_PADDING' => 1,
-                    '_VERTICAL' => 1,
-                    'edit' => [
-                        'module' => [
-                            'name' => 'wizard_edit',
-                        ],
-                        'type' => 'popup',
-                        'icon' => 'actions-open',
-                        'popup_onlyOpenIfSelected' => 1,
-                        'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
-                    ],
-                    'add' => [
-                        'module' => [
-                            'name' => 'wizard_add',
-                        ],
-                        'type' => 'script',
-                        'icon' => 'actions-add',
-                        'params' => [
-                            'table' => 'tx_wisedocasysdomaindesigner_domain_model_messverfahren',
-                            'pid' => '###CURRENT_PID###',
-                            'setValue' => 'prepend'
-                        ],
-                    ],
-                ],
-            ],
-        ],
+	    'verfuegbare_messverfahren' => [
+	        'exclude' => true,
+	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_unternehmen.verfuegbare_messverfahren',
+	        'config' => [
+			    'type' => 'select',
+			    'renderType' => 'selectMultipleSideBySide',
+			    'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_messverfahren',
+			    'MM' => 'tx_wisedocasysdomaindesigner_unternehmen_messverfahren_mm',
+			    'size' => 10,
+			    'autoSizeMax' => 30,
+			    'maxitems' => 9999,
+			    'multiple' => 0,
+			    'wizards' => [
+			        '_PADDING' => 1,
+			        '_VERTICAL' => 1,
+			        'edit' => [
+			            'module' => [
+			                'name' => 'wizard_edit',
+			            ],
+			            'type' => 'popup',
+			            'title' => 'Edit', // todo define label: LLL:EXT:.../Resources/Private/Language/locallang_tca.xlf:wizard.edit
+			            'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_edit.gif',
+			            'popup_onlyOpenIfSelected' => 1,
+			            'JSopenParams' => 'height=350,width=580,status=0,menubar=0,scrollbars=1',
+			        ],
+			        'add' => [
+			            'module' => [
+			                'name' => 'wizard_add',
+			            ],
+			            'type' => 'script',
+			            'title' => 'Create new', // todo define label: LLL:EXT:.../Resources/Private/Language/locallang_tca.xlf:wizard.add
+			            'icon' => 'EXT:backend/Resources/Public/Images/FormFieldWizard/wizard_add.gif',
+			            'params' => [
+			                'table' => 'tx_wisedocasysdomaindesigner_domain_model_messverfahren',
+			                'pid' => '###CURRENT_PID###',
+			                'setValue' => 'prepend'
+			            ],
+			        ],
+			    ],
+			],
+	    ],
         'fachanwendungsfall' => [
             'config' => [
                 'type' => 'passthrough',
