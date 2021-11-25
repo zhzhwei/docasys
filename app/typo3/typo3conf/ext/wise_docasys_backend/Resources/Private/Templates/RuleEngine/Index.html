@@ -2,7 +2,7 @@
 <f:section name="content">
   <h1>Rule Engine</h1>  
   <!-- Definition der Entscheidungsregeln für den Recommender -->
-  <f:form name="rule-submit" action="index" method="post" style="width: 100%;">
+  <f:form name="rule-submit" action="index" method="post">
     <div class="container" style="width: 97%; position: absolute;"> 
       <div class="row">
         <label class="col-sm-3 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Unterkriterium</label>
@@ -27,27 +27,32 @@
       </f:for>
     </div>
 
-    <div style="width: 38%; right:25px; position: absolute;">
-      <p style="border:solid orange; width: 55%;">Die <strong>Gewichtung</strong>(links) dienen zur Berechnung der Aufwandsaussprägung der Bewertungskriterien für jedes Verfahren.</p>
+    <div style="width: 38%; right:35px; position: absolute;">
+      <p style="border:solid orange; width: 67%;">Die <strong>Gewichtung</strong>(links) dienen zur Berechnung der Aufwandsaussprägung der Bewertungskriterien für jedes Verfahren.</p>
       
-      <p style="margin-top: 25px; width: 55%;"><strong>Punkte</strong> mittels SMART-Methode vergeben: das wichtigste Kriterium bekommt 100 Punkte, die anderen bekommen je nach ihrer relativen Wichtigkeit in Bezug auf das wichtigste Kriterium Punkte zwischen 0 und 100 zugeordnet (100 = gleichwichtig, 50 = halb so wichtig etc.).</p>
+      <p style="margin-top: 35px; width: 67%;"><strong>Punkte</strong> mittels SMART-Methode vergeben: das wichtigste Kriterium bekommt 100 Punkte, die anderen bekommen je nach ihrer relativen Wichtigkeit in Bezug auf das wichtigste Kriterium Punkte zwischen 0 und 100 zugeordnet (100 = gleichwichtig, 50 = halb so wichtig etc.).</p>
 
-      <p style="margin-top: 25px; width: 55%; border: solid orange;">Diese <strong>Gewichtung</strong>(unten) werden für die vergleichende Bewertung der Verfahren untereinander genutzt.</p>
+      <p style="margin-top: 35px; width: 67%; border: solid orange;">Diese <strong>Gewichtung</strong>(unten) werden für die vergleichende Bewertung der Verfahren untereinander genutzt.</p>
         
-      <p style="margin-top:25px"><strong>AAN:</strong> Aufwand Anpassungsnotwendigkeit</p>
+      <p style="margin-top:35px "><strong>AAN:</strong> Aufwand Anpassungsnotwendigkeit</p>
       <p><strong>IS:</strong> Ingenieurstunden <strong>TS:</strong> Technikerstunden</p>
       <p><strong>FA:</strong> Fehlerauswirkungen <strong>WA:</strong> Wartungsaufwand</p>
       <p><strong>MSS:</strong> Maschinenstillstand <strong>Material:</strong> Materialbedarf</p>
       <p><strong>Software:</strong> Software <strong>Steuerung:</strong> Steuerungslizenzen</p>
 
-      <div style="width: 55%;" class="right padding">
-          <f:form.submit value="Abspeichern" id="save-submit" class="btn btn-primary" />
+      <div style="width: 67%; margin-top:25px" class="row">
+          <div class="col-sm-6"> 
+            <a href="{f:uri.action(action:'index')}" class="btn btn-info">RuleEngine zur&uuml;cksetzen</a>
+          </div> 
+          <div style="padding-left: 165px;" class="col-sm-6"> 
+            <f:form.submit value="Einreichen" id="save-submit" class="btn btn-primary" />
+          </div>
       </div>
     </div>
 
     <div class="container-fluid" style="padding-top: 480px;">  
       <div class="row bg-danger">
-        <label class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Kriterium</label>
+        <label class="col-sm-2 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Kriterium</label>
         <f:for each="{ressourcenArten}" as="ressourcenArt">
           <div class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">
             <f:switch expression="{ressourcenArt.name}">
@@ -62,7 +67,7 @@
             </f:switch>
           </div>
         </f:for>
-        <label class="col-sm-1 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Summe</label>
+        <label class="col-sm-2 text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Summe</label>
       </div>
 
       <div class="row">
@@ -70,21 +75,21 @@
       </div>
 
       <div class="row">
-        <label class="col-sm-1 text-center bg-success" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Punkte</label>
+        <label class="col-sm-2 text-center bg-success" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Punkte</label>
         <f:for each="{ressourcenArten}" as="ressourcenArt">
           <f:form.textfield property="punkte.{ressourcenArt.name}" class="col-sm-1 text-center" style="height: 32px;" value="{ressourcenArt.punkte}">
           </f:form.textfield>
         </f:for>
-        <f:form.textfield class="col-sm-1 text-center bg-success" style="height: 32px; border: gray;" value="{punkteSumme}"/>
+        <f:form.textfield class="col-sm-2 text-center bg-success" style="height: 32px; border: gray;" value="{punkteSumme}"/>
       </div>
 
       <div class="row">
-        <label class="col-sm-1 text-center bg-warning" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Gewichtung</label>
+        <label class="col-sm-2 text-center bg-warning" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Gewichtung</label>
         <f:for each="{ressourcenArten}" as="ressourcenArt">
           <f:form.textfield class="col-sm-1 text-center" style="height: 32px;" value="{ressourcenArt.untereGewichtung}">
           </f:form.textfield>
         </f:for>
-        <f:form.textfield class="col-sm-1 text-center bg-warning" style="height: 32px; border: gray;" value="100%"/>
+        <f:form.textfield class="col-sm-2 text-center bg-warning" style="height: 32px; border: gray;" value="100%"/>
       </div>
 
     </div>
