@@ -16,29 +16,45 @@
         {
             $ressourcenArten = $this->ressourcenartRepository->findAll();
             $ressourcenKategorien = [];
-            $Punktesummen = [];
-            $Punktesumme = 0;
+            $punkteSummen = [];
+            $punkteSumme = 0;
 
             foreach ($ressourcenArten as $art) {
-                $kategorie = $art->getKategorie();
                 // echo '<pre>'.var_export($art,true).'</pre>';
+                $kategorie = $art->getKategorie();
                 if (!in_array($kategorie,$ressourcenKategorien)) {
                     array_push($ressourcenKategorien,$kategorie);
                 }
-                $Punktesumme += $art->getPunkte();
-                $Punktesummen[$kategorie] += $art->getGewichtung();
             }
-            // echo '<pre>'.print_r($Punktesummen,true).'</pre>';
 
             foreach ($ressourcenArten as $art) {
-                // $art->setGewichtung($art->getPunkte()/$Punktesummen[$art->getKategorie()]);
-                $art->setGewichtung("20%");
+                $punkteSumme += $art->getPunkte();
             }
+            foreach ($ressourcenArten as $art) {
+                $art->setUntereGewichtung(round($art->getPunkte()/$punkteSumme,2));
+            }
+
+            $request = $this->request->getArguments();
+            if(isset($request['rule-submit'])) {
+                $punkteSumme = 0;
+                // echo '<pre>'.print_r($request,true).'</pre>';
+                foreach ($ressourcenArten as $art) {
+                    $art->setPunkte($request['rule-submit']['punkte'][$art->getName()]);
+                    $this->ressourcenartRepository->update($art);
+                    $punkteSumme += $art->getPunkte();
+                    $kategorie = $art->getKategorie();
+                    $punkteSummen[$kategorie] += $art->getPunkte();
+                }
+                foreach ($ressourcenArten as $art) {
+                    $art->setGewichtung($art->getPunkte()/$punkteSummen[$art->getKategorie()]);
+                }
+            }
+            // echo '<pre>'.print_r($punkteSummen,true).'</pre>';
 
             $this->view->assignMultiple([
                 'ressourcenArten' => $ressourcenArten,
                 'ressourcenKategorien' => $ressourcenKategorien,
-                'Punktesumme' => $Punktesumme,
+                'punkteSumme' => $punkteSumme,
             ]);
         }
     }

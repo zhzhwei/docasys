@@ -32,6 +32,13 @@ class Auswirkung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $bemerkung = '';
 
     /**
+     * tendenz
+     *
+     * @var int
+     */
+    protected $tendenz = 0;
+
+    /**
      * wert
      *
      * @var float
@@ -59,13 +66,6 @@ class Auswirkung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @cascade remove
      */
     protected $zielparameter = null;
-
-    /**
-     * tendenz
-     *
-     * @var int
-     */
-    protected $tendenz = 0;
 
     /**
      * Returns the bemerkung

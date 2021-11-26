@@ -24,6 +24,8 @@ class RessourcenartTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         parent::tearDown();
     }
 
+
+
     /**
      * @test
      */
@@ -88,6 +90,35 @@ class RessourcenartTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         self::assertAttributeEquals(
             3.14159265,
             'gewichtung',
+            $this->subject,
+            '',
+            0.000000001
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function getUntereGewichtungReturnsInitialValueForFloat()
+    {
+        self::assertSame(
+            0.0,
+            $this->subject->getUntereGewichtung()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setUntereGewichtungForFloatSetsUntereGewichtung()
+    {
+        $this->subject->setUntereGewichtung(3.14159265);
+
+        self::assertAttributeEquals(
+            3.14159265,
+            'untereGewichtung',
             $this->subject,
             '',
             0.000000001
