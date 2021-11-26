@@ -7,3 +7,4 @@ mysql/init/*
 mysql/run/*
 !mysql/init/dump-*.sql
 app/typo3/typo3temp/*
+app/typo3/uploads/tx_extensionbuilder/backups/
