@@ -24,8 +24,6 @@ class RessourceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         parent::tearDown();
     }
 
-
-
     /**
      * @test
      */
@@ -215,6 +213,34 @@ class RessourceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      * @test
      */
     public function setEinheitForIntSetsEinheit()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function getKostenReturnsInitialValueForInt()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setKostenForIntSetsKosten()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function getZeitaufwandReturnsInitialValueForInt()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setZeitaufwandForIntSetsZeitaufwand()
     {
     }
 

@@ -330,6 +330,24 @@
             <trans-unit id="ressourcenart.kategorie.3">
                 <source>Langzeitaufwand</source>
             </trans-unit>
+            <trans-unit id="ressource.kosten.1">
+                <source>&lt; 1000 EUR</source>
+            </trans-unit>
+            <trans-unit id="ressource.kosten.2">
+                <source>&lt; 5000 EUR</source>
+            </trans-unit>
+            <trans-unit id="ressource.kosten.3">
+                <source>&gt; 5000 EUR</source>
+            </trans-unit>
+            <trans-unit id="ressource.zeitaufwand.1">
+                <source>&lt; 3 Tage</source>
+            </trans-unit>
+            <trans-unit id="ressource.zeitaufwand.2">
+                <source>&lt; 10 Tage</source>
+            </trans-unit>
+            <trans-unit id="ressource.zeitaufwand.3">
+                <source>&gt; 10 Tage</source>
+            </trans-unit>
             <trans-unit id="lastfallart.1">
                 <source>Abkühlung</source>
             </trans-unit>

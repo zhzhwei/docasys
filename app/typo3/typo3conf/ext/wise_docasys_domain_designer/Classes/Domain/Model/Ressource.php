@@ -83,6 +83,20 @@ class Ressource extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $art = null;
 
     /**
+     * kosten
+     *
+     * @var int
+     */
+    protected $kosten = 0;
+
+    /**
+     * zeitaufwand
+     *
+     * @var int
+     */
+    protected $zeitaufwand = 0;
+
+    /**
      * Returns the bezeichnung
      *
      * @return string $bezeichnung
@@ -323,5 +337,47 @@ class Ressource extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setArt(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $art)
     {
         $this->art = $art;
+    }
+
+    /**
+     * Returns the kosten
+     *
+     * @return int $kosten
+     */
+    public function getKosten()
+    {
+        return $this->kosten;
+    }
+
+    /**
+     * Sets the kosten
+     *
+     * @param int $kosten
+     * @return void
+     */
+    public function setKosten($kosten)
+    {
+        $this->kosten = $kosten;
+    }
+
+    /**
+     * Returns the zeitaufwand
+     *
+     * @return int $zeitaufwand
+     */
+    public function getZeitaufwand()
+    {
+        return $this->zeitaufwand;
+    }
+
+    /**
+     * Sets the zeitaufwand
+     *
+     * @param int $zeitaufwand
+     * @return void
+     */
+    public function setZeitaufwand($zeitaufwand)
+    {
+        $this->zeitaufwand = $zeitaufwand;
     }
 }

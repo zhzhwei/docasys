@@ -16,14 +16,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-		'searchFields' => 'name,kategorie,punkte,gewichtung,untere_gewichtung',
+		'searchFields' => 'name,kategorie,punkte,gewichtung,individualpunkte,individualgewichtung',
         'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_ressourcenart.gif'
     ],
     'interface' => [
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, kategorie, punkte, gewichtung, untere_gewichtung',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, kategorie, punkte, gewichtung, individualpunkte, individualgewichtung',
     ],
     'types' => [
-		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, kategorie, punkte, gewichtung, untere_gewichtung, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, kategorie, punkte, gewichtung, individualpunkte, individualgewichtung, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
 		'sys_language_uid' => [
@@ -157,16 +157,16 @@ return [
                     'lower' => 0,
                     'upper' => 100
                 ],
-                'readOnly' => true
+               'readOnly' => true
 			]
 	    ],
-	    'gewichtung' => [
-	        'exclude' => false,
-	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressourcenart.gewichtung',
-	        'config' => [
-			    'type' => 'input',
-			    'size' => 3,
-			    'eval' => 'double2',
+        'gewichtung' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressourcenart.gewichtung',
+            'config' => [
+                'type' => 'input',
+                'size' => 3,
+                'eval' => 'double2',
                 'range' => [
                     'lower' => 0.0,
                     'upper' => 1.0
@@ -174,20 +174,34 @@ return [
                 'readOnly' => true
             ]
         ],
-	    'untere_gewichtung' => [
+	    'individualpunkte' => [
 	        'exclude' => false,
-	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressourcenart.untere_gewichtung',
+	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressourcenart.individualpunkte',
 	        'config' => [
-			    'type' => 'input',
-			    'size' => 3,
-			    'eval' => 'double2',
+                'type' => 'input',
+                'size' => 3,
+                'eval' => 'int',
+                'range' => [
+                    'lower' => 0,
+                    'upper' => 100
+                ],
+                'readOnly' => true
+			]
+	    ],
+        'individualgewichtung' => [
+            'exclude' => false,
+            'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressourcenart.individualgewichtung',
+            'config' => [
+                'type' => 'input',
+                'size' => 3,
+                'eval' => 'double2',
                 'range' => [
                     'lower' => 0.0,
                     'upper' => 1.0
-                 ],
-                 'readOnly' => true
-			]
-	    ],
+                ],
+                'readOnly' => true
+            ]
+        ],
         'ressource' => [
             'config' => [
                 'type' => 'passthrough',

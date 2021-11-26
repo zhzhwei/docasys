@@ -1115,6 +1115,26 @@
                             "propertyName": "einheit",
                             "propertyType": "Select",
                             "uid": "388445647651"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "kosten",
+                            "propertyType": "Select",
+                            "uid": "495226875466"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "zeitaufwand",
+                            "propertyType": "Select",
+                            "uid": "937836032649"
                         }
                     ]
                 },
@@ -4622,7 +4642,17 @@
                             "propertyDescription": "",
                             "propertyIsExcludeField": false,
                             "propertyIsRequired": false,
-                            "propertyName": "untereGewichtung",
+                            "propertyName": "individualpunkte",
+                            "propertyType": "Integer",
+                            "uid": "69636930940"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": false,
+                            "propertyIsRequired": false,
+                            "propertyName": "individualgewichtung",
                             "propertyType": "Float",
                             "uid": "1146590182845"
                         }
@@ -5651,7 +5681,7 @@
         }
     ],
     "log": {
-        "last_modified": "2021-11-23 08:04",
+        "last_modified": "2021-11-26 06:40",
         "extension_builder_version": "7.6.18",
         "be_user": "user26 (26)"
     }

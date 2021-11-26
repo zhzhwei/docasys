@@ -48,11 +48,18 @@ class Ressourcenart extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $gewichtung = 0.0;
 
     /**
-     * untereGewichtung
+     * individualgewichtung
      *
      * @var float
      */
-    protected $untereGewichtung = 0.0;
+    protected $individualgewichtung = 0.0;
+
+    /**
+     * individualpunkte
+     *
+     * @var int
+     */
+    protected $individualpunkte = 0;
 
     /**
      * Returns the name
@@ -139,23 +146,44 @@ class Ressourcenart extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the untereGewichtung
+     * Returns the individualgewichtung
      *
-     * @return float $untereGewichtung
+     * @return float individualgewichtung
      */
-    public function getUntereGewichtung()
+    public function getIndividualgewichtung()
     {
-        return $this->untereGewichtung;
+        return $this->individualgewichtung;
     }
 
     /**
-     * Sets the untereGewichtung
+     * Sets the individualgewichtung
      *
-     * @param float $untereGewichtung
+     * @param float $individualgewichtung
      * @return void
      */
-    public function setUntereGewichtung($untereGewichtung)
+    public function setIndividualgewichtung($individualgewichtung)
     {
-        $this->untereGewichtung = $untereGewichtung;
+        $this->individualgewichtung = $individualgewichtung;
+    }
+
+    /**
+     * Returns the individualpunkte
+     *
+     * @return int $individualpunkte
+     */
+    public function getIndividualpunkte()
+    {
+        return $this->individualpunkte;
+    }
+
+    /**
+     * Sets the individualpunkte
+     *
+     * @param int $individualpunkte
+     * @return void
+     */
+    public function setIndividualpunkte($individualpunkte)
+    {
+        $this->individualpunkte = $individualpunkte;
     }
 }

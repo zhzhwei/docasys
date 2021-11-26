@@ -17,16 +17,16 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-		'searchFields' => 'bezeichnung,zweck,beschreibung,ist_buendel,hersteller,wert,einheit,art',
+		'searchFields' => 'bezeichnung,zweck,beschreibung,ist_buendel,hersteller,wert,einheit,art,kosten,zeitaufwand',
         'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_ressource.gif'
     ],
     'interface' => [
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bezeichnung, zweck, beschreibung, ist_buendel, hersteller, ressourcenart, wert, einheit, art',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bezeichnung, zweck, beschreibung, ist_buendel, hersteller, ressourcenart, wert, einheit, art, kosten, zeitaufwand',
     ],
     'types' => [
           '1' => ['showitem' => '
               --div--; Allgemein, l10n_parent, l10n_diffsource, bezeichnung, zweck, beschreibung,
-              --div--; Eigenschaften, ist_buendel, hersteller, wert, einheit, art
+              --div--; Eigenschaften, ist_buendel, hersteller, wert, einheit, art, kosten, zeitaufwand
           '],
     ],
     'columns' => [
@@ -200,28 +200,63 @@ return [
 			    'type' => 'select',
 			    'renderType' => 'selectSingle',
 			    'items' => [
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:unit.1', 1],
-                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:unit.2', 2],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:unit.1', 1],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:unit.2', 2],
+                ],
+			    'size' => 1,
+			    'maxitems' => 1,
+			    'eval' => ''
+			],
+	    ],
+	    'kosten' => [
+	        'exclude' => true,
+	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressource.kosten',
+	        'config' => [
+			    'type' => 'select',
+			    'renderType' => 'selectSingle',
+			    'items' => [
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressource.kosten.1', 1],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressource.kosten.2', 2],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressource.kosten.3', 3],
 			    ],
 			    'size' => 1,
 			    'maxitems' => 1,
 			    'eval' => ''
 			],
 	    ],
-	    'art' => [
+	    'zeitaufwand' => [
 	        'exclude' => true,
-	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressource.art',
+	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressource.zeitaufwand',
 	        'config' => [
 			    'type' => 'select',
 			    'renderType' => 'selectSingle',
-			    'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_ressourcenart',
-			    'foreign_field' => 'ressource',
-			    'default' => '',
+			    'items' => [
+			        ['-- Label --', 0],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressource.zeitaufwand.1', 1],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressource.zeitaufwand.2', 2],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressource.zeitaufwand.3', 3],
+			    ],
 			    'size' => 1,
+			    'maxitems' => 1,
 			    'eval' => ''
 			],
 	    ],
+        'art' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressource.art',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_ressourcenart',
+                'foreign_field' => 'ressource',
+                'default' => '',
+                'size' => 1,
+                'eval' => ''
+            ],
+        ],
         'lsgressourceinput' => [
             'config' => [
                 'type' => 'passthrough',

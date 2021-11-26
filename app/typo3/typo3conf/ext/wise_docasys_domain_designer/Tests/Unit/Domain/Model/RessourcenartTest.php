@@ -24,8 +24,6 @@ class RessourcenartTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         parent::tearDown();
     }
 
-
-
     /**
      * @test
      */
@@ -100,11 +98,25 @@ class RessourcenartTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getUntereGewichtungReturnsInitialValueForFloat()
+    public function getIndividualpunkteReturnsInitialValueForInt()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setIndividualpunkteForIntSetsIndividualpunkte()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function getIndividualgewichtungReturnsInitialValueForFloat()
     {
         self::assertSame(
             0.0,
-            $this->subject->getUntereGewichtung()
+            $this->subject->getIndividualgewichtung()
         );
 
     }
@@ -112,13 +124,13 @@ class RessourcenartTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function setUntereGewichtungForFloatSetsUntereGewichtung()
+    public function setIndividualgewichtungForFloatSetsIndividualgewichtung()
     {
-        $this->subject->setUntereGewichtung(3.14159265);
+        $this->subject->setIndividualgewichtung(3.14159265);
 
         self::assertAttributeEquals(
             3.14159265,
-            'untereGewichtung',
+            'individualgewichtung',
             $this->subject,
             '',
             0.000000001

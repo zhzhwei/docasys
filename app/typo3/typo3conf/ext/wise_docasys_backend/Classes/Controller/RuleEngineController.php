@@ -1,9 +1,6 @@
 <?php
     namespace Wise\WiseDocasysBackend\Controller;
 
-    use TYPO3\CMS\Backend\Utility\BackendUtility;
-    use TYPO3\CMS\Core\Messaging\FlashMessage;
-
     class RuleEngineController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         /**
@@ -12,49 +9,99 @@
         */
         protected $ressourcenartRepository;
 
+        private $ressourcenarten;
+
+        private $ressourcenkategorien;
+
+        private function getAlleKategorien($ressourcenarten)
+        {
+            $kategorien = [];
+
+            foreach ($ressourcenarten as $art) {
+                $kategorie = $art->getKategorie();
+
+                if (!in_array($kategorie, $kategorien)) {
+                    array_push($kategorien, $kategorie);
+                }
+            }
+
+            return $kategorien;
+
+        }
+
+        private function ermittleGesamtpunkte($ressourcenarten, $punkteOderGewichtung)
+        {
+            $summe = 0;
+
+            foreach ($ressourcenarten as $art) {
+                $summe += ($punkteOderGewichtung == "punkte") ? $art->getIndividualpunkte() : $art->getIndividualgewichtung();
+            }
+
+            return $summe;
+        }
+
+        private function aktualisierePunkte($request, $ressourcenarten)
+        {
+            foreach ($ressourcenarten as $art) {
+                $name = $art->getName();
+                $art->setPunkte($request['rule-submit']['punkte'][$name]);
+                $art->setIndividualpunkte($request['rule-submit']['individualpunkte'][$name]);
+            }
+        }
+
+        private function aktualisiereGewichtungen($ressourcenarten)
+        {
+            $summeJeKategorie = [];
+
+            // Ermittle Gesamtpunkte je Kategorie
+            foreach ($ressourcenarten as $art) {
+                $kategorie = $art->getKategorie();
+                $punkte = $art->getPunkte();
+                $summeJeKategorie[$kategorie] += $punkte;
+            }
+
+            // Ermittle und speichere Gewichtung je Ressourcenart und Kategorie
+            foreach ($ressourcenarten as $art) {
+                $punkte = $art->getPunkte();
+                $kategorie = $art->getKategorie();
+                $summe = $summeJeKategorie[$kategorie];
+                $gewichtung = ($summe == 0) ? $summe : ($punkte / $summe);
+                $art->setGewichtung(round($gewichtung, 2));
+            }
+
+            // Ermittle und speichere Individualgewichtung
+            $summeIndividualpunkte = $this->ermittleGesamtpunkte($ressourcenarten, "punkte");
+            foreach ($ressourcenarten as $art) {
+                $punkte = $art->getIndividualpunkte();
+                $gewichtung = ($summeIndividualpunkte == 0) ? $summeIndividualpunkte : ($punkte / $summeIndividualpunkte);
+                $art->setIndividualgewichtung(round($gewichtung, 2));
+            }
+        }
+
+        private function speichereRessourcenarten($repository, $ressourcenarten)
+        {
+            foreach ($ressourcenarten as $art) {
+                $repository->update($art);
+            }
+        }
+
         public function indexAction()
         {
-            $ressourcenArten = $this->ressourcenartRepository->findAll();
-            $ressourcenKategorien = [];
-            $punkteSummen = [];
-            $punkteSumme = 0;
-
-            foreach ($ressourcenArten as $art) {
-                // echo '<pre>'.var_export($art,true).'</pre>';
-                $kategorie = $art->getKategorie();
-                if (!in_array($kategorie,$ressourcenKategorien)) {
-                    array_push($ressourcenKategorien,$kategorie);
-                }
-            }
-
-            foreach ($ressourcenArten as $art) {
-                $punkteSumme += $art->getPunkte();
-            }
-            foreach ($ressourcenArten as $art) {
-                $art->setUntereGewichtung(round($art->getPunkte()/$punkteSumme,2));
-            }
-
+            $this->ressourcenarten = ($this->ressourcenarten == null) ? $this->ressourcenartRepository->findAll() : $this->ressourcenarten;
+            $this->ressourcenkategorien = ($this->ressourcenkategorien == null) ? $this->getAlleKategorien($this->ressourcenarten) : $this->ressourcenkategorien;
             $request = $this->request->getArguments();
+
             if(isset($request['rule-submit'])) {
-                $punkteSumme = 0;
-                // echo '<pre>'.print_r($request,true).'</pre>';
-                foreach ($ressourcenArten as $art) {
-                    $art->setPunkte($request['rule-submit']['punkte'][$art->getName()]);
-                    $this->ressourcenartRepository->update($art);
-                    $punkteSumme += $art->getPunkte();
-                    $kategorie = $art->getKategorie();
-                    $punkteSummen[$kategorie] += $art->getPunkte();
-                }
-                foreach ($ressourcenArten as $art) {
-                    $art->setGewichtung($art->getPunkte()/$punkteSummen[$art->getKategorie()]);
-                }
+                $this->aktualisierePunkte($request, $this->ressourcenarten);
+                $this->aktualisiereGewichtungen($this->ressourcenarten);
+                $this->speichereRessourcenarten($this->ressourcenartRepository, $this->ressourcenarten);
             }
-            // echo '<pre>'.print_r($punkteSummen,true).'</pre>';
 
             $this->view->assignMultiple([
-                'ressourcenArten' => $ressourcenArten,
-                'ressourcenKategorien' => $ressourcenKategorien,
-                'punkteSumme' => $punkteSumme,
+                'ressourcenArten' => $this->ressourcenarten,
+                'ressourcenKategorien' => $this->ressourcenkategorien,
+                'summeIndividualpunkte' => $this->ermittleGesamtpunkte($this->ressourcenarten, "punkte"),
+                'summeIndividualgewichtung' => $this->ermittleGesamtpunkte($this->ressourcenarten, "gewichtung")
             ]);
         }
     }
