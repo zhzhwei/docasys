@@ -13,6 +13,60 @@
 
         private $ressourcenkategorien;
 
+        private $Materialbedarf;
+
+        private $Ingenieurstunden;
+
+        private $Technikerstunden;
+
+        private function regelMaterieller()
+        {
+            $Werte = [1,2,3];
+
+            foreach ($Werte as $material) {
+                foreach ($Werte as $ingenieur) {
+                    foreach ($Werte as $techniker) {
+                        $wert = [];
+                        array_push($wert, $material, $ingenieur, $techniker);
+                        $string=implode("",$wert);
+                        echo '<pre>' , var_dump($string) , '</pre>';
+                    }
+                }
+            }
+        }
+
+        private function regelImmaterieller()
+        {
+            $Werte = [1,2,3];
+            $Binary = [0,1];
+
+            foreach ($Werte as $maschinen) {
+                foreach ($Werte as $software) {
+                    foreach ($Binary as $steuerung) {
+                        $wert = [];
+                        array_push($wert, $maschinen, $software, $steuerung);
+                        $string=implode("",$wert);
+                        echo '<pre>' , var_dump($string) , '</pre>';
+                    }
+                }
+            }
+        }
+
+        private function regelLangzeit()
+        {
+            $Werte = [1,2,3];
+
+            foreach ($Werte as $wartung) {
+                foreach ($Werte as $aufwand) {
+                    $wert = [];
+                    array_push($wert, $wartung, $aufwand);
+                    $string=implode("",$wert);
+                    echo '<pre>' , var_dump($string) , '</pre>';
+                }
+            }
+        }
+
+
         private function getAlleKategorien($ressourcenarten)
         {
             $kategorien = [];
@@ -87,6 +141,13 @@
 
         public function indexAction()
         {
+            echo '<pre>' , var_dump("11111") , '</pre>';
+            echo '<pre>' , var_dump("11111") , '</pre>';
+
+            // $this->regelMaterieller();
+            // $this->regelImmaterieller();
+            $this->regelLangzeit();
+
             $this->ressourcenarten = ($this->ressourcenarten == null) ? $this->ressourcenartRepository->findAll() : $this->ressourcenarten;
             $this->ressourcenkategorien = ($this->ressourcenkategorien == null) ? $this->getAlleKategorien($this->ressourcenarten) : $this->ressourcenkategorien;
             $request = $this->request->getArguments();
@@ -103,6 +164,7 @@
                 'summeIndividualpunkte' => $this->ermittleGesamtpunkte($this->ressourcenarten, "punkte"),
                 'summeIndividualgewichtung' => $this->ermittleGesamtpunkte($this->ressourcenarten, "gewichtung")
             ]);
+
         }
     }
 ?>
