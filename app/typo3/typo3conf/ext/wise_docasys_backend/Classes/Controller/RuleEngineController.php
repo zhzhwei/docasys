@@ -19,49 +19,81 @@
 
         private $Technikerstunden;
 
-        private function regelMaterieller()
+        private function regelMaterieller($ressourcenarten)
         {
             $Werte = [1,2,3];
 
             foreach ($Werte as $material) {
                 foreach ($Werte as $ingenieur) {
                     foreach ($Werte as $techniker) {
-                        $wert = [];
-                        array_push($wert, $material, $ingenieur, $techniker);
-                        $string=implode("",$wert);
-                        echo '<pre>' , var_dump($string) , '</pre>';
+                        $resultMaterieller = 0;
+                        foreach ($ressourcenarten as $art) {
+                            if ($art->getKategorie() == 2) {
+                                if ($art->getName() == 1) {
+                                    $resultMaterieller += $material * $art->getGewichtung();
+                                }
+                                elseif ($art->getName() == 2) {
+                                    $resultMaterieller += $ingenieur * $art->getGewichtung();
+                                }
+                                elseif ($art->getName() == 3) {
+                                    $resultMaterieller += $techniker * $art->getGewichtung();
+                                }
+                            }
+                        }
+                        echo '<pre>' , var_dump($resultMaterieller) , '</pre>';
                     }
                 }
             }
+            echo '<pre>' , var_dump("--------------------") , '</pre>';
         }
 
-        private function regelImmaterieller()
+        private function regelImmaterieller($ressourcenarten)
         {
             $Werte = [1,2,3];
-            $Binary = [0,1];
+            $Binary = [1,0];
 
             foreach ($Werte as $maschinen) {
                 foreach ($Werte as $software) {
                     foreach ($Binary as $steuerung) {
-                        $wert = [];
-                        array_push($wert, $maschinen, $software, $steuerung);
-                        $string=implode("",$wert);
-                        echo '<pre>' , var_dump($string) , '</pre>';
+                        $resultImmaterieller = 0;
+                        foreach ($ressourcenarten as $art) {
+                            if ($art->getKategorie() == 1) {
+                                if ($art->getName() == 4) {
+                                    $resultImmaterieller += $maschinen * $art->getGewichtung();
+                                }
+                                elseif ($art->getName() == 5) {
+                                    $resultImmaterieller += $software * $art->getGewichtung();
+                                }
+                                elseif ($art->getName() == 6) {
+                                    $resultImmaterieller += $steuerung * $art->getGewichtung();
+                                }
+                            }
+                        }
+                        echo '<pre>' , var_dump($resultImmaterieller) , '</pre>';
                     }
                 }
             }
+            echo '<pre>' , var_dump("--------------------") , '</pre>';
         }
 
-        private function regelLangzeit()
+        private function regelLangzeit($ressourcenarten)
         {
             $Werte = [1,2,3];
 
             foreach ($Werte as $wartung) {
                 foreach ($Werte as $aufwand) {
-                    $wert = [];
-                    array_push($wert, $wartung, $aufwand);
-                    $string=implode("",$wert);
-                    echo '<pre>' , var_dump($string) , '</pre>';
+                    $resultLangzeit = 0;
+                    foreach ($ressourcenarten as $art) {
+                        if ($art->getKategorie() == 3) {
+                            if ($art->getName() == 7) {
+                                $resultLangzeit += $wartung * $art->getGewichtung();
+                            }
+                            elseif ($art->getName() == 8) {
+                                $resultLangzeit += $aufwand * $art->getGewichtung();
+                            }
+                        }
+                    }
+                    echo '<pre>' , var_dump($resultLangzeit) , '</pre>';
                 }
             }
         }
@@ -144,10 +176,6 @@
             echo '<pre>' , var_dump("11111") , '</pre>';
             echo '<pre>' , var_dump("11111") , '</pre>';
 
-            // $this->regelMaterieller();
-            // $this->regelImmaterieller();
-            $this->regelLangzeit();
-
             $this->ressourcenarten = ($this->ressourcenarten == null) ? $this->ressourcenartRepository->findAll() : $this->ressourcenarten;
             $this->ressourcenkategorien = ($this->ressourcenkategorien == null) ? $this->getAlleKategorien($this->ressourcenarten) : $this->ressourcenkategorien;
             $request = $this->request->getArguments();
@@ -156,6 +184,10 @@
                 $this->aktualisierePunkte($request, $this->ressourcenarten);
                 $this->aktualisiereGewichtungen($this->ressourcenarten);
                 $this->speichereRessourcenarten($this->ressourcenartRepository, $this->ressourcenarten);
+
+                $this->regelMaterieller($this->ressourcenarten);
+                $this->regelImmaterieller($this->ressourcenarten);
+                $this->regelLangzeit($this->ressourcenarten);
             }
 
             $this->view->assignMultiple([
