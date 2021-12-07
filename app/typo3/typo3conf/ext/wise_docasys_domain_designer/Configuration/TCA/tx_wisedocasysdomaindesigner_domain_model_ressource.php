@@ -243,19 +243,17 @@ return [
 			    'eval' => ''
 			],
 	    ],
-        'art' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressource.art',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_ressourcenart',
-                'foreign_field' => 'ressource',
-                'default' => '',
-                'size' => 1,
-                'eval' => ''
-            ],
-        ],
+	    'art' => [
+	        'exclude' => true,
+	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_ressource.art',
+	        'config' => [
+			    'type' => 'select',
+			    'renderType' => 'selectSingle',
+			    'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_ressourcenart',
+			    'minitems' => 0,
+			    'maxitems' => 1,
+			],
+	    ],
         'lsgressourceinput' => [
             'config' => [
                 'type' => 'passthrough',

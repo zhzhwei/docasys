@@ -48,18 +48,18 @@ class Ressourcenart extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $gewichtung = 0.0;
 
     /**
-     * individualgewichtung
-     *
-     * @var float
-     */
-    protected $individualgewichtung = 0.0;
-
-    /**
      * individualpunkte
      *
      * @var int
      */
     protected $individualpunkte = 0;
+
+    /**
+     * individualgewichtung
+     *
+     * @var float
+     */
+    protected $individualgewichtung = 0.0;
 
     /**
      * Returns the name

@@ -1144,9 +1144,9 @@
                             "foreignRelationClass": "",
                             "lazyLoading": false,
                             "propertyIsExcludeField": true,
-                            "relationDescription": "",
+                            "relationDescription": "Ressourcenart",
                             "relationName": "art",
-                            "relationType": "zeroToMany",
+                            "relationType": "manyToOne",
                             "relationWire": "[wired]",
                             "renderType": "selectSingle",
                             "uid": "476119632385"
@@ -5681,7 +5681,7 @@
         }
     ],
     "log": {
-        "last_modified": "2021-11-26 06:40",
+        "last_modified": "2021-12-07 07:30",
         "extension_builder_version": "7.6.18",
         "be_user": "user26 (26)"
     }

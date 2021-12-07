@@ -249,9 +249,8 @@ class RessourceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function getArtReturnsInitialValueForRessourcenart()
     {
-        $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         self::assertEquals(
-            $newObjectStorage,
+            null,
             $this->subject->getArt()
         );
 
@@ -260,53 +259,16 @@ class RessourceTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function setArtForObjectStorageContainingRessourcenartSetsArt()
+    public function setArtForRessourcenartSetsArt()
     {
-        $art = new \Wise\WiseDocasysDomainDesigner\Domain\Model\Ressourcenart();
-        $objectStorageHoldingExactlyOneArt = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $objectStorageHoldingExactlyOneArt->attach($art);
-        $this->subject->setArt($objectStorageHoldingExactlyOneArt);
+        $artFixture = new \Wise\WiseDocasysDomainDesigner\Domain\Model\Ressourcenart();
+        $this->subject->setArt($artFixture);
 
         self::assertAttributeEquals(
-            $objectStorageHoldingExactlyOneArt,
+            $artFixture,
             'art',
             $this->subject
         );
-
-    }
-
-    /**
-     * @test
-     */
-    public function addArtToObjectStorageHoldingArt()
-    {
-        $art = new \Wise\WiseDocasysDomainDesigner\Domain\Model\Ressourcenart();
-        $artObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->setMethods(['attach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $artObjectStorageMock->expects(self::once())->method('attach')->with(self::equalTo($art));
-        $this->inject($this->subject, 'art', $artObjectStorageMock);
-
-        $this->subject->addArt($art);
-    }
-
-    /**
-     * @test
-     */
-    public function removeArtFromObjectStorageHoldingArt()
-    {
-        $art = new \Wise\WiseDocasysDomainDesigner\Domain\Model\Ressourcenart();
-        $artObjectStorageMock = $this->getMockBuilder(\TYPO3\CMS\Extbase\Persistence\ObjectStorage::class)
-            ->setMethods(['detach'])
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $artObjectStorageMock->expects(self::once())->method('detach')->with(self::equalTo($art));
-        $this->inject($this->subject, 'art', $artObjectStorageMock);
-
-        $this->subject->removeArt($art);
 
     }
 }

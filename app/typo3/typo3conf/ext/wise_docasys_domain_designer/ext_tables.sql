@@ -366,7 +366,7 @@ CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_ressource (
 	einheit int(11) DEFAULT '0' NOT NULL,
 	kosten int(11) DEFAULT '0' NOT NULL,
 	zeitaufwand int(11) DEFAULT '0' NOT NULL,
-	art int(11) unsigned DEFAULT '0' NOT NULL,
+	art int(11) unsigned DEFAULT '0',
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -2033,8 +2033,6 @@ CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_ressourcenart (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-	ressource int(11) unsigned DEFAULT '0' NOT NULL,
-
 	name int(11) DEFAULT '0' NOT NULL,
 	kategorie int(11) DEFAULT '0' NOT NULL,
 	punkte int(11) DEFAULT '0' NOT NULL,
@@ -2249,15 +2247,6 @@ CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_loesung (
 CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_komponententyp (
 
 	modell int(11) unsigned DEFAULT '0' NOT NULL,
-
-);
-
-#
-# Table structure for table 'tx_wisedocasysdomaindesigner_domain_model_ressourcenart'
-#
-CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_ressourcenart (
-
-	ressource int(11) unsigned DEFAULT '0' NOT NULL,
 
 );
 
