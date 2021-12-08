@@ -50,11 +50,11 @@
         private function regelImmaterieller($ressourcenarten)
         {
             $Werte = [1,2,3];
-            $Binary = [1,0];
+            $Binary = [3,1];
 
-            foreach ($Werte as $maschinen) {
-                foreach ($Werte as $software) {
-                    foreach ($Binary as $steuerung) {
+            foreach ($Binary as $steuerung) {
+                foreach ($Werte as $maschinen) {
+                    foreach ($Werte as $software) {
                         $resultImmaterieller = 0;
                         foreach ($ressourcenarten as $art) {
                             if ($art->getKategorie() == 1) {
