@@ -13,11 +13,19 @@
 
         private $ressourcenkategorien;
 
-        private $Materialbedarf;
+        /**
+        * @var \Wise\WiseDocasysDomainDesigner\Domain\Repository\LoesungRepository
+        * @inject
+        */
+        protected $loesungRepository;
 
-        private $Ingenieurstunden;
+        private $loesungsarten;
 
-        private $Technikerstunden;
+        /**
+        * @var \Wise\WiseDocasysDomainDesigner\Domain\Repository\LsgRessourceInputRepository
+        * @inject
+        */
+        protected $lsgRessourceInputRepository;
 
         private function regelMaterieller($ressourcenarten)
         {
@@ -180,14 +188,45 @@
             $this->ressourcenkategorien = ($this->ressourcenkategorien == null) ? $this->getAlleKategorien($this->ressourcenarten) : $this->ressourcenkategorien;
             $request = $this->request->getArguments();
 
+            $loesungsarten = $this->loesungRepository->findAll();
+            foreach ($loesungsarten as $loesungsart) {
+                $loesung = $loesungsart->getLoesungsbezeichnung();
+                $arbeitsschritte = $loesungsart->getArbeitsschritte();
+
+                echo '<pre>' , var_dump('solution:----------'.$loesung) , '</pre>';
+
+                foreach ($arbeitsschritte as $arbeitsschritt) {
+                    echo '<pre>' , var_dump($arbeitsschritt->getBezeichnung()) , '</pre>';
+                }
+
+                // Erste Methode(DEV)
+                // $inputressourcen = $loesungsart->getInputRessource();
+                // foreach ($inputressourcen as $inputressource) {
+                //     $ressouren = $inputressource->getRessource();
+                //     foreach ($ressouren as $ressource)
+                //         echo '<pre>' , var_dump($ressource->getBezeichnung().$ressource->getKosten()) , '</pre>';
+                // }
+            }
+            echo '<pre>' , var_dump('--------------------------------------') , '</pre>';
+            echo '<pre>' , var_dump('--------------------------------------') , '</pre>';
+            // Zweite Methode(DEV)
+            $inputressourcen = $this->lsgRessourceInputRepository->findAll();
+            foreach ($inputressourcen as $inputressource) {
+                $ressouren = $inputressource->getRessource();
+                foreach ($ressouren as $ressource)
+                    echo '<pre>' , var_dump($ressource->getBezeichnung().'------'.$ressource->getKosten()) , '</pre>';
+            }
+    
+        
             if(isset($request['rule-submit'])) {
+                // echo '<pre>' , var_dump($request['rule-submit']) , '</pre>';
                 $this->aktualisierePunkte($request, $this->ressourcenarten);
                 $this->aktualisiereGewichtungen($this->ressourcenarten);
                 $this->speichereRessourcenarten($this->ressourcenartRepository, $this->ressourcenarten);
 
-                $this->regelMaterieller($this->ressourcenarten);
-                $this->regelImmaterieller($this->ressourcenarten);
-                $this->regelLangzeit($this->ressourcenarten);
+                // $this->regelMaterieller($this->ressourcenarten);
+                // $this->regelImmaterieller($this->ressourcenarten);
+                // $this->regelLangzeit($this->ressourcenarten);
             }
 
             $this->view->assignMultiple([
