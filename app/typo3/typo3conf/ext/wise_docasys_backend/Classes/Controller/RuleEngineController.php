@@ -114,7 +114,7 @@
             $durchschnittskosten = [];
             foreach ($ressourcenarten as $ressourcenart) {
                 if($gesamtzahl[$ressourcenart->getName()] !=0 ){
-                    $durchschnittskosten[$ressourcenart->getName()] = $gesamtkosten[$ressourcenart->getName()] / $gesamtzahl[$ressourcenart->getName()];
+                    $durchschnittskosten[$ressourcenart->getName()] = ceil($gesamtkosten[$ressourcenart->getName()] / $gesamtzahl[$ressourcenart->getName()]);
                 }
                 echo '<pre>' , var_dump($durchschnittskosten[$ressourcenart->getName()]) , '</pre>';
             }
@@ -146,24 +146,22 @@
                 }
             }
             echo '<pre>' , var_dump($gesamtpunktImmaterieller,$gesamtpunktMaterieller,$gesamtpunktLangzeitaufwand) , '</pre>';
-
             //Gewichtungen wieder berechnen
             foreach ($tempressourcen as $tempressource) {
                 foreach ($ressourcenarten as $ressourcenart) {
                     if ($tempressource == $ressourcenart->getName()) {
                         if ($ressourcenart->getKategorie() == 1) {
-                            $ressourcenart->setGewichtung($ressourcenart->getPunkte() / $gesamtpunktImmaterieller);
+                            $ressourcenart->setGewichtung(round($ressourcenart->getPunkte() / $gesamtpunktImmaterieller, 3));
                         }
                         elseif ($ressourcenart->getKategorie() == 2) {
-                            $ressourcenart->setGewichtung($ressourcenart->getPunkte() / $gesamtpunktMaterieller);
+                            $ressourcenart->setGewichtung(round($ressourcenart->getPunkte() / $gesamtpunktMaterieller, 3));
                         }
                         elseif ($ressourcenart->getKategorie() == 3) {
-                            $ressourcenart->setGewichtung($ressourcenart->getPunkte() / $gesamtpunktLangzeitaufwand);
+                            $ressourcenart->setGewichtung(round($ressourcenart->getPunkte() / $gesamtpunktLangzeitaufwand, 3));
                         }
                     }
                 }
             }
-
             //Result berechnen
             $resultMaterieller = 0.0;
             $resultImmaterieller = 0.0;
@@ -180,7 +178,7 @@
                 }
             }
 
-            $result = [$resultMaterieller, $resultImmaterieller, $resultLangzeitaufwand];
+            $result = [round($resultMaterieller,2), round($resultImmaterieller,2), round($resultLangzeitaufwand,2)];
             return $result;
         }
 
