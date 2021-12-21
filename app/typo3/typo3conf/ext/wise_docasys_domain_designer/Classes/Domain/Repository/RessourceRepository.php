@@ -15,6 +15,6 @@ namespace Wise\WiseDocasysDomainDesigner\Domain\Repository;
 /**
  * The repository for Ressourcenarts
  */
-class RessourcenartRepository extends \Wise\WiseDocasysDomainDesigner\Domain\Repository\AbstractRepository
+class RessourceRepository extends \Wise\WiseDocasysDomainDesigner\Domain\Repository\AbstractRepository
 {
 }

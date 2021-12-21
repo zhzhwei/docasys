@@ -27,86 +27,12 @@
         */
         protected $lsgRessourceInputRepository;
 
-        private function regelMaterieller($ressourcenarten)
-        {
-            $Werte = [1,2,3];
-
-            foreach ($Werte as $material) {
-                foreach ($Werte as $ingenieur) {
-                    foreach ($Werte as $techniker) {
-                        $resultMaterieller = 0;
-                        foreach ($ressourcenarten as $art) {
-                            if ($art->getKategorie() == 2) {
-                                if ($art->getName() == 1) {
-                                    $resultMaterieller += $material * $art->getGewichtung();
-                                }
-                                elseif ($art->getName() == 2) {
-                                    $resultMaterieller += $ingenieur * $art->getGewichtung();
-                                }
-                                elseif ($art->getName() == 3) {
-                                    $resultMaterieller += $techniker * $art->getGewichtung();
-                                }
-                            }
-                        }
-                        echo '<pre>' , var_dump($resultMaterieller) , '</pre>';
-                    }
-                }
-            }
-            echo '<pre>' , var_dump("--------------------") , '</pre>';
-        }
-
-        private function regelImmaterieller($ressourcenarten)
-        {
-            $Werte = [1,2,3];
-            $Binary = [3,1];
-
-            foreach ($Binary as $steuerung) {
-                foreach ($Werte as $maschinen) {
-                    foreach ($Werte as $software) {
-                        $resultImmaterieller = 0;
-                        foreach ($ressourcenarten as $art) {
-                            if ($art->getKategorie() == 1) {
-                                if ($art->getName() == 4) {
-                                    $resultImmaterieller += $maschinen * $art->getGewichtung();
-                                }
-                                elseif ($art->getName() == 5) {
-                                    $resultImmaterieller += $software * $art->getGewichtung();
-                                }
-                                elseif ($art->getName() == 6) {
-                                    $resultImmaterieller += $steuerung * $art->getGewichtung();
-                                }
-                            }
-                        }
-                        echo '<pre>' , var_dump($resultImmaterieller) , '</pre>';
-                    }
-                }
-            }
-            echo '<pre>' , var_dump("--------------------") , '</pre>';
-        }
-
-        private function regelLangzeit($ressourcenarten)
-        {
-            $Werte = [1,2,3];
-
-            foreach ($Werte as $wartung) {
-                foreach ($Werte as $aufwand) {
-                    $resultLangzeit = 0;
-                    foreach ($ressourcenarten as $art) {
-                        if ($art->getKategorie() == 3) {
-                            if ($art->getName() == 7) {
-                                $resultLangzeit += $wartung * $art->getGewichtung();
-                            }
-                            elseif ($art->getName() == 8) {
-                                $resultLangzeit += $aufwand * $art->getGewichtung();
-                            }
-                        }
-                    }
-                    echo '<pre>' , var_dump($resultLangzeit) , '</pre>';
-                }
-            }
-        }
-
-
+        /**
+        * @var \Wise\WiseDocasysDomainDesigner\Domain\Repository\RessourceRepository
+        * @inject
+        */
+        protected $ressourceRepository;
+        
         private function getAlleKategorien($ressourcenarten)
         {
             $kategorien = [];
@@ -179,6 +105,44 @@
             }
         }
 
+        private function GesamtwertJeArbeitsschritt($ressourcen,$ressourcenarten)
+        {
+            $gesamtwert = [];
+            $gesamtzahl = [];
+            $durchschnittswert = [];
+            $result = [];
+            $resultMaterieller = 0.0;
+            $resultImmaterieller = 0.0;
+            $resultLangzeit = 0.0;
+            //gesamtwert und gesamtzahl berechnen
+            foreach ($ressourcen as $ressource) {
+                $gesamtwert[$ressource[0]] += $ressource[1];
+                $gesamtzahl[$ressource[0]] += 1;
+            }
+            //durchschnittswert berechnen
+            foreach ($ressourcenarten as $ressourcenart) {
+                if($gesamtzahl[$ressourcenart->getName()] !=0 ){
+                    $durchschnittswert[$ressourcenart->getName()] = $gesamtwert[$ressourcenart->getName()]/$gesamtzahl[$ressourcenart->getName()];
+                }
+                echo '<pre>' , var_dump($durchschnittswert[$ressourcenart->getName()]) , '</pre>';
+            }
+            //result berechnen
+            foreach ($ressourcenarten as $ressourcenart) {
+                if ($ressourcenart->getKategorie() == 1) {
+                    $resultImmaterieller += $durchschnittswert[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
+                }   
+                elseif ($ressourcenart->getKategorie() == 2) {
+                    $resultMaterieller += $durchschnittswert[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
+                }
+                elseif ($ressourcenart->getKategorie() == 3) {
+                    $resultLangzeit += $durchschnittswert[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
+                }
+            }
+
+            $result = [$resultMaterieller,$resultImmaterieller,$resultLangzeit];
+            return $result;
+        }
+
         public function indexAction()
         {
             echo '<pre>' , var_dump("11111") , '</pre>';
@@ -187,46 +151,31 @@
             $this->ressourcenarten = ($this->ressourcenarten == null) ? $this->ressourcenartRepository->findAll() : $this->ressourcenarten;
             $this->ressourcenkategorien = ($this->ressourcenkategorien == null) ? $this->getAlleKategorien($this->ressourcenarten) : $this->ressourcenkategorien;
             $request = $this->request->getArguments();
-
             $loesungsarten = $this->loesungRepository->findAll();
+
             foreach ($loesungsarten as $loesungsart) {
                 $loesung = $loesungsart->getLoesungsbezeichnung();
                 $arbeitsschritte = $loesungsart->getArbeitsschritte();
-
-                echo '<pre>' , var_dump('solution:----------'.$loesung) , '</pre>';
-
+                // echo '<pre>' , var_dump('solution:----------'.$loesung) , '</pre>';
                 foreach ($arbeitsschritte as $arbeitsschritt) {
-                    echo '<pre>' , var_dump($arbeitsschritt->getBezeichnung()) , '</pre>';
+                    echo '<pre>' , var_dump('Arbeitsschritt:----------'.$arbeitsschritt->getBezeichnung()) , '</pre>';
+                    $inputressourcen = $arbeitsschritt->getIRe();
+                    $ressourcen = [];
+                    foreach ($inputressourcen as $inputressource) {
+                        $kosten = $inputressource->getKosten();
+                        $art = $inputressource->getArt()->getName();
+                        array_push($ressourcen,array($art,$kosten));
+                    }
+                    // echo '<pre>' , var_dump($ressourcen) , '</pre>';
+                    echo '<pre>' , var_dump($this->GesamtwertJeArbeitsschritt($ressourcen,$this->ressourcenarten)) , '</pre>';
+                    // $this->GesamtwertJeArbeitsschritt($ressourcen,$this->ressourcenarten);
                 }
-
-                // Erste Methode(DEV)
-                // $inputressourcen = $loesungsart->getInputRessource();
-                // foreach ($inputressourcen as $inputressource) {
-                //     $ressouren = $inputressource->getRessource();
-                //     foreach ($ressouren as $ressource)
-                //         echo '<pre>' , var_dump($ressource->getBezeichnung().$ressource->getKosten()) , '</pre>';
-                // }
             }
-            echo '<pre>' , var_dump('--------------------------------------') , '</pre>';
-            echo '<pre>' , var_dump('--------------------------------------') , '</pre>';
-            // Zweite Methode(DEV)
-            $inputressourcen = $this->lsgRessourceInputRepository->findAll();
-            foreach ($inputressourcen as $inputressource) {
-                $ressouren = $inputressource->getRessource();
-                foreach ($ressouren as $ressource)
-                    echo '<pre>' , var_dump($ressource->getBezeichnung().'------'.$ressource->getKosten()) , '</pre>';
-            }
-    
         
             if(isset($request['rule-submit'])) {
-                // echo '<pre>' , var_dump($request['rule-submit']) , '</pre>';
                 $this->aktualisierePunkte($request, $this->ressourcenarten);
                 $this->aktualisiereGewichtungen($this->ressourcenarten);
                 $this->speichereRessourcenarten($this->ressourcenartRepository, $this->ressourcenarten);
-
-                // $this->regelMaterieller($this->ressourcenarten);
-                // $this->regelImmaterieller($this->ressourcenarten);
-                // $this->regelLangzeit($this->ressourcenarten);
             }
 
             $this->view->assignMultiple([
