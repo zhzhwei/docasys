@@ -101,22 +101,22 @@
 
         private function resultJeLoesung($ressourcen, $ressourcenarten)
         {
-            $gesamtkosten = [];
+            $gesamtwerte = [];
             $gesamtzahl = [];
 
-            //Gesamtkosten und Gesamtzahl berechnen
+            //Gesamtwerte und Gesamtzahl berechnen
             foreach ($ressourcen as $ressource) {
-                $gesamtkosten[$ressource[0]] += $ressource[1];
+                $gesamtwerte[$ressource[0]] += $ressource[1];
                 $gesamtzahl[$ressource[0]] += 1;
             }
 
-            //Durchschnittskosten berechnen
-            $durchschnittskosten = [];
+            //Durchschnittswerte berechnen
+            $durchschnittswerte = [];
             foreach ($ressourcenarten as $ressourcenart) {
-                if($gesamtzahl[$ressourcenart->getName()] !=0 ){
-                    $durchschnittskosten[$ressourcenart->getName()] = ceil($gesamtkosten[$ressourcenart->getName()] / $gesamtzahl[$ressourcenart->getName()]);
+                if($gesamtzahl[$ressourcenart->getName()] != 0 ){
+                    $durchschnittswerte[$ressourcenart->getName()] = ceil($gesamtwerte[$ressourcenart->getName()] / $gesamtzahl[$ressourcenart->getName()]);
                 }
-                echo '<pre>' , var_dump($durchschnittskosten[$ressourcenart->getName()]) , '</pre>';
+                // echo '<pre>' , var_dump($durchschnittswerte[$ressourcenart->getName()]) , '</pre>';
             }
 
             //Gesamtpunkte je nach Kategorien wieder berechnen
@@ -145,19 +145,19 @@
                     }
                 }
             }
-            echo '<pre>' , var_dump($gesamtpunktImmaterieller,$gesamtpunktMaterieller,$gesamtpunktLangzeitaufwand) , '</pre>';
+            // echo '<pre>' , var_dump($gesamtpunktImmaterieller, $gesamtpunktMaterieller, $gesamtpunktLangzeitaufwand) , '</pre>';
             //Gewichtungen wieder berechnen
             foreach ($tempressourcen as $tempressource) {
                 foreach ($ressourcenarten as $ressourcenart) {
                     if ($tempressource == $ressourcenart->getName()) {
                         if ($ressourcenart->getKategorie() == 1) {
-                            $ressourcenart->setGewichtung(round($ressourcenart->getPunkte() / $gesamtpunktImmaterieller, 3));
+                            $ressourcenart->setGewichtung(round($ressourcenart->getPunkte() / $gesamtpunktImmaterieller, 2));
                         }
                         elseif ($ressourcenart->getKategorie() == 2) {
-                            $ressourcenart->setGewichtung(round($ressourcenart->getPunkte() / $gesamtpunktMaterieller, 3));
+                            $ressourcenart->setGewichtung(round($ressourcenart->getPunkte() / $gesamtpunktMaterieller, 2));
                         }
                         elseif ($ressourcenart->getKategorie() == 3) {
-                            $ressourcenart->setGewichtung(round($ressourcenart->getPunkte() / $gesamtpunktLangzeitaufwand, 3));
+                            $ressourcenart->setGewichtung(round($ressourcenart->getPunkte() / $gesamtpunktLangzeitaufwand, 2));
                         }
                     }
                 }
@@ -168,13 +168,13 @@
             $resultLangzeitaufwand = 0.0;
             foreach ($ressourcenarten as $ressourcenart) {
                 if ($ressourcenart->getKategorie() == 1) {
-                    $resultImmaterieller += $durchschnittskosten[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
+                    $resultImmaterieller += $durchschnittswerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
                 }   
                 elseif ($ressourcenart->getKategorie() == 2) {
-                    $resultMaterieller += $durchschnittskosten[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
+                    $resultMaterieller += $durchschnittswerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
                 }
                 elseif ($ressourcenart->getKategorie() == 3) {
-                    $resultLangzeitaufwand += $durchschnittskosten[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
+                    $resultLangzeitaufwand += $durchschnittswerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
                 }
             }
 
@@ -263,13 +263,19 @@
                     $inputressourcen = $arbeitsschritt->getIRe();
                     foreach ($inputressourcen as $inputressource) {
                         $kosten = $inputressource->getKosten();
+                        $zeitaufwand = $inputressource->getZeitaufwand();
                         $art = $inputressource->getArt()->getName();
-                        array_push($ressourcen,array($art,$kosten));
+                        if ($kosten == 0) {
+                            array_push($ressourcen, array($art, $zeitaufwand));
+                        }
+                        elseif ($zeitaufwand == 0) {
+                            array_push($ressourcen, array($art, $kosten));
+                        }
                     }
                 }
-                $result = $this->resultJeLoesung($ressourcen,$this->ressourcenarten);
-                echo '<pre>' , var_dump($result) , '</pre>';
-                $this->einschaetzungJeResult($result);
+                $result = $this->resultJeLoesung($ressourcen, $this->ressourcenarten);
+                // echo '<pre>' , var_dump($result) , '</pre>';
+                // $this->einschaetzungJeResult($result);
             }
         
             if(isset($request['rule-submit'])) {
