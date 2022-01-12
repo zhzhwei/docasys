@@ -21,6 +21,8 @@
 
         private $loesungsarten;
 
+        private $results = [];
+
         /**
         * @var \Wise\WiseDocasysDomainDesigner\Domain\Repository\RessourceRepository
         * @inject
@@ -184,62 +186,49 @@
 
         private function einschaetzungJeResult($result)
         {
-            foreach ($result as $key=>$value) {
+            foreach ($result as $key => $value) {
                 if ($value >= 1.0 && $value <=1.39) {
-                    if ($key == 0) {
-                        echo '<pre>' , var_dump("Materieller Ressourcenbedarf-------sehr gering") , '</pre>';
-                    }
-                    elseif ($key == 1) {
-                        echo '<pre>' , var_dump("Immaterieller Ressourcenbedarf-------sehr gering") , '</pre>';
-                    }
-                    elseif ($key == 2) {
-                        echo '<pre>' , var_dump("Langzeitaufwand-------sehr gering") , '</pre>';
-                    }
+                    array_push($this->results, 1);
                 }
                 elseif ($value >= 1.4 && $value <=1.79) {
-                    if ($key == 0) {
-                        echo '<pre>' , var_dump("Materieller Ressourcenbedarf-------gering") , '</pre>';
-                    }
-                    elseif ($key == 1) {
-                        echo '<pre>' , var_dump("Immaterieller Ressourcenbedarf-------gering") , '</pre>';
-                    }
-                    elseif ($key == 2) {
-                        echo '<pre>' , var_dump("Langzeitaufwand-------gering") , '</pre>';
-                    }
+                    array_push($this->results, 2);
                 }
                 elseif ($value >= 1.8 && $value <=2.19) {
-                    if ($key == 0) {
-                        echo '<pre>' , var_dump("Materieller Ressourcenbedarf-------mittel") , '</pre>';
-                    }
-                    elseif ($key == 1) {
-                        echo '<pre>' , var_dump("Immaterieller Ressourcenbedarf-------mittel") , '</pre>';
-                    }
-                    elseif ($key == 2) {
-                        echo '<pre>' , var_dump("Langzeitaufwand-------mittel") , '</pre>';
-                    }
+                    array_push($this->results, 3);
                 }
                 elseif ($value >= 2.2 && $value <=2.59) {
-                    if ($key == 0) {
-                        echo '<pre>' , var_dump("Materieller Ressourcenbedarf-------hoch") , '</pre>';
-                    }
-                    elseif ($key == 1) {
-                        echo '<pre>' , var_dump("Immaterieller Ressourcenbedarf-------hoch") , '</pre>';
-                    }
-                    elseif ($key == 2) {
-                        echo '<pre>' , var_dump("Langzeitaufwand-------hoch") , '</pre>';
-                    }
+                    array_push($this->results, 4);
                 }
                 elseif ($value >= 2.6 && $value <=3) {
-                    if ($key == 0) {
-                        echo '<pre>' , var_dump("Materieller Ressourcenbedarf-------sehr hoch") , '</pre>';
-                    }
-                    elseif ($key == 1) {
-                        echo '<pre>' , var_dump("Immaterieller Ressourcenbedarf-------sehr hoch") , '</pre>';
-                    }
-                    elseif ($key == 2) {
-                        echo '<pre>' , var_dump("Langzeitaufwand-------sehr hoch") , '</pre>';
-                    }
+                    array_push($this->results, 5);
                 }
+            }
+        }
+
+        private function paarVergleiche($results)
+        {
+            echo '<pre>' , var_dump('Matrieller Immatrieller Zeitaufwand') , '</pre>';
+            $k1 = 0;
+            while ($k1 <= 15) {
+                $k2 = 0;
+                while ($k2 <= 15) {
+                    $vergleich = [];
+                    if ($k1 != $k2) {
+                        $v10 = $results[$k1];
+                        $v20 = $results[$k2];
+                        $v11 = $results[$k1+1];
+                        $v12 = $results[$k1+2];
+                        $v21 = $results[$k2+1];
+                        $v22 = $results[$k2+2];
+                        array_push($vergleich, ($v10 < $v20) ? 1 : 0);
+                        array_push($vergleich, ($v11 < $v21) ? 1 : 0);
+                        array_push($vergleich, ($v12 < $v22) ? 1 : 0);
+                        echo '<pre>' , var_dump('    '.$vergleich[0].'-----------'.$vergleich[1].'------------'.$vergleich[2]) , '</pre>';
+                    }
+                    $k2 += 3;
+                }
+                $k1 += 3;
+                echo '<pre>' , var_dump('------------------------------------------') , '</pre>';
             }
         }
 
@@ -256,7 +245,7 @@
             foreach ($loesungsarten as $loesungsart) {
                 $loesung = $loesungsart->getLoesungsbezeichnung();
                 $arbeitsschritte = $loesungsart->getArbeitsschritte();
-                echo '<pre>' , var_dump('solution:----------'.$loesung) , '</pre>';
+                // echo '<pre>' , var_dump('solution:----------'.$loesung) , '</pre>';
                 $ressourcen = [];
                 foreach ($arbeitsschritte as $arbeitsschritt) {
                     // echo '<pre>' , var_dump('Arbeitsschritt:----------'.$arbeitsschritt->getBezeichnung()) , '</pre>';
@@ -265,7 +254,10 @@
                         $kosten = $inputressource->getKosten();
                         $zeitaufwand = $inputressource->getZeitaufwand();
                         $art = $inputressource->getArt()->getName();
-                        if ($kosten == 0) {
+                        if ($kosten == 0 && $zeitaufwand == 0) {
+                            array_push($ressourcen, array($art, 3));
+                        }
+                        elseif ($kosten == 0) {
                             array_push($ressourcen, array($art, $zeitaufwand));
                         }
                         elseif ($zeitaufwand == 0) {
@@ -275,9 +267,12 @@
                 }
                 $result = $this->resultJeLoesung($ressourcen, $this->ressourcenarten);
                 // echo '<pre>' , var_dump($result) , '</pre>';
-                // $this->einschaetzungJeResult($result);
+                $this->einschaetzungJeResult($result);
             }
-        
+            echo '<pre>' , var_dump($this->results) , '</pre>';
+            $this->paarVergleiche($this->results);
+
+
             if(isset($request['rule-submit'])) {
                 $this->aktualisierePunkte($request, $this->ressourcenarten);
                 $this->aktualisiereGewichtungen($this->ressourcenarten);
