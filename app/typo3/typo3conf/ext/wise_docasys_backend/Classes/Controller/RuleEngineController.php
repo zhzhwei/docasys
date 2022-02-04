@@ -23,6 +23,8 @@
 
         private $results = [];
 
+        private $teilgewichtungen = [];
+
         /**
         * @var \Wise\WiseDocasysDomainDesigner\Domain\Repository\RessourceRepository
         * @inject
@@ -205,14 +207,38 @@
             }
         }
 
+        private function getTeilgewichtung($ressourcenarten)
+        {
+            $teilgewichtungmaterieller = 0.0;
+            $teilgewichtungimmaterieller = 0.0;
+            $teilgewichtunglangzeitaufwand = 0.0;
+            foreach ($ressourcenarten as $art) {
+                if($art->getKategorie() == 1) {
+                    $teilgewichtungimmaterieller += $art->getIndividualgewichtung();
+                }
+                elseif($art->getKategorie() == 2) {
+                    $teilgewichtungmaterieller += $art->getIndividualgewichtung();
+                }
+                else {
+                    $teilgewichtunglangzeitaufwand += $art->getIndividualgewichtung();
+                }
+            }
+            $this->teilgewichtungen = [$teilgewichtungmaterieller,$teilgewichtungimmaterieller,$teilgewichtunglangzeitaufwand];
+            echo '<pre>' , var_dump($this->teilgewichtungen) , '</pre>';
+        }
+
         private function paarVergleiche($results)
         {
             echo '<pre>' , var_dump('Matrieller Immatrieller Zeitaufwand') , '</pre>';
             $k1 = 0;
-            while ($k1 <= 15) {
+            $vergleichzahl = sizeof($results) / 3;
+            $vergleichzahl = $vergleichzahl*($vergleichzahl-1)/2;
+
+            while ($k1 <= $vergleichzahl) {
                 $k2 = 0;
-                while ($k2 <= 15) {
-                    $vergleich = [];
+                $phi = 0.0;
+                while ($k2 <= $vergleichzahl) {
+                    $vergleiche = [];
                     if ($k1 != $k2) {
                         $v10 = $results[$k1];
                         $v20 = $results[$k2];
@@ -220,15 +246,17 @@
                         $v12 = $results[$k1+2];
                         $v21 = $results[$k2+1];
                         $v22 = $results[$k2+2];
-                        array_push($vergleich, ($v10 < $v20) ? 1 : 0);
-                        array_push($vergleich, ($v11 < $v21) ? 1 : 0);
-                        array_push($vergleich, ($v12 < $v22) ? 1 : 0);
-                        echo '<pre>' , var_dump('    '.$vergleich[0].'-----------'.$vergleich[1].'------------'.$vergleich[2]) , '</pre>';
+                        array_push($vergleiche, ($v10 < $v20) ? 0 : 1);
+                        array_push($vergleiche, ($v11 < $v21) ? 0 : 1);
+                        array_push($vergleiche, ($v12 < $v22) ? 0 : 1);
+                        $pi = $vergleiche[0]*$this->teilgewichtungen[0] + $vergleiche[1]*$this->teilgewichtungen[1] + $vergleiche[2]*$this->teilgewichtungen[2];
+                        echo '<pre>' , var_dump('    '.$vergleiche[0].'-----------'.$vergleiche[1].'------------'.$vergleiche[2].'    '.$pi) , '</pre>';
+                        $phi += $pi;
                     }
                     $k2 += 3;
                 }
                 $k1 += 3;
-                echo '<pre>' , var_dump('------------------------------------------') , '</pre>';
+                echo '<pre>' , var_dump('------------------'.($phi/5).'-------------------') , '</pre>';
             }
         }
 
@@ -270,8 +298,8 @@
                 $this->einschaetzungJeResult($result);
             }
             echo '<pre>' , var_dump($this->results) , '</pre>';
+            $this->getTeilgewichtung($this->ressourcenarten);
             $this->paarVergleiche($this->results);
-
 
             if(isset($request['rule-submit'])) {
                 $this->aktualisierePunkte($request, $this->ressourcenarten);
