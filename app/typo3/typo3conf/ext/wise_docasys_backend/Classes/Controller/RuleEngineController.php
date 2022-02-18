@@ -21,9 +21,17 @@
 
         private $loesungsarten;
 
+        private $loesungszahl;
+
+        private $vergleichzahl;
+
         private $results = [];
 
         private $teilgewichtungen = [];
+
+        private $pi = [];
+
+        private $nettofluesse = [];
 
         /**
         * @var \Wise\WiseDocasysDomainDesigner\Domain\Repository\RessourceRepository
@@ -224,22 +232,24 @@
                 }
             }
             $this->teilgewichtungen = [$teilgewichtungmaterieller,$teilgewichtungimmaterieller,$teilgewichtunglangzeitaufwand];
-            echo '<pre>' , var_dump($this->teilgewichtungen) , '</pre>';
+            // echo '<pre>' , var_dump($this->teilgewichtungen) , '</pre>';
         }
 
         private function paarVergleiche($results)
         {
-            echo '<pre>' , var_dump('Matrieller Immatrieller Zeitaufwand') , '</pre>';
+            // echo '<pre>' , var_dump('Matrieller Immatrieller Zeitaufwand') , '</pre>';
             $k1 = 0;
-            $vergleichzahl = sizeof($results) / 3;
-            $vergleichzahl = $vergleichzahl*($vergleichzahl-1)/2;
+            $this->loesungszahl = sizeof($results) / 3;
+            $this->vergleichzahl = $this->loesungszahl*($this->loesungszahl-1)/2;
 
-            while ($k1 <= $vergleichzahl) {
+            while ($k1 <= $this->vergleichzahl) {
                 $k2 = 0;
-                $phi = 0.0;
-                while ($k2 <= $vergleichzahl) {
+                while ($k2 <= $this->vergleichzahl) {
                     $vergleiche = [];
-                    if ($k1 != $k2) {
+                    if ($k1 == $k2) {
+                        array_push($this->pi, 0.0);
+                    }
+                    else {
                         $v10 = $results[$k1];
                         $v20 = $results[$k2];
                         $v11 = $results[$k1+1];
@@ -249,15 +259,72 @@
                         array_push($vergleiche, ($v10 < $v20) ? 0 : 1);
                         array_push($vergleiche, ($v11 < $v21) ? 0 : 1);
                         array_push($vergleiche, ($v12 < $v22) ? 0 : 1);
-                        $pi = $vergleiche[0]*$this->teilgewichtungen[0] + $vergleiche[1]*$this->teilgewichtungen[1] + $vergleiche[2]*$this->teilgewichtungen[2];
-                        echo '<pre>' , var_dump('    '.$vergleiche[0].'-----------'.$vergleiche[1].'------------'.$vergleiche[2].'    '.$pi) , '</pre>';
-                        $phi += $pi;
+                        $tpi = $vergleiche[0]*$this->teilgewichtungen[0] + $vergleiche[1]*$this->teilgewichtungen[1] + $vergleiche[2]*$this->teilgewichtungen[2];
+                        array_push($this->pi, $tpi);
+                        // echo '<pre>' , var_dump('    '.$vergleiche[0].'-----------'.$vergleiche[1].'------------'.$vergleiche[2].'    '.$pi) , '</pre>';
                     }
                     $k2 += 3;
                 }
                 $k1 += 3;
-                echo '<pre>' , var_dump('------------------'.($phi/5).'-------------------') , '</pre>';
             }
+            // echo '<pre>' , var_dump($this->pi) , '</pre>';
+        }
+
+        public function nettoFluss()
+        {
+            $phi_plus = [];
+            $k1 = 0;
+
+            while ($k1 < $this->loesungszahl * $this->loesungszahl) {
+                $k2 = 0;
+                $phi_plus_summe = 0.0;
+                while ($k2 < $this->loesungszahl) {
+                    $phi_plus_summe += $this->pi[$k1 + $k2];
+                    $k2 += 1;
+                }
+                array_push($phi_plus, $phi_plus_summe / ($this->loesungszahl-1) );
+                $k1 += $this->loesungszahl;
+            }
+            echo '<pre>' , var_dump($phi_plus) , '</pre>';
+
+            $phi_minus = [];
+            $t1 = 0;
+            while ($t1 < $this->loesungszahl) {
+                $t2 = 0;
+                $phi_minus_summe = 0.0;
+                while ($t2 < $this->loesungszahl * $this->loesungszahl) {
+                    $phi_minus_summe += $this->pi[$t1 + $t2];
+                    $t2 += $this->loesungszahl;
+                }
+                array_push($phi_minus, $phi_minus_summe / ($this->loesungszahl-1) );
+                $t1 += 1;
+            }
+            echo '<pre>' , var_dump($phi_minus) , '</pre>';
+
+            $iter = 0;
+            while ($iter < $this->loesungszahl) {
+                array_push($this->nettofluesse, $phi_plus[$iter] - $phi_minus[$iter]);
+                $iter += 1;
+            }
+            echo '<pre>' , var_dump($this->nettofluesse) , '</pre>';
+        }
+
+        public function sortNettoFluss($nettofluesse)
+        {
+            $iter = 0;
+            while ($iter < $this->loesungszahl) {
+                $jter = $iter + 1;
+                while($jter < $this->loesungszahl) {
+                    if($nettofluesse[$jter] > $nettofluesse[$iter]) {
+                        $temp = $nettofluesse[$jter];
+                        $nettofluesse[$jter] = $nettofluesse[$iter];
+                        $nettofluesse[$iter] = $temp;
+                    }
+                    $jter += 1;
+                }
+                $iter += 1;
+            }
+            echo '<pre>' , var_dump($nettofluesse) , '</pre>';
         }
 
         public function indexAction()
@@ -297,9 +364,11 @@
                 // echo '<pre>' , var_dump($result) , '</pre>';
                 $this->einschaetzungJeResult($result);
             }
-            echo '<pre>' , var_dump($this->results) , '</pre>';
+            // echo '<pre>' , var_dump($this->results) , '</pre>';
             $this->getTeilgewichtung($this->ressourcenarten);
             $this->paarVergleiche($this->results);
+            $this->nettoFluss();
+            $this->sortNettoFluss($this->nettofluesse);
 
             if(isset($request['rule-submit'])) {
                 $this->aktualisierePunkte($request, $this->ressourcenarten);
