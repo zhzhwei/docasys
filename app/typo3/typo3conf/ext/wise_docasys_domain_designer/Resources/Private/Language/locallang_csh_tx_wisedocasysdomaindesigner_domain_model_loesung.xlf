@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2021-12-07T07:30:00Z" product-name="wise_docasys_domain_designer">
+	<file source-language="en" datatype="plaintext" original="messages" date="2022-02-24T13:38:50Z" product-name="wise_docasys_domain_designer">
 		<header/>
 		<body>
 			<trans-unit id="loesungsbezeichnung.description">
@@ -41,6 +41,9 @@
 			</trans-unit>
 			<trans-unit id="loesungsart.description">
 				<source>loesungsart</source>
+			</trans-unit>
+			<trans-unit id="nettofluss.description">
+				<source>nettofluss</source>
 			</trans-unit>
 			<trans-unit id="gestaltungsart.description">
 				<source>gestaltungsart</source>

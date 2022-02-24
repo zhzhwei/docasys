@@ -63,6 +63,7 @@ CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_loesung (
 	invasivitaetsgrad int(11) DEFAULT '0' NOT NULL,
 	wartungsintervall int(11) DEFAULT '0' NOT NULL,
 	loesungsart int(11) DEFAULT '0' NOT NULL,
+	nettofluss double(11,2) DEFAULT '0.00' NOT NULL,
 	gestaltungsart int(11) unsigned DEFAULT '0' NOT NULL,
 	arbeitsschritte int(11) unsigned DEFAULT '0' NOT NULL,
 	derzeitiger_einsatzort int(11) unsigned DEFAULT '0' NOT NULL,

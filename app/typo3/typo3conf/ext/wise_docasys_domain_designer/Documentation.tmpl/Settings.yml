@@ -8,7 +8,7 @@
 
 ---
 conf.py:
-  copyright: 2021
+  copyright: 2022
   project: Domain Designer
   version: 1.0.7
   release: 1.0.7

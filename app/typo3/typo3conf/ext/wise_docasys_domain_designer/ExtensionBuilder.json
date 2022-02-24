@@ -222,6 +222,16 @@
                             "propertyName": "loesungsart",
                             "propertyType": "Select",
                             "uid": "367227798351"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "nettofluss",
+                            "propertyType": "Float",
+                            "uid": "1297973849494"
                         }
                     ]
                 },
@@ -4279,8 +4289,8 @@
         {
             "config": {
                 "position": [
-                    1691,
-                    254
+                    1688,
+                    328
                 ]
             },
             "name": "New Model Object",
@@ -4566,8 +4576,8 @@
         {
             "config": {
                 "position": [
-                    1134,
-                    437
+                    1123,
+                    484
                 ]
             },
             "name": "New Model Object",
@@ -5681,7 +5691,7 @@
         }
     ],
     "log": {
-        "last_modified": "2021-12-07 07:30",
+        "last_modified": "2022-02-24 01:39",
         "extension_builder_version": "7.6.18",
         "be_user": "user26 (26)"
     }

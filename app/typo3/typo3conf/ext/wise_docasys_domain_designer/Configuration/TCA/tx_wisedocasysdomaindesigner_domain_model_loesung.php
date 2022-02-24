@@ -306,6 +306,15 @@
                     'eval' => ''
                 ],
             ],
+            'nettofluss' => [
+                'exclude' => true,
+                'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesung.nettofluss',
+                'config' => [
+                    'type' => 'input',
+                    'size' => 5,
+                    'eval' => 'double2'
+                ]
+            ],
             'gestaltungsart' => [
                 'exclude' => true,
                 'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesung.gestaltungsart',
