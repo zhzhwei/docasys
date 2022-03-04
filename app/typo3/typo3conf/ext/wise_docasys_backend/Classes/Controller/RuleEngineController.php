@@ -25,7 +25,7 @@
 
         private $vergleichzahl;
 
-        private $results = [];
+        private $scores = [];
 
         private $teilgewichtungen = [];
 
@@ -111,7 +111,7 @@
             }
         }
 
-        private function resultJeLoesung($ressourcen, $ressourcenarten)
+        private function scoreJeLoesung($ressourcen, $ressourcenarten)
         {
             $gesamtwerte = [];
             $gesamtzahl = [];
@@ -174,43 +174,43 @@
                     }
                 }
             }
-            //Result berechnen
-            $resultMaterieller = 0.0;
-            $resultImmaterieller = 0.0;
-            $resultLangzeitaufwand = 0.0;
+            //score berechnen
+            $scoreMaterieller = 0.0;
+            $scoreImmaterieller = 0.0;
+            $scoreLangzeitaufwand = 0.0;
             foreach ($ressourcenarten as $ressourcenart) {
                 if ($ressourcenart->getKategorie() == 1) {
-                    $resultImmaterieller += $durchschnittswerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
+                    $scoreImmaterieller += $durchschnittswerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
                 }   
                 elseif ($ressourcenart->getKategorie() == 2) {
-                    $resultMaterieller += $durchschnittswerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
+                    $scoreMaterieller += $durchschnittswerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
                 }
                 elseif ($ressourcenart->getKategorie() == 3) {
-                    $resultLangzeitaufwand += $durchschnittswerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
+                    $scoreLangzeitaufwand += $durchschnittswerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
                 }
             }
 
-            $result = [round($resultMaterieller,2), round($resultImmaterieller,2), round($resultLangzeitaufwand,2)];
-            return $result;
+            $score = [round($scoreMaterieller,2), round($scoreImmaterieller,2), round($scoreLangzeitaufwand,2)];
+            return $score;
         }
 
-        private function einschaetzungJeResult($result)
+        private function einschaetzungJescore($score)
         {
-            foreach ($result as $key => $value) {
+            foreach ($score as $key => $value) {
                 if ($value >= 1.0 && $value <=1.39) {
-                    array_push($this->results, 1);
+                    array_push($this->scores, 1);
                 }
                 elseif ($value >= 1.4 && $value <=1.79) {
-                    array_push($this->results, 2);
+                    array_push($this->scores, 2);
                 }
                 elseif ($value >= 1.8 && $value <=2.19) {
-                    array_push($this->results, 3);
+                    array_push($this->scores, 3);
                 }
                 elseif ($value >= 2.2 && $value <=2.59) {
-                    array_push($this->results, 4);
+                    array_push($this->scores, 4);
                 }
                 elseif ($value >= 2.6 && $value <=3) {
-                    array_push($this->results, 5);
+                    array_push($this->scores, 5);
                 }
             }
         }
@@ -235,11 +235,11 @@
             // echo '<pre>' , var_dump($this->teilgewichtungen) , '</pre>';
         }
 
-        private function paarVergleiche($results)
+        private function paarVergleiche($scores)
         {
             // echo '<pre>' , var_dump('Matrieller Immatrieller Zeitaufwand') , '</pre>';
             $k1 = 0;
-            $this->loesungszahl = sizeof($results) / 3;
+            $this->loesungszahl = sizeof($scores) / 3;
             $this->vergleichzahl = $this->loesungszahl*($this->loesungszahl-1)/2;
 
             while ($k1 <= $this->vergleichzahl) {
@@ -250,12 +250,12 @@
                         array_push($this->pi, 0.0);
                     }
                     else {
-                        $v10 = $results[$k1];
-                        $v20 = $results[$k2];
-                        $v11 = $results[$k1+1];
-                        $v12 = $results[$k1+2];
-                        $v21 = $results[$k2+1];
-                        $v22 = $results[$k2+2];
+                        $v10 = $scores[$k1];
+                        $v20 = $scores[$k2];
+                        $v11 = $scores[$k1+1];
+                        $v12 = $scores[$k1+2];
+                        $v21 = $scores[$k2+1];
+                        $v22 = $scores[$k2+2];
                         array_push($vergleiche, ($v10 < $v20) ? 0 : 1);
                         array_push($vergleiche, ($v11 < $v21) ? 0 : 1);
                         array_push($vergleiche, ($v12 < $v22) ? 0 : 1);
@@ -309,13 +309,28 @@
             echo '<pre>' , var_dump($this->nettofluesse) , '</pre>';
         }
 
-        public function sortNettoFluss($nettofluesse)
+        public function speichereNettofluss($loesungsarten, $nettofluesse)
+        {
+            foreach ($loesungsarten as $key => $loesungsart) {
+                if ($nettofluesse[$key] != 0) {
+                    $loesungsart->setNettofluss($nettofluesse[$key]);
+                }
+            }
+
+            foreach ($loesungsarten as $key => $loesungsart) {
+                if ($nettofluesse[$key] != 0) {
+                    echo '<pre>' , var_dump( $loesungsart->getNettofluss() ) , '</pre>';
+                }
+            }
+        }
+
+        public function sortNettofluss($nettofluesse)
         {
             $iter = 0;
             while ($iter < $this->loesungszahl) {
                 $jter = $iter + 1;
-                while($jter < $this->loesungszahl) {
-                    if($nettofluesse[$jter] > $nettofluesse[$iter]) {
+                while ($jter < $this->loesungszahl) {
+                    if ($nettofluesse[$jter] > $nettofluesse[$iter]) {
                         $temp = $nettofluesse[$jter];
                         $nettofluesse[$jter] = $nettofluesse[$iter];
                         $nettofluesse[$iter] = $temp;
@@ -335,9 +350,9 @@
             $this->ressourcenarten = ($this->ressourcenarten == null) ? $this->ressourcenartRepository->findAll() : $this->ressourcenarten;
             $this->ressourcenkategorien = ($this->ressourcenkategorien == null) ? $this->getAlleKategorien($this->ressourcenarten) : $this->ressourcenkategorien;
             $request = $this->request->getArguments();
-            $loesungsarten = $this->loesungRepository->findAll();
+            $this->loesungsarten = $this->loesungRepository->findAll();
 
-            foreach ($loesungsarten as $loesungsart) {
+            foreach ($this->loesungsarten as $loesungsart) {
                 $loesung = $loesungsart->getLoesungsbezeichnung();
                 $arbeitsschritte = $loesungsart->getArbeitsschritte();
                 // echo '<pre>' , var_dump('solution:----------'.$loesung) , '</pre>';
@@ -360,15 +375,16 @@
                         }
                     }
                 }
-                $result = $this->resultJeLoesung($ressourcen, $this->ressourcenarten);
-                // echo '<pre>' , var_dump($result) , '</pre>';
-                $this->einschaetzungJeResult($result);
+                $score = $this->scoreJeLoesung($ressourcen, $this->ressourcenarten);
+                // echo '<pre>' , var_dump($score) , '</pre>';
+                $this->einschaetzungJescore($score);
             }
-            // echo '<pre>' , var_dump($this->results) , '</pre>';
+            // echo '<pre>' , var_dump($this->scores) , '</pre>';
             $this->getTeilgewichtung($this->ressourcenarten);
-            $this->paarVergleiche($this->results);
+            $this->paarVergleiche($this->scores);
             $this->nettoFluss();
-            $this->sortNettoFluss($this->nettofluesse);
+            $this->speichereNettofluss($this->loesungsarten, $this->nettofluesse);
+            $this->sortNettofluss($this->nettofluesse);
 
             if(isset($request['rule-submit'])) {
                 $this->aktualisierePunkte($request, $this->ressourcenarten);
