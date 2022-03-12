@@ -32,19 +32,13 @@
         private $pi = [];
 
         private $nettofluesse = [];
-
-        /**
-        * @var \Wise\WiseDocasysDomainDesigner\Domain\Repository\RessourceRepository
-        * @inject
-        */
-        protected $ressourceRepository;
         
         private function getAlleKategorien($ressourcenarten)
         {
             $kategorien = [];
 
-            foreach ($ressourcenarten as $art) {
-                $kategorie = $art->getKategorie();
+            foreach ($ressourcenarten as $ressourcenart) {
+                $kategorie = $ressourcenart->getKategorie();
 
                 if (!in_array($kategorie, $kategorien)) {
                     array_push($kategorien, $kategorie);
@@ -59,8 +53,8 @@
         {
             $summe = 0;
 
-            foreach ($ressourcenarten as $art) {
-                $summe += ($punkteOderGewichtung == "punkte") ? $art->getIndividualpunkte() : $art->getIndividualgewichtung();
+            foreach ($ressourcenarten as $ressourcenart) {
+                $summe += ($punkteOderGewichtung == "punkte") ? $ressourcenart->getIndividualpunkte() : $ressourcenart->getIndividualgewichtung();
             }
 
             return $summe;
@@ -68,10 +62,10 @@
 
         private function aktualisierePunkte($request, $ressourcenarten)
         {
-            foreach ($ressourcenarten as $art) {
-                $name = $art->getName();
-                $art->setPunkte($request['rule-submit']['punkte'][$name]);
-                $art->setIndividualpunkte($request['rule-submit']['individualpunkte'][$name]);
+            foreach ($ressourcenarten as $ressourcenart) {
+                $name = $ressourcenart->getName();
+                $ressourcenart->setPunkte($request['rule-submit']['punkte'][$name]);
+                $ressourcenart->setIndividualpunkte($request['rule-submit']['individualpunkte'][$name]);
             }
         }
 
@@ -80,34 +74,34 @@
             $summeJeKategorie = [];
 
             // Ermittle Gesamtpunkte je Kategorie
-            foreach ($ressourcenarten as $art) {
-                $kategorie = $art->getKategorie();
-                $punkte = $art->getPunkte();
+            foreach ($ressourcenarten as $ressourcenart) {
+                $kategorie = $ressourcenart->getKategorie();
+                $punkte = $ressourcenart->getPunkte();
                 $summeJeKategorie[$kategorie] += $punkte;
             }
 
             // Ermittle und speichere Gewichtung je Ressourcenart und Kategorie
-            foreach ($ressourcenarten as $art) {
-                $punkte = $art->getPunkte();
-                $kategorie = $art->getKategorie();
+            foreach ($ressourcenarten as $ressourcenart) {
+                $punkte = $ressourcenart->getPunkte();
+                $kategorie = $ressourcenart->getKategorie();
                 $summe = $summeJeKategorie[$kategorie];
                 $gewichtung = ($summe == 0) ? $summe : ($punkte / $summe);
-                $art->setGewichtung(round($gewichtung, 2));
+                $ressourcenart->setGewichtung(round($gewichtung, 2));
             }
 
             // Ermittle und speichere Individualgewichtung
             $summeIndividualpunkte = $this->ermittleGesamtpunkte($ressourcenarten, "punkte");
-            foreach ($ressourcenarten as $art) {
-                $punkte = $art->getIndividualpunkte();
+            foreach ($ressourcenarten as $ressourcenart) {
+                $punkte = $ressourcenart->getIndividualpunkte();
                 $gewichtung = ($summeIndividualpunkte == 0) ? $summeIndividualpunkte : ($punkte / $summeIndividualpunkte);
-                $art->setIndividualgewichtung(round($gewichtung, 2));
+                $ressourcenart->setIndividualgewichtung(round($gewichtung, 2));
             }
         }
 
         private function speichereRessourcenarten($repository, $ressourcenarten)
         {
-            foreach ($ressourcenarten as $art) {
-                $repository->update($art);
+            foreach ($ressourcenarten as $ressourcenart) {
+                $repository->update($ressourcenart);
             }
         }
 
@@ -220,15 +214,15 @@
             $teilgewichtungmaterieller = 0.0;
             $teilgewichtungimmaterieller = 0.0;
             $teilgewichtunglangzeitaufwand = 0.0;
-            foreach ($ressourcenarten as $art) {
-                if($art->getKategorie() == 1) {
-                    $teilgewichtungimmaterieller += $art->getIndividualgewichtung();
+            foreach ($ressourcenarten as $ressourcenart) {
+                if($ressourcenart->getKategorie() == 1) {
+                    $teilgewichtungimmaterieller += $ressourcenart->getIndividualgewichtung();
                 }
-                elseif($art->getKategorie() == 2) {
-                    $teilgewichtungmaterieller += $art->getIndividualgewichtung();
+                elseif($ressourcenart->getKategorie() == 2) {
+                    $teilgewichtungmaterieller += $ressourcenart->getIndividualgewichtung();
                 }
                 else {
-                    $teilgewichtunglangzeitaufwand += $art->getIndividualgewichtung();
+                    $teilgewichtunglangzeitaufwand += $ressourcenart->getIndividualgewichtung();
                 }
             }
             $this->teilgewichtungen = [$teilgewichtungmaterieller,$teilgewichtungimmaterieller,$teilgewichtunglangzeitaufwand];
@@ -270,7 +264,7 @@
             // echo '<pre>' , var_dump($this->pi) , '</pre>';
         }
 
-        public function nettoFluss()
+        public function ermittleNettofluss()
         {
             $phi_plus = [];
             $k1 = 0;
@@ -309,18 +303,19 @@
             echo '<pre>' , var_dump($this->nettofluesse) , '</pre>';
         }
 
-        public function speichereNettofluss($loesungen, $nettofluesse)
+        public function aktualisiereNettofluss($loesungen, $nettofluesse)
         {
             foreach ($loesungen as $key => $loesung) {
                 if ($nettofluesse[$key] != 0) {
                     $loesung->setNettofluss($nettofluesse[$key]);
                 }
             }
+        }
 
-            foreach ($loesungen as $key => $loesung) {
-                if ($nettofluesse[$key] != 0) {
-                    echo '<pre>' , var_dump( $loesung->getNettofluss() ) , '</pre>';
-                }
+        public function speichereNettofluss($repository, $loesungen)
+        {
+            foreach ($loesungen as $loesung) {
+                $repository->update($loesung);
             }
         }
 
@@ -349,9 +344,9 @@
 
             $this->ressourcenarten = ($this->ressourcenarten == null) ? $this->ressourcenartRepository->findAll() : $this->ressourcenarten;
             $this->ressourcenkategorien = ($this->ressourcenkategorien == null) ? $this->getAlleKategorien($this->ressourcenarten) : $this->ressourcenkategorien;
-            $this->loesungen = $this->loesungRepository->findAll();
+            $this->loesungen = ($this->loesungen == null) ? $this->loesungRepository->findAll() : $this->loesungen;
             $request = $this->request->getArguments();
-            echo '<pre>' , var_dump($request) , '</pre>';
+            // echo '<pre>' , var_dump($request) , '</pre>';
 
             foreach ($this->loesungen as $loesung) {
                 // $solution = $loesung->getLoesungsbezeichnung();
@@ -383,8 +378,9 @@
             // echo '<pre>' , var_dump($this->scores) , '</pre>';
             $this->getTeilgewichtung($this->ressourcenarten);
             $this->paarVergleiche($this->scores);
-            $this->nettoFluss();
-            $this->speichereNettofluss($this->loesungen, $this->nettofluesse);
+            $this->ermittleNettofluss();
+            $this->aktualisiereNettofluss($this->loesungen, $this->nettofluesse);
+            // $this->speichereNettofluss($this->loesungRepository, $this->loesungen);
             $this->sortNettofluss($this->nettofluesse);
 
             if(isset($request['rule-submit'])) {

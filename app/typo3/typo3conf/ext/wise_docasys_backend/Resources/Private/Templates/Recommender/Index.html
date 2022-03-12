@@ -94,10 +94,13 @@
                         <td style="width: 10%">
                             {solution.teilprojektnummer}    
                         </td>
-                        <td>
+                        <td style="width: 30%">
                             <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_loesung][{solution.uid}]=edit">
                                 {solution.loesungsbezeichnung}
                             </wise:be.editLink>
+                        </td>
+                        <td>
+                            {solution.nettofluss}
                         </td>
                     </tr>
                 </f:for>
