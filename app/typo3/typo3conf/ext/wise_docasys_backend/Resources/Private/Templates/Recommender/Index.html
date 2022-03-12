@@ -5,78 +5,104 @@
     <h1>Recommender</h1> 
     <h3>Vorauswahl von Lösungseigenschaften</h3>
 
-    <div class="tab-content">
-        <div class="padding">
-            <div class="row form-group">
-                <label class="control-label col-sm-3">
-                    Anwendungsfall:
-                </label>
-                <div class="col-sm-9">
-                    <f:form.select options="{Anwendungsfall}" class="form-control" value="{values.operator.kind}" />
+    <f:form name="recommender-submit" action="index" method="post" class="tab-content">
+        <div class="tab-pane fade in {f:if(condition: '{results}', then: '', else: 'active')}">
+            <div class="padding">
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">
+                        Anwendungsfall:
+                    </label>
+                    <div class="col-sm-9">
+                        <f:form.select property="operator.name" options="{Anwendungsfall}" class="form-control" />
+                    </div>
                 </div>
-            </div>
 
-            <div class="row form-group">
-                <label class="control-label col-sm-3">
-                    Flexibilit&auml;t:
-                </label>
-                <div class="col-sm-9">
-                    <f:form.select options="{Flexibility}" class="form-control" value="{values.operator.kind}" />
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">
+                        Flexibilit&auml;t:
+                    </label>
+                    <div class="col-sm-9">
+                        <f:form.select property="operator.kind" options="{Flexibility}" class="form-control" />
+                    </div>
                 </div>
-            </div>
 
-            <div class="row form-group">
-                <label class="control-label col-sm-3">
-                    Invasivit&auml;tsgrad:
-                </label>
-                <div class="col-sm-9">
-                    <f:form.select property="invasivity" class="form-control" options="{wise:be.TcaOptions(property:'invasivitaetsgrad',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.invasivity}" />
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">
+                        Invasivit&auml;tsgrad:
+                    </label>
+                    <div class="col-sm-9">
+                        <f:form.select property="operator.class" options="{Invasivity}" class="form-control" />
+                        <!-- <f:form.select property="invasivity" class="form-control" options="{wise:be.TcaOptions(property:'invasivitaetsgrad',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.invasivity}" /> -->
+                    </div>
                 </div>
-            </div>
 
-            <div class="row form-group">
-                <label class="control-label col-sm-3">
-                    Wartungsintervall:
-                </label>
-                <div class="col-sm-9">
-                    <f:form.select options="{Wartungsintervall}" class="form-control" value="{values.operator.kind}" />
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">
+                        Wartungsintervall:
+                    </label>
+                    <div class="col-sm-9">
+                        <f:form.select property="operator.rate" options="{Wartungsintervall}" class="form-control" />
+                    </div>
                 </div>
-            </div>
 
-            <div class="row form-group">
-                <label class="control-label col-sm-3">
-                    Zugriff auf Maschinensteuerung:
-                </label>
-                <div class="col-sm-9">
-                    <f:form.select options="{Maschinensteuerung}" class="form-control" value="{values.operator.kind}" />
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">
+                        Zugriff auf Maschinensteuerung:
+                    </label>
+                    <div class="col-sm-9">
+                        <f:form.select property="operator.phase" options="{Maschinensteuerung}" class="form-control" />
+                    </div>
                 </div>
-            </div>
 
-            <div class="row form-group">
-                <label class="control-label col-sm-3">
-                    Notwendigkeit Maschinenstillstand:
-                </label>
-                <div class="col-sm-9">
-                    <f:form.select property="kind" options="{Maschinenstillstand}" class="form-control" value="{values.kind}" />
-                    <!-- <f:form.select property="kind" class="form-control" options="{wise:be.TcaOptions(property:'loesungsart',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.kind}" /> -->
+                <div class="row form-group">
+                    <label class="control-label col-sm-3">
+                        Notwendigkeit Maschinenstillstand:
+                    </label>
+                    <div class="col-sm-9">
+                        <f:form.select property="operator.design" options="{Maschinenstillstand}" class="form-control" />
+                        <!-- <f:form.select property="design" class="form-control" options="{wise:be.TcaOptions(property:'loesungsart',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.design}" /> -->
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="tab-footer-submit">
-        <div class="row">
-            <div class="col-sm-6"> 
-                <div class="padding">
-                    <a href="{f:uri.action(action:'index')}" class="btn btn-info">Eingaben zur&uuml;cksetzen</a>
+        <div class="tab-footer-submit">
+            <div class="row">
+                <div class="col-sm-6"> 
+                    <div class="padding">
+                        <a href="{f:uri.action(action:'index')}" class="btn btn-info">Recommender Eingaben zur&uuml;cksetzen</a>
+                    </div> 
                 </div> 
-            </div> 
-            <div class="col-sm-6"> 
-                <div class="right padding">
-                    <f:form.submit value="Suchen" id="summary-submit" class="btn btn-primary" />
-                </div>
-            </div>  
+                <div class="col-sm-6"> 
+                    <div class="right padding">
+                        <f:form.submit value="Suchen" class="btn btn-primary" />
+                    </div>
+                </div>  
+            </div>
         </div>
-    </div>
+    </f:form>
 
+    <f:if condition="{results}">
+        <div class="page-header">
+            <h2>
+                Ergebnisliste <span class="label label-primary"><f:count>{results}</f:count> Treffer</span>
+            </h2>
+        </div>
+        <div class="table-fit">
+            <table class="table table-striped table-hover">
+                <f:for each="{results}" as="solution">
+                    <tr>
+                        <td style="width: 10%">
+                            {solution.teilprojektnummer}    
+                        </td>
+                        <td>
+                            <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_loesung][{solution.uid}]=edit">
+                                {solution.loesungsbezeichnung}
+                            </wise:be.editLink>
+                        </td>
+                    </tr>
+                </f:for>
+            </table>
+        </div>
+    </f:if>
+    
 </f:section>

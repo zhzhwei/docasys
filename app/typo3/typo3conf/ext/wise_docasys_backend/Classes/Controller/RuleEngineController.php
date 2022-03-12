@@ -19,7 +19,7 @@
         */
         protected $loesungRepository;
 
-        private $loesungsarten;
+        private $loesungen;
 
         private $loesungszahl;
 
@@ -194,7 +194,7 @@
             return $score;
         }
 
-        private function einschaetzungJescore($score)
+        private function einschaetzungJeScore($score)
         {
             foreach ($score as $key => $value) {
                 if ($value >= 1.0 && $value <=1.39) {
@@ -309,17 +309,17 @@
             echo '<pre>' , var_dump($this->nettofluesse) , '</pre>';
         }
 
-        public function speichereNettofluss($loesungsarten, $nettofluesse)
+        public function speichereNettofluss($loesungen, $nettofluesse)
         {
-            foreach ($loesungsarten as $key => $loesungsart) {
+            foreach ($loesungen as $key => $loesung) {
                 if ($nettofluesse[$key] != 0) {
-                    $loesungsart->setNettofluss($nettofluesse[$key]);
+                    $loesung->setNettofluss($nettofluesse[$key]);
                 }
             }
 
-            foreach ($loesungsarten as $key => $loesungsart) {
+            foreach ($loesungen as $key => $loesung) {
                 if ($nettofluesse[$key] != 0) {
-                    echo '<pre>' , var_dump( $loesungsart->getNettofluss() ) , '</pre>';
+                    echo '<pre>' , var_dump( $loesung->getNettofluss() ) , '</pre>';
                 }
             }
         }
@@ -349,13 +349,14 @@
 
             $this->ressourcenarten = ($this->ressourcenarten == null) ? $this->ressourcenartRepository->findAll() : $this->ressourcenarten;
             $this->ressourcenkategorien = ($this->ressourcenkategorien == null) ? $this->getAlleKategorien($this->ressourcenarten) : $this->ressourcenkategorien;
+            $this->loesungen = $this->loesungRepository->findAll();
             $request = $this->request->getArguments();
-            $this->loesungsarten = $this->loesungRepository->findAll();
+            echo '<pre>' , var_dump($request) , '</pre>';
 
-            foreach ($this->loesungsarten as $loesungsart) {
-                $loesung = $loesungsart->getLoesungsbezeichnung();
-                $arbeitsschritte = $loesungsart->getArbeitsschritte();
-                // echo '<pre>' , var_dump('solution:----------'.$loesung) , '</pre>';
+            foreach ($this->loesungen as $loesung) {
+                // $solution = $loesung->getLoesungsbezeichnung();
+                $arbeitsschritte = $loesung->getArbeitsschritte();
+                // echo '<pre>' , var_dump('solution:----------'.$solution) , '</pre>';
                 $ressourcen = [];
                 foreach ($arbeitsschritte as $arbeitsschritt) {
                     // echo '<pre>' , var_dump('Arbeitsschritt:----------'.$arbeitsschritt->getBezeichnung()) , '</pre>';
@@ -377,13 +378,13 @@
                 }
                 $score = $this->scoreJeLoesung($ressourcen, $this->ressourcenarten);
                 // echo '<pre>' , var_dump($score) , '</pre>';
-                $this->einschaetzungJescore($score);
+                $this->einschaetzungJeScore($score);
             }
             // echo '<pre>' , var_dump($this->scores) , '</pre>';
             $this->getTeilgewichtung($this->ressourcenarten);
             $this->paarVergleiche($this->scores);
             $this->nettoFluss();
-            $this->speichereNettofluss($this->loesungsarten, $this->nettofluesse);
+            $this->speichereNettofluss($this->loesungen, $this->nettofluesse);
             $this->sortNettofluss($this->nettofluesse);
 
             if(isset($request['rule-submit'])) {
