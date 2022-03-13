@@ -279,7 +279,7 @@
                 array_push($phi_plus, $phi_plus_summe / ($this->loesungszahl-1) );
                 $k1 += $this->loesungszahl;
             }
-            echo '<pre>' , var_dump($phi_plus) , '</pre>';
+            // echo '<pre>' , var_dump($phi_plus) , '</pre>';
 
             $phi_minus = [];
             $t1 = 0;
@@ -293,54 +293,33 @@
                 array_push($phi_minus, $phi_minus_summe / ($this->loesungszahl-1) );
                 $t1 += 1;
             }
-            echo '<pre>' , var_dump($phi_minus) , '</pre>';
+            // echo '<pre>' , var_dump($phi_minus) , '</pre>';
 
             $iter = 0;
             while ($iter < $this->loesungszahl) {
-                array_push($this->nettofluesse, $phi_plus[$iter] - $phi_minus[$iter]);
+                array_push($this->nettofluesse, round($phi_plus[$iter] - $phi_minus[$iter],2) );
                 $iter += 1;
             }
-            echo '<pre>' , var_dump($this->nettofluesse) , '</pre>';
+            // echo '<pre>' , var_dump($this->nettofluesse) , '</pre>';
         }
 
-        public function aktualisiereNettofluss($loesungen, $nettofluesse)
+        public function speichereNettofluss($repository, $loesungen, $nettofluesse)
         {
             foreach ($loesungen as $key => $loesung) {
                 if ($nettofluesse[$key] != 0) {
                     $loesung->setNettofluss($nettofluesse[$key]);
                 }
             }
-        }
 
-        public function speichereNettofluss($repository, $loesungen)
-        {
             foreach ($loesungen as $loesung) {
                 $repository->update($loesung);
             }
         }
 
-        public function sortNettofluss($nettofluesse)
-        {
-            $iter = 0;
-            while ($iter < $this->loesungszahl) {
-                $jter = $iter + 1;
-                while ($jter < $this->loesungszahl) {
-                    if ($nettofluesse[$jter] > $nettofluesse[$iter]) {
-                        $temp = $nettofluesse[$jter];
-                        $nettofluesse[$jter] = $nettofluesse[$iter];
-                        $nettofluesse[$iter] = $temp;
-                    }
-                    $jter += 1;
-                }
-                $iter += 1;
-            }
-            echo '<pre>' , var_dump($nettofluesse) , '</pre>';
-        }
-
         public function indexAction()
         {
-            echo '<pre>' , var_dump("11111") , '</pre>';
-            echo '<pre>' , var_dump("11111") , '</pre>';
+            // echo '<pre>' , var_dump("11111") , '</pre>';
+            // echo '<pre>' , var_dump("11111") , '</pre>';
 
             $this->ressourcenarten = ($this->ressourcenarten == null) ? $this->ressourcenartRepository->findAll() : $this->ressourcenarten;
             $this->ressourcenkategorien = ($this->ressourcenkategorien == null) ? $this->getAlleKategorien($this->ressourcenarten) : $this->ressourcenkategorien;
@@ -350,8 +329,8 @@
 
             foreach ($this->loesungen as $loesung) {
                 // $solution = $loesung->getLoesungsbezeichnung();
-                $arbeitsschritte = $loesung->getArbeitsschritte();
                 // echo '<pre>' , var_dump('solution:----------'.$solution) , '</pre>';
+                $arbeitsschritte = $loesung->getArbeitsschritte();
                 $ressourcen = [];
                 foreach ($arbeitsschritte as $arbeitsschritt) {
                     // echo '<pre>' , var_dump('Arbeitsschritt:----------'.$arbeitsschritt->getBezeichnung()) , '</pre>';
@@ -379,9 +358,7 @@
             $this->getTeilgewichtung($this->ressourcenarten);
             $this->paarVergleiche($this->scores);
             $this->ermittleNettofluss();
-            $this->aktualisiereNettofluss($this->loesungen, $this->nettofluesse);
-            // $this->speichereNettofluss($this->loesungRepository, $this->loesungen);
-            $this->sortNettofluss($this->nettofluesse);
+            $this->speichereNettofluss($this->loesungRepository, $this->loesungen, $this->nettofluesse);
 
             if(isset($request['rule-submit'])) {
                 $this->aktualisierePunkte($request, $this->ressourcenarten);
