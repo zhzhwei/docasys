@@ -23,6 +23,8 @@
 
         private $loesungszahl;
 
+        private $teilprojektnummer = [];
+
         private $vergleichzahl;
 
         private $scores = [];
@@ -107,22 +109,22 @@
 
         private function scoreJeLoesung($ressourcen, $ressourcenarten)
         {
-            $gesamtwerte = [];
-            $gesamtzahl = [];
+            $gesamtressourcenwerte = [];
+            $gesamtressourcenzahl = [];
 
             //Gesamtwerte und Gesamtzahl berechnen
             foreach ($ressourcen as $ressource) {
-                $gesamtwerte[$ressource[0]] += $ressource[1];
-                $gesamtzahl[$ressource[0]] += 1;
+                $gesamtressourcenwerte[$ressource[0]] += $ressource[1];
+                $gesamtressourcenzahl[$ressource[0]] += 1;
             }
 
-            //Durchschnittswerte berechnen
-            $durchschnittswerte = [];
+            //Averagewerte berechnen
+            $averessourcenwerte = [];
             foreach ($ressourcenarten as $ressourcenart) {
-                if($gesamtzahl[$ressourcenart->getName()] != 0 ){
-                    $durchschnittswerte[$ressourcenart->getName()] = ceil($gesamtwerte[$ressourcenart->getName()] / $gesamtzahl[$ressourcenart->getName()]);
+                if($gesamtressourcenzahl[$ressourcenart->getName()] != 0 ){
+                    $averessourcenwerte[$ressourcenart->getName()] = ceil($gesamtressourcenwerte[$ressourcenart->getName()] / $gesamtressourcenzahl[$ressourcenart->getName()]);
                 }
-                // echo '<pre>' , var_dump($durchschnittswerte[$ressourcenart->getName()]) , '</pre>';
+                // echo '<pre>' , var_dump($averessourcenwerte[$ressourcenart->getName()]) , '</pre>';
             }
 
             //Gesamtpunkte je nach Kategorien wieder berechnen
@@ -174,13 +176,13 @@
             $scoreLangzeitaufwand = 0.0;
             foreach ($ressourcenarten as $ressourcenart) {
                 if ($ressourcenart->getKategorie() == 1) {
-                    $scoreImmaterieller += $durchschnittswerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
+                    $scoreImmaterieller += $averessourcenwerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
                 }   
                 elseif ($ressourcenart->getKategorie() == 2) {
-                    $scoreMaterieller += $durchschnittswerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
+                    $scoreMaterieller += $averessourcenwerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
                 }
                 elseif ($ressourcenart->getKategorie() == 3) {
-                    $scoreLangzeitaufwand += $durchschnittswerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
+                    $scoreLangzeitaufwand += $averessourcenwerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
                 }
             }
 
@@ -225,7 +227,7 @@
                     $teilgewichtunglangzeitaufwand += $ressourcenart->getIndividualgewichtung();
                 }
             }
-            $this->teilgewichtungen = [$teilgewichtungmaterieller,$teilgewichtungimmaterieller,$teilgewichtunglangzeitaufwand];
+            $this->teilgewichtungen = [$teilgewichtungmaterieller, $teilgewichtungimmaterieller, $teilgewichtunglangzeitaufwand];
             // echo '<pre>' , var_dump($this->teilgewichtungen) , '</pre>';
         }
 
@@ -253,9 +255,9 @@
                         array_push($vergleiche, ($v10 < $v20) ? 0 : 1);
                         array_push($vergleiche, ($v11 < $v21) ? 0 : 1);
                         array_push($vergleiche, ($v12 < $v22) ? 0 : 1);
+                        // echo '<pre>' , var_dump('    '.$vergleiche[0].'-----------'.$vergleiche[1].'------------'.$vergleiche[2].'    '.$pi) , '</pre>';
                         $tpi = $vergleiche[0]*$this->teilgewichtungen[0] + $vergleiche[1]*$this->teilgewichtungen[1] + $vergleiche[2]*$this->teilgewichtungen[2];
                         array_push($this->pi, $tpi);
-                        // echo '<pre>' , var_dump('    '.$vergleiche[0].'-----------'.$vergleiche[1].'------------'.$vergleiche[2].'    '.$pi) , '</pre>';
                     }
                     $k2 += 3;
                 }
@@ -303,17 +305,28 @@
             // echo '<pre>' , var_dump($this->nettofluesse) , '</pre>';
         }
 
-        public function speichereNettofluss($repository, $loesungen, $nettofluesse)
+        public function speichereNettofluss($teilprojektnummer, $repository, $loesungen, $nettofluesse)
         {
-            foreach ($loesungen as $key => $loesung) {
-                if ($nettofluesse[$key] != 0) {
-                    $loesung->setNettofluss($nettofluesse[$key]);
+            $iter = 0;
+            foreach ($loesungen as $loesung) {
+                // 1.Methode
+                // if ( in_array($loesung->getTeilprojektnummer(), $teilprojektnummer) ) {
+                // 2.Methode
+                if ( $loesung->getTeilprojektnummer() == $teilprojektnummer[$iter] ) { 
+                    if ( $loesung->getLoesungsart() == 0 ) {
+                        $loesung->setNettofluss($nettofluesse[$iter]);
+                        $iter += 1;
+                    }
                 }
+                else {
+                    $loesung->setNettofluss(0.0);
+                }
+                // echo '<pre>' , var_dump($loesung->getTeilprojektnummer(), $loesung->getNettofluss()) , '</pre>';
             }
 
-            foreach ($loesungen as $loesung) {
-                $repository->update($loesung);
-            }
+            // foreach ($loesungen as $loesung) {
+            //     $repository->update($loesung);
+            // }
         }
 
         public function indexAction()
@@ -332,9 +345,16 @@
                 // echo '<pre>' , var_dump('solution:----------'.$solution) , '</pre>';
                 $arbeitsschritte = $loesung->getArbeitsschritte();
                 $ressourcen = [];
+                $added = false;
+
                 foreach ($arbeitsschritte as $arbeitsschritt) {
                     // echo '<pre>' , var_dump('Arbeitsschritt:----------'.$arbeitsschritt->getBezeichnung()) , '</pre>';
                     $inputressourcen = $arbeitsschritt->getIRe();
+                    if( $inputressourcen && ($added == false) ) {
+                        array_push($this->teilprojektnummer, $loesung->getTeilprojektnummer());
+                        $added = true;
+                    }
+
                     foreach ($inputressourcen as $inputressource) {
                         $kosten = $inputressource->getKosten();
                         $zeitaufwand = $inputressource->getZeitaufwand();
@@ -350,15 +370,17 @@
                         }
                     }
                 }
+                // echo '<pre>' , var_dump($ressourcen) , '</pre>';
                 $score = $this->scoreJeLoesung($ressourcen, $this->ressourcenarten);
                 // echo '<pre>' , var_dump($score) , '</pre>';
                 $this->einschaetzungJeScore($score);
             }
+            // echo '<pre>' , var_dump($this->teilprojektnummer) , '</pre>';
             // echo '<pre>' , var_dump($this->scores) , '</pre>';
             $this->getTeilgewichtung($this->ressourcenarten);
             $this->paarVergleiche($this->scores);
             $this->ermittleNettofluss();
-            $this->speichereNettofluss($this->loesungRepository, $this->loesungen, $this->nettofluesse);
+            $this->speichereNettofluss($this->teilprojektnummer, $this->loesungRepository, $this->loesungen, $this->nettofluesse);
 
             if(isset($request['rule-submit'])) {
                 $this->aktualisierePunkte($request, $this->ressourcenarten);

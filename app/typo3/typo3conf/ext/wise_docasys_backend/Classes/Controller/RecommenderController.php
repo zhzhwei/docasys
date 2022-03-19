@@ -57,7 +57,9 @@
         {
             $newresults = [];
             foreach ($results as $result) {
-                array_push($newresults, array('teilprojektnummer'=>$result->getTeilprojektnummer(), 'loesungsbezeichnung'=>$result->getLoesungsbezeichnung(), 'nettofluss'=>$result->getNettofluss()) );
+                if($result->getNettofluss() !=0 ) {
+                    array_push($newresults, array('teilprojektnummer'=>$result->getTeilprojektnummer(), 'loesungsbezeichnung'=>$result->getLoesungsbezeichnung(), 'nettofluss'=>$result->getNettofluss()) );
+                }
             }
             // echo '<pre>' , var_dump($newresults) , '</pre>';
             return $newresults;
