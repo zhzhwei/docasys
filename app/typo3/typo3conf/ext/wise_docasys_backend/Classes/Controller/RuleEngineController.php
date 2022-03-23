@@ -112,13 +112,13 @@
             $gesamtressourcenwerte = [];
             $gesamtressourcenzahl = [];
 
-            //Gesamtwerte und Gesamtzahl berechnen
+            //Gesamtwerte und Gesamtzahl nach Ressourcenarten berechnen
             foreach ($ressourcen as $ressource) {
                 $gesamtressourcenwerte[$ressource[0]] += $ressource[1];
                 $gesamtressourcenzahl[$ressource[0]] += 1;
             }
 
-            //Averagewerte berechnen
+            //Averagewerte nach Ressourcenarten berechnen
             $averessourcenwerte = [];
             foreach ($ressourcenarten as $ressourcenart) {
                 if($gesamtressourcenzahl[$ressourcenart->getName()] != 0 ){
@@ -127,20 +127,22 @@
                 // echo '<pre>' , var_dump($averessourcenwerte[$ressourcenart->getName()]) , '</pre>';
             }
 
-            //Gesamtpunkte je nach Kategorien wieder berechnen
+            //Gesamtpunkte nach Kategorien wieder berechnen
             $gesamtpunktMaterieller = 0;
             $gesamtpunktImmaterieller = 0;
             $gesamtpunktLangzeitaufwand = 0;
-            $tempressourcen = [];
+            $tempressourcenarten = [];
+
             foreach ($ressourcen as $ressource) {
-                if (!in_array($ressource[0], $tempressourcen)) {
-                    array_push($tempressourcen, $ressource[0]);
+                if (!in_array($ressource[0], $tempressourcenarten)) {
+                    array_push($tempressourcenarten, $ressource[0]);
                 }
             }
-            // echo '<pre>' , var_dump($tempressourcen) , '</pre>';
-            foreach ($tempressourcen as $tempressource) {
+
+            // echo '<pre>' , var_dump($tempressourcenarten) , '</pre>';
+            foreach ($tempressourcenarten as $tempressourcenart) {
                 foreach ($ressourcenarten as $ressourcenart) {
-                    if ($tempressource == $ressourcenart->getName()) {
+                    if ($tempressourcenart == $ressourcenart->getName()) {
                         if ($ressourcenart->getKategorie() == 1) {
                             $gesamtpunktImmaterieller += $ressourcenart->getPunkte();
                         }
@@ -154,10 +156,11 @@
                 }
             }
             // echo '<pre>' , var_dump($gesamtpunktImmaterieller, $gesamtpunktMaterieller, $gesamtpunktLangzeitaufwand) , '</pre>';
-            //Gewichtungen wieder berechnen
-            foreach ($tempressourcen as $tempressource) {
+            
+            // Gewichtungen nach Ressourcenarten wieder berechnen
+            foreach ($tempressourcenarten as $tempressourcenart) {
                 foreach ($ressourcenarten as $ressourcenart) {
-                    if ($tempressource == $ressourcenart->getName()) {
+                    if ($tempressourcenart == $ressourcenart->getName()) {
                         if ($ressourcenart->getKategorie() == 1) {
                             $ressourcenart->setGewichtung(round($ressourcenart->getPunkte() / $gesamtpunktImmaterieller, 2));
                         }
@@ -170,10 +173,11 @@
                     }
                 }
             }
-            //score berechnen
+            //Score berechnen
             $scoreMaterieller = 0.0;
             $scoreImmaterieller = 0.0;
             $scoreLangzeitaufwand = 0.0;
+
             foreach ($ressourcenarten as $ressourcenart) {
                 if ($ressourcenart->getKategorie() == 1) {
                     $scoreImmaterieller += $averessourcenwerte[$ressourcenart->getName()] * $ressourcenart->getGewichtung();
@@ -252,9 +256,9 @@
                         $v12 = $scores[$k1+2];
                         $v21 = $scores[$k2+1];
                         $v22 = $scores[$k2+2];
-                        array_push($vergleiche, ($v10 < $v20) ? 0 : 1);
-                        array_push($vergleiche, ($v11 < $v21) ? 0 : 1);
-                        array_push($vergleiche, ($v12 < $v22) ? 0 : 1);
+                        array_push($vergleiche, ($v10 > $v20) ? 1 : 0);
+                        array_push($vergleiche, ($v11 > $v21) ? 1 : 0);
+                        array_push($vergleiche, ($v12 > $v22) ? 1 : 0);
                         // echo '<pre>' , var_dump('    '.$vergleiche[0].'-----------'.$vergleiche[1].'------------'.$vergleiche[2].'    '.$pi) , '</pre>';
                         $tpi = $vergleiche[0]*$this->teilgewichtungen[0] + $vergleiche[1]*$this->teilgewichtungen[1] + $vergleiche[2]*$this->teilgewichtungen[2];
                         array_push($this->pi, $tpi);
@@ -324,15 +328,15 @@
                 // echo '<pre>' , var_dump($loesung->getTeilprojektnummer(), $loesung->getNettofluss()) , '</pre>';
             }
 
-            // foreach ($loesungen as $loesung) {
-            //     $repository->update($loesung);
-            // }
+            foreach ($loesungen as $loesung) {
+                $repository->update($loesung);
+            }
         }
 
         public function indexAction()
         {
-            // echo '<pre>' , var_dump("11111") , '</pre>';
-            // echo '<pre>' , var_dump("11111") , '</pre>';
+            echo '<pre>' , var_dump("11111") , '</pre>';
+            echo '<pre>' , var_dump("11111") , '</pre>';
 
             $this->ressourcenarten = ($this->ressourcenarten == null) ? $this->ressourcenartRepository->findAll() : $this->ressourcenarten;
             $this->ressourcenkategorien = ($this->ressourcenkategorien == null) ? $this->getAlleKategorien($this->ressourcenarten) : $this->ressourcenkategorien;
@@ -372,11 +376,11 @@
                 }
                 // echo '<pre>' , var_dump($ressourcen) , '</pre>';
                 $score = $this->scoreJeLoesung($ressourcen, $this->ressourcenarten);
-                // echo '<pre>' , var_dump($score) , '</pre>';
+                echo '<pre>' , var_dump($score) , '</pre>';
                 $this->einschaetzungJeScore($score);
             }
             // echo '<pre>' , var_dump($this->teilprojektnummer) , '</pre>';
-            // echo '<pre>' , var_dump($this->scores) , '</pre>';
+            echo '<pre>' , var_dump($this->scores) , '</pre>';
             $this->getTeilgewichtung($this->ressourcenarten);
             $this->paarVergleiche($this->scores);
             $this->ermittleNettofluss();

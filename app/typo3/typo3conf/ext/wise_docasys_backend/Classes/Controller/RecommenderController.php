@@ -57,7 +57,7 @@
         {
             $newresults = [];
             foreach ($results as $result) {
-                if($result->getNettofluss() !=0 ) {
+                if($result->getNettofluss() != 0 ) {
                     array_push($newresults, array('teilprojektnummer'=>$result->getTeilprojektnummer(), 'loesungsbezeichnung'=>$result->getLoesungsbezeichnung(), 'nettofluss'=>$result->getNettofluss()) );
                 }
             }
