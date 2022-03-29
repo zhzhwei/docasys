@@ -122,10 +122,10 @@
             $averessourcenwerte = [];
             foreach ($ressourcenarten as $ressourcenart) {
                 if($gesamtressourcenzahl[$ressourcenart->getName()] != 0 ){
-                    $averessourcenwerte[$ressourcenart->getName()] = ceil($gesamtressourcenwerte[$ressourcenart->getName()] / $gesamtressourcenzahl[$ressourcenart->getName()]);
+                    $averessourcenwerte[$ressourcenart->getName()] = round($gesamtressourcenwerte[$ressourcenart->getName()] / $gesamtressourcenzahl[$ressourcenart->getName()]);
                 }
-                // echo '<pre>' , var_dump($averessourcenwerte[$ressourcenart->getName()]) , '</pre>';
             }
+            echo '<pre>' , var_dump('averessourcenwerte', $averessourcenwerte) , '</pre>';
 
             //Gesamtpunkte nach Kategorien wieder berechnen
             $gesamtpunktMaterieller = 0;
@@ -155,7 +155,7 @@
                     }
                 }
             }
-            // echo '<pre>' , var_dump($gesamtpunktImmaterieller, $gesamtpunktMaterieller, $gesamtpunktLangzeitaufwand) , '</pre>';
+            // echo '<pre>' , var_dump($gesamtpunktMaterieller, $gesamtpunktImmaterieller, $gesamtpunktLangzeitaufwand) , '</pre>';
             
             // Gewichtungen nach Ressourcenarten wieder berechnen
             foreach ($tempressourcenarten as $tempressourcenart) {
@@ -197,19 +197,19 @@
         private function einschaetzungJeScore($score)
         {
             foreach ($score as $key => $value) {
-                if ($value >= 1.0 && $value <=1.39) {
+                if ($value >= 1.0 && $value <= 1.39) {
                     array_push($this->scores, 1);
                 }
-                elseif ($value >= 1.4 && $value <=1.79) {
+                elseif ($value >= 1.4 && $value <= 1.79) {
                     array_push($this->scores, 2);
                 }
-                elseif ($value >= 1.8 && $value <=2.19) {
+                elseif ($value >= 1.8 && $value <= 2.19) {
                     array_push($this->scores, 3);
                 }
-                elseif ($value >= 2.2 && $value <=2.59) {
+                elseif ($value >= 2.2 && $value <= 2.59) {
                     array_push($this->scores, 4);
                 }
-                elseif ($value >= 2.6 && $value <=3) {
+                elseif ($value >= 2.6 && $value <= 3) {
                     array_push($this->scores, 5);
                 }
             }
@@ -220,6 +220,7 @@
             $teilgewichtungmaterieller = 0.0;
             $teilgewichtungimmaterieller = 0.0;
             $teilgewichtunglangzeitaufwand = 0.0;
+
             foreach ($ressourcenarten as $ressourcenart) {
                 if($ressourcenart->getKategorie() == 1) {
                     $teilgewichtungimmaterieller += $ressourcenart->getIndividualgewichtung();
@@ -267,7 +268,7 @@
                 }
                 $k1 += 3;
             }
-            // echo '<pre>' , var_dump($this->pi) , '</pre>';
+            echo '<pre>' , var_dump($this->pi) , '</pre>';
         }
 
         public function ermittleNettofluss()
@@ -346,13 +347,13 @@
 
             foreach ($this->loesungen as $loesung) {
                 // $solution = $loesung->getLoesungsbezeichnung();
-                // echo '<pre>' , var_dump('solution:----------'.$solution) , '</pre>';
+                echo '<pre>' , var_dump('solution:----------'.$solution) , '</pre>';
                 $arbeitsschritte = $loesung->getArbeitsschritte();
                 $ressourcen = [];
                 $added = false;
 
                 foreach ($arbeitsschritte as $arbeitsschritt) {
-                    // echo '<pre>' , var_dump('Arbeitsschritt:----------'.$arbeitsschritt->getBezeichnung()) , '</pre>';
+                    echo '<pre>' , var_dump('Arbeitsschritt:----------'.$arbeitsschritt->getBezeichnung()) , '</pre>';
                     $inputressourcen = $arbeitsschritt->getIRe();
                     if( $inputressourcen && ($added == false) ) {
                         array_push($this->teilprojektnummer, $loesung->getTeilprojektnummer());
@@ -367,16 +368,20 @@
                             array_push($ressourcen, array($art, 3));
                         }
                         elseif ($kosten == 0) {
+                            echo '<pre>' , var_dump('art zeitaufwand', $art, $zeitaufwand) , '</pre>';
                             array_push($ressourcen, array($art, $zeitaufwand));
                         }
                         elseif ($zeitaufwand == 0) {
+                            echo '<pre>' , var_dump('art, kosten', $art, $kosten) , '</pre>';
                             array_push($ressourcen, array($art, $kosten));
                         }
                     }
                 }
                 // echo '<pre>' , var_dump($ressourcen) , '</pre>';
                 $score = $this->scoreJeLoesung($ressourcen, $this->ressourcenarten);
-                echo '<pre>' , var_dump($score) , '</pre>';
+                if ($score[0] != 0) {
+                    echo '<pre>' , var_dump($score) , '</pre>';
+                }
                 $this->einschaetzungJeScore($score);
             }
             // echo '<pre>' , var_dump($this->teilprojektnummer) , '</pre>';
