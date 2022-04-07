@@ -122,10 +122,10 @@
             $averessourcenwerte = [];
             foreach ($ressourcenarten as $ressourcenart) {
                 if($gesamtressourcenzahl[$ressourcenart->getName()] != 0 ){
-                    $averessourcenwerte[$ressourcenart->getName()] = round($gesamtressourcenwerte[$ressourcenart->getName()] / $gesamtressourcenzahl[$ressourcenart->getName()]);
+                    $averessourcenwerte[$ressourcenart->getName()] = ($gesamtressourcenwerte[$ressourcenart->getName()] / $gesamtressourcenzahl[$ressourcenart->getName()]);
                 }
             }
-            echo '<pre>' , var_dump('averessourcenwerte', $averessourcenwerte) , '</pre>';
+            // echo '<pre>' , var_dump('averessourcenwerte', $averessourcenwerte) , '</pre>';
 
             //Gesamtpunkte nach Kategorien wieder berechnen
             $gesamtpunktMaterieller = 0;
@@ -268,7 +268,7 @@
                 }
                 $k1 += 3;
             }
-            echo '<pre>' , var_dump($this->pi) , '</pre>';
+            // echo '<pre>' , var_dump($this->pi) , '</pre>';
         }
 
         public function ermittleNettofluss()
@@ -336,8 +336,8 @@
 
         public function indexAction()
         {
-            echo '<pre>' , var_dump("11111") , '</pre>';
-            echo '<pre>' , var_dump("11111") , '</pre>';
+            // echo '<pre>' , var_dump("11111") , '</pre>';
+            // echo '<pre>' , var_dump("11111") , '</pre>';
 
             $this->ressourcenarten = ($this->ressourcenarten == null) ? $this->ressourcenartRepository->findAll() : $this->ressourcenarten;
             $this->ressourcenkategorien = ($this->ressourcenkategorien == null) ? $this->getAlleKategorien($this->ressourcenarten) : $this->ressourcenkategorien;
@@ -347,13 +347,13 @@
 
             foreach ($this->loesungen as $loesung) {
                 // $solution = $loesung->getLoesungsbezeichnung();
-                echo '<pre>' , var_dump('solution:----------'.$solution) , '</pre>';
+                // echo '<pre>' , var_dump('solution:----------'.$solution) , '</pre>';
                 $arbeitsschritte = $loesung->getArbeitsschritte();
                 $ressourcen = [];
                 $added = false;
 
                 foreach ($arbeitsschritte as $arbeitsschritt) {
-                    echo '<pre>' , var_dump('Arbeitsschritt:----------'.$arbeitsschritt->getBezeichnung()) , '</pre>';
+                    // echo '<pre>' , var_dump('Arbeitsschritt:----------'.$arbeitsschritt->getBezeichnung()) , '</pre>';
                     $inputressourcen = $arbeitsschritt->getIRe();
                     if( $inputressourcen && ($added == false) ) {
                         array_push($this->teilprojektnummer, $loesung->getTeilprojektnummer());
@@ -368,24 +368,20 @@
                             array_push($ressourcen, array($art, 3));
                         }
                         elseif ($kosten == 0) {
-                            echo '<pre>' , var_dump('art zeitaufwand', $art, $zeitaufwand) , '</pre>';
+                            // echo '<pre>' , var_dump('art zeitaufwand', $art, $zeitaufwand) , '</pre>';
                             array_push($ressourcen, array($art, $zeitaufwand));
                         }
                         elseif ($zeitaufwand == 0) {
-                            echo '<pre>' , var_dump('art, kosten', $art, $kosten) , '</pre>';
+                            // echo '<pre>' , var_dump('art, kosten', $art, $kosten) , '</pre>';
                             array_push($ressourcen, array($art, $kosten));
                         }
                     }
                 }
                 // echo '<pre>' , var_dump($ressourcen) , '</pre>';
                 $score = $this->scoreJeLoesung($ressourcen, $this->ressourcenarten);
-                if ($score[0] != 0) {
-                    echo '<pre>' , var_dump($score) , '</pre>';
-                }
                 $this->einschaetzungJeScore($score);
             }
-            // echo '<pre>' , var_dump($this->teilprojektnummer) , '</pre>';
-            echo '<pre>' , var_dump($this->scores) , '</pre>';
+            // echo '<pre>' , var_dump($this->scores) , '</pre>';
             $this->getTeilgewichtung($this->ressourcenarten);
             $this->paarVergleiche($this->scores);
             $this->ermittleNettofluss();

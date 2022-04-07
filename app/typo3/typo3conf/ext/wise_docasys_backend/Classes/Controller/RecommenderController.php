@@ -61,7 +61,6 @@
                     array_push($newresults, array('teilprojektnummer'=>$result->getTeilprojektnummer(), 'loesungsbezeichnung'=>$result->getLoesungsbezeichnung(), 'nettofluss'=>$result->getNettofluss()) );
                 }
             }
-            // echo '<pre>' , var_dump($newresults) , '</pre>';
             return $newresults;
         }
 
@@ -69,9 +68,6 @@
         {   
             $request = $this->request->getArguments();
             $results = [];
-
-            // echo '<pre>' , var_dump("11111") , '</pre>';
-            // echo '<pre>' , var_dump("11111") , '</pre>';
 
             if(isset($request['recommender-submit'])) {
                 $results = $this->loesungRepository->getFilteredSolutions($request['recommender-submit']);  
@@ -85,7 +81,6 @@
                 else {
                     $newresults = $this->renewResults($results);
                     array_multisort(array_column($newresults,'nettofluss'), SORT_DESC, $newresults);
-                    // echo '<pre>' , var_dump($newresults) , '</pre>';
                 }
             }
 
