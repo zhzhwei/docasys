@@ -12,38 +12,6 @@
         */
         protected $loesungRepository;
 
-        protected $Anwendungsfall = [
-            'Keine Auswahl',
-            'Einzelfertigung',
-            'Serienfertigung',
-        ];
-
-        protected $Flexibility = [
-            'Keine Auswahl',
-            'Maschinenspezifisch',
-            'Lastfallspezifisch',
-            'Bedingt Lastfallspezifisch',
-        ];
-
-        protected $Wartungsintervall = [
-            'Keine Auswahl',
-            'Quartalsweise',
-            'Halbjährlich',
-            'Jährlich',
-        ];
-
-        protected $Maschinensteuerung = [
-            'Keine Auswahl',
-            'Ja',
-            'Nein',
-        ];
-
-        protected $Maschinenstillstand = [
-            'Keine Auswahl',
-            'Ja',
-            'Nein',
-        ];
-
         public function renewResults($results)
         {
             $newresults = [];

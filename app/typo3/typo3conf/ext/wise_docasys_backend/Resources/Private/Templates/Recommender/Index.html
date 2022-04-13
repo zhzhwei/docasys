@@ -13,7 +13,7 @@
                         Anwendungsfall:
                     </label>
                     <div class="col-sm-9">
-                        <f:form.select property="operator.anwendung" options="{Anwendungsfall}" class="form-control" />
+                        <f:form.select property="anwendungsfall" class="form-control" options="{wise:be.TcaOptions(property:'anwendungsfall',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.anwendungsfall}" />
                     </div>
                 </div>
 
@@ -22,7 +22,7 @@
                         Flexibilit&auml;t:
                     </label>
                     <div class="col-sm-9">
-                        <f:form.select property="operator.flexibility" options="{Flexibility}" class="form-control" />
+                        <f:form.select property="flexibilitaet" class="form-control" options="{wise:be.TcaOptions(property:'flexibilitaet',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.flexibilitaet}" />
                     </div>
                 </div>
 
@@ -31,7 +31,7 @@
                         Invasivit&auml;tsgrad:
                     </label>
                     <div class="col-sm-9">
-                        <f:form.select property="invasivity" class="form-control" options="{wise:be.TcaOptions(property:'invasivitaetsgrad',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.invasivity}" />
+                        <f:form.select property="invasivitaetsgrad" class="form-control" options="{wise:be.TcaOptions(property:'invasivitaetsgrad',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.invasivitaetsgrad}" />
                     </div>
                 </div>
 
@@ -40,7 +40,7 @@
                         Wartungsintervall:
                     </label>
                     <div class="col-sm-9">
-                        <f:form.select property="operator.wartung" options="{Wartungsintervall}" class="form-control" />
+                        <f:form.select property="wartungsintervall" class="form-control" options="{wise:be.TcaOptions(property:'wartungsintervall',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.wartungsintervall}" />
                     </div>
                 </div>
 
@@ -49,7 +49,7 @@
                         Zugriff auf Maschinensteuerung:
                     </label>
                     <div class="col-sm-9">
-                        <f:form.select property="operator.zugriff" options="{Maschinensteuerung}" class="form-control" />
+                        <f:form.select property="maschinensteuerungszugriff" class="form-control" options="{wise:be.TcaOptions(property:'maschinensteuerungszugriff',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.maschinensteuerungszugriff}" />
                     </div>
                 </div>
 
@@ -58,8 +58,7 @@
                         Notwendigkeit Maschinenstillstand:
                     </label>
                     <div class="col-sm-9">
-                        <f:form.select property="operator.notwendigkeit" options="{Maschinenstillstand}" class="form-control" />
-                        <!-- <f:form.select property="design" class="form-control" options="{wise:be.TcaOptions(property:'loesungsart',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.design}" /> -->
+                        <f:form.select property="maschinenstillstandsnotwendigkeit" class="form-control" options="{wise:be.TcaOptions(property:'maschinenstillstandsnotwendigkeit',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.maschinenstillstandsnotwendigkeit}" />
                     </div>
                 </div>
             </div>
