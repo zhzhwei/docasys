@@ -26,25 +26,36 @@
                 </div>
             </div>
         </div>
-
         <div class="row">
             <div class="col-md-12">
                 <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse5">Projektbeschreibung</a>
+                </h4>
+            </div>
+            <div id="collapse5" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <f:if condition="{solution.bemerkung}">
+                                <p><f:format.nl2br>{solution.bemerkung}</f:format.nl2br></p>
+                            </f:if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
                     <div class="panel panel-default panel-solution">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse1">&Uuml;bersicht und Klassifikation</a>
+                                <a data-toggle="collapse" href="#collapse1">Eigenschaften</a>
                             </h4>
                         </div>
                         <div id="collapse1" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div class="row">
-                                    <div class="col-xs-2">
-                                        <dl>
-                                            <dt>Art</dt>
-                                            <dd><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsart.{solution.loesungsart}" /></dd>
-                                        </dl>
-                                    </div>
                                     <div class="col-xs-2">
                                         <dl>
                                             <dt>L&ouml;sungsklasse</dt>
@@ -53,52 +64,26 @@
                                     </div>
                                     <div class="col-xs-2">
                                         <dl>
-                                            <dt>Phase der themischen Wirkkette</dt>
+                                            <dt>Phase der thermischen Wirkkette</dt>
                                             <dd><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:phase_thermische_wirkkette.{solution.phaseDerThermischenWirkkette}" /></dd>
                                         </dl>
                                     </div>
                                     <div class="col-xs-2">
                                         <dl>
-                                            <dt>Physikalischer Effekt</dt>
-                                            <dd><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:physikalischer_effekt.{solution.physikalischerEffekt}" /></dd>
+                                            <dt>Invasivit&auml;tsgrad:</dt>
+                                            <dd><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:invasivitaetsgrad.{solution.invasivitaetsgrad}" /></dd>
                                         </dl>
                                     </div>
                                     <div class="col-xs-2">
                                         <dl>
-                                            <dt>Betrifft</dt>
-                                            <dd>
-                                                Hersteller: 
-                                                <f:if condition="{solution.betrifftHersteller} == 1">
-                                                    <f:then>
-                                                        <span class="badge badge-success">Ja</span>
-                                                    </f:then>
-                                                    <f:else>
-                                                        <span class="badge badge-danger">Nein</span>
-                                                    </f:else>
-                                                </f:if>
-                                                <br>
-                                                Betreiber:
-                                                <f:if condition="{solution.betrifftBetreiber} == 1">
-                                                    <f:then>
-                                                        <span class="badge badge-success">Ja</span>
-                                                    </f:then>
-                                                    <f:else>
-                                                        <span class="badge badge-danger">Nein</span>
-                                                    </f:else>
-                                                </f:if>
-                                            </dd>
+                                             <dt>Wartungsintervall:</dt>
+                                             <dd><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:wartungsintervall.{solution.wartungsintervall}" /></dd>
                                         </dl>
                                     </div>
                                     <div class="col-xs-2">
                                         <dl>
-                                            <dt>Gestaltungsarten</dt>
-                                            <dd>
-                                                <ul>
-                                                    <f:for each="{solution.gestaltungsart}" as="ga">
-                                                        <li>{ga.bezeichnung}</li> 
-                                                    </f:for>
-                                                </ul>
-                                            </dd>
+                                            <dt>Realisierungsrisiko:</dt>
+                                            <dd>{solution.realisierungsrisiko}</dd>
                                         </dl>
                                     </div>
                                 </div>
@@ -108,7 +93,7 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse2">Voraussetzungen, Anwendung, Ergebnisse</a>
+                                <a data-toggle="collapse" href="#collapse2">Beziehung zu anderen Teilprojekten</a>
                             </h4>
                         </div>
                         <div id="collapse2" class="panel-collapse collapse">
@@ -116,7 +101,7 @@
                                 <div class="row">
                                     <div class="col-xs-3">
                                         <div class="page-header">
-                                            <h4>Voraussetzungen und Bedingungen</h4> 
+                                            <h4>Voraussetzungen</h4>
                                         </div>
                                         <div class="io-objects">
                                             <f:for each="{solution.inputRessource}" as="inputRessource">
@@ -142,60 +127,6 @@
                                                     <f:render partial="SolutionOverview/DatenPanel" arguments="{daten: daten, datenContainer: inputDaten}" />
                                                 </f:for>
                                             </f:for>
-                                        </div>
-
-                                        <div class="page-header margin-top">
-                                            <h4>Voraussetzungen</h4> 
-                                        </div>
-                                        <f:if condition="{solution.komponentenbedingung}">
-                                            <ul>
-                                                <f:for each="{solution.komponentenbedingung}" as="kb">
-                                                    <li>{kb.objekt.bezeichnung} <f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:operator.{kb.operator}" /> "{kb.wert}"</li>
-                                                </f:for>
-                                            </ul>
-                                        </f:if>
-                                    </div>
-                                    <div class="col-xs-6">
-                                        <div class="page-header">
-                                            <h4>Anwendungen und Arbeitsschritte</h4> 
-                                        </div>
-                                        <div class="row steps">
-                                            <f:for each="{solution.arbeitsschritte}" as="arbeitsschritt" iteration="iterator">
-                                                <div class="col-xs-4">
-                                                    <f:render partial="SolutionOverview/Step" arguments="{step: arbeitsschritt, number: iterator.cycle}" />    
-                                                </div>
-                                            </f:for>
-                                        </div>
-
-                                        <div class="row">
-                                            <div class="col-xs-6">
-                                                <div class="page-header margin-top">
-                                                    <h4>Ablaufmodelle BPMN, CMMN</h4>
-                                                </div>
-                                                <f:if condition="{solution.ablauf}">
-                                                    <ul class="list-group">
-                                                        <f:for each="{modelFiles.bpmn}" as="file">
-                                                            <li class="list-group-item">
-                                                                <a href="{file.modelerReference}" title="Modell im Modeler anzeigen" target="_blank">{file.name}</a>
-                                                            </li>
-                                                        </f:for>
-                                                    </ul>
-                                                </f:if>
-                                            </div>
-                                            <div class="col-xs-6">
-                                                <div class="page-header margin-top">
-                                                    <h4>Entscheidungsmodelle DMN</h4>
-                                                </div>
-                                                <f:if condition="{solution.entscheidungen}">
-                                                    <ul class="list-group">
-                                                        <f:for each="{modelFiles.dmn}" as="file">
-                                                            <li class="list-group-item">
-                                                                <a href="{file.modelerReference}" title="Modell im Modeler anzeigen" target="_blank">{file.name}</a>
-                                                            </li>
-                                                        </f:for>
-                                                    </ul>
-                                                </f:if>
-                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-xs-3">
@@ -241,10 +172,49 @@
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse3">Anwendungsf&auml;lle und Untersuchungen</a>
+                                <a data-toggle="collapse" href="#collapse3">Anwendung und Arbeitsschritte</a>
                             </h4>
                         </div>
                         <div id="collapse3" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="page-header margin-top">
+                                            <h4>Ablaufmodell BPMN</h4>
+                                        </div>
+                                        <f:if condition="{solution.ablauf}">
+                                            <ul class="list-group">
+                                                <f:for each="{modelFiles.bpmn}" as="file">
+                                                    <li class="list-group-item">
+                                                        <a href="{file.modelerReference}" title="Modell im Modeler anzeigen" target="_blank">{file.name}</a>
+                                                    </li>
+                                                </f:for>
+                                            </ul>
+                                        </f:if>
+                                    </div>
+                                </div>
+                                 <div class="row steps">
+                                     <div class="col-xs-12">
+                                         <div class="page-header margin-top">
+                                             <h4>Arbeitsschritte</h4>
+                                         </div>
+                                     <f:for each="{solution.arbeitsschritte}" as="arbeitsschritt" iteration="iterator">
+                                         <div class="col-xs-4">
+                                    <f:render partial="SolutionOverview/Step" arguments="{step: arbeitsschritt, number: iterator.cycle}" />
+                                         </div>
+                                     </f:for>
+                                    </div>
+                                 </div>
+                             </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse4">Anwendungsf&auml;lle und Untersuchungen</a>
+                            </h4>
+                        </div>
+                        <div id="collapse4" class="panel-collapse collapse">
                             <div class="panel-body">
                                 <div class="row">
                                     <div class="col-xs-9">
@@ -337,114 +307,6 @@
                                         </f:if>
                                     </div>
                                 </div>    
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse4">Bewertungen und Auswertungen</a>
-                            </h4>
-                        </div>
-                        <div id="collapse4" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-xs-9">
-                                        <div class="page-header">
-                                            <h4>Auswirkungen</h4>
-                                        </div> 
-                                        <f:if condition="{solution.auswirkung}">
-                                            <div class="table-fit">
-                                                <table class="table table-striped table-hover">
-                                                    <tr>
-                                                        <th style="width: 30%">Auswirkung</th>
-                                                        <th style="width: 20%">Parameter</th>
-                                                        <th style="width: 20%">Tendenz</th>
-                                                        <th class="right" style="width: 10%">Wert</th>
-                                                        <th class="right" style="width: 10%">Wert (von)</th>
-                                                        <th class="right" style="width: 10%">Wert (bis)</th>
-                                                    </tr>
-                                                    <f:for each="{solution.auswirkung}" as="auswirkung">
-                                                        <tr> 
-                                                            <td>{auswirkung.bezeichnung}</td>
-                                                            <td>
-                                                                <f:if condition="{auswirkung.zielparameter}">
-                                                                    <f:for each="{auswirkung.zielparameter}" as="zielparameter">
-                                                                        {zielparameter.parametername}<br>
-                                                                    </f:for>
-                                                                </f:if>
-                                                            </td>
-                                                            <td>
-                                                                <f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:tendenz.{auswirkung.tendenz}" />   
-                                                            </td>
-                                                            <td class="right">
-                                                                <f:if condition="{auswirkung.wert} > 0">
-                                                                    <f:then>
-                                                                        <f:format.number decimals="2" decimalSeparator=",">{auswirkung.wert}</f:format.number>
-                                                                    </f:then>
-                                                                    <f:else>
-                                                                        -
-                                                                    </f:else>
-                                                                </f:if>    
-                                                            </td>
-                                                            <td class="right">
-                                                                <f:if condition="{auswirkung.wertVon} > 0">
-                                                                    <f:then>
-                                                                        <f:format.number decimals="2" decimalSeparator=",">{auswirkung.wertVon}</f:format.number>
-                                                                    </f:then>
-                                                                    <f:else>
-                                                                        -
-                                                                    </f:else>
-                                                                </f:if>
-                                                            </td>
-                                                            <td class="right">
-                                                                <f:if condition="{auswirkung.wertBis} > 0">
-                                                                    <f:then>
-                                                                        <f:format.number decimals="2" decimalSeparator=",">{auswirkung.wertBis}</f:format.number>
-                                                                    </f:then>
-                                                                    <f:else>
-                                                                        -
-                                                                    </f:else>
-                                                                </f:if>   
-                                                            </td>
-                                                        </tr>
-                                                    </f:for>
-                                                </table>
-                                            </div>
-                                        </f:if>   
-                                    </div>
-                                    <div class="col-xs-3">
-                                        <div class="page-header">
-                                            <h4>Sonstiges</h4> 
-                                        </div>
-                                        <dl>
-                                            <dt>Invasivit&auml;tsgrad:</dt>
-                                            <dd><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:invasivitaetsgrad.{solution.invasivitaetsgrad}" /></dd>
-                                            <dt>Wartungsintervall:</dt>
-                                            <dd><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:wartungsintervall.{solution.wartungsintervall}" /></dd>
-                                            <dt>Realisierungsrisiko:</dt>
-                                            <dd>{solution.realisierungsrisiko}</dd>
-                                        </dl>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h4 class="panel-title">
-                                <a data-toggle="collapse" href="#collapse5">Bemerkungen</a>
-                            </h4>
-                        </div>
-                        <div id="collapse5" class="panel-collapse collapse">
-                            <div class="panel-body">
-                                <div class="row">
-                                    <div class="col-xs-12">
-                                        <f:if condition="{solution.bemerkung}">
-                                            <p><f:format.nl2br>{solution.bemerkung}</f:format.nl2br></p>
-                                        </f:if>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
