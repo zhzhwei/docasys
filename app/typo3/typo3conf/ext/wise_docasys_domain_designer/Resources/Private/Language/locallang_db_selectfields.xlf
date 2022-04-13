@@ -441,6 +441,12 @@
             <trans-unit id="invasivitaetsgrad.6">
                 <source>Komplette Neugestaltung</source>
             </trans-unit>
+            <trans-unit id="invasivitaetsgrad.7">
+                <source>Eingriff Steuerung</source>
+            </trans-unit>
+            <trans-unit id="invasivitaetsgrad.8">
+                <source>Eingriff Maschinenstruktur</source>
+            </trans-unit>
             <trans-unit id="wartungsintervall.1">
                 <source>Monatlich</source>
             </trans-unit>

@@ -25,15 +25,6 @@
             'Bedingt Lastfallspezifisch',
         ];
 
-        protected $Invasivity = [
-            'Keine Auswahl',
-            'Kein Eingriff',
-            'Eingriff Komponente',
-            'Eingriff Baugruppe',
-            'Eingriff Gesamtmaschine',
-            'Erweiterung',
-        ];
-
         protected $Wartungsintervall = [
             'Keine Auswahl',
             'Quartalsweise',
@@ -66,7 +57,7 @@
         }
 
         public function indexAction()
-        {   
+        {
             $request = $this->request->getArguments();
             $results = [];
 
@@ -97,6 +88,7 @@
                 'Maschinensteuerung' => $this->Maschinensteuerung,
                 'Maschinenstillstand' => $this->Maschinenstillstand,
                 'results' => (count($newresults) > 0) ? $newresults : null,
+                'values' => (isset($request['filter-submit'])) ? $request['filter-submit'] : null
             ]);
         }
     }
