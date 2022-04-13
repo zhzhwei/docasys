@@ -246,6 +246,13 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $komponentenbedingung = null;
 
     /**
+     * nettofluss
+     *
+     * @var float
+     */
+    protected $nettofluss = 0.0;
+
+    /**
      * Returns the loesungsbezeichnung
      *
      * @return string $loesungsbezeichnung
@@ -1305,5 +1312,26 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setDerzeitigerEinsatzort(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $derzeitigerEinsatzort)
     {
         $this->derzeitigerEinsatzort = $derzeitigerEinsatzort;
+    }
+
+    /**
+     * Returns the nettofluss
+     *
+     * @return float $nettofluss
+     */
+    public function getNettofluss()
+    {
+        return $this->nettofluss;
+    }
+
+    /**
+     * Sets the nettofluss
+     *
+     * @param float $nettofluss
+     * @return void
+     */
+    public function setNettofluss($nettofluss)
+    {
+        $this->nettofluss = $nettofluss;
     }
 }

@@ -300,6 +300,35 @@ class LoesungTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
+    public function getNettoflussReturnsInitialValueForFloat()
+    {
+        self::assertSame(
+            0.0,
+            $this->subject->getNettofluss()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setNettoflussForFloatSetsNettofluss()
+    {
+        $this->subject->setNettofluss(3.14159265);
+
+        self::assertAttributeEquals(
+            3.14159265,
+            'nettofluss',
+            $this->subject,
+            '',
+            0.000000001
+        );
+
+    }
+
+    /**
+     * @test
+     */
     public function getGestaltungsartReturnsInitialValueForGestaltungsart()
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
