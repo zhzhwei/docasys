@@ -308,7 +308,11 @@
                 'producer' => 'betrifftHersteller',
                 'consumer' => 'betrifftBetreiber',
                 'invasivity' => 'invasivitaetsgrad',
-                'maintenance' => 'wartungsintervall'
+                'maintenance' => 'wartungsintervall',
+                'flexibility' => 'flexibilitaet',
+                'useCase' => 'anwendungsfall',
+                'machineStopRequired' => 'maschinenstillstandsnotwendigkeit',
+                'machineControlAccess' => 'maschinensteuerungszugriff'
             ];
 
             foreach($owned as $formKey => $propertyName) {
