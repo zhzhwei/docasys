@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2022-02-24T13:38:50Z" product-name="wise_docasys_domain_designer">
+	<file source-language="en" datatype="plaintext" original="messages" date="2022-04-13T17:37:12Z" product-name="wise_docasys_domain_designer">
 		<header/>
 		<body>
 			<trans-unit id="loesungsbezeichnung.description">
@@ -44,6 +44,18 @@
 			</trans-unit>
 			<trans-unit id="nettofluss.description">
 				<source>nettofluss</source>
+			</trans-unit>
+			<trans-unit id="anwendungsfall.description">
+				<source>anwendungsfall</source>
+			</trans-unit>
+			<trans-unit id="flexibilitaet.description">
+				<source>flexibilitaet</source>
+			</trans-unit>
+			<trans-unit id="maschinensteuerungszugriff.description">
+				<source>maschinensteuerungszugriff</source>
+			</trans-unit>
+			<trans-unit id="maschinenstillstandsnotwendigkeit.description">
+				<source>maschinenstillstandsnotwendigkeit</source>
 			</trans-unit>
 			<trans-unit id="gestaltungsart.description">
 				<source>gestaltungsart</source>

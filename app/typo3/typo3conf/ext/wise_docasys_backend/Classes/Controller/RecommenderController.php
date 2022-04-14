@@ -12,86 +12,57 @@
         */
         protected $loesungRepository;
 
-        protected $Anwendungsfall = [
-            'Keine Auswahl',
-            'Einzelfertigung',
-            'Serienfertigung',
+        protected $operators = [
+            0 => 'Ignorieren',
+            1 => 'Gleich (=)',
+            2 => 'Ungleich (!=)',
         ];
 
-        protected $Flexibility = [
-            'Keine Auswahl',
-            'Maschinenspezifisch',
-            'Lastfallspezifisch',
-            'Bedingt Lastfallspezifisch',
-        ];
-
-        protected $Invasivity = [
-            'Keine Auswahl',
-            'Kein Eingriff',
-            'Eingriff Komponente',
-            'Eingriff Baugruppe',
-            'Eingriff Gesamtmaschine',
-            'Erweiterung',
-        ];
-
-        protected $Wartungsintervall = [
-            'Keine Auswahl',
-            'Quartalsweise',
-            'Halbjährlich',
-            'Jährlich',
-        ];
-
-        protected $Maschinensteuerung = [
-            'Keine Auswahl',
-            'Ja',
-            'Nein',
-        ];
-
-        protected $Maschinenstillstand = [
-            'Keine Auswahl',
-            'Ja',
-            'Nein',
-        ];
-
-        public function renewResults($results)
+        private function filterSolutions($results)
         {
-            $newresults = [];
+            $filteredResults = [];
+
             foreach ($results as $result) {
-                if($result->getNettofluss() != 0 ) {
-                    array_push($newresults, array('teilprojektnummer'=>$result->getTeilprojektnummer(), 'loesungsbezeichnung'=>$result->getLoesungsbezeichnung(), 'nettofluss'=>$result->getNettofluss()) );
+                if ($result->getNettofluss() != 0) {
+                    array_push($filteredResults, array(
+                        'uid' => $result->getUid(),
+                        'teilprojektnummer' => $result->getTeilprojektnummer(),
+                        'loesungsbezeichnung' => $result->getLoesungsbezeichnung(),
+                        'nettofluss' => $result->getNettofluss()
+                    ));
                 }
             }
-            return $newresults;
+
+            return $filteredResults;
         }
 
         public function indexAction()
-        {   
+        {
             $request = $this->request->getArguments();
-            $results = [];
+            $filteredResults = [];
+
+            // echo '<pre>' , var_dump("11111") , '</pre>';
+            // echo '<pre>' , var_dump("11111") , '</pre>';
 
             if(isset($request['recommender-submit'])) {
-                $results = $this->loesungRepository->getFilteredSolutions($request['recommender-submit']);  
+                $results = $this->loesungRepository->getFilteredSolutions($request['recommender-submit']);
+
                 if(count($results) == 0) {
                     $this->addFlashMessage(
                         'Such Ihrer Suchanfrage konnte keine Ergebnisse ermittelt werden.',
                         null,
                         \TYPO3\CMS\Core\Messaging\AbstractMessage::INFO 
                     ); 
-                }
-                else {
-                    $newresults = $this->renewResults($results);
-                    array_multisort(array_column($newresults,'nettofluss'), SORT_DESC, $newresults);
+                } else {
+                    $filteredResults = $this->filterSolutions($results);
+                    array_multisort(array_column($filteredResults,'nettofluss'), SORT_DESC, $filteredResults);
                 }
             }
 
             $this->view->assignMultiple([
-                'Anwendungsfall' => $this->Anwendungsfall,
-                'Flexibility' => $this->Flexibility,
-                'Invasivity' => $this->Invasivity,
-                'Wartungsintervall' => $this->Wartungsintervall,
-                'Maschinensteuerung' => $this->Maschinensteuerung,
-                'Maschinenstillstand' => $this->Maschinenstillstand,
-                'results' => (count($newresults) > 0) ? $newresults : null,
+                'operators' => $this->operators,
+                'results' => count($filteredResults) > 0 ? $filteredResults : null,
+                'values' => (isset($request['recommender-submit'])) ? $request['recommender-submit'] : null
             ]);
         }
     }

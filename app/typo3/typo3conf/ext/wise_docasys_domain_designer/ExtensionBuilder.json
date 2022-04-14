@@ -232,6 +232,46 @@
                             "propertyName": "nettofluss",
                             "propertyType": "Float",
                             "uid": "1297973849494"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "anwendungsfall",
+                            "propertyType": "Select",
+                            "uid": "183969280475"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "flexibilitaet",
+                            "propertyType": "Select",
+                            "uid": "1036764617213"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "maschinensteuerungszugriff",
+                            "propertyType": "Select",
+                            "uid": "1201324996099"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "maschinenstillstandsnotwendigkeit",
+                            "propertyType": "Select",
+                            "uid": "736769112951"
                         }
                     ]
                 },
@@ -5691,7 +5731,7 @@
         }
     ],
     "log": {
-        "last_modified": "2022-02-24 01:39",
+        "last_modified": "2022-04-13 05:37",
         "extension_builder_version": "7.6.18",
         "be_user": "user26 (26)"
     }

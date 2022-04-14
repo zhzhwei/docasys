@@ -329,6 +329,62 @@ class LoesungTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
+    public function getAnwendungsfallReturnsInitialValueForInt()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setAnwendungsfallForIntSetsAnwendungsfall()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function getFlexibilitaetReturnsInitialValueForInt()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setFlexibilitaetForIntSetsFlexibilitaet()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function getMaschinensteuerungszugriffReturnsInitialValueForInt()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setMaschinensteuerungszugriffForIntSetsMaschinensteuerungszugriff()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function getMaschinenstillstandsnotwendigkeitReturnsInitialValueForInt()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setMaschinenstillstandsnotwendigkeitForIntSetsMaschinenstillstandsnotwendigkeit()
+    {
+    }
+
+    /**
+     * @test
+     */
     public function getGestaltungsartReturnsInitialValueForGestaltungsart()
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

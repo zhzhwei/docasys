@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2022-02-24T13:38:50Z" product-name="wise_docasys_domain_designer">
+	<file source-language="en" datatype="plaintext" original="messages" date="2022-04-13T17:37:12Z" product-name="wise_docasys_domain_designer">
 		<header/>
 		<body>
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_parametereinheit">
@@ -56,6 +56,18 @@
 			</trans-unit>
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.nettofluss">
 				<source>Nettofluss</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.anwendungsfall">
+				<source>Anwendungsfall</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.flexibilitaet">
+				<source>Flexibilitaet</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.maschinensteuerungszugriff">
+				<source>Maschinensteuerungszugriff</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.maschinenstillstandsnotwendigkeit">
+				<source>Maschinenstillstandsnotwendigkeit</source>
 			</trans-unit>
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.gestaltungsart">
 				<source>Gestaltungsart</source>

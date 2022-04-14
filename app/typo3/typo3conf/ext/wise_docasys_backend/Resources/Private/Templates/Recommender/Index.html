@@ -9,58 +9,74 @@
         <div class="tab-pane fade in {f:if(condition: '{results}', then: '', else: 'active')}">
             <div class="padding">
                 <div class="row form-group">
-                    <label class="control-label col-sm-3">
+                    <label class="control-label col-sm-2">
                         Anwendungsfall:
                     </label>
-                    <div class="col-sm-9">
-                        <f:form.select property="operator.anwendung" options="{Anwendungsfall}" class="form-control" />
+                    <div class="col-sm-2">
+                        <f:form.select property="operator.useCase" options="{operators}" class="form-control" value="{values.operator.useCase}" />
+                    </div>
+                    <div class="col-sm-8">
+                        <f:form.select property="useCase" class="form-control" options="{wise:be.TcaOptions(property:'anwendungsfall',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.useCase}" />
                     </div>
                 </div>
 
                 <div class="row form-group">
-                    <label class="control-label col-sm-3">
+                    <label class="control-label col-sm-2">
                         Flexibilit&auml;t:
                     </label>
-                    <div class="col-sm-9">
-                        <f:form.select property="operator.flexibility" options="{Flexibility}" class="form-control" />
+                    <div class="col-sm-2">
+                        <f:form.select property="operator.flexibility" options="{operators}" class="form-control" value="{values.operator.flexibility}" />
+                    </div>
+                    <div class="col-sm-8">
+                        <f:form.select property="flexibility" class="form-control" options="{wise:be.TcaOptions(property:'flexibilitaet',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.flexibility}" />
                     </div>
                 </div>
 
                 <div class="row form-group">
-                    <label class="control-label col-sm-3">
+                    <label class="control-label col-sm-2">
                         Invasivit&auml;tsgrad:
                     </label>
-                    <div class="col-sm-9">
-                        <f:form.select property="operator.invasivity" options="{Invasivity}" class="form-control" />
-                        <!-- <f:form.select property="invasivity" class="form-control" options="{wise:be.TcaOptions(property:'invasivitaetsgrad',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.invasivity}" /> -->
+                    <div class="col-sm-2">
+                        <f:form.select property="operator.invasivity" options="{operators}" class="form-control" value="{values.operator.invasivity}" />
+                    </div>
+                    <div class="col-sm-8">
+                        <f:form.select property="invasivity" class="form-control" options="{wise:be.TcaOptions(property:'invasivitaetsgrad',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.invasivity}" />
                     </div>
                 </div>
 
                 <div class="row form-group">
-                    <label class="control-label col-sm-3">
+                    <label class="control-label col-sm-2">
                         Wartungsintervall:
                     </label>
-                    <div class="col-sm-9">
-                        <f:form.select property="operator.wartung" options="{Wartungsintervall}" class="form-control" />
+                    <div class="col-sm-2">
+                        <f:form.select property="operator.maintenance" options="{operators}" class="form-control" value="{values.operator.maintenance}" />
+                    </div>
+                    <div class="col-sm-8">
+                        <f:form.select property="maintenance" class="form-control" options="{wise:be.TcaOptions(property:'wartungsintervall',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.maintenance}" />
                     </div>
                 </div>
 
                 <div class="row form-group">
-                    <label class="control-label col-sm-3">
+                    <label class="control-label col-sm-2">
                         Zugriff auf Maschinensteuerung:
                     </label>
-                    <div class="col-sm-9">
-                        <f:form.select property="operator.zugriff" options="{Maschinensteuerung}" class="form-control" />
+                    <div class="col-sm-2">
+                        <f:form.select property="operator.machineControlAccess" options="{operators}" class="form-control" value="{values.operator.machineControlAccess}" />
+                    </div>
+                    <div class="col-sm-8">
+                        <f:form.select property="machineControlAccess" class="form-control" options="{wise:be.TcaOptions(property:'maschinensteuerungszugriff',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.machineControlAccess}" />
                     </div>
                 </div>
 
                 <div class="row form-group">
-                    <label class="control-label col-sm-3">
+                    <label class="control-label col-sm-2">
                         Notwendigkeit Maschinenstillstand:
                     </label>
-                    <div class="col-sm-9">
-                        <f:form.select property="operator.notwendigkeit" options="{Maschinenstillstand}" class="form-control" />
-                        <!-- <f:form.select property="design" class="form-control" options="{wise:be.TcaOptions(property:'loesungsart',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.design}" /> -->
+                    <div class="col-sm-2">
+                        <f:form.select property="operator.machineStopRequired" options="{operators}" class="form-control" value="{values.operator.machineStopRequired}" />
+                    </div>
+                    <div class="col-sm-8">
+                        <f:form.select property="machineStopRequired" class="form-control" options="{wise:be.TcaOptions(property:'maschinenstillstandsnotwendigkeit',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.machineStopRequired}" />
                     </div>
                 </div>
             </div>
@@ -89,21 +105,26 @@
         </div>
         <div class="table-fit">
             <table class="table table-striped table-hover">
-                <f:for each="{results}" as="solution">
+                <thead>
                     <tr>
-                        <td style="width: 15%">
-                            Teilprojektnummer: {solution.teilprojektnummer}    
-                        </td>
-                        <td style="width: 30%">
-                            Loesungsbezeichnung: <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_loesung][{solution.uid}]=edit">
+                        <td>Teilprojektnummer</td>
+                        <td>Lösungsbezeichnung</td>
+                        <td>Nettofluss</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <f:for each="{results}" as="solution">
+                        <tr>
+                            <td style="width: 15%">{solution.teilprojektnummer}</td>
+                            <td style="width: 30%">
+                                <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_loesung][{solution.uid}]=edit">
                                 {solution.loesungsbezeichnung}
                             </wise:be.editLink>
-                        </td>
-                        <td>
-                            Nettofluss: {solution.nettofluss}
-                        </td>
-                    </tr>
-                </f:for>
+                            </td>
+                            <td>{solution.nettofluss}</td>
+                        </tr>
+                    </f:for>
+                </tbody>
             </table>
         </div>
     </f:if>

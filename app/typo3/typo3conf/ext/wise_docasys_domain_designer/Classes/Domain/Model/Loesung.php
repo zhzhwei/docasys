@@ -110,6 +110,41 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $loesungsart = 0;
 
     /**
+     * nettofluss
+     *
+     * @var float
+     */
+    protected $nettofluss = 0.0;
+
+    /**
+     * anwendungsfall
+     *
+     * @var int
+     */
+    protected $anwendungsfall = 0;
+
+    /**
+     * flexibilitaet
+     *
+     * @var int
+     */
+    protected $flexibilitaet = 0;
+
+    /**
+     * maschinensteuerungszugriff
+     *
+     * @var int
+     */
+    protected $maschinensteuerungszugriff = 0;
+
+    /**
+     * maschinenstillstandsnotwendigkeit
+     *
+     * @var int
+     */
+    protected $maschinenstillstandsnotwendigkeit = 0;
+
+    /**
      * gestaltungsart
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Wise\WiseDocasysDomainDesigner\Domain\Model\Gestaltungsart>
@@ -244,13 +279,6 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @cascade remove
      */
     protected $komponentenbedingung = null;
-
-    /**
-     * nettofluss
-     *
-     * @var float
-     */
-    protected $nettofluss = 0.0;
 
     /**
      * Returns the loesungsbezeichnung
@@ -1333,5 +1361,89 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setNettofluss($nettofluss)
     {
         $this->nettofluss = $nettofluss;
+    }
+
+    /**
+     * Returns the anwendungsfall
+     *
+     * @return int $anwendungsfall
+     */
+    public function getAnwendungsfall()
+    {
+        return $this->anwendungsfall;
+    }
+
+    /**
+     * Sets the anwendungsfall
+     *
+     * @param int $anwendungsfall
+     * @return void
+     */
+    public function setAnwendungsfall($anwendungsfall)
+    {
+        $this->anwendungsfall = $anwendungsfall;
+    }
+
+    /**
+     * Returns the flexibilitaet
+     *
+     * @return int $flexibilitaet
+     */
+    public function getFlexibilitaet()
+    {
+        return $this->flexibilitaet;
+    }
+
+    /**
+     * Sets the flexibilitaet
+     *
+     * @param int $flexibilitaet
+     * @return void
+     */
+    public function setFlexibilitaet($flexibilitaet)
+    {
+        $this->flexibilitaet = $flexibilitaet;
+    }
+
+    /**
+     * Returns the maschinensteuerungszugriff
+     *
+     * @return int $maschinensteuerungszugriff
+     */
+    public function getMaschinensteuerungszugriff()
+    {
+        return $this->maschinensteuerungszugriff;
+    }
+
+    /**
+     * Sets the maschinensteuerungszugriff
+     *
+     * @param int $maschinensteuerungszugriff
+     * @return void
+     */
+    public function setMaschinensteuerungszugriff($maschinensteuerungszugriff)
+    {
+        $this->maschinensteuerungszugriff = $maschinensteuerungszugriff;
+    }
+
+    /**
+     * Returns the maschinenstillstandsnotwendigkeit
+     *
+     * @return int maschinenstillstandsnotwendigkeit
+     */
+    public function getMaschinenstillstandsnotwendigkeit()
+    {
+        return $this->maschinenstillstandsnotwendigkeit;
+    }
+
+    /**
+     * Sets the maschinenstillstandsnotwendigkeit
+     *
+     * @param int $maschinenstillstandsnotwendigkeit
+     * @return void
+     */
+    public function setMaschinenstillstandsnotwendigkeit($maschinenstillstandsnotwendigkeit)
+    {
+        $this->maschinenstillstandsnotwendigkeit = $maschinenstillstandsnotwendigkeit;
     }
 }

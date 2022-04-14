@@ -3,8 +3,32 @@
     <file source-language="en" datatype="plaintext" original="messages" date="2018-04-18T19:14:21Z" product-name="wise_docasys_domain_designer">
         <header/>
         <body>
-            <trans-unit id="unit.1">
-                <source>Dauer (in Stunden)</source>
+            <trans-unit id="anwendungsfall.1">
+                <source>Einzelfertigung</source>
+            </trans-unit>
+            <trans-unit id="anwendungsfall.2">
+                <source>Serienfertigung</source>
+            </trans-unit>
+            <trans-unit id="flexibilitaet.1">
+                <source>Maschinenspezifisch</source>
+            </trans-unit>
+            <trans-unit id="flexibilitaet.2">
+                <source>Lastfallspezifisch</source>
+            </trans-unit>
+            <trans-unit id="flexibilitaet.3">
+                <source>Bedingt Lastfallspezifisch</source>
+            </trans-unit>
+            <trans-unit id="maschinensteuerungszugriff.1">
+                <source>Ja</source>
+            </trans-unit>
+            <trans-unit id="maschinensteuerungszugriff.2">
+                <source>Nein</source>
+            </trans-unit>
+            <trans-unit id="maschinenstillstandsnotwendigkeit.1">
+                <source>Ja</source>
+            </trans-unit>
+            <trans-unit id="maschinenstillstandsnotwendigkeit.2">
+                <source>Nein</source>
             </trans-unit>
             <trans-unit id="unit.2">
                 <source>Kosten (in EUR)</source>
@@ -424,22 +448,25 @@
                 <source>Referenz-Gesamtmaschine</source>
             </trans-unit>
             <trans-unit id="invasivitaetsgrad.1">
-                <source>Keiner</source>
-            </trans-unit>
-            <trans-unit id="invasivitaetsgrad.2">
                 <source>Erweiterung</source>
             </trans-unit>
-            <trans-unit id="invasivitaetsgrad.3">
+            <trans-unit id="invasivitaetsgrad.2">
                 <source>Eingriff Komponente</source>
             </trans-unit>
-            <trans-unit id="invasivitaetsgrad.4">
+            <trans-unit id="invasivitaetsgrad.3">
                 <source>Eingriff Baugruppe</source>
             </trans-unit>
-            <trans-unit id="invasivitaetsgrad.5">
+            <trans-unit id="invasivitaetsgrad.4">
                 <source>Eingriff Gesamtmaschine</source>
             </trans-unit>
-            <trans-unit id="invasivitaetsgrad.6">
+            <trans-unit id="invasivitaetsgrad.5">
                 <source>Komplette Neugestaltung</source>
+            </trans-unit>
+            <trans-unit id="invasivitaetsgrad.6">
+                <source>Eingriff Steuerung</source>
+            </trans-unit>
+            <trans-unit id="invasivitaetsgrad.7">
+                <source>Eingriff Maschinenstruktur</source>
             </trans-unit>
             <trans-unit id="wartungsintervall.1">
                 <source>Monatlich</source>
