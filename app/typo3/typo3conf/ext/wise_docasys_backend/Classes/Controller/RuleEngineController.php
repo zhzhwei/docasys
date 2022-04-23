@@ -4,14 +4,26 @@
     class RuleEngineController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
         /**
+        * @var \Wise\WiseDocasysDomainDesigner\Domain\Repository\RessourceRepository
+        * @inject
+        */
+        protected $ressourceRepository;
+
+        /**
         * @var \Wise\WiseDocasysDomainDesigner\Domain\Repository\RessourcenartRepository
         * @inject
         */
         protected $ressourcenartRepository;
 
-        private $ressourcenarten;
+        /**
+        * @var Array 
+        */
+        private $ressourcenarten = [];
 
-        private $ressourcenkategorien;
+        /**
+        * @var Array 
+        */
+        private $ressourcenkategorien = [];
 
         /**
         * @var \Wise\WiseDocasysDomainDesigner\Domain\Repository\LoesungRepository
@@ -19,20 +31,54 @@
         */
         protected $loesungRepository;
 
-        private $loesungen;
+        /**
+        * @var Array 
+        */
+        private $loesungen = [];
 
-        private $loesungszahl;
+        /**
+        * @var int 
+        */
+        private $loesungszahl = 0;
 
+        /**
+        * @var Array 
+        */
         private $teilprojektnummer = [];
 
-        private $vergleichzahl;
+        /**
+        * @var int 
+        */
+        private $vergleichzahl = 0;
 
+        /**
+        * @var Array 
+        */
         private $scores = [];
 
+        /**
+        * @var Array 
+        */
         private $teilgewichtungen = [];
 
+        /**
+        * @var Array 
+        */
         private $pi = [];
 
+        /**
+        * @var Array 
+        */
+        private $ausgangsfluesse = [];
+
+        /**
+        * @var Array 
+        */
+        private $eingangsfluesse = [];
+
+        /**
+        * @var Array 
+        */
         private $nettofluesse = [];
         
         private function getAlleKategorien($ressourcenarten)
@@ -271,8 +317,9 @@
             // echo '<pre>' , var_dump($this->pi) , '</pre>';
         }
 
-        public function ermittleNettofluss()
+        public function ermittleFluss()
         {
+            // Ausgangsfluss berechnen
             $phi_plus = [];
             $k1 = 0;
 
@@ -288,6 +335,7 @@
             }
             // echo '<pre>' , var_dump($phi_plus) , '</pre>';
 
+            // Eingangsfluss berechnen
             $phi_minus = [];
             $t1 = 0;
             while ($t1 < $this->loesungszahl) {
@@ -304,13 +352,15 @@
 
             $iter = 0;
             while ($iter < $this->loesungszahl) {
+                array_push($this->ausgangsfluesse, round($phi_plus[$iter],2) );
+                array_push($this->eingangsfluesse, round($phi_minus[$iter],2) );
                 array_push($this->nettofluesse, round($phi_plus[$iter] - $phi_minus[$iter],2) );
                 $iter += 1;
             }
-            // echo '<pre>' , var_dump($this->nettofluesse) , '</pre>';
+
         }
 
-        public function speichereNettofluss($teilprojektnummer, $repository, $loesungen, $nettofluesse)
+        public function speichereFluss($teilprojektnummer, $repository, $loesungen, $ausgangsfluesse, $eingangsfluesse, $nettofluesse)
         {
             $iter = 0;
             foreach ($loesungen as $loesung) {
@@ -319,17 +369,19 @@
                 // 2.Methode
                 if ( $loesung->getTeilprojektnummer() == $teilprojektnummer[$iter] ) { 
                     if ( $loesung->getLoesungsart() == 0 ) {
+                        $loesung->setAusgangsfluss($ausgangsfluesse[$iter]);
+                        $loesung->setEingangsfluss($eingangsfluesse[$iter]);
                         $loesung->setNettofluss($nettofluesse[$iter]);
                         $iter += 1;
                     }
                 }
                 else {
-                    $loesung->setNettofluss(0.0);
+                    $loesung->setAusgangsfluss(0.0);
                 }
-                // echo '<pre>' , var_dump($loesung->getTeilprojektnummer(), $loesung->getNettofluss()) , '</pre>';
             }
 
             foreach ($loesungen as $loesung) {
+                // echo '<pre>' , var_dump($loesung->getTeilprojektnummer(), $loesung->getNettofluss(), $loesung->getAusgangsfluss(), $loesung->getEingangsfluss()) , '</pre>';
                 $repository->update($loesung);
             }
         }
@@ -384,8 +436,8 @@
             // echo '<pre>' , var_dump($this->scores) , '</pre>';
             $this->getTeilgewichtung($this->ressourcenarten);
             $this->paarVergleiche($this->scores);
-            $this->ermittleNettofluss();
-            $this->speichereNettofluss($this->teilprojektnummer, $this->loesungRepository, $this->loesungen, $this->nettofluesse);
+            $this->ermittleFluss();
+            $this->speichereFluss($this->teilprojektnummer, $this->loesungRepository, $this->loesungen, $this->ausgangsfluesse, $this->eingangsfluesse, $this->nettofluesse);
 
             if(isset($request['rule-submit'])) {
                 $this->aktualisierePunkte($request, $this->ressourcenarten);

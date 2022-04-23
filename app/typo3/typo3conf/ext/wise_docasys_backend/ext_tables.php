@@ -125,6 +125,21 @@
                     ]
                 );
 
+                \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
+                    'Wise.'.$extKey,
+                    'docasys', 
+                    'wisenewsite', 
+                    'bottom',
+                    [
+                        'NewSite' => 'index'
+                    ],
+                    [
+                        'access' => 'user,group',
+                        'icon'   => 'EXT:' . $extKey . '/Resources/Public/Icons/tud.svg',
+                        'labels' => 'LLL:EXT:' . $extKey . '/Resources/Private/Language/locallang_wisenewsite.xlf',  
+                    ]
+                );
+
             }
         },   
         $_EXTKEY

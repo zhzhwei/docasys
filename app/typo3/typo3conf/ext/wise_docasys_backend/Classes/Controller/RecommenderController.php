@@ -12,6 +12,9 @@
         */
         protected $loesungRepository;
 
+        /**
+        * @var Array 
+        */
         protected $operators = [
             0 => 'Ignorieren',
             1 => 'Gleich (=)',
@@ -28,10 +31,13 @@
                         'uid' => $result->getUid(),
                         'teilprojektnummer' => $result->getTeilprojektnummer(),
                         'loesungsbezeichnung' => $result->getLoesungsbezeichnung(),
-                        'nettofluss' => $result->getNettofluss()
+                        'nettofluss' => $result->getNettofluss(),
+                        'ausgangsfluss' => $result->getAusgangsfluss(),
+                        'eingangsfluss' => $result->getEingangsfluss()
                     ));
                 }
             }
+            echo '<pre>' , var_dump($filteredResults) , '</pre>';
 
             return $filteredResults;
         }
@@ -40,9 +46,6 @@
         {
             $request = $this->request->getArguments();
             $filteredResults = [];
-
-            // echo '<pre>' , var_dump("11111") , '</pre>';
-            // echo '<pre>' , var_dump("11111") , '</pre>';
 
             if(isset($request['recommender-submit'])) {
                 $results = $this->loesungRepository->getFilteredSolutions($request['recommender-submit']);
