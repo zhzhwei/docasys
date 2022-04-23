@@ -7,7 +7,6 @@ return [
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
 		'versioningWS' => true,
-        'default_sortby' => 'ORDER BY entscheidungstitel ASC',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -18,17 +17,13 @@ return [
             'endtime' => 'endtime',
         ],
 		'searchFields' => 'entscheidungstitel,zusammenfassung,dmn_modell',
-        'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_entscheidung.gif',
-        'hideTable' => true,
+        'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_entscheidung.gif'
     ],
     'interface' => [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, entscheidungstitel, zusammenfassung, dmn_modell',
     ],
     'types' => [
-        '1' => ['showitem' => '
-            --div--; Allgemein, l10n_parent, l10n_diffsource, entscheidungstitel, zusammenfassung,
-            --div--; Modelle, dmn_modell
-        '],
+		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, entscheidungstitel, zusammenfassung, dmn_modell, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
 		'sys_language_uid' => [
@@ -127,7 +122,7 @@ return [
 	        'config' => [
 			    'type' => 'text',
 			    'cols' => 40,
-			    'rows' => 5,
+			    'rows' => 15,
 			    'eval' => 'trim'
 			]
 	    ],

@@ -376,7 +376,7 @@
                     }
                 }
                 else {
-                    $loesung->setAusgangsfluss(0.0);
+                    $loesung->setNettofluss(0.0);
                 }
             }
 

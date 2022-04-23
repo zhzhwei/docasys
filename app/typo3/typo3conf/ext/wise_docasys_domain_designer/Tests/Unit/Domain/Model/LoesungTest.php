@@ -24,6 +24,8 @@ class LoesungTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
         parent::tearDown();
     }
 
+
+
     /**
      * @test
      */
@@ -380,6 +382,64 @@ class LoesungTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      */
     public function setMaschinenstillstandsnotwendigkeitForIntSetsMaschinenstillstandsnotwendigkeit()
     {
+    }
+
+    /**
+     * @test
+     */
+    public function getAusgangsflussReturnsInitialValueForFloat()
+    {
+        self::assertSame(
+            0.0,
+            $this->subject->getAusgangsfluss()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setAusgangsflussForFloatSetsAusgangsfluss()
+    {
+        $this->subject->setAusgangsfluss(3.14159265);
+
+        self::assertAttributeEquals(
+            3.14159265,
+            'ausgangsfluss',
+            $this->subject,
+            '',
+            0.000000001
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function getEingangsflussReturnsInitialValueForFloat()
+    {
+        self::assertSame(
+            0.0,
+            $this->subject->getEingangsfluss()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setEingangsflussForFloatSetsEingangsfluss()
+    {
+        $this->subject->setEingangsfluss(3.14159265);
+
+        self::assertAttributeEquals(
+            3.14159265,
+            'eingangsfluss',
+            $this->subject,
+            '',
+            0.000000001
+        );
+
     }
 
     /**

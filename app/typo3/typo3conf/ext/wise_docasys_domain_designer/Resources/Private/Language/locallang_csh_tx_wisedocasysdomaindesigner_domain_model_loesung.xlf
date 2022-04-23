@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2022-04-13T17:37:12Z" product-name="wise_docasys_domain_designer">
+	<file source-language="en" datatype="plaintext" original="messages" date="2022-04-23T16:54:48Z" product-name="wise_docasys_domain_designer">
 		<header/>
 		<body>
 			<trans-unit id="loesungsbezeichnung.description">
@@ -56,6 +56,12 @@
 			</trans-unit>
 			<trans-unit id="maschinenstillstandsnotwendigkeit.description">
 				<source>maschinenstillstandsnotwendigkeit</source>
+			</trans-unit>
+			<trans-unit id="ausgangsfluss.description">
+				<source>ausgangsfluss</source>
+			</trans-unit>
+			<trans-unit id="eingangsfluss.description">
+				<source>eingangsfluss</source>
 			</trans-unit>
 			<trans-unit id="gestaltungsart.description">
 				<source>gestaltungsart</source>

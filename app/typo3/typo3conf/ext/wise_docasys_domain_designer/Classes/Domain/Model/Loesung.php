@@ -281,6 +281,20 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $komponentenbedingung = null;
 
     /**
+     * ausgangsfluss
+     *
+     * @var float
+     */
+    protected $ausgangsfluss = 0.0;
+
+    /**
+     * eingangsfluss
+     *
+     * @var float
+     */
+    protected $eingangsfluss = 0.0;
+
+    /**
      * Returns the loesungsbezeichnung
      *
      * @return string $loesungsbezeichnung
@@ -1445,5 +1459,47 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setMaschinenstillstandsnotwendigkeit($maschinenstillstandsnotwendigkeit)
     {
         $this->maschinenstillstandsnotwendigkeit = $maschinenstillstandsnotwendigkeit;
+    }
+
+    /**
+     * Returns the ausgangsfluss
+     *
+     * @return float $ausgangsfluss
+     */
+    public function getAusgangsfluss()
+    {
+        return $this->ausgangsfluss;
+    }
+
+    /**
+     * Sets the ausgangsfluss
+     *
+     * @param float $ausgangsfluss
+     * @return void
+     */
+    public function setAusgangsfluss($ausgangsfluss)
+    {
+        $this->ausgangsfluss = $ausgangsfluss;
+    }
+
+    /**
+     * Returns the eingangsfluss
+     *
+     * @return float $eingangsfluss
+     */
+    public function getEingangsfluss()
+    {
+        return $this->eingangsfluss;
+    }
+
+    /**
+     * Sets the eingangsfluss
+     *
+     * @param float $eingangsfluss
+     * @return void
+     */
+    public function setEingangsfluss($eingangsfluss)
+    {
+        $this->eingangsfluss = $eingangsfluss;
     }
 }
