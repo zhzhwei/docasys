@@ -36,14 +36,14 @@
             nodes: [
                 <f:for each="{nodes}" key="nodeGroupName" as="nodeGroup">
                     <f:for each="{nodeGroup}" key="nodeId" as="node">
-                        <f:format.raw>{ data: { id: '</f:format.raw>{node.title}<f:format.raw>', type: </f:format.raw>{node.class}<f:format.raw>} },</f:format.raw>
+                        <f:format.raw>{ data: { id: <f:format.raw>{node.title}</f:format.raw>, type: <f:format.raw>{node.class}</f:format.raw> } },</f:format.raw>
                     </f:for>
                 </f:for>
             ],
 
             edges: [
                 <f:for each="{nodeRelations}" as="nodeRelation">
-                    <f:format.raw>{ data: { id: '</f:format.raw>{nodeRelation.id}<f:format.raw>', type: </f:format.raw>{nodeRelation.class}<f:format.raw>, source: '</f:format.raw>{nodeRelation.source}<f:format.raw>', target: '</f:format.raw>{nodeRelation.target}<f:format.raw>' } },</f:format.raw>
+                    <f:format.raw>{ data: { id: <f:format.raw>{nodeRelation.id}</f:format.raw>, type: <f:format.raw>{nodeRelation.class}</f:format.raw>, source: <f:format.raw>{nodeRelation.source}</f:format.raw>, target: <f:format.raw>{nodeRelation.target}</f:format.raw> } },</f:format.raw>
                 </f:for>
             ]
         };

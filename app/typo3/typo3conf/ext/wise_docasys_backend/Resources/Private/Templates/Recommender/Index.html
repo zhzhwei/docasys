@@ -130,6 +130,85 @@
                 </tbody>
             </table>
         </div>
+        
+        <head>
+            <style>
+                * {
+                    margin: 0;
+                    padding: 0;
+                    font-family: sans-serif;
+                }
+                .chartBox {
+                    width: 700px;
+                    padding: 20px;
+                    border-radius: 20px;
+                    border: solid 3px rgba(255, 26, 104, 0.5);
+                    background: white;
+                }
+            </style>
+        </head>
+        
+        <body>
+            <div class="chartBox">
+                <canvas id="myChart"></canvas>
+            </div>
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <f:format.cdata>
+                <script>
+                    var labels = [
+                        <f:for each="{labels}" as="label">    
+                            {label}
+                        </f:for>
+                    ];
+                </script>
+            </f:format.cdata>
+            <script>
+                // data 
+                
+                const data = {
+                    min: -1, 
+                    max: 1,
+                    labels: 'labels',
+                    datasets: [
+                        {
+                            label: 'Ausgangsfluss',
+                            data: [0.86,0.25,-0.14,-0.14,-0.33,-0.49],
+                            backgroundColor: 'rgba(255, 26, 104, 0.4)',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Eingangsfluss',
+                            data: [0.86,0.25,-0.14,-0.14,-0.33,-0.49],
+                            backgroundColor: 'rgba(54, 162, 235, 0.4)',
+                            borderWidth: 1
+                        }
+                    ]
+                };
+                // config 
+                const config = {
+                    type: 'bar',
+                    data: data,
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            },
+                            title: {
+                                display: true,
+                                text: 'Vertical Bar Chart'
+                            }
+                        }
+                    },
+                };
+                // render init block
+                const myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+            </script>
+
+        </body>
     </f:if>
     
 </f:section>

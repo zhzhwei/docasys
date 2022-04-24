@@ -21,10 +21,25 @@
             2 => 'Ungleich (!=)',
         ];
 
+        /**
+        * @var Array 
+        */
+        private $teilprojektnummer = [];
+
+        /**
+        * @var Array 
+        */
+        private $ausgangsflusse = [];
+
+        /**
+        * @var Array 
+        */
+        private $eingangsflusse = [];
+
         private function filterSolutions($results)
         {
             $filteredResults = [];
-
+            
             foreach ($results as $result) {
                 if ($result->getNettofluss() != 0) {
                     array_push($filteredResults, array(
@@ -35,9 +50,13 @@
                         'ausgangsfluss' => $result->getAusgangsfluss(),
                         'eingangsfluss' => $result->getEingangsfluss()
                     ));
+
+                    array_push($this->teilprojektnummer, $result->getTeilprojektnummer());
+                    array_push($this->ausgangsflusse, $result->getAusgangsfluss());
+                    array_push($this->eingangsflusse, $result->getEingangsfluss());
                 }
             }
-            echo '<pre>' , var_dump($filteredResults) , '</pre>';
+            // echo '<pre>' , var_dump($filteredResults) , '</pre>';
 
             return $filteredResults;
         }
@@ -65,7 +84,10 @@
             $this->view->assignMultiple([
                 'operators' => $this->operators,
                 'results' => count($filteredResults) > 0 ? $filteredResults : null,
-                'values' => (isset($request['recommender-submit'])) ? $request['recommender-submit'] : null
+                'values' => (isset($request['recommender-submit'])) ? $request['recommender-submit'] : null,
+                'labels' => $this->teilprojektnummer,
+                'ausgangsflusse' => $this->ausgangsflusse,
+                'eingangsflusse' => $this->eingangsflusse,
             ]);
         }
     }
