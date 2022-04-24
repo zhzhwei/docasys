@@ -55,6 +55,9 @@
         {
             $request = $this->request->getArguments();
             $results = [];
+            // echo '<pre>' , var_dump("1111111") , '</pre>';
+            // echo '<pre>' , var_dump("1111111") , '</pre>';
+            // echo '<pre>' , var_dump($request) , '</pre>';
 
             if(isset($request['filter-submit'])) {
                 $results = $this->loesungRepository->getFilteredSolutions($request['filter-submit']);  

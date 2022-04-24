@@ -65,6 +65,9 @@
         {
             $request = $this->request->getArguments();
             $filteredResults = [];
+            // echo '<pre>' , var_dump("1111111") , '</pre>';
+            // echo '<pre>' , var_dump("1111111") , '</pre>';
+            // echo '<pre>' , var_dump($request) , '</pre>';
 
             if(isset($request['recommender-submit'])) {
                 $results = $this->loesungRepository->getFilteredSolutions($request['recommender-submit']);

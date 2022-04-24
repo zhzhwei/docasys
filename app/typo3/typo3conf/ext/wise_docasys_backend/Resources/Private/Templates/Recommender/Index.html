@@ -152,23 +152,17 @@
             <div class="chartBox">
                 <canvas id="myChart"></canvas>
             </div>
+            <f:for each="{labels}" as="label">
+                {label}
+            </f:for>
             <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-            <f:format.cdata>
-                <script>
-                    var labels = [
-                        <f:for each="{labels}" as="label">    
-                            {label}
-                        </f:for>
-                    ];
-                </script>
-            </f:format.cdata>
             <script>
                 // data 
-                
-                const data = {
+                var data = {
                     min: -1, 
                     max: 1,
-                    labels: 'labels',
+                    labels: ['<f:format.raw>{labels}</f:format.raw>'],
+                    // labels: 'labels',
                     datasets: [
                         {
                             label: 'Ausgangsfluss',
@@ -185,7 +179,7 @@
                     ]
                 };
                 // config 
-                const config = {
+                var config = {
                     type: 'bar',
                     data: data,
                     options: {
@@ -202,7 +196,7 @@
                     },
                 };
                 // render init block
-                const myChart = new Chart(
+                var myChart = new Chart(
                     document.getElementById('myChart'),
                     config
                 );
