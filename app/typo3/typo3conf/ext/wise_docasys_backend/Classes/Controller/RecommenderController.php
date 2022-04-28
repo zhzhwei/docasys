@@ -90,8 +90,8 @@
 
             foreach ($filteredResults as $filteredResult) {
                 array_push($this->teilprojektnummer, $filteredResult['teilprojektnummer']);
-                array_push($this->ausgangsflusse, 0.5);
-                array_push($this->eingangsflusse, 0.5);
+                array_push($this->ausgangsflusse, $filteredResult['nettofluss']);
+                array_push($this->eingangsflusse, $filteredResult['nettofluss']);
             }
 
             $this->view->assignMultiple([
