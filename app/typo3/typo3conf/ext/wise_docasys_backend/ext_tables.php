@@ -116,7 +116,7 @@
                     'wiserecommender', 
                     '30',
                     [
-                        'Recommender' => 'index'
+                        'Recommender' => 'index, summary'
                     ],
                     [
                         'access' => 'user,group',

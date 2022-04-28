@@ -1,0 +1,317 @@
+{namespace wise=Wise\WiseDocasysBackend\ViewHelpers}
+
+<f:layout name="SolutionOverview" />
+<f:section name="content">
+    <f:form name="summary-submit" action="summary" method="post" style="width: 100%;" class="hidden-print">
+        <div class="row">
+            <div class="form-group col-md-10">
+                <f:form.select name="solution" options="{solutions}" value="{solution.uid}" class="form-control" />
+            </div>
+            <div class="form-group col-md-2">
+                <f:form.submit value="Anzeigen" id="summary-submit" class="btn btn-primary" />
+            </div>
+        </div>
+    </f:form> 
+
+    <f:if condition="{solution}">                                
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header">
+                    <h1>
+                        <span class="label label-primary">{solution.teilprojektnummer}</span>
+                        <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_loesung][{solution.uid}]=edit">
+                            {solution.loesungsbezeichnung}
+                        </wise:be.editLink>
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel-group">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse5">Projektbeschreibung</a>
+                </h4>
+            </div>
+            <div id="collapse5" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <f:if condition="{solution.bemerkung}">
+                                <p><f:format.nl2br>{solution.bemerkung}</f:format.nl2br></p>
+                            </f:if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+                    <div class="panel panel-default panel-solution">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse1">Eigenschaften</a>
+                            </h4>
+                        </div>
+                        <div id="collapse1" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-2">
+                                        <dl>
+                                            <dt>L&ouml;sungsklasse</dt>
+                                            <dd><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsklasse.{solution.loesungsklasse}" /></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <dl>
+                                            <dt>Phase der thermischen Wirkkette</dt>
+                                            <dd><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:phase_thermische_wirkkette.{solution.phaseDerThermischenWirkkette}" /></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <dl>
+                                            <dt>Invasivit&auml;tsgrad:</dt>
+                                            <dd><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:invasivitaetsgrad.{solution.invasivitaetsgrad}" /></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <dl>
+                                             <dt>Wartungsintervall:</dt>
+                                             <dd><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:wartungsintervall.{solution.wartungsintervall}" /></dd>
+                                        </dl>
+                                    </div>
+                                    <div class="col-xs-2">
+                                        <dl>
+                                            <dt>Realisierungsrisiko:</dt>
+                                            <dd>{solution.realisierungsrisiko}</dd>
+                                        </dl>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse2">Beziehung zu anderen Teilprojekten</a>
+                            </h4>
+                        </div>
+                        <div id="collapse2" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <div class="page-header">
+                                            <h4>Voraussetzungen</h4>
+                                        </div>
+                                        <div class="io-objects">
+                                            <f:for each="{solution.inputRessource}" as="inputRessource">
+                                                <f:for each="{inputRessource.ressource}" as="ressource">
+                                                    <f:render partial="SolutionOverview/RessourcePanel" arguments="{ressource: ressource, ressourceContainer: inputRessource}" />
+                                                </f:for>
+                                            </f:for>
+
+                                            <f:for each="{solution.inputModell}" as="inputModell">
+                                                <f:for each="{inputModell.modell}" as="modell">
+                                                    <f:render partial="SolutionOverview/ModellPanel" arguments="{modell: modell, modellContainer: inputModell}" />    
+                                                </f:for>
+                                            </f:for>
+
+                                            <f:for each="{solution.inputMessmittel}" as="inputMessmittel">
+                                                <f:for each="{inputMessmittel.messmittel}" as="messmittel">
+                                                    <f:render partial="SolutionOverview/MessmittelPanel" arguments="{messmittel: messmittel, messmittelContainer: inputMessmittel}" />    
+                                                </f:for>
+                                            </f:for>
+
+                                            <f:for each="{solution.inputDaten}" as="inputDaten">
+                                                <f:for each="{inputDaten.daten}" as="daten">
+                                                    <f:render partial="SolutionOverview/DatenPanel" arguments="{daten: daten, datenContainer: inputDaten}" />
+                                                </f:for>
+                                            </f:for>
+                                        </div>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <div class="page-header">
+                                            <h4>L&ouml;sungs-Output</h4> 
+                                        </div>
+                                        <div class="io-objects">
+                                            <f:for each="{solution.outputRessource}" as="outputRessource">
+                                                <f:for each="{outputRessource.ressource}" as="ressource">
+                                                    <f:render partial="SolutionOverview/RessourcePanel" arguments="{ressource: ressource, ressourceContainer: outputRessource}" />
+                                                </f:for>
+                                            </f:for>
+
+                                            <f:for each="{solution.outputModell}" as="outputModell">
+                                                <f:for each="{outputModell.modell}" as="modell">
+                                                    <f:render partial="SolutionOverview/ModellPanel" arguments="{modell: modell, modellContainer: outputModell}" />    
+                                                </f:for>
+                                            </f:for>
+
+                                            <f:for each="{solution.outputMessmittel}" as="outputMessmittel">
+                                                <f:for each="{outputMessmittel.messmittel}" as="messmittel">
+                                                    <f:render partial="SolutionOverview/MessmittelPanel" arguments="{messmittel: messmittel, messmittelContainer: outputMessmittel}" />    
+                                                </f:for>
+                                            </f:for>
+
+                                            <f:for each="{solution.outputDaten}" as="outputDaten">
+                                                <f:for each="{outputDaten.daten}" as="daten">
+                                                    <f:render partial="SolutionOverview/DatenPanel" arguments="{daten: daten, datenContainer: outputDaten}" />
+                                                </f:for>
+                                            </f:for>
+
+                                            <f:for each="{solution.outputMethoden}" as="outputMethoden">
+                                                <f:for each="{outputMethoden.methode}" as="methode">
+                                                    <f:render partial="SolutionOverview/MethodenPanel" arguments="{methode: methode, methodenContainer: outputMethoden}" />
+                                                </f:for>
+                                            </f:for>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse3">Anwendung und Arbeitsschritte</a>
+                            </h4>
+                        </div>
+                        <div id="collapse3" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-6">
+                                        <div class="page-header margin-top">
+                                            <h4>Ablaufmodell BPMN</h4>
+                                        </div>
+                                        <f:if condition="{solution.ablauf}">
+                                            <ul class="list-group">
+                                                <f:for each="{modelFiles.bpmn}" as="file">
+                                                    <li class="list-group-item">
+                                                        <a href="{file.modelerReference}" title="Modell im Modeler anzeigen" target="_blank">{file.name}</a>
+                                                    </li>
+                                                </f:for>
+                                            </ul>
+                                        </f:if>
+                                    </div>
+                                </div>
+                                 <div class="row steps">
+                                     <div class="col-xs-12">
+                                         <div class="page-header margin-top">
+                                             <h4>Arbeitsschritte</h4>
+                                         </div>
+                                     <f:for each="{solution.arbeitsschritte}" as="arbeitsschritt" iteration="iterator">
+                                         <div class="col-xs-4">
+                                    <f:render partial="SolutionOverview/Step" arguments="{step: arbeitsschritt, number: iterator.cycle}" />
+                                         </div>
+                                     </f:for>
+                                    </div>
+                                 </div>
+                             </div>
+                      </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" href="#collapse4">Anwendungsf&auml;lle und Untersuchungen</a>
+                            </h4>
+                        </div>
+                        <div id="collapse4" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <div class="page-header">
+                                            <h4>M&ouml;gliche Anwendungsf&auml;lle (auf Basis der Lastf&auml;lle)</h4> 
+                                        </div>
+                                        <f:if condition="{applicationCases}">
+                                            <table class="table table-striped table-hover">
+                                                <tr>
+                                                    <th style="width: 40%">Anwendungsfall</th>
+                                                    <th style="width: 30%">Art</th>
+                                                    <th style="width: 30%">Bemerkung</th>
+                                                </tr>
+                                                <f:for each="{applicationCases}" as="applicationCase">
+                                                    <tr>
+                                                        <td>
+                                                            <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_fachanwendungsfall][{applicationCase.applicationCase.uid}]=edit">
+                                                                {applicationCase.applicationCase.bezeichnung}
+                                                            </wise:be.editLink>
+                                                            &nbsp;
+                                                            <span class="label label-primary">
+                                                                <f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:szenarioart.{applicationCase.applicationCase.szenarioart}" />
+                                                            </span>
+                                                        </td>
+                                                        <td>
+                                                            <div class="alert alert-info">
+                                                                <strong>Untersuchungen fanden statt</strong>
+                                                            </div>     
+                                                        </td>
+                                                        <td>
+                                                            <b>Mapping auf Basis von: </b><br>
+                                                            <f:for each="{applicationCase.loadCases}" as="loadCase">
+                                                                {loadCase.fallbezeichnung}<br>
+                                                            </f:for>     
+                                                        </td>
+                                                    </tr>    
+                                                </f:for>
+                                            </table>
+                                        </f:if>
+                                    </div>
+                                    <div class="col-xs-3">
+                                        <div class="page-header">
+                                            <h4>Untersuchungen</h4> 
+                                        </div>
+                                        <f:link.action action="examinations" arguments="{solution: solution.uid}" target="_blank" class="btn btn-primary">
+                                            Alle Untersuchungen von {solution.teilprojektnummer}
+                                        </f:link.action>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-9">
+                                        <div class="page-header">
+                                            <h4>Bewertung hinsichtlich Anwendungsf&auml;lle (aus Eignungsprofilen)</h4>
+                                        </div>
+                                        <f:if condition="{aptitudes}">
+                                            <table class="table table-striped table-hover">
+                                                <tr>
+                                                    <th style="width: 40%">Anwendungsfall</th>
+                                                    <th style="width: 15%">Bewertung</th>
+                                                    <th style="width: 15%">Status</th>
+                                                    <th style="width: 30%">Bemerkung</th>
+                                                </tr>
+                                                <f:for each="{aptitudes}" as="aptitude">
+                                                    <tr>
+                                                        <td>
+                                                            <f:for each="{aptitude.anwendungsfall}" as="aptitudeApplicationCase">
+                                                                <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_fachanwendungsfall][{aptitudeApplicationCase.uid}]=edit">
+                                                                    {aptitudeApplicationCase.bezeichnung}
+                                                                </wise:be.editLink>
+                                                                &nbsp;
+                                                                <span class="label label-primary">
+                                                                    <f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:szenarioart.{aptitudeApplicationCase.szenarioart}" />
+                                                                </span>
+                                                            </f:for>
+                                                        </td>
+                                                        <td>
+                                                            <div class="alert alert-{f:if(condition: '{aptitude.eignungsgrad} <= 2', then: 'danger', else: 'success')}">
+                                                                <strong><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:eignungsgrad.{aptitude.eignungsgrad}" /></strong><br>
+                                                            </div>
+                                                        </td>
+                                                        <td>
+                                                            <f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:eignungsprofilstatus.{aptitude.eignungsprofilstatus}" />
+                                                        </td>
+                                                        <td>
+                                                            {aptitude.bemerkung}
+                                                        </td>
+                                                    </tr>
+                                                </f:for>
+                                            </table>
+                                        </f:if>
+                                    </div>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+        </div>
+    </f:if>
+</f:section>

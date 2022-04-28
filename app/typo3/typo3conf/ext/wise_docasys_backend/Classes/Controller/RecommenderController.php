@@ -6,6 +6,14 @@
 
     class RecommenderController extends \Wise\WiseDocasysBackend\Controller\FilterController
     {
+        const LABEL_NO_VALUE = 'Zeige alle';
+
+        /**
+        * @var \Wise\WiseDocasysDomainDesigner\Domain\Repository\EignungsprofilRepository
+        * @inject
+        */
+        protected $eignungsprofilRepository;
+        
         /**
         * @var \Wise\WiseDocasysDomainDesigner\Domain\Repository\LoesungRepository
         * @inject
@@ -50,10 +58,6 @@
                         'ausgangsfluss' => $result->getAusgangsfluss(),
                         'eingangsfluss' => $result->getEingangsfluss()
                     ));
-
-                    array_push($this->teilprojektnummer, $result->getTeilprojektnummer());
-                    array_push($this->ausgangsflusse, $result->getAusgangsfluss());
-                    array_push($this->eingangsflusse, $result->getEingangsfluss());
                 }
             }
             // echo '<pre>' , var_dump($filteredResults) , '</pre>';
@@ -84,6 +88,12 @@
                 }
             }
 
+            foreach ($filteredResults as $filteredResult) {
+                array_push($this->teilprojektnummer, $filteredResult['teilprojektnummer']);
+                array_push($this->ausgangsflusse, 0.5);
+                array_push($this->eingangsflusse, 0.5);
+            }
+
             $this->view->assignMultiple([
                 'operators' => $this->operators,
                 'results' => count($filteredResults) > 0 ? $filteredResults : null,
@@ -91,6 +101,36 @@
                 'labels' => $this->teilprojektnummer,
                 'ausgangsflusse' => $this->ausgangsflusse,
                 'eingangsflusse' => $this->eingangsflusse,
+            ]);
+        }
+
+        public function summaryAction() 
+        {
+            $solutions = [0 => self::LABEL_NO_VALUE];
+            $solution = null;
+            $applicationCases = null;
+            $modelFiles = [];
+
+            foreach($this->loesungRepository->findAll() as $s) {
+                $solutions[$s->getUid()] = $s->getTeilprojektnummer() . ', ' . $s->getLoesungsbezeichnung();     
+            } 
+
+            $request = $this->request->getArguments();  
+            if(isset($request['solution'])) {
+                $selectedSolution = intval($request['solution']);  
+                if($selectedSolution > 0) {  
+                    $solution = $this->loesungRepository->findOneByUid($selectedSolution);
+                    $applicationCases = $this->loesungRepository->getApplicationCases($solution); 
+                    $modelFiles = $this->loesungRepository->getModelFileLinks($solution);
+                }
+            }
+            
+            $this->view->assignMultiple([
+                'solutions' => $solutions,
+                'solution' => $solution,
+                'applicationCases' => $applicationCases,
+                'modelFiles' => $modelFiles,
+                'aptitudes' => ($solution) ? $this->eignungsprofilRepository->findByLoesung($solution->getUid()) : [] 
             ]);
         }
     }

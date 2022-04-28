@@ -113,6 +113,8 @@
                         <td>Teilprojektnummer</td>
                         <td>Lösungsbezeichnung</td>
                         <td>Nettofluss</td>
+                        <td>Ausgangsfluss</td>
+                        <td>Eingangsfluss</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -120,11 +122,11 @@
                         <tr>
                             <td style="width: 15%">{solution.teilprojektnummer}</td>
                             <td style="width: 30%">
-                                <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_loesung][{solution.uid}]=edit">
-                                {solution.loesungsbezeichnung}
-                            </wise:be.editLink>
+                                <a href="{f:uri.action(action:'summary', arguments: '{solution: \'{solution.uid}\'}' )}" title="{solution.loesungsbezeichnung}">{solution.loesungsbezeichnung}</a> 
                             </td>
                             <td>{solution.nettofluss}</td>
+                            <td>{solution.ausgangsfluss}</td>
+                            <td>{solution.eingangsfluss}</td>
                         </tr>
                     </f:for>
                 </tbody>
@@ -139,7 +141,7 @@
                     font-family: sans-serif;
                 }
                 .chartBox {
-                    width: 700px;
+                    /* width: 700px; */
                     padding: 20px;
                     border-radius: 20px;
                     border: solid 3px rgba(255, 26, 104, 0.5);
@@ -149,42 +151,41 @@
         </head>
         
         <body>
-            <div class="chartBox">
-                <canvas id="myChart"></canvas>
+            <div class="chartBox" style="width: 60%;">
+                <canvas id="canvas"></canvas>
             </div>
-            <f:for each="{labels}" as="label">
-                {label}
-            </f:for>
-            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <!-- <f:for each="{labels}" as="label"> </f:for> -->
+            <script src="{f:uri.resource(path: 'ChartJs/dist/Chart.bundle.js')}"></script>
+            <script src="{f:uri.resource(path: 'ChartJs/samples/utils.js')}"></script>
+
             <script>
-                // data 
-                var data = {
-                    min: -1, 
-                    max: 1,
-                    labels: ['<f:format.raw>{labels}</f:format.raw>'],
-                    // labels: 'labels',
+                var color = Chart.helpers.color;
+                var barChartData = {
+                    labels: [<f:for each="{labels}" as="label"> '{label}', </f:for>],
                     datasets: [
                         {
                             label: 'Ausgangsfluss',
-                            data: [0.86,0.25,-0.14,-0.14,-0.33,-0.49],
-                            backgroundColor: 'rgba(255, 26, 104, 0.4)',
+                            data: [<f:for each="{ausgangsflusse}" as="ausgangsfluss"> {ausgangsfluss}, </f:for>],
+                            backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
+                            borderColor: window.chartColors.red,
                             borderWidth: 1
                         },
                         {
                             label: 'Eingangsfluss',
-                            data: [0.86,0.25,-0.14,-0.14,-0.33,-0.49],
-                            backgroundColor: 'rgba(54, 162, 235, 0.4)',
+                            data: [<f:for each="{eingangsflusse}" as="eingangsfluss"> {eingangsfluss}, </f:for>],
+                            backgroundColor: color(window.chartColors.blue).alpha(0.5).rgbString(),
+                            borderColor: window.chartColors.blue,
                             borderWidth: 1
                         }
                     ]
                 };
-                // config 
-                var config = {
-                    type: 'bar',
-                    data: data,
-                    options: {
-                        responsive: true,
-                        plugins: {
+                window.onload = function() {
+                    var ctx = document.getElementById('canvas').getContext('2d');
+                    window.myBar = new Chart(ctx, {
+                        type: 'bar',
+                        data: barChartData,
+                        options: {
+                            responsive: true,
                             legend: {
                                 position: 'top',
                             },
@@ -193,13 +194,8 @@
                                 text: 'Vertical Bar Chart'
                             }
                         }
-                    },
-                };
-                // render init block
-                var myChart = new Chart(
-                    document.getElementById('myChart'),
-                    config
-                );
+			        });
+		        };
             </script>
 
         </body>
