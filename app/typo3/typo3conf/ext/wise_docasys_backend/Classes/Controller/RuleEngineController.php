@@ -3,6 +3,13 @@
 
     class RuleEngineController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
+
+        /**
+        * @var TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
+        * @inject
+        */
+        protected $persistenceManager;
+
         /**
         * @var \Wise\WiseDocasysDomainDesigner\Domain\Repository\RessourceRepository
         * @inject
@@ -240,25 +247,64 @@
             return $score;
         }
 
-        private function einschaetzungJeScore($score)
+        private function getTeilprojektnummerScores($loesungen, $ressourcenarten)
         {
-            foreach ($score as $key => $value) {
-                if ($value >= 1.0 && $value <= 1.39) {
-                    array_push($this->scores, 1);
+            $scores = [];
+            $teilprojektnummer = [];
+            foreach ($loesungen as $loesung) {
+                // echo '<pre>' , var_dump($loesung->getTeilprojektnummer(),$loesung->getLoesungsbezeichnung()) , '</pre>';
+                $arbeitsschritte = $loesung->getArbeitsschritte();
+                $ressourcen = [];
+                $tobeadd = false;
+
+                foreach ($arbeitsschritte as $arbeitsschritt) {
+                    // echo '<pre>' , var_dump('Arbeitsschritt:----------'.$arbeitsschritt->getBezeichnung()) , '</pre>';
+                    $inputressourcen = $arbeitsschritt->getIRe();
+                    foreach ($inputressourcen as $inputressource) {
+                        $kosten = $inputressource->getKosten();
+                        $zeitaufwand = $inputressource->getZeitaufwand();
+                        $art = $inputressource->getArt()->getName();
+                        if ($kosten == 0 && $zeitaufwand == 0) {
+                            array_push($ressourcen, array($art, 3));
+                        }
+                        elseif ($kosten == 0) {
+                            // echo '<pre>' , var_dump('art zeitaufwand', $art, $zeitaufwand) , '</pre>';
+                            array_push($ressourcen, array($art, $zeitaufwand));
+                            $tobeadd = true;
+                        }
+                        elseif ($zeitaufwand == 0) {
+                            // echo '<pre>' , var_dump('art, kosten', $art, $kosten) , '</pre>';
+                            array_push($ressourcen, array($art, $kosten));
+                            $tobeadd = true;
+                        }
+                    }
                 }
-                elseif ($value >= 1.4 && $value <= 1.79) {
-                    array_push($this->scores, 2);
+
+                if( $loesung->getLoesungsart() == 0 && $tobeadd == true ) {
+                    array_push($teilprojektnummer, $loesung->getTeilprojektnummer());
                 }
-                elseif ($value >= 1.8 && $value <= 2.19) {
-                    array_push($this->scores, 3);
-                }
-                elseif ($value >= 2.2 && $value <= 2.59) {
-                    array_push($this->scores, 4);
-                }
-                elseif ($value >= 2.6 && $value <= 3) {
-                    array_push($this->scores, 5);
+                $score = $this->scoreJeLoesung($ressourcen, $ressourcenarten);
+
+                foreach ($score as $key => $value) {
+                    if ($value >= 1.0 && $value <= 1.39) {
+                        array_push($scores, 1);
+                    }
+                    elseif ($value >= 1.4 && $value <= 1.79) {
+                        array_push($scores, 2);
+                    }
+                    elseif ($value >= 1.8 && $value <= 2.19) {
+                        array_push($scores, 3);
+                    }
+                    elseif ($value >= 2.2 && $value <= 2.59) {
+                        array_push($scores, 4);
+                    }
+                    elseif ($value >= 2.6 && $value <= 3) {
+                        array_push($scores, 5);
+                    }
                 }
             }
+
+            return [$teilprojektnummer, $scores];
         }
 
         private function getTeilgewichtung($ressourcenarten)
@@ -279,7 +325,6 @@
                 }
             }
             $this->teilgewichtungen = [$teilgewichtungmaterieller, $teilgewichtungimmaterieller, $teilgewichtunglangzeitaufwand];
-            // echo '<pre>' , var_dump($this->teilgewichtungen) , '</pre>';
         }
 
         private function paarVergleiche($scores)
@@ -333,7 +378,6 @@
                 array_push($phi_plus, $phi_plus_summe / ($this->loesungszahl-1) );
                 $k1 += $this->loesungszahl;
             }
-            // echo '<pre>' , var_dump($phi_plus) , '</pre>';
 
             // Eingangsfluss berechnen
             $phi_minus = [];
@@ -346,9 +390,8 @@
                     $t2 += $this->loesungszahl;
                 }
                 array_push($phi_minus, $phi_minus_summe / ($this->loesungszahl-1) );
-                $t1 += 1;
+                $t1 += 1;   
             }
-            // echo '<pre>' , var_dump($phi_minus) , '</pre>';
 
             $iter = 0;
             while ($iter < $this->loesungszahl) {
@@ -376,73 +419,43 @@
                     }
                 }
                 else {
+                    $loesung->setAusgangsfluss(0.0);
+                    $loesung->setEingangsfluss(0.0);
                     $loesung->setNettofluss(0.0);
                 }
             }
 
             foreach ($loesungen as $loesung) {
-                // echo '<pre>' , var_dump($loesung->getTeilprojektnummer(), $loesung->getNettofluss(), $loesung->getAusgangsfluss(), $loesung->getEingangsfluss()) , '</pre>';
-                $repository->update($loesung);
+                if ( $loesung->getLoesungsart() == 0 ) {
+                    echo '<pre>' , var_dump($loesung->getTeilprojektnummer(), $loesung->getNettofluss(), $loesung->getAusgangsfluss(), $loesung->getEingangsfluss()) , '</pre>';
+                    $repository->update($loesung);
+                }
             }
         }
 
         public function indexAction()
         {
-            // echo '<pre>' , var_dump("11111") , '</pre>';
-            // echo '<pre>' , var_dump("11111") , '</pre>';
+            echo '<pre>' , var_dump("11111") , '</pre>';
+            echo '<pre>' , var_dump("11111") , '</pre>';
 
             $this->ressourcenarten = ($this->ressourcenarten == null) ? $this->ressourcenartRepository->findAll() : $this->ressourcenarten;
             $this->ressourcenkategorien = ($this->ressourcenkategorien == null) ? $this->getAlleKategorien($this->ressourcenarten) : $this->ressourcenkategorien;
             $this->loesungen = ($this->loesungen == null) ? $this->loesungRepository->findAll() : $this->loesungen;
             $request = $this->request->getArguments();
             // echo '<pre>' , var_dump($request) , '</pre>';
-
-            foreach ($this->loesungen as $loesung) {
-                // $solution = $loesung->getLoesungsbezeichnung();
-                // echo '<pre>' , var_dump('solution:----------'.$solution) , '</pre>';
-                $arbeitsschritte = $loesung->getArbeitsschritte();
-                $ressourcen = [];
-                $added = false;
-
-                foreach ($arbeitsschritte as $arbeitsschritt) {
-                    // echo '<pre>' , var_dump('Arbeitsschritt:----------'.$arbeitsschritt->getBezeichnung()) , '</pre>';
-                    $inputressourcen = $arbeitsschritt->getIRe();
-                    if( $inputressourcen && ($added == false) ) {
-                        array_push($this->teilprojektnummer, $loesung->getTeilprojektnummer());
-                        $added = true;
-                    }
-
-                    foreach ($inputressourcen as $inputressource) {
-                        $kosten = $inputressource->getKosten();
-                        $zeitaufwand = $inputressource->getZeitaufwand();
-                        $art = $inputressource->getArt()->getName();
-                        if ($kosten == 0 && $zeitaufwand == 0) {
-                            array_push($ressourcen, array($art, 3));
-                        }
-                        elseif ($kosten == 0) {
-                            // echo '<pre>' , var_dump('art zeitaufwand', $art, $zeitaufwand) , '</pre>';
-                            array_push($ressourcen, array($art, $zeitaufwand));
-                        }
-                        elseif ($zeitaufwand == 0) {
-                            // echo '<pre>' , var_dump('art, kosten', $art, $kosten) , '</pre>';
-                            array_push($ressourcen, array($art, $kosten));
-                        }
-                    }
-                }
-                // echo '<pre>' , var_dump($ressourcen) , '</pre>';
-                $score = $this->scoreJeLoesung($ressourcen, $this->ressourcenarten);
-                $this->einschaetzungJeScore($score);
-            }
-            // echo '<pre>' , var_dump($this->scores) , '</pre>';
-            $this->getTeilgewichtung($this->ressourcenarten);
-            $this->paarVergleiche($this->scores);
-            $this->ermittleFluss();
-            $this->speichereFluss($this->teilprojektnummer, $this->loesungRepository, $this->loesungen, $this->ausgangsfluesse, $this->eingangsfluesse, $this->nettofluesse);
-
+            
             if(isset($request['rule-submit'])) {
                 $this->aktualisierePunkte($request, $this->ressourcenarten);
                 $this->aktualisiereGewichtungen($this->ressourcenarten);
                 $this->speichereRessourcenarten($this->ressourcenartRepository, $this->ressourcenarten);
+
+                $this->getTeilgewichtung($this->ressourcenarten);
+                $TeilprojektnummerScores = $this->getTeilprojektnummerScores($this->loesungen, $this->ressourcenarten);
+                $this->paarVergleiche($TeilprojektnummerScores[1]);
+                $this->ermittleFluss();
+                $this->speichereFluss($TeilprojektnummerScores[0], $this->loesungRepository, $this->loesungen, $this->ausgangsfluesse, $this->eingangsfluesse, $this->nettofluesse);
+                
+                $this->persistenceManager->persistAll();
             }
 
             $this->view->assignMultiple([
