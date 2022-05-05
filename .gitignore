@@ -5,6 +5,6 @@
 mysql/data/*
 mysql/init/*
 mysql/run/*
-!mysql/init/dump-*.sql
+!mysql/init/*.sql
 app/typo3/typo3temp/*
 app/typo3/uploads/tx_extensionbuilder/backups/
