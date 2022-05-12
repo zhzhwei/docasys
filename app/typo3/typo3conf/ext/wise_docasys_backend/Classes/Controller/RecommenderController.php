@@ -47,7 +47,7 @@
         private function filterSolutions($results)
         {
             $filteredResults = [];
-            
+            echo '<pre>' , var_dump( $this->loesungRepository->FindByUid(3) ) , '</pre>';
             foreach ($results as $result) {
                 if ($result->getNettofluss() != 0) {
                     array_push($filteredResults, array(
@@ -69,8 +69,8 @@
         {
             $request = $this->request->getArguments();
             $filteredResults = [];
-            // echo '<pre>' , var_dump("1111111") , '</pre>';
-            // echo '<pre>' , var_dump("1111111") , '</pre>';
+            echo '<pre>' , var_dump("1111111") , '</pre>';
+            echo '<pre>' , var_dump("1111111") , '</pre>';
             // echo '<pre>' , var_dump($request) , '</pre>';
 
             if(isset($request['recommender-submit'])) {

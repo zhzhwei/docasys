@@ -193,19 +193,19 @@
                                         </f:if>
                                     </div>
                                 </div>
-                                 <div class="row steps">
-                                     <div class="col-xs-12">
-                                         <div class="page-header margin-top">
-                                             <h4>Arbeitsschritte</h4>
-                                         </div>
-                                     <f:for each="{solution.arbeitsschritte}" as="arbeitsschritt" iteration="iterator">
-                                         <div class="col-xs-4">
-                                    <f:render partial="SolutionOverview/Step" arguments="{step: arbeitsschritt, number: iterator.cycle}" />
-                                         </div>
-                                     </f:for>
+                                <div class="row steps">
+                                    <div class="col-xs-12">
+                                        <div class="page-header margin-top">
+                                            <h4>Arbeitsschritte</h4>
+                                        </div>
+                                    <f:for each="{solution.arbeitsschritte}" as="arbeitsschritt" iteration="iterator">
+                                        <div class="col-xs-4">
+                                            <f:render partial="SolutionOverview/Step" arguments="{step: arbeitsschritt, number: iterator.cycle}" />
+                                        </div>
+                                    </f:for>
                                     </div>
-                                 </div>
-                             </div>
+                                </div>
+                            </div>
                       </div>
                     </div>
                     <div class="panel panel-default">
