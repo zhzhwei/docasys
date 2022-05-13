@@ -9,7 +9,7 @@ return [
     ],
     'DB' => [
         'database' => 'cs-326244_doca',
-        'host' => 'docasys-db.local',
+        'host' => 'docasys-db',
         'password' => 'cs-32_doca_u',
         'port' => 3306,
         'username' => 'cs-32_doca_u',
