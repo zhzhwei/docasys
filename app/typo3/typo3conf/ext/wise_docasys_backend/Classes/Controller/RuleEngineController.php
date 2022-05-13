@@ -395,6 +395,9 @@
 
             $iter = 0;
             while ($iter < $this->loesungszahl) {
+                //array_push($this->ausgangsfluesse, round($phi_plus[$iter],2) );
+                //array_push($this->eingangsfluesse, round($phi_minus[$iter],2) );
+                //array_push($this->nettofluesse, round($phi_plus[$iter] - $phi_minus[$iter],2) );
                 array_push($this->ausgangsfluesse, round($phi_plus[$iter],2) );
                 array_push($this->eingangsfluesse, round($phi_minus[$iter],2) );
                 array_push($this->nettofluesse, round($phi_plus[$iter] - $phi_minus[$iter],2) );
@@ -405,30 +408,17 @@
 
         public function speichereFluss($teilprojektnummer, $repository, $loesungen, $ausgangsfluesse, $eingangsfluesse, $nettofluesse)
         {
-            $iter = 0;
-            foreach ($loesungen as $loesung) {
-                // 1.Methode
-                // if ( in_array($loesung->getTeilprojektnummer(), $teilprojektnummer) ) {
-                // 2.Methode
-                if ( $loesung->getTeilprojektnummer() == $teilprojektnummer[$iter] ) { 
-                    if ( $loesung->getLoesungsart() == 0 ) {
-                        $loesung->setAusgangsfluss($ausgangsfluesse[$iter]);
-                        $loesung->setEingangsfluss($eingangsfluesse[$iter]);
-                        $loesung->setNettofluss($nettofluesse[$iter]);
-                        $iter += 1;
-                    }
-                }
-                else {
-                    $loesung->setAusgangsfluss(0.0);
-                    $loesung->setEingangsfluss(0.0);
-                    $loesung->setNettofluss(0.0);
-                }
-            }
+            $_loesungen = array_filter($loesungen->toArray(), function($l) {
+                return ($l->getLoesungsart() == 0);
+            });
 
-            foreach ($loesungen as $loesung) {
-                if ( $loesung->getLoesungsart() == 0 ) {
-                    echo '<pre>' , var_dump($loesung->getTeilprojektnummer(), $loesung->getNettofluss(), $loesung->getAusgangsfluss(), $loesung->getEingangsfluss()) , '</pre>';
-                    $repository->update($loesung);
+            foreach ($_loesungen as $loesung) {
+                $index = array_search($loesung->getTeilprojektnummer(), array_values($teilprojektnummer));
+                if (gettype($index) != "boolean") {
+                    $loesung->setAusgangsfluss($ausgangsfluesse[$index]);
+                    $loesung->setEingangsfluss($eingangsfluesse[$index]);
+                    $loesung->setNettofluss($nettofluesse[$index]);
+                    $this->loesungRepository->update($loesung);
                 }
             }
         }
@@ -454,8 +444,6 @@
                 $this->paarVergleiche($TeilprojektnummerScores[1]);
                 $this->ermittleFluss();
                 $this->speichereFluss($TeilprojektnummerScores[0], $this->loesungRepository, $this->loesungen, $this->ausgangsfluesse, $this->eingangsfluesse, $this->nettofluesse);
-                
-                $this->persistenceManager->persistAll();
             }
 
             $this->view->assignMultiple([

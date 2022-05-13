@@ -316,6 +316,24 @@ return [
 			    'eval' => 'double2'
 			]
 	    ],
+	    'ausgangsfluss' => [
+	        'exclude' => true,
+	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesung.ausgangsfluss',
+	        'config' => [
+			    'type' => 'input',
+			    'size' => 5,
+			    'eval' => 'double2'
+			]
+	    ],
+	    'eingangsfluss' => [
+	        'exclude' => true,
+	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesung.eingangsfluss',
+	        'config' => [
+			    'type' => 'input',
+			    'size' => 5,
+			    'eval' => 'double2'
+			]
+	    ],
 	    'anwendungsfall' => [
 	        'exclude' => true,
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesung.anwendungsfall',
