@@ -42,12 +42,16 @@
         /**
         * @var Array 
         */
+        private $nettofluesse = [];
+
+        /**
+        * @var Array 
+        */
         private $eingangsflusse = [];
 
         private function filterSolutions($results)
         {
             $filteredResults = [];
-            echo '<pre>' , var_dump( $this->loesungRepository->FindByUid(3) ) , '</pre>';
             foreach ($results as $result) {
                 if ($result->getNettofluss() != 0) {
                     array_push($filteredResults, array(
@@ -60,7 +64,6 @@
                     ));
                 }
             }
-            // echo '<pre>' , var_dump($filteredResults) , '</pre>';
 
             return $filteredResults;
         }
@@ -69,9 +72,6 @@
         {
             $request = $this->request->getArguments();
             $filteredResults = [];
-            echo '<pre>' , var_dump("1111111") , '</pre>';
-            echo '<pre>' , var_dump("1111111") , '</pre>';
-            // echo '<pre>' , var_dump($request) , '</pre>';
 
             if(isset($request['recommender-submit'])) {
                 $results = $this->loesungRepository->getFilteredSolutions($request['recommender-submit']);
@@ -90,6 +90,7 @@
 
             foreach ($filteredResults as $filteredResult) {
                 array_push($this->teilprojektnummer, $filteredResult['teilprojektnummer']);
+                array_push($this->nettofluesse, $filteredResult['nettofluss']);
                 array_push($this->ausgangsflusse, $filteredResult['ausgangsfluss']);
                 array_push($this->eingangsflusse, $filteredResult['eingangsfluss']);
             }
@@ -99,8 +100,9 @@
                 'results' => count($filteredResults) > 0 ? $filteredResults : null,
                 'values' => (isset($request['recommender-submit'])) ? $request['recommender-submit'] : null,
                 'labels' => $this->teilprojektnummer,
+                'nettofluesse' => $this->nettofluesse,
                 'ausgangsflusse' => $this->ausgangsflusse,
-                'eingangsflusse' => $this->eingangsflusse,
+                'eingangsflusse' => $this->eingangsflusse
             ]);
         }
 

@@ -156,6 +156,13 @@
                     labels: [<f:for each="{labels}" as="label"> '{label}', </f:for>],
                     datasets: [
                         {
+                            label: 'Nettofluss',
+                            data: [<f:for each="{nettofluesse}" as="nettofluss"> {nettofluss}, </f:for>],
+                            backgroundColor: color(window.chartColors.grey).alpha(0.5).rgbString(),
+                            borderColor: window.chartColors.grey,
+                            borderWidth: 1
+                        },
+                        {
                             label: 'Ausgangsfluss',
                             data: [<f:for each="{ausgangsflusse}" as="ausgangsfluss"> {ausgangsfluss}, </f:for>],
                             backgroundColor: color(window.chartColors.red).alpha(0.5).rgbString(),
@@ -183,7 +190,7 @@
                             },
                             title: {
                                 display: true,
-                                text: 'Vertical Bar Chart'
+                                text: 'Netto-, Eingangs- und Ausgangsflüsse der Lösungen'
                             }
                         }
 			        });
