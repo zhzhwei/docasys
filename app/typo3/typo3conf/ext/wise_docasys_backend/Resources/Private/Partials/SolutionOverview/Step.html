@@ -11,6 +11,9 @@
     </div>
     <div class="panel-body panel-body-step">
         <p>{step.beschreibung}</p>
+        <f:for each="{step.iRe}" as="iRe">
+            <p>{iRe.bezeichnung}</p>
+        </f:for>
         <!-- <dl>
             <f:if condition="{step.arbeitsschrittart} > 0">
                 <dt>Art:</dt>
