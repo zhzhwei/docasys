@@ -425,8 +425,8 @@
 
         public function indexAction()
         {
-            echo '<pre>' , var_dump("11111") , '</pre>';
-            echo '<pre>' , var_dump("11111") , '</pre>';
+            // echo '<pre>' , var_dump("11111") , '</pre>';
+            // echo '<pre>' , var_dump("11111") , '</pre>';
 
             $this->ressourcenarten = ($this->ressourcenarten == null) ? $this->ressourcenartRepository->findAll() : $this->ressourcenarten;
             $this->ressourcenkategorien = ($this->ressourcenkategorien == null) ? $this->getAlleKategorien($this->ressourcenarten) : $this->ressourcenkategorien;
@@ -436,23 +436,28 @@
             
             if(isset($request['rule-submit'])) {
                 $this->aktualisierePunkte($request, $this->ressourcenarten);
-                $this->aktualisiereGewichtungen($this->ressourcenarten);
-                $this->speichereRessourcenarten($this->ressourcenartRepository, $this->ressourcenarten);
-
-                $this->getTeilgewichtung($this->ressourcenarten);
-                $TeilprojektnummerScores = $this->getTeilprojektnummerScores($this->loesungen, $this->ressourcenarten);
-                $this->paarVergleiche($TeilprojektnummerScores[1]);
-                $this->ermittleFluss();
-                $this->speichereFluss($TeilprojektnummerScores[0], $this->loesungRepository, $this->loesungen, $this->ausgangsfluesse, $this->eingangsfluesse, $this->nettofluesse);
+            }
+            else {
+                foreach ($this->ressourcenarten as $ressourcenart) {
+                    $ressourcenart->setPunkte(100);
+                    $ressourcenart->setIndividualpunkte(100);
+                }
             }
 
+            $this->aktualisiereGewichtungen($this->ressourcenarten);
+            $this->speichereRessourcenarten($this->ressourcenartRepository, $this->ressourcenarten);
+            $this->getTeilgewichtung($this->ressourcenarten);
+            $TeilprojektnummerScores = $this->getTeilprojektnummerScores($this->loesungen, $this->ressourcenarten);
+            $this->paarVergleiche($TeilprojektnummerScores[1]);
+            $this->ermittleFluss();
+            $this->speichereFluss($TeilprojektnummerScores[0], $this->loesungRepository, $this->loesungen, $this->ausgangsfluesse, $this->eingangsfluesse, $this->nettofluesse);
+            
             $this->view->assignMultiple([
                 'ressourcenArten' => $this->ressourcenarten,
                 'ressourcenKategorien' => $this->ressourcenkategorien,
                 'summeIndividualpunkte' => $this->ermittleGesamtpunkte($this->ressourcenarten, "punkte"),
                 'summeIndividualgewichtung' => $this->ermittleGesamtpunkte($this->ressourcenarten, "gewichtung")
             ]);
-
         }
     }
 ?>

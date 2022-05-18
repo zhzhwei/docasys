@@ -10,9 +10,14 @@
         </wise:be.editLink>
     </div>
     <div class="panel-body panel-body-step">
-        <p>{step.beschreibung}</p>
+        <dt>Beschreibung:</dt>
+        <dd>{step.beschreibung}</dd>
+        <dt>Verwendete Ressourcen:</dt>
         <f:for each="{step.iRe}" as="iRe">
-            <p>{iRe.bezeichnung}</p>
+            <dt></dt>
+            <dd>{iRe.bezeichnung}
+                (<f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.name.{iRe.art.name}" />)
+            </dd>
         </f:for>
         <!-- <dl>
             <f:if condition="{step.arbeitsschrittart} > 0">
