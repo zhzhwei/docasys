@@ -87,12 +87,22 @@
       <incoming>SequenceFlow_0amb376</incoming>
       <outgoing>SequenceFlow_007y2th</outgoing>
       <task id="Task_0jcw90q" name="Sensoren berechnen prozessparallel Verformung">
+        <incoming>SequenceFlow_12jjdsb</incoming>
         <outgoing>SequenceFlow_0vgfbxy</outgoing>
       </task>
       <task id="Task_12bxhyj" name="Übergabe an Steuerung">
         <incoming>SequenceFlow_0vgfbxy</incoming>
+        <outgoing>SequenceFlow_14b31gd</outgoing>
       </task>
       <sequenceFlow id="SequenceFlow_0vgfbxy" sourceRef="Task_0jcw90q" targetRef="Task_12bxhyj" />
+      <startEvent id="StartEvent_0q4yhbx">
+        <outgoing>SequenceFlow_12jjdsb</outgoing>
+      </startEvent>
+      <sequenceFlow id="SequenceFlow_12jjdsb" sourceRef="StartEvent_0q4yhbx" targetRef="Task_0jcw90q" />
+      <endEvent id="EndEvent_05wjw48">
+        <incoming>SequenceFlow_14b31gd</incoming>
+      </endEvent>
+      <sequenceFlow id="SequenceFlow_14b31gd" sourceRef="Task_12bxhyj" targetRef="EndEvent_05wjw48" />
     </subProcess>
     <sequenceFlow id="SequenceFlow_007y2th" sourceRef="Task_09f1djl" targetRef="Task_0poz81l" />
     <subProcess id="Task_0poz81l" name="Wartung">
@@ -305,13 +315,13 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_0amb376_di" bpmnElement="SequenceFlow_0amb376">
         <omgdi:waypoint x="1776" y="163" />
-        <omgdi:waypoint x="1904" y="163" />
+        <omgdi:waypoint x="1847" y="163" />
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds x="1840" y="141.5" width="0" height="13" />
+          <omgdc:Bounds x="1766.5" y="141.5" width="90" height="13" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="SubProcess_1twjywg_di" bpmnElement="Task_09f1djl" isExpanded="true">
-        <omgdc:Bounds x="1904" y="63" width="350" height="200" />
+        <omgdc:Bounds x="1847" y="60" width="446" height="205" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Task_0jcw90q_di" bpmnElement="Task_0jcw90q">
         <omgdc:Bounds x="1931" y="125.25" width="100" height="80" />
@@ -327,10 +337,10 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="SequenceFlow_007y2th_di" bpmnElement="SequenceFlow_007y2th">
-        <omgdi:waypoint x="2254" y="163" />
+        <omgdi:waypoint x="2293" y="163" />
         <omgdi:waypoint x="2346" y="163" />
         <bpmndi:BPMNLabel>
-          <omgdc:Bounds x="2300" y="141.5" width="0" height="13" />
+          <omgdc:Bounds x="2274.5" y="141.5" width="90" height="13" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="SubProcess_145zrrw_di" bpmnElement="Task_0poz81l" isExpanded="true">
@@ -350,6 +360,32 @@
         <omgdi:waypoint x="2610" y="163" />
         <bpmndi:BPMNLabel>
           <omgdc:Bounds x="2582.5" y="141.5" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="StartEvent_0q4yhbx_di" bpmnElement="StartEvent_0q4yhbx">
+        <omgdc:Bounds x="1868.064761904762" y="147" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1886.064761904762" y="186" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_12jjdsb_di" bpmnElement="SequenceFlow_12jjdsb">
+        <omgdi:waypoint x="1904" y="165" />
+        <omgdi:waypoint x="1931" y="165" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="1917.5" y="143" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_05wjw48_di" bpmnElement="EndEvent_05wjw48">
+        <omgdc:Bounds x="2231" y="147" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="2249" y="186" width="0" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_14b31gd_di" bpmnElement="SequenceFlow_14b31gd">
+        <omgdi:waypoint x="2181" y="165" />
+        <omgdi:waypoint x="2231" y="165" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="2206" y="143" width="0" height="13" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
