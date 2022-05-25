@@ -117,10 +117,18 @@
 
         private function aktualisierePunkte($request, $ressourcenarten)
         {
-            foreach ($ressourcenarten as $ressourcenart) {
-                $name = $ressourcenart->getName();
-                $ressourcenart->setPunkte($request['rule-submit']['punkte'][$name]);
-                $ressourcenart->setIndividualpunkte($request['rule-submit']['individualpunkte'][$name]);
+            if(isset($request['save'])) {
+                foreach ($ressourcenarten as $ressourcenart) {
+                    $name = $ressourcenart->getName();
+                    $ressourcenart->setPunkte($request['rule-submit']['punkte'][$name]);
+                    $ressourcenart->setIndividualpunkte($request['rule-submit']['individualpunkte'][$name]);
+                }
+            }
+            if(isset($request['reset'])) {
+                foreach ($ressourcenarten as $ressourcenart) {
+                    $ressourcenart->setPunkte(100);
+                    $ressourcenart->setIndividualpunkte(100);
+                }
             }
         }
 
@@ -434,16 +442,7 @@
             $request = $this->request->getArguments();
             // echo '<pre>' , var_dump($request) , '</pre>';
             
-            if(isset($request['rule-submit'])) {
-                $this->aktualisierePunkte($request, $this->ressourcenarten);
-            }
-            else {
-                foreach ($this->ressourcenarten as $ressourcenart) {
-                    $ressourcenart->setPunkte(100);
-                    $ressourcenart->setIndividualpunkte(100);
-                }
-            }
-
+            $this->aktualisierePunkte($request, $this->ressourcenarten);
             $this->aktualisiereGewichtungen($this->ressourcenarten);
             $this->speichereRessourcenarten($this->ressourcenartRepository, $this->ressourcenarten);
             $this->getTeilgewichtung($this->ressourcenarten);
