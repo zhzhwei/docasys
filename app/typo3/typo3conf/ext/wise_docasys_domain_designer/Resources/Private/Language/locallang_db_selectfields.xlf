@@ -30,7 +30,7 @@
             <trans-unit id="maschinenstillstandsnotwendigkeit.2">
                 <source>Nein</source>
             </trans-unit>
-            <trans-unit id="unit.2">
+            <trans-unit id="unit.1">
                 <source>Kosten (in EUR)</source>
             </trans-unit>
             <trans-unit id="empty">

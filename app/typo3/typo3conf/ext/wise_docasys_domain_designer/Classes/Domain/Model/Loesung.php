@@ -117,6 +117,20 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $nettofluss = 0.0;
 
     /**
+     * ausgangsfluss
+     *
+     * @var float
+     */
+    protected $ausgangsfluss = 0.0;
+
+    /**
+     * eingangsfluss
+     *
+     * @var float
+     */
+    protected $eingangsfluss = 0.0;
+
+    /**
      * anwendungsfall
      *
      * @var int
@@ -279,20 +293,6 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @cascade remove
      */
     protected $komponentenbedingung = null;
-
-    /**
-     * ausgangsfluss
-     *
-     * @var float
-     */
-    protected $ausgangsfluss = 0.0;
-
-    /**
-     * eingangsfluss
-     *
-     * @var float
-     */
-    protected $eingangsfluss = 0.0;
 
     /**
      * Returns the loesungsbezeichnung

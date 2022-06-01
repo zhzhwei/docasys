@@ -203,7 +203,7 @@ return [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsklasse.1', 1],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsklasse.2', 2]
                 ],
-                'size' => 1,
+			    'size' => 1,
 			    'maxitems' => 1,
 			    'eval' => ''
 			],
@@ -223,7 +223,7 @@ return [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:phase_thermische_wirkkette.4', 4],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:phase_thermische_wirkkette.5', 5]
                 ],
-                'size' => 1,
+			    'size' => 1,
 			    'maxitems' => 1,
 			    'eval' => ''
 			],
@@ -243,7 +243,7 @@ return [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:physikalischer_effekt.4', 4],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:physikalischer_effekt.5', 5]
                 ],
-                'size' => 1,
+			    'size' => 1,
 			    'maxitems' => 1,
 			    'eval' => ''
 			],
@@ -265,8 +265,8 @@ return [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:invasivitaetsgrad.6', 6],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:invasivitaetsgrad.7', 7]
                 ],
-                'size' => 1,
-                'maxitems' => 1,
+			    'size' => 1,
+			    'maxitems' => 1,
 			    'eval' => ''
 			],
 	    ],
@@ -286,8 +286,8 @@ return [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:wartungsintervall.5', 5],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:wartungsintervall.6', 6]
                 ],
-                'size' => 1,
-                'maxitems' => 1,
+			    'size' => 1,
+			    'maxitems' => 1,
 			    'eval' => ''
 			],
 	    ],
@@ -302,7 +302,7 @@ return [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsart.0', 0],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsart.1', 1]
                 ],
-                'size' => 1,
+			    'size' => 1,
 			    'maxitems' => 1,
 			    'eval' => ''
 			],
@@ -403,7 +403,7 @@ return [
 			    'eval' => ''
 			],
 	    ],
-        'gestaltungsart' => [
+	    'gestaltungsart' => [
             'exclude' => true,
             'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesung.gestaltungsart',
             'config' => [

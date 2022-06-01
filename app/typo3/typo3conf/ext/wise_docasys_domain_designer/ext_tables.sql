@@ -1825,6 +1825,7 @@ CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_daten (
 
 	bezeichnung varchar(255) DEFAULT '' NOT NULL,
 	datentyp int(11) DEFAULT '0' NOT NULL,
+	beschreibung text NOT NULL,
 
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
