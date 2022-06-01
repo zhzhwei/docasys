@@ -7,13 +7,7 @@
             {daten.bezeichnung}
         </wise:be.editLink>
     </div>
-    <div class="panel-body">
-        {daten.beschreibung}
-        <!-- <dl>
-            <dt>Obligatorisch:</dt>
-            <dd>{f:if(condition: '{modellContainer.istObligatorisch} == 1', then: 'Ja', else: 'Nein')}</dd>
-            <dt>Art:</dt>
-            <dd><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:datentyp.{daten.datentyp}" /></dd>
-        </dl> -->
+    <div class="panel-body" style="white-space:pre-line; text-align:justify;">
+        <p>{daten.beschreibung}</p>
     </div>
 </div>
