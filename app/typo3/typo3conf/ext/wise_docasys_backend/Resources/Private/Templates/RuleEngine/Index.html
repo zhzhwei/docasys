@@ -1,91 +1,92 @@
 <f:layout name="DomainManager" /> 
 <f:section name="content">
-  <h1>Rule Engine</h1>  
-  <!-- Definition der Entscheidungsregeln für den Recommender -->
-  <f:form name="rule-submit" action="index" method="post">
-    <div class="container" style="width: 97%; position: absolute;"> 
-      <div class="row">
-        <label class="col-sm-2 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Unterkriterium</label>
-        <label class="col-sm-2 bg-success text-center" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Punkte</label>
-        <label class="col-sm-2 bg-warning text-center" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Gewichtung</label>
-      </div>
-      <f:for each="{ressourcenKategorien}" as="ressourcenKategorie" iteration="iterator">
-        <div class="row">
-          <label class="col-sm-2" style="height: 35px; display: flex; flex-direction: column;justify-content: center;"><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.kategorie.{ressourcenKategorie}" /></label>
-          <label id="Punktefehler" class="col-sm-4 text-center" style="height: 38px; border:solid gray;">
-        </div>
-        <f:for each="{ressourcenArten}" as="ressourcenArt">
-          <f:if condition="{ressourcenArt.kategorie} == {ressourcenKategorie}">
+    <h1>Rule Engine</h1>  
+    <!-- Definition der Entscheidungsregeln für den Recommender -->
+    <f:form name="rule-submit" action="index" method="post">
+        <div class="container" style="width: 100%;"> 
             <div class="row">
-              <div class="col-sm-2 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;"><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.name.{ressourcenArt.name}" />
-              </div>
-              <f:form.textfield type="number" property="punkte.{ressourcenArt.name}" class="col-sm-2 text-center" style="height: 35px;" value="{ressourcenArt.punkte}"/>
-              <f:form.textfield readonly="readonly" disabled="disabled" class="col-sm-2 text-center" style="height: 35px;" value="{ressourcenArt.gewichtung}"/>
+                <div class="col-xs-12 col-sm-8">
+                    <div class="row">
+                        <label class="bg-danger col-xs-4" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Unterkriterium</label>
+                        <label class="bg-success text-center col-xs-4" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Punkte</label>
+                        <label class="bg-warning text-center col-xs-4" style="height: 35px; display: flex; flex-direction: column;justify-content: center;">Gewichtung</label>
+                    </div>
+                    <f:for each="{ressourcenKategorien}" as="ressourcenKategorie" iteration="iterator">
+                        <div class="row">
+                            <label class="col-xs-4" style="height: 35px; display: flex; flex-direction: column;justify-content: center;"><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.kategorie.{ressourcenKategorie}" /></label>
+                            <label id="Punktefehler" class="col-xs-8 text-center" style="height: 38px; border:solid gray;">
+                        </div>
+                        <f:for each="{ressourcenArten}" as="ressourcenArt">
+                            <f:if condition="{ressourcenArt.kategorie} == {ressourcenKategorie}">
+                                <div class="row">
+                                    <div class="col-xs-4 bg-danger" style="height: 35px; display: flex; flex-direction: column;justify-content: center;"><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.name.{ressourcenArt.name}" /></div>
+                                    <f:form.textfield type="number" property="punkte.{ressourcenArt.name}" class="col-xs-4 text-center" style="height: 35px;" value="{ressourcenArt.punkte}"/>
+                                    <f:form.textfield readonly="readonly" disabled="disabled" class="col-xs-4 text-center" style="height: 35px;" value="{ressourcenArt.gewichtung}"/>
+                                </div>
+                            </f:if>
+                        </f:for>
+                    </f:for>
+                </div>
             </div>
-          </f:if>
-        </f:for>
-      </f:for>
-    </div>
 
-    <div style="width: 38%; right:150px; position: absolute;">
-      <p style="border:solid orange; width: 67%; text-align: justify">Die <strong>Gewichtung</strong>(links) dienen zur Berechnung der Aufwandsaussprägung der Bewertungskriterien für jedes Verfahren.</p>
-      <p style="margin-top: 45px; width: 67%; text-align: justify"><strong>Punkte</strong> mittels SMART-Methode vergeben: das wichtigste Kriterium bekommt 100 Punkte, die anderen bekommen je nach ihrer relativen Wichtigkeit in Bezug auf das wichtigste Kriterium Punkte zwischen 0 und 100 zugeordnet (100 = gleichwichtig, 50 = halb so wichtig etc.).</p>
-      <p style="margin-top: 45px; width: 67%; border: solid orange; text-align: justify">Diese <strong>Gewichtung</strong>(unten) werden für die vergleichende Bewertung der Verfahren untereinander genutzt.</p>
-      <p style="margin-top: 45px; width: 67%; text-align: justify"><strong>AAN:</strong> Aufwand Anpassungsnotwendigkeit
-      <strong>IS:</strong> Ingenieurstunden <strong>TS:</strong> Technikerstunden
-      <strong>FA:</strong> Fehlerauswirkungen <strong>WA:</strong> Wartungsaufwand
-      <strong>MSS:</strong> Maschinenstillstand <strong>Material:</strong> Materialbedarf
-      <strong>Software:</strong> Software <strong>Steuerung:</strong> Steuerungslizenzen</p>
+            <div class="row">
+                <label class="col-xs-10" style="height: 2px;">
+            </div>
 
-      <div style="width: 67%; margin-top:55px" class="row">
-          <div class="col-sm-6"> 
-            <a href="{f:uri.action(action:'index')}" class="btn btn-info">RuleEngine Eingaben Zur&uuml;cksetzen</a>
-          </div> 
-          <div style="padding-left: 40px;" class="col-sm-6"> 
-            <f:form.submit value="RuleEngine Eingaben Speichern" class="btn btn-primary" />
-          </div>
-      </div>
-    </div>
+            <div class="row">
+                <label class="col-xs-2 bg-danger text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Kriterium</label>
+                <f:for each="{ressourcenArten}" as="ressourcenArt">
+                    <div class="col-xs-1 bg-danger text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">
+                        <f:switch expression="{ressourcenArt.name}">
+                            <f:case value="1">Material</f:case>
+                            <f:case value="2">IS</f:case>
+                            <f:case value="3">TS</f:case>
+                            <f:case value="4">MSS</f:case>
+                            <f:case value="5">Software</f:case>
+                            <f:case value="6">Steuerung</f:case>
+                            <f:case value="7">WA</f:case>
+                            <f:case value="8">AAN</f:case>
+                        </f:switch>
+                    </div>
+                </f:for>
+                <label class="col-xs-2 bg-danger text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Summe</label>
+            </div>
+        
+            <div class="row">
+                <label class="col-xs-10" style="height: 2px;">
+            </div>
+        
+            <div class="row">
+                <label class="col-xs-2 text-center bg-success" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Punkte</label>
+                <f:for each="{ressourcenArten}" as="ressourcenArt">
+                    <f:form.textfield type="number" property="individualpunkte.{ressourcenArt.name}" class="col-xs-1 text-center" style="height: 32px;" value="{ressourcenArt.individualpunkte}"/>
+                </f:for>
+                <f:form.textfield readonly="readonly" disabled="disabled" class="col-xs-2 text-center bg-success" style="height: 32px; border: gray;" value="{summeIndividualpunkte}"/>
+            </div>
 
-    <div class="container-fluid" style="padding-top: 480px;">  
-      <div class="row">
-        <label class="col-sm-1 bg-danger text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Kriterium</label>
-        <f:for each="{ressourcenArten}" as="ressourcenArt">
-          <div class="col-sm-1 bg-danger text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">
-            <f:switch expression="{ressourcenArt.name}">
-              <f:case value="1">Material</f:case>
-              <f:case value="2">IS</f:case>
-              <f:case value="3">TS</f:case>
-              <f:case value="4">MSS</f:case>
-              <f:case value="5">Software</f:case>
-              <f:case value="6">Steuerung</f:case>
-              <f:case value="7">WA</f:case>
-              <f:case value="8">AAN</f:case>
-            </f:switch>
-          </div>
-        </f:for>
-        <label class="col-sm-1 bg-danger text-center" style="height: 25px; display: flex; flex-direction: column;justify-content: center;">Summe</label>
-      </div>
-
-      <div class="row">
-        <label class="col-sm-10" style="height: 2px;">
-      </div>
-
-      <div class="row">
-        <label class="col-sm-1 text-center bg-success" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Punkte</label>
-        <f:for each="{ressourcenArten}" as="ressourcenArt">
-          <f:form.textfield type="number" property="individualpunkte.{ressourcenArt.name}" class="col-sm-1 text-center" style="height: 32px;" value="{ressourcenArt.individualpunkte}"/>
-        </f:for>
-        <f:form.textfield readonly="readonly" disabled="disabled" class="col-sm-1 text-center bg-success" style="height: 32px; border: gray;" value="{summeIndividualpunkte}"/>
-      </div>
-
-      <div class="row">
-        <label class="col-sm-1 text-center bg-warning" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Gewichtung</label>
-        <f:for each="{ressourcenArten}" as="ressourcenArt">
-          <f:form.textfield readonly="readonly" disabled="disabled" class="col-sm-1 text-center" style="height: 32px;" value="{ressourcenArt.individualgewichtung}"/>
-        </f:for>
-        <f:form.textfield readonly="readonly" disabled="disabled" class="col-sm-1 text-center bg-warning" style="height: 32px;" value="{summeIndividualgewichtung}"/>
-      </div>
-    </div>
-  </f:form>
+            <div class="row">
+                <label class="col-xs-2 text-center bg-warning" style="height: 32px; display: flex; flex-direction: column;justify-content: center;">Gewichtung</label>
+                <f:for each="{ressourcenArten}" as="ressourcenArt">
+                    <f:form.textfield readonly="readonly" disabled="disabled" class="col-xs-1 text-center" style="height: 32px;" value="{ressourcenArt.individualgewichtung}"/>
+                </f:for>
+                <f:form.textfield readonly="readonly" disabled="disabled" class="col-xs-2 text-center bg-warning" style="height: 32px;" value="{summeIndividualgewichtung}"/>
+            </div>
+            
+            <label class="col-sm-12" style="height: 2px;"></label>
+            <div class="row">
+                <f:form.submit name="reset" value="RuleEngine Eingaben Zurücksetzen" class="col-xs-6 col-sm-5 btn btn-info"/>
+                <f:form.submit name="save" value="RuleEngine Eingaben Speichern" class="col-xs-6 col-sm-5 btn btn-primary"/>
+            </div>
+            <label class="col-sm-12" style="height: 2px;"></label>
+            <div class="row">
+                <h4 class="col-xs-12 col-sm-10" style="border:solid orange; text-align:justify;"><strong>AAN:</strong> Aufwand Anpassungsnotwendigkeit
+                <strong>IS:</strong> Ingenieurstunden <strong>TS:</strong> Technikerstunden
+                <strong>WA:</strong> Wartungsaufwand <strong>MSS:</strong> Maschinenstillstand <strong>Material:</strong> Materialbedarf
+                <strong>Software:</strong> Software <strong>Steuerung:</strong> Steuerungslizenzen</h4>
+            </div>
+            <div class="row">
+                <h4 class="col-xs-12 col-sm-10" style="border:solid orange; text-align:justify;">Diese <strong>Gewichtung</strong>(oben) dienen zur Berechnung der Aufwandsaussprägung der Bewertungskriterien für jedes Verfahren. Diese <strong>Gewichtung</strong>(unten) werden für die vergleichende Bewertung der Verfahren untereinander genutzt. <strong>Punkte</strong> mittels xsART-Methode vergeben: das wichtigste Kriterium bekommt 100 Punkte, die anderen bekommen je nach ihrer relativen Wichtigkeit in Bezug auf das wichtigste Kriterium Punkte zwischen 0 und 100 zugeordnet (100 = gleichwichtig, 50 = halb so wichtig etc.).</h4>
+            </div>
+        </div>
+    </f:form>
 </f:section>

@@ -33,6 +33,13 @@ class Daten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $datentyp = 0;
 
     /**
+     * beschreibung
+     *
+     * @var string
+     */
+    protected $beschreibung = '';
+
+    /**
      * Returns the bezeichnung
      *
      * @return string $bezeichnung
@@ -72,5 +79,26 @@ class Daten extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setDatentyp($datentyp)
     {
         $this->datentyp = $datentyp;
+    }
+
+    /**
+     * Returns the beschreibung
+     *
+     * @return string $beschreibung
+     */
+    public function getBeschreibung()
+    {
+        return $this->beschreibung;
+    }
+
+    /**
+     * Sets the beschreibung
+     *
+     * @param string $beschreibung
+     * @return void
+     */
+    public function setBeschreibung($beschreibung)
+    {
+        $this->beschreibung = $beschreibung;
     }
 }

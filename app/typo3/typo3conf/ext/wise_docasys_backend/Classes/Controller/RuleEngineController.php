@@ -117,10 +117,18 @@
 
         private function aktualisierePunkte($request, $ressourcenarten)
         {
-            foreach ($ressourcenarten as $ressourcenart) {
-                $name = $ressourcenart->getName();
-                $ressourcenart->setPunkte($request['rule-submit']['punkte'][$name]);
-                $ressourcenart->setIndividualpunkte($request['rule-submit']['individualpunkte'][$name]);
+            if(isset($request['save'])) {
+                foreach ($ressourcenarten as $ressourcenart) {
+                    $name = $ressourcenart->getName();
+                    $ressourcenart->setPunkte($request['rule-submit']['punkte'][$name]);
+                    $ressourcenart->setIndividualpunkte($request['rule-submit']['individualpunkte'][$name]);
+                }
+            }
+            if(isset($request['reset'])) {
+                foreach ($ressourcenarten as $ressourcenart) {
+                    $ressourcenart->setPunkte(100);
+                    $ressourcenart->setIndividualpunkte(100);
+                }
             }
         }
 
@@ -425,8 +433,8 @@
 
         public function indexAction()
         {
-            echo '<pre>' , var_dump("11111") , '</pre>';
-            echo '<pre>' , var_dump("11111") , '</pre>';
+            // echo '<pre>' , var_dump("11111") , '</pre>';
+            // echo '<pre>' , var_dump("11111") , '</pre>';
 
             $this->ressourcenarten = ($this->ressourcenarten == null) ? $this->ressourcenartRepository->findAll() : $this->ressourcenarten;
             $this->ressourcenkategorien = ($this->ressourcenkategorien == null) ? $this->getAlleKategorien($this->ressourcenarten) : $this->ressourcenkategorien;
@@ -434,25 +442,21 @@
             $request = $this->request->getArguments();
             // echo '<pre>' , var_dump($request) , '</pre>';
             
-            if(isset($request['rule-submit'])) {
-                $this->aktualisierePunkte($request, $this->ressourcenarten);
-                $this->aktualisiereGewichtungen($this->ressourcenarten);
-                $this->speichereRessourcenarten($this->ressourcenartRepository, $this->ressourcenarten);
-
-                $this->getTeilgewichtung($this->ressourcenarten);
-                $TeilprojektnummerScores = $this->getTeilprojektnummerScores($this->loesungen, $this->ressourcenarten);
-                $this->paarVergleiche($TeilprojektnummerScores[1]);
-                $this->ermittleFluss();
-                $this->speichereFluss($TeilprojektnummerScores[0], $this->loesungRepository, $this->loesungen, $this->ausgangsfluesse, $this->eingangsfluesse, $this->nettofluesse);
-            }
-
+            $this->aktualisierePunkte($request, $this->ressourcenarten);
+            $this->aktualisiereGewichtungen($this->ressourcenarten);
+            $this->speichereRessourcenarten($this->ressourcenartRepository, $this->ressourcenarten);
+            $this->getTeilgewichtung($this->ressourcenarten);
+            $TeilprojektnummerScores = $this->getTeilprojektnummerScores($this->loesungen, $this->ressourcenarten);
+            $this->paarVergleiche($TeilprojektnummerScores[1]);
+            $this->ermittleFluss();
+            $this->speichereFluss($TeilprojektnummerScores[0], $this->loesungRepository, $this->loesungen, $this->ausgangsfluesse, $this->eingangsfluesse, $this->nettofluesse);
+            
             $this->view->assignMultiple([
                 'ressourcenArten' => $this->ressourcenarten,
                 'ressourcenKategorien' => $this->ressourcenkategorien,
                 'summeIndividualpunkte' => $this->ermittleGesamtpunkte($this->ressourcenarten, "punkte"),
                 'summeIndividualgewichtung' => $this->ermittleGesamtpunkte($this->ressourcenarten, "gewichtung")
             ]);
-
         }
     }
 ?>

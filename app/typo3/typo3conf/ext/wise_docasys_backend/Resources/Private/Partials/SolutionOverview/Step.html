@@ -9,26 +9,17 @@
             {step.bezeichnung}
         </wise:be.editLink>
     </div>
-    <div class="panel-body panel-body-step">
-        <p>{step.beschreibung}</p>
-        <f:for each="{step.iRe}" as="iRe">
-            <p>{iRe.bezeichnung}</p>
-        </f:for>
-        <!-- <dl>
-            <f:if condition="{step.arbeitsschrittart} > 0">
-                <dt>Art:</dt>
-                <dd><f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:arbeitsschrittart.{step.arbeitsschrittart}" /></dd>
-            </f:if>
-            <dt>Optional:</dt>
-            <dd>{f:if(condition: '{step.istOptional} == 1', then: 'Ja', else: 'Nein')}</dd>
-            <f:if condition="{step.dauerInTagen} > 0">
-                <dt>Dauer (Tage): </dt>
-                <dd><f:format.number decimals="2" decimalSeparator=",">{step.dauerInTagen}</f:format.number></dd>
-                <dt>Dauer<sub>min</sub> (Tage): </dt>
-                <dd><f:format.number decimals="2" decimalSeparator=",">{step.dauerInTagenVon}</f:format.number></dd>
-                <dt>Dauer<sub>max</sub> (Tage): </dt>
-                <dd><f:format.number decimals="2" decimalSeparator=",">{step.dauerInTagenBis}</f:format.number></dd>
-            </f:if>
-        </dl> -->
+    <div class="panel-body panel-body-step" style="overflow-y: scroll;">
+        <dl>
+            <dt>Beschreibung:</dt>
+            <dd style="text-align:justify;">{step.beschreibung}</dd>
+            <dt>Verwendete Ressourcen:</dt>
+            <f:for each="{step.iRe}" as="iRe">
+                <dt></dt>
+                <dd>{iRe.bezeichnung}
+                    (<f:translate key="LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.name.{iRe.art.name}" />)
+                </dd>
+            </f:for>
+        </dl>
     </div>
 </div>
