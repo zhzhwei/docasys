@@ -19,7 +19,7 @@
             <f:for each="{componentTypes}" as="ct" iteration="j">
                 <div class="reference-machine-link" title="{ct.obj.bezeichnung}" data-toggle="tooltip" style="margin-top: {ct.obj.aufVisualisierungY}px; margin-left: {ct.obj.aufVisualisierungX}px; width: {ct.obj.aufVisualisierungBreite}px; height: {ct.obj.aufVisualisierungHoehe}px; z-index: {j.index}">
                     <f:for each="{ct.solutions}" as="solution">
-                        <a href="{f:uri.action(action:'summary', arguments: '{solution: \'{solution.uid}\'}' )}" title="{solution.loesungsbezeichnung}" class="circle-link">{solution.teilprojektnummer}</a>    
+                        <a href="{f:uri.action(action:'summary', arguments: '{solution: \'{solution.uid}\'}' )}" title="{solution.loesungsbezeichnung}" class="circle-link">{solution.teilprojektnummer}</a>
                     </f:for>
                 </div>
             </f:for>
