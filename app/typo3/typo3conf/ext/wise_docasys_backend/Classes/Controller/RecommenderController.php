@@ -53,7 +53,9 @@
         {
             $filteredResults = [];
             foreach ($results as $result) {
-                if ($result->getNettofluss() != 0) {
+                if( ($result->getNettofluss() != 0) ||
+                    ($result->getAusgangsfluss() != 0) || 
+                    ($result->getEingangsfluss() != 0) ) {
                     array_push($filteredResults, array(
                         'uid' => $result->getUid(),
                         'teilprojektnummer' => $result->getTeilprojektnummer(),

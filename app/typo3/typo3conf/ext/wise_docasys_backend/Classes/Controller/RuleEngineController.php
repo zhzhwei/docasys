@@ -49,19 +49,9 @@
         private $loesungszahl = 0;
 
         /**
-        * @var Array 
-        */
-        private $teilprojektnummer = [];
-
-        /**
         * @var int 
         */
         private $vergleichzahl = 0;
-
-        /**
-        * @var Array 
-        */
-        private $scores = [];
 
         /**
         * @var Array 
@@ -259,12 +249,11 @@
         {
             $scores = [];
             $teilprojektnummer = [];
-            foreach ($loesungen as $loesung) {
+            $added = array_fill(0, sizeof($loesungen), 0);
+            foreach ($loesungen as $key => $loesung) {
                 // echo '<pre>' , var_dump($loesung->getTeilprojektnummer(),$loesung->getLoesungsbezeichnung()) , '</pre>';
                 $arbeitsschritte = $loesung->getArbeitsschritte();
                 $ressourcen = [];
-                $tobeadd = false;
-
                 foreach ($arbeitsschritte as $arbeitsschritt) {
                     // echo '<pre>' , var_dump('Arbeitsschritt:----------'.$arbeitsschritt->getBezeichnung()) , '</pre>';
                     $inputressourcen = $arbeitsschritt->getIRe();
@@ -278,22 +267,22 @@
                         elseif ($kosten == 0) {
                             // echo '<pre>' , var_dump('art zeitaufwand', $art, $zeitaufwand) , '</pre>';
                             array_push($ressourcen, array($art, $zeitaufwand));
-                            $tobeadd = true;
+                            $added[$key] = 1;
                         }
                         elseif ($zeitaufwand == 0) {
                             // echo '<pre>' , var_dump('art, kosten', $art, $kosten) , '</pre>';
                             array_push($ressourcen, array($art, $kosten));
-                            $tobeadd = true;
+                            $added[$key]= 1;
                         }
                     }
                 }
 
-                if( $loesung->getLoesungsart() == 0 && $tobeadd == true ) {
+                if( $loesung->getLoesungsart() == 0 && $added[$key] == 1 ) {
                     array_push($teilprojektnummer, $loesung->getTeilprojektnummer());
                 }
                 $score = $this->scoreJeLoesung($ressourcen, $ressourcenarten);
 
-                foreach ($score as $key => $value) {
+                foreach ($score as $value) {
                     if ($value >= 1.0 && $value <= 1.39) {
                         array_push($scores, 1);
                     }
@@ -312,7 +301,7 @@
                 }
             }
 
-            return [$teilprojektnummer, $scores];
+            return [$teilprojektnummer, $scores, $added];
         }
 
         private function getTeilgewichtung($ressourcenarten)
@@ -403,9 +392,6 @@
 
             $iter = 0;
             while ($iter < $this->loesungszahl) {
-                //array_push($this->ausgangsfluesse, round($phi_plus[$iter],2) );
-                //array_push($this->eingangsfluesse, round($phi_minus[$iter],2) );
-                //array_push($this->nettofluesse, round($phi_plus[$iter] - $phi_minus[$iter],2) );
                 array_push($this->ausgangsfluesse, round($phi_plus[$iter],2) );
                 array_push($this->eingangsfluesse, round($phi_minus[$iter],2) );
                 array_push($this->nettofluesse, round($phi_plus[$iter] - $phi_minus[$iter],2) );
@@ -414,20 +400,21 @@
 
         }
 
-        public function speichereFluss($teilprojektnummer, $repository, $loesungen, $ausgangsfluesse, $eingangsfluesse, $nettofluesse)
+        public function speichereFluss($teilprojektnummer, $repository, $loesungen, $ausgangsfluesse, $eingangsfluesse, $nettofluesse, $added)
         {
-            $_loesungen = array_filter($loesungen->toArray(), function($l) {
-                return ($l->getLoesungsart() == 0);
-            });
-
-            foreach ($_loesungen as $loesung) {
+            foreach ($loesungen as $key => $loesung) {
                 $index = array_search($loesung->getTeilprojektnummer(), array_values($teilprojektnummer));
-                if (gettype($index) != "boolean") {
+                if (gettype($index) != "boolean" && $added[$key] == 1) {
                     $loesung->setAusgangsfluss($ausgangsfluesse[$index]);
                     $loesung->setEingangsfluss($eingangsfluesse[$index]);
                     $loesung->setNettofluss($nettofluesse[$index]);
-                    $this->loesungRepository->update($loesung);
                 }
+                else {
+                    $loesung->setAusgangsfluss(0.0);
+                    $loesung->setEingangsfluss(0.0);
+                    $loesung->setNettofluss(0.0);
+                }
+                $repository->update($loesung);
             }
         }
 
@@ -446,10 +433,11 @@
             $this->aktualisiereGewichtungen($this->ressourcenarten);
             $this->speichereRessourcenarten($this->ressourcenartRepository, $this->ressourcenarten);
             $this->getTeilgewichtung($this->ressourcenarten);
-            $TeilprojektnummerScores = $this->getTeilprojektnummerScores($this->loesungen, $this->ressourcenarten);
-            $this->paarVergleiche($TeilprojektnummerScores[1]);
+
+            $TeilprojektnummerScoresAdded = $this->getTeilprojektnummerScores($this->loesungen, $this->ressourcenarten);
+            $this->paarVergleiche($TeilprojektnummerScoresAdded[1]);
             $this->ermittleFluss();
-            $this->speichereFluss($TeilprojektnummerScores[0], $this->loesungRepository, $this->loesungen, $this->ausgangsfluesse, $this->eingangsfluesse, $this->nettofluesse);
+            $this->speichereFluss($TeilprojektnummerScoresAdded[0], $this->loesungRepository, $this->loesungen, $this->ausgangsfluesse, $this->eingangsfluesse, $this->nettofluesse, $TeilprojektnummerScoresAdded[2]);
             
             $this->view->assignMultiple([
                 'ressourcenArten' => $this->ressourcenarten,
