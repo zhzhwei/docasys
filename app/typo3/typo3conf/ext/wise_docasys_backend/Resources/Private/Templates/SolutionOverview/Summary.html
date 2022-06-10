@@ -98,72 +98,81 @@
             </div>
             <div id="collapse2" class="panel-collapse collapse">
                 <div class="panel-body">
-                    <div class="row">
-                        <div class="col-xs-3">
-                            <div class="page-header">
+                    <div class="row steps">
+                        <div class="col-xs-12">
+                            <div class="page-header margin-top">
                                 <h4>Voraussetzungen</h4>
                             </div>
-                            <div class="io-objects">
-                                <f:for each="{solution.inputRessource}" as="inputRessource">
-                                    <f:for each="{inputRessource.ressource}" as="ressource">
+                            <f:for each="{solution.inputRessource}" as="inputRessource">
+                                <f:for each="{inputRessource.ressource}" as="ressource">
+                                    <div class="col-xs-3">
                                         <f:render partial="SolutionOverview/RessourcePanel" arguments="{ressource: ressource, ressourceContainer: inputRessource}" />
-                                    </f:for>
+                                    </div>
                                 </f:for>
+                            </f:for>
 
-                                <f:for each="{solution.inputModell}" as="inputModell">
-                                    <f:for each="{inputModell.modell}" as="modell">
+                            <f:for each="{solution.inputModell}" as="inputModell">
+                                <f:for each="{inputModell.modell}" as="modell">
+                                    <div class="col-xs-3">
                                         <f:render partial="SolutionOverview/ModellPanel" arguments="{modell: modell, modellContainer: inputModell}" />    
-                                    </f:for>
+                                    </div>
                                 </f:for>
+                            </f:for>
 
-                                <f:for each="{solution.inputMessmittel}" as="inputMessmittel">
-                                    <f:for each="{inputMessmittel.messmittel}" as="messmittel">
+                            <f:for each="{solution.inputMessmittel}" as="inputMessmittel">
+                                <f:for each="{inputMessmittel.messmittel}" as="messmittel">
+                                    <div class="col-xs-3">
                                         <f:render partial="SolutionOverview/MessmittelPanel" arguments="{messmittel: messmittel, messmittelContainer: inputMessmittel}" />    
-                                    </f:for>
+                                    </div>
                                 </f:for>
+                            </f:for>
 
-                                <f:for each="{solution.inputDaten}" as="inputDaten">
-                                    <f:for each="{inputDaten.daten}" as="daten">
+                            <f:for each="{solution.inputDaten}" as="inputDaten">
+                                <f:for each="{inputDaten.daten}" as="daten">
+                                    <div class="col-xs-3">
                                         <f:render partial="SolutionOverview/DatenPanel" arguments="{daten: daten, datenContainer: inputDaten}" />
-                                    </f:for>
+                                    </div>
                                 </f:for>
-                            </div>
+                            </f:for>
                         </div>
-                        <div class="col-xs-3">
-                            <div class="page-header">
-                                <h4>L&ouml;sungs-Output</h4> 
+                    </div>
+
+                    <div class="row steps">
+                        <div class="col-xs-12">
+                            <div class="page-header margin-top">
+                                <h4>L&ouml;sungs-Output</h4>
                             </div>
-                            <div class="io-objects">
-                                <f:for each="{solution.outputRessource}" as="outputRessource">
-                                    <f:for each="{outputRessource.ressource}" as="ressource">
+                            <f:for each="{solution.outputRessource}" as="outputRessource">
+                                <f:for each="{outputRessource.ressource}" as="ressource">
+                                    <div class="col-xs-3">
                                         <f:render partial="SolutionOverview/RessourcePanel" arguments="{ressource: ressource, ressourceContainer: outputRessource}" />
-                                    </f:for>
+                                    </div>
                                 </f:for>
+                            </f:for>
 
-                                <f:for each="{solution.outputModell}" as="outputModell">
-                                    <f:for each="{outputModell.modell}" as="modell">
+                            <f:for each="{solution.outputModell}" as="outputModell">
+                                <f:for each="{outputModell.modell}" as="modell">
+                                    <div class="col-xs-3">
                                         <f:render partial="SolutionOverview/ModellPanel" arguments="{modell: modell, modellContainer: outputModell}" />    
-                                    </f:for>
+                                    </div>
                                 </f:for>
+                            </f:for>
 
-                                <f:for each="{solution.outputMessmittel}" as="outputMessmittel">
-                                    <f:for each="{outputMessmittel.messmittel}" as="messmittel">
+                            <f:for each="{solution.outputMessmittel}" as="outputMessmittel">
+                                <f:for each="{outputMessmittel.messmittel}" as="messmittel">
+                                    <div class="col-xs-3">
                                         <f:render partial="SolutionOverview/MessmittelPanel" arguments="{messmittel: messmittel, messmittelContainer: outputMessmittel}" />    
-                                    </f:for>
+                                    </div>
                                 </f:for>
+                            </f:for>
 
-                                <f:for each="{solution.outputDaten}" as="outputDaten">
-                                    <f:for each="{outputDaten.daten}" as="daten">
+                            <f:for each="{solution.outputDaten}" as="outputDaten">
+                                <f:for each="{outputDaten.daten}" as="daten">
+                                    <div class="col-xs-3">
                                         <f:render partial="SolutionOverview/DatenPanel" arguments="{daten: daten, datenContainer: outputDaten}" />
-                                    </f:for>
+                                    </div>
                                 </f:for>
-
-                                <f:for each="{solution.outputMethoden}" as="outputMethoden">
-                                    <f:for each="{outputMethoden.methode}" as="methode">
-                                        <f:render partial="SolutionOverview/MethodenPanel" arguments="{methode: methode, methodenContainer: outputMethoden}" />
-                                    </f:for>
-                                </f:for>
-                            </div>
+                            </f:for>
                         </div>
                     </div>
                 </div>
@@ -198,11 +207,11 @@
                             <div class="page-header margin-top">
                                 <h4>Arbeitsschritte</h4>
                             </div>
-                        <f:for each="{solution.arbeitsschritte}" as="arbeitsschritt" iteration="iterator">
-                            <div class="col-xs-4">
-                                <f:render partial="SolutionOverview/Step" arguments="{step: arbeitsschritt, number: iterator.cycle}" />
-                            </div>
-                        </f:for>
+                            <f:for each="{solution.arbeitsschritte}" as="arbeitsschritt" iteration="iterator">
+                                <div class="col-xs-4">
+                                    <f:render partial="SolutionOverview/Step" arguments="{step: arbeitsschritt, number: iterator.cycle}" />
+                                </div>
+                            </f:for>
                         </div>
                     </div>
                 </div>
