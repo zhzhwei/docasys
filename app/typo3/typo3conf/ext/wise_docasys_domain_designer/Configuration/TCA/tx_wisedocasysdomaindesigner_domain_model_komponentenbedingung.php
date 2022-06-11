@@ -23,7 +23,9 @@ return [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, operator, wert, objekt',
     ],
     'types' => [
-		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, operator, wert, objekt, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+		'1' => ['showitem' => '
+            l10n_parent, l10n_diffsource, objekt, operator, wert, 
+        '],
     ],
     'columns' => [
 		'sys_language_uid' => [
@@ -114,7 +116,13 @@ return [
 			    'type' => 'select',
 			    'renderType' => 'selectSingle',
 			    'items' => [
-			        ['-- Label --', 0],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:operator.1', 1],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:operator.2', 2],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:operator.3', 3],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:operator.4', 4],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:operator.5', 5],
+			        ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:operator.6', 6],
 			    ],
 			    'size' => 1,
 			    'maxitems' => 1,
@@ -134,12 +142,13 @@ return [
 	        'exclude' => true,
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_komponentenbedingung.objekt',
 	        'config' => [
-			    'type' => 'inline',
+                'type' => 'select',
+			    'renderType' => 'selectSingle',
 			    'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_komponententyp',
 			    'minitems' => 0,
 			    'maxitems' => 1,
 			    'appearance' => [
-			        'collapseAll' => 0,
+			        'collapseAll' => 1,
 			        'levelLinksPosition' => 'top',
 			        'showSynchronizationLink' => 1,
 			        'showPossibleLocalizationRecords' => 1,

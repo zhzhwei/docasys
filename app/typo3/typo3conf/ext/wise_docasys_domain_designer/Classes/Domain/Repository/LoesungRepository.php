@@ -312,7 +312,8 @@
                 'flexibility' => 'flexibilitaet',
                 'useCase' => 'anwendungsfall',
                 'machineStopRequired' => 'maschinenstillstandsnotwendigkeit',
-                'machineControlAccess' => 'maschinensteuerungszugriff'
+                'hallAircondition' => 'hallenklimatisierung',
+                'modernization' => 'nachruestbarkeit',
             ];
 
             foreach($owned as $formKey => $propertyName) {

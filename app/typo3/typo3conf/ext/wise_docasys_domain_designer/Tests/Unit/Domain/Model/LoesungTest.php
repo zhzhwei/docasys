@@ -445,6 +445,34 @@ class LoesungTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
+    public function getHallenklimatisierungReturnsInitialValueForInt()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setHallenklimatisierungForIntSetsHallenklimatisierung()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function getNachruestbarkeitReturnsInitialValueForInt()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setNachruestbarkeitForIntSetsNachruestbarkeit()
+    {
+    }
+
+    /**
+     * @test
+     */
     public function getGestaltungsartReturnsInitialValueForGestaltungsart()
     {
         $newObjectStorage = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();

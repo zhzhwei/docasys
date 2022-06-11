@@ -610,19 +610,16 @@
                 <source>IT 10 bis IT18 Grob</source>
             </trans-unit>
             <trans-unit id="hallenklimatisierung.1">
-                <source>Hallenklimatisierung</source>
+                <source>Ja</source>
             </trans-unit>
             <trans-unit id="hallenklimatisierung.2">
-                <source>Ohne Hallenklimatisierung</source>
+                <source>Nein</source>
             </trans-unit>
-            <trans-unit id="hallenklimatisierung.3">
-                <source>Ohne Hallenklimatisierung Temperaturhub unter 3 K</source>
+            <trans-unit id="nachruestbarkeit.1">
+                <source>Ja</source>
             </trans-unit>
-            <trans-unit id="hallenklimatisierung.4">
-                <source>Ohne Hallenklimatisierung Temperaturhub unter 5 K</source>
-            </trans-unit>
-            <trans-unit id="hallenklimatisierung.5">
-                <source>Lokale Erwärmung temporäre Sonneneinstrahlung</source>
+            <trans-unit id="nachruestbarkeit.2">
+                <source>Nein</source>
             </trans-unit>
             <trans-unit id="kantlaenge.1">
                 <source>unter 100 mm</source>

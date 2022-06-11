@@ -73,6 +73,8 @@ CREATE TABLE tx_wisedocasysdomaindesigner_domain_model_loesung (
 	flexibilitaet int(11) DEFAULT '0' NOT NULL,
 	maschinensteuerungszugriff int(11) DEFAULT '0' NOT NULL,
 	maschinenstillstandsnotwendigkeit int(11) DEFAULT '0' NOT NULL,
+	hallenklimatisierung int(11) DEFAULT '0' NOT NULL,
+	nachruestbarkeit int(11) DEFAULT '0' NOT NULL,
 	gestaltungsart int(11) unsigned DEFAULT '0' NOT NULL,
 	arbeitsschritte int(11) unsigned DEFAULT '0' NOT NULL,
 	derzeitiger_einsatzort int(11) unsigned DEFAULT '0' NOT NULL,

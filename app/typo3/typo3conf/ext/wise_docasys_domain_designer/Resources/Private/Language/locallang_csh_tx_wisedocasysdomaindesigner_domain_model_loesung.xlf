@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2022-05-31T07:36:39Z" product-name="wise_docasys_domain_designer">
+	<file source-language="en" datatype="plaintext" original="messages" date="2022-06-11T14:16:08Z" product-name="wise_docasys_domain_designer">
 		<header/>
 		<body>
 			<trans-unit id="loesungsbezeichnung.description">
@@ -62,6 +62,12 @@
 			</trans-unit>
 			<trans-unit id="maschinenstillstandsnotwendigkeit.description">
 				<source>maschinenstillstandsnotwendigkeit</source>
+			</trans-unit>
+			<trans-unit id="hallenklimatisierung.description">
+				<source>hallenklimatisierung</source>
+			</trans-unit>
+			<trans-unit id="nachruestbarkeit.description">
+				<source>nachruestbarkeit</source>
 			</trans-unit>
 			<trans-unit id="gestaltungsart.description">
 				<source>gestaltungsart</source>

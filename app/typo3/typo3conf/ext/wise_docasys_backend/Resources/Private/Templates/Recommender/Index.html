@@ -80,6 +80,30 @@
                             <f:form.select property="machineStopRequired" class="form-control" options="{wise:be.TcaOptions(property:'maschinenstillstandsnotwendigkeit',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.machineStopRequired}" />
                         </div>
                     </div>
+
+                    <div class="row form-group">
+                        <label class="control-label col-sm-2">
+                            Hallenklimatisierung erforderlich:
+                        </label>
+                        <div class="col-sm-2">
+                            <f:form.select property="operator.hallAircondition" options="{operators}" class="form-control" value="{values.operator.hallAircondition}" />
+                        </div>
+                        <div class="col-sm-8">
+                            <f:form.select property="hallAircondition" class="form-control" options="{wise:be.TcaOptions(property:'hallenklimatisierung',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.hallAircondition}" />
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <label class="control-label col-sm-2">
+                            Nachrüstbarkeit:
+                        </label>
+                        <div class="col-sm-2">
+                            <f:form.select property="operator.modernization" options="{operators}" class="form-control" value="{values.operator.modernization}" />
+                        </div>
+                        <div class="col-sm-8">
+                            <f:form.select property="modernization" class="form-control" options="{wise:be.TcaOptions(property:'nachruestbarkeit',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.modernization}" />
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

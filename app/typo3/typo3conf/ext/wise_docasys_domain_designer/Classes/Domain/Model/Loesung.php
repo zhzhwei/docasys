@@ -295,6 +295,20 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $komponentenbedingung = null;
 
     /**
+     * hallenklimatisierung
+     *
+     * @var int
+     */
+    protected $hallenklimatisierung = 0;
+
+    /**
+     * nachruestbarkeit
+     *
+     * @var int
+     */
+    protected $nachruestbarkeit = 0;
+
+    /**
      * Returns the loesungsbezeichnung
      *
      * @return string $loesungsbezeichnung
@@ -1501,5 +1515,47 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setEingangsfluss($eingangsfluss)
     {
         $this->eingangsfluss = $eingangsfluss;
+    }
+
+    /**
+     * Returns the hallenklimatisierung
+     *
+     * @return int $hallenklimatisierung
+     */
+    public function getHallenklimatisierung()
+    {
+        return $this->hallenklimatisierung;
+    }
+
+    /**
+     * Sets the hallenklimatisierung
+     *
+     * @param int $hallenklimatisierung
+     * @return void
+     */
+    public function setHallenklimatisierung($hallenklimatisierung)
+    {
+        $this->hallenklimatisierung = $hallenklimatisierung;
+    }
+
+    /**
+     * Returns the nachruestbarkeit
+     *
+     * @return int $nachruestbarkeit
+     */
+    public function getNachruestbarkeit()
+    {
+        return $this->nachruestbarkeit;
+    }
+
+    /**
+     * Sets the nachruestbarkeit
+     *
+     * @param int $nachruestbarkeit
+     * @return void
+     */
+    public function setNachruestbarkeit($nachruestbarkeit)
+    {
+        $this->nachruestbarkeit = $nachruestbarkeit;
     }
 }
