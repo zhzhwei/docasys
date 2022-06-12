@@ -31,7 +31,7 @@ return [
                 --div--; Anwendung und Arbeitsschritte, ablauf, entscheidungen, arbeitsschritte, gestaltungsanforderungen,
                 --div--; Lösungs-Output,                output_ressource, output_modell, output_daten, output_messmittel, output_methoden,
                 --div--; Generelle Voraussetzungen,     input_ressource, input_modell, input_messmittel, input_daten,
-                --div--; Bedingungen,                   komponentenbedingung, anwendungsfall, flexibilitaet, maschinensteuerungszugriff, maschinenstillstandsnotwendigkeit,
+                --div--; Bedingungen,                   komponentenbedingung, anwendungsfall, flexibilitaet, maschinensteuerungszugriff, maschinenstillstandsnotwendigkeit, hallenklimatisierung, nachruestbarkeit,
                 --div--; Auswirkungen,                  auswirkung, komponentenauswirkung, invasivitaetsgrad, wartungsintervall,
                 --div--; Risiken,                       realisierungsrisiko,
             '],
