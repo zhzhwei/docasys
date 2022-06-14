@@ -269,7 +269,7 @@
                 // Output
                 foreach($this->loesungRepository->getOutputArtefacts($solution, (bool) $outputTypeFiltered) as $artefact) {
                     if($artefact != NULL) {
-                        
+
                         $reflect = new \ReflectionClass($artefact);
                         $type = $reflect->getShortName();
 
@@ -357,6 +357,9 @@
                     $nodeRelationsWithConsumers[] = $add;
                 }    
             }
+            // echo '<pre>' , var_dump("11111") , '</pre>';
+            // echo '<pre>' , var_dump("11111") , '</pre>';
+            // echo '<pre>' , var_dump($nodeRelationsWithConsumers) , '</pre>';
             
             $this->view->assignMultiple([
                 'solutions' => $this->loesungRepository->findAll(),
