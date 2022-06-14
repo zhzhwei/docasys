@@ -147,6 +147,7 @@
 
         public function networkAction()
         {
+
             // Artefact types
             $artefactTypes = $this->artefaktRepository->getArtefactTypes();
             foreach(array_merge($artefactTypes, [self::MESSVERFAHREN, self::LOESUNG]) as $type) {
@@ -171,7 +172,7 @@
 
             $solutionsFilter = [0 => self::LABEL_NO_VALUE];
             foreach($this->loesungRepository->findAll() as $s) {
-                print "<p>".$s."<br>".$s->getUid()."<br>".$s->getLoesungsart()."</p>";
+                // print "<p>".$s."<br>".$s->getUid()."<br>".$s->getLoesungsart()."</p>";
                 $solutionsFilter[$s->getUid()] = '['.\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsart.'.$s->getLoesungsart(), '').'] ' . $s->getTeilprojektnummer() . ', ' . $s->getLoesungsbezeichnung();
             }                                         
 
@@ -267,62 +268,65 @@
             foreach($solutionsForOutputAnalysis as $solution) {
                 // Output
                 foreach($this->loesungRepository->getOutputArtefacts($solution, (bool) $outputTypeFiltered) as $artefact) {
-                    $reflect = new \ReflectionClass($artefact);
-                    $type = $reflect->getShortName();
+                    if($artefact != NULL) {
+                        
+                        $reflect = new \ReflectionClass($artefact);
+                        $type = $reflect->getShortName();
 
-                    // Node relation solution - output
-                    $this->addRelationObject(
-                        self::LOESUNG.$solution->getUid().'_'.$type.$artefact->getUid(),
-                        $this->getLoesungTitle($solution),
-                        $this->getArtefaktTitle($artefact->getBezeichnung(), $type),
-                        $type,
-                        self::EDGE_TYPE_OUTPUT 
-                    );
+                        // Node relation solution - output
+                        $this->addRelationObject(
+                            self::LOESUNG.$solution->getUid().'_'.$type.$artefact->getUid(),
+                            $this->getLoesungTitle($solution),
+                            $this->getArtefaktTitle($artefact->getBezeichnung(), $type),
+                            $type,
+                            self::EDGE_TYPE_OUTPUT 
+                        );
 
-                    // Node object output 
-                    if(!array_key_exists($artefact->getUid(), $this->nodes[$type])) {
-                        $this->nodes[$type][$artefact->getUid()] = [
-                            'type' => $type,
-                            'class' => self::NODE_TYPE_OTHERS,
-                            'title' => $this->getArtefaktTitle($artefact->getBezeichnung(), $type),
-                        ]; 
-                    }
+                        // Node object output 
+                        if(!array_key_exists($artefact->getUid(), $this->nodes[$type])) {
+                            $this->nodes[$type][$artefact->getUid()] = [
+                                'type' => $type,
+                                'class' => self::NODE_TYPE_OTHERS,
+                                'title' => $this->getArtefaktTitle($artefact->getBezeichnung(), $type),
+                            ]; 
+                        }
 
-                    // Node object solution
-                    $type = self::LOESUNG;
-                    if(!array_key_exists($solution->getUid(), $this->nodes[$type])) {
-                        $this->nodes[$type][$solution->getUid()] = [
-                            'type' => $type,
-                            'class' => self::NODE_TYPE_SOLUTIONS,
-                            'title' => $this->getLoesungTitle($solution),
-                        ];    
-                    }
+                        // Node object solution
+                        $type = self::LOESUNG;
+                        if(!array_key_exists($solution->getUid(), $this->nodes[$type])) {
+                            $this->nodes[$type][$solution->getUid()] = [
+                                'type' => $type,
+                                'class' => self::NODE_TYPE_SOLUTIONS,
+                                'title' => $this->getLoesungTitle($solution),
+                            ];    
+                        }
 
-                    // Consumer nodes (if no detailed tracing is demanded) 
-                    if($noDetailedTracing === true) {
-                        $consumers = $this->artefaktRepository->getArtefactConsumers($artefact);
-                        if($consumers) {
-                            foreach($consumers as $consumer) {
-                                $reflect = new \ReflectionClass($artefact);
-                                $type = $reflect->getShortName();
+                        // Consumer nodes (if no detailed tracing is demanded) 
+                        if($noDetailedTracing === true) {
+                            $consumers = $this->artefaktRepository->getArtefactConsumers($artefact);
+                            if($consumers) {
+                                foreach($consumers as $consumer) {
+                                    $reflect = new \ReflectionClass($artefact);
+                                    $type = $reflect->getShortName();
 
-                                // Node relation solution output - solution (consumer of the output)
-                                $this->addRelationObject(
-                                    $type.$artefact->getUid().'_'.self::LOESUNG.$consumer->getUid(),
-                                    $this->getArtefaktTitle($artefact->getBezeichnung(), $type),
-                                    $this->getLoesungTitle($consumer),
-                                    $type,
-                                    self::EDGE_TYPE_INPUT
-                                );
+                                    // Node relation solution output - solution (consumer of the output)
+                                    $this->addRelationObject(
+                                        $type.$artefact->getUid().'_'.self::LOESUNG.$consumer->getUid(),
+                                        $this->getArtefaktTitle($artefact->getBezeichnung(), $type),
+                                        $this->getLoesungTitle($consumer),
+                                        $type,
+                                        self::EDGE_TYPE_INPUT
+                                    );
 
-                                // Node object solution (consumer of the outout)
-                                $type = self::LOESUNG;
-                                if(!array_key_exists($consumer->getUid(), $this->nodes[$type])) {
-                                    $this->nodes[$type][$consumer->getUid()] = [
-                                        'type' => $type,
-                                        'class' => self::NODE_TYPE_SOLUTIONS,
-                                        'title' => $this->getLoesungTitle($consumer),
-                                    ];    
+                                    // Node object solution (consumer of the outout)
+                                    $type = self::LOESUNG;
+                                    if(!array_key_exists($consumer->getUid(), $this->nodes[$type])) {
+                                        $this->nodes[$type][$consumer->getUid()] = [
+                                            'type' => $type,
+                                            'class' => self::NODE_TYPE_SOLUTIONS,
+                                            'title' => $this->getLoesungTitle($consumer),
+                                        ];    
+                                    }
                                 }
                             }
                         }
@@ -353,7 +357,7 @@
                     $nodeRelationsWithConsumers[] = $add;
                 }    
             }
-
+            
             $this->view->assignMultiple([
                 'solutions' => $this->loesungRepository->findAll(),
                 'nodes' => $this->nodes,

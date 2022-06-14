@@ -42,29 +42,27 @@
                 <canvas id="canvas"></canvas>
             </div>
             <script>
-                var xData = [<f:format.raw>{dates}</f:format.raw>];
+                var xData = [{dates}];
                 var config = {
                     type: 'line',
                     data: {
-                        labels: [<f:format.raw>{dates}</f:format.raw>],
+                        labels: [{dates}],
                         datasets: [
-                            <f:for each="{data}" as="datapoint" key="datakey"> 
-                                <f:format.raw>
-                                {
-                                </f:format.raw>
-                                    label: '{datakey}',
-                                    fill: false,
-                                    backgroundColor: window.chartColors.<f:for each="{dataColors}" as="dc" key="dcK"><f:if condition="{dcK} == {datakey}"><f:if condition="{dc} != ''"><f:then>{dc}</f:then>red<f:else></f:else></f:if></f:if></f:for>,
-                                    borderColor: window.chartColors.<f:for each="{dataColors}" as="dc" key="dcK"><f:if condition="{dcK} == {datakey}"><f:if condition="{dc} != ''"><f:then>{dc}</f:then>red<f:else></f:else></f:if></f:if></f:for>,    
-                                    data: [
+                            {
+                                label: [<f:for each="{data}" as="datapoint" key="datakey">'{datakey}',</f:for>],
+                                fill: false,
+                                backgroundColor: [
+                                    <f:for each="{data}" as="datapoint" key="datakey">
+                                        window.chartColors.<f:for each="{dataColors}" as="dc" key="dcK"><f:if condition="{dcK} == {datakey}"><f:if condition="{dc} != ''"><f:then>{dc}</f:then>red<f:else></f:else></f:if></f:if></f:for>,
+                                        borderColor: window.chartColors.<f:for each="{dataColors}" as="dc" key="dcK"><f:if condition="{dcK} == {datakey}"><f:if condition="{dc} != ''"><f:then>{dc}</f:then>red<f:else></f:else></f:if></f:if></f:for>,    
+                                    </f:for>
+                                ],
+                                data: [
                                     <f:for each="{datapoint}" as="datapointItem">
-                                        <f:format.number decimals="2" decimalSeparator=".">{datapointItem}</f:format.number>,
+                                        '{datapointItem}',
                                     </f:for>    
-                                    ],
-                                <f:format.raw>
-                                },
-                                </f:format.raw>
-                            </f:for>                           
+                                ],
+                            },
                         ]
                     },
                     options: {
