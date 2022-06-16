@@ -178,7 +178,8 @@ return [
                        ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.5', 5],
                        ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.6', 6],
                        ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.7', 7],
-			    ],
+                       ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:ressourcenart.7', 8],
+                    ],
 			    'size' => 1,
 			    'maxitems' => 1,
 			    'eval' => ''

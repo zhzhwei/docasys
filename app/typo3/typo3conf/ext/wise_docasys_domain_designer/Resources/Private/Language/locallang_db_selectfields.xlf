@@ -343,7 +343,7 @@
                 <source>Wartungsaufwand</source>
             </trans-unit>
             <trans-unit id="ressourcenart.name.8">
-                <source>Aufwand Anpassungsnotwendigkeit</source>
+                <source>Aufwand Modellanpassung</source>
             </trans-unit>
             <trans-unit id="ressourcenart.kategorie.1">
                 <source>Immaterieller Ressourcenbedarf</source>
