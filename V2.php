@@ -18,11 +18,11 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-		'searchFields' => 'loesungsbezeichnung,teilprojektnummer,gestaltungsanforderungen,betrifft_hersteller,betrifft_betreiber,realisierungsrisiko,bemerkung,loesungsklasse,phase_der_thermischen_wirkkette,physikalischer_effekt,invasivitaetsgrad,wartungsintervall,loesungsart,nettofluss,anwendungsfall,flexibilitaet,maschinensteuerungszugriff,maschinenstillstandsnotwendigkeit,gestaltungsart,arbeitsschritte,derzeitiger_einsatzort,komponentenauswirkung,auswirkung,ablauf,entscheidungen,input_ressource,input_modell,input_messmittel,input_daten,output_ressource,output_modell,output_daten,output_messmittel,output_methoden,komponentenbedingung',
+		'searchFields' => 'loesungsbezeichnung,teilprojektnummer,gestaltungsanforderungen,betrifft_hersteller,betrifft_betreiber,realisierungsrisiko,bemerkung,loesungsklasse,phase_der_thermischen_wirkkette,physikalischer_effekt,invasivitaetsgrad,wartungsintervall,loesungsart,nettofluss,ausgangsfluss,eingangsfluss,anwendungsfall,flexibilitaet,maschinensteuerungszugriff,maschinenstillstandsnotwendigkeit,hallenklimatisierung,nachruestbarkeit,gestaltungsart,arbeitsschritte,derzeitiger_einsatzort,komponentenauswirkung,auswirkung,ablauf,entscheidungen,input_ressource,input_modell,input_messmittel,input_daten,output_ressource,output_modell,output_daten,output_messmittel,output_methoden,komponentenbedingung',
         'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_loesung.gif'
     ],
     'interface' => [
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, loesungsbezeichnung, teilprojektnummer, gestaltungsanforderungen, betrifft_hersteller, betrifft_betreiber, realisierungsrisiko, bemerkung, loesungsklasse, phase_der_thermischen_wirkkette, physikalischer_effekt, invasivitaetsgrad, wartungsintervall, loesungsart, nettofluss, anwendungsfall, flexibilitaet, maschinensteuerungszugriff, maschinenstillstandsnotwendigkeit, gestaltungsart, arbeitsschritte, derzeitiger_einsatzort, komponentenauswirkung, auswirkung, ablauf, entscheidungen, input_ressource, input_modell, input_messmittel, input_daten, output_ressource, output_modell, output_daten, output_messmittel, output_methoden, komponentenbedingung',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, loesungsbezeichnung, teilprojektnummer, gestaltungsanforderungen, betrifft_hersteller, betrifft_betreiber, realisierungsrisiko, bemerkung, loesungsklasse, phase_der_thermischen_wirkkette, physikalischer_effekt, invasivitaetsgrad, wartungsintervall, loesungsart, nettofluss, ausgangsfluss, eingangsfluss, anwendungsfall, flexibilitaet, maschinensteuerungszugriff, maschinenstillstandsnotwendigkeit, hallenklimatisierung, nachruestbarkeit, gestaltungsart, arbeitsschritte, derzeitiger_einsatzort, komponentenauswirkung, auswirkung, ablauf, entscheidungen, input_ressource, input_modell, input_messmittel, input_daten, output_ressource, output_modell, output_daten, output_messmittel, output_methoden, komponentenbedingung',
     ],
     'types' => [
         '1' => ['showitem' => '
@@ -31,7 +31,7 @@ return [
                 --div--; Anwendung und Arbeitsschritte, ablauf, entscheidungen, arbeitsschritte, gestaltungsanforderungen,
                 --div--; Lösungs-Output,                output_ressource, output_modell, output_daten, output_messmittel, output_methoden,
                 --div--; Generelle Voraussetzungen,     input_ressource, input_modell, input_messmittel, input_daten,
-                --div--; Bedingungen,                   komponentenbedingung, anwendungsfall, flexibilitaet, maschinensteuerungszugriff, maschinenstillstandsnotwendigkeit,
+                --div--; Bedingungen,                   komponentenbedingung, anwendungsfall, flexibilitaet, maschinensteuerungszugriff, maschinenstillstandsnotwendigkeit, hallenklimatisierung, nachruestbarkeit,
                 --div--; Auswirkungen,                  auswirkung, komponentenauswirkung, invasivitaetsgrad, wartungsintervall,
                 --div--; Risiken,                       realisierungsrisiko,
             '],
@@ -203,7 +203,7 @@ return [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsklasse.1', 1],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsklasse.2', 2]
                 ],
-			    'size' => 1,
+                'size' => 1,
 			    'maxitems' => 1,
 			    'eval' => ''
 			],
@@ -223,7 +223,7 @@ return [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:phase_thermische_wirkkette.4', 4],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:phase_thermische_wirkkette.5', 5]
                 ],
-			    'size' => 1,
+                'size' => 1,
 			    'maxitems' => 1,
 			    'eval' => ''
 			],
@@ -243,7 +243,7 @@ return [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:physikalischer_effekt.4', 4],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:physikalischer_effekt.5', 5]
                 ],
-			    'size' => 1,
+                'size' => 1,
 			    'maxitems' => 1,
 			    'eval' => ''
 			],
@@ -265,8 +265,8 @@ return [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:invasivitaetsgrad.6', 6],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:invasivitaetsgrad.7', 7]
                 ],
-			    'size' => 1,
-			    'maxitems' => 1,
+                'size' => 1,
+                'maxitems' => 1,
 			    'eval' => ''
 			],
 	    ],
@@ -286,8 +286,8 @@ return [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:wartungsintervall.5', 5],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:wartungsintervall.6', 6]
                 ],
-			    'size' => 1,
-			    'maxitems' => 1,
+                'size' => 1,
+                'maxitems' => 1,
 			    'eval' => ''
 			],
 	    ],
@@ -302,7 +302,7 @@ return [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsart.0', 0],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:loesungsart.1', 1]
                 ],
-			    'size' => 1,
+                'size' => 1,
 			    'maxitems' => 1,
 			    'eval' => ''
 			],
@@ -403,7 +403,41 @@ return [
 			    'eval' => ''
 			],
 	    ],
-	    'gestaltungsart' => [
+	    'hallenklimatisierung' => [
+	        'exclude' => true,
+	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesung.hallenklimatisierung',
+	        'config' => [
+			    'type' => 'select',
+			    'renderType' => 'selectSingle',
+			    'items' => [
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:not_applicable', -1],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:hallenklimatisierung.1', 1],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:hallenklimatisierung.2', 2]
+			    ],
+			    'size' => 1,
+			    'maxitems' => 1,
+			    'eval' => ''
+			],
+	    ],
+	    'nachruestbarkeit' => [
+	        'exclude' => true,
+	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesung.nachruestbarkeit',
+	        'config' => [
+			    'type' => 'select',
+			    'renderType' => 'selectSingle',
+			    'items' => [
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:not_applicable', -1],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:nachruestbarkeit.1', 1],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:nachruestbarkeit.2', 2]
+			    ],
+			    'size' => 1,
+			    'maxitems' => 1,
+			    'eval' => ''
+			],
+	    ],
+        'gestaltungsart' => [
             'exclude' => true,
             'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesung.gestaltungsart',
             'config' => [
