@@ -339,16 +339,15 @@ return [
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesung.anwendungsfall',
 	        'config' => [
 			    'type' => 'select',
-			    'renderType' => 'selectSingle',
+			    'renderType' => 'selectCheckBox',
 			    'items' => [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:not_applicable', -1],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:anwendungsfall.1', 1],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:anwendungsfall.2', 2]
                 ],
-			    'size' => 1,
-			    'maxitems' => 1,
-			    'eval' => ''
+			    'size' => 10,
+                'maxitems' => 10,
 			],
 	    ],
 	    'flexibilitaet' => [
