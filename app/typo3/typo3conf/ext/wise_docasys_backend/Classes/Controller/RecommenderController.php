@@ -37,6 +37,11 @@
         /**
         * @var Array 
         */
+        private $loesungsbezeichnung = [];
+
+        /**
+        * @var Array 
+        */
         private $ausgangsflusse = [];
 
         /**
@@ -58,7 +63,6 @@
                     ($result->getEingangsfluss() != 0) ) {
                     array_push($filteredResults, array(
                         'uid' => $result->getUid(),
-                        'teilprojektnummer' => $result->getTeilprojektnummer(),
                         'loesungsbezeichnung' => $result->getLoesungsbezeichnung(),
                         'nettofluss' => $result->getNettofluss(),
                         'ausgangsfluss' => $result->getAusgangsfluss(),
@@ -91,7 +95,7 @@
             }
 
             foreach ($filteredResults as $filteredResult) {
-                array_push($this->teilprojektnummer, $filteredResult['teilprojektnummer']);
+                array_push($this->loesungsbezeichnung, $filteredResult['loesungsbezeichnung']);
                 array_push($this->nettofluesse, $filteredResult['nettofluss']);
                 array_push($this->ausgangsflusse, $filteredResult['ausgangsfluss']);
                 array_push($this->eingangsflusse, $filteredResult['eingangsfluss']);
@@ -101,7 +105,7 @@
                 'operators' => $this->operators,
                 'results' => count($filteredResults) > 0 ? $filteredResults : null,
                 'values' => (isset($request['recommender-submit'])) ? $request['recommender-submit'] : null,
-                'labels' => $this->teilprojektnummer,
+                'labels' => $this->loesungsbezeichnung,
                 'nettofluesse' => $this->nettofluesse,
                 'ausgangsflusse' => $this->ausgangsflusse,
                 'eingangsflusse' => $this->eingangsflusse

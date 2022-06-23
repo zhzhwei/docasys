@@ -134,7 +134,7 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
-                        <td>Teilprojektnummer</td>
+                        <!-- <td>Teilprojektnummer</td> -->
                         <td>Lösungsbezeichnung</td>
                         <td>Nettofluss</td>
                         <td>Ausgangsfluss</td>
@@ -144,7 +144,7 @@
                 <tbody>
                     <f:for each="{results}" as="solution">
                         <tr>
-                            <td style="width: 15%">{solution.teilprojektnummer}</td>
+                            <!-- <td style="width: 15%">{solution.teilprojektnummer}</td> -->
                             <td style="width: 30%">
                                 <a href="{f:uri.action(action:'summary', arguments: '{solution: \'{solution.uid}\'}')}">{solution.loesungsbezeichnung}</a> 
                             </td>
@@ -215,6 +215,15 @@
                             title: {
                                 display: true,
                                 text: 'Netto-, Eingangs- und Ausgangsflüsse der Lösungen'
+                            },
+                            scales: {
+                                xAxes: [{
+                                    ticks: {
+                                        autoSkip: false,
+                                        maxRotation:45,
+                                        minRotation:45
+                                    }
+                                }]
                             }
                         }
 			        });
