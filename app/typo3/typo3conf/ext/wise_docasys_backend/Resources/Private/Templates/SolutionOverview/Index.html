@@ -18,9 +18,13 @@
         <div class="reference-machine-image-container" style="background-image: url('{f:uri.resource(path: 'Images/Machine/wzm-struktur-v1-1.png')}')">
             <f:for each="{componentTypes}" as="ct" iteration="j">
                 <div class="reference-machine-link" title="{ct.obj.bezeichnung}" data-toggle="tooltip" style="margin-top: {ct.obj.aufVisualisierungY}px; margin-left: {ct.obj.aufVisualisierungX}px; width: {ct.obj.aufVisualisierungBreite}px; height: {ct.obj.aufVisualisierungHoehe}px; z-index: {j.index}">
-                    <f:for each="{ct.solutions}" as="solution" iteration="i">
-                        <a href="{f:uri.action(action:'summary', arguments: '{solution: \'{solution.uid}\'}' )}" title="{solution.loesungsbezeichnung}" class="link" style="background-color: rgb(182, 178, 196);">({i.index}){solution.loesungsbezeichnung}</a>
-                    </f:for>
+                    <ul style="margin: 0; padding-left: 10px;">
+                        <f:for each="{ct.solutions}" as="solution" iteration="i">
+                            <li>
+                                <a href="{f:uri.action(action:'summary', arguments: '{solution: \'{solution.uid}\'}' )}" title="{solution.loesungsbezeichnung}" class="link">{solution.loesungsbezeichnung}</a>
+                            </li>
+                        </f:for>
+                    </ul>
                 </div>
             </f:for>
             <img src="{f:uri.resource(path: 'Images/Machine/wzm-struktur-v1-1.png')}">    
