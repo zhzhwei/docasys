@@ -281,3 +281,23 @@ h1, h2, h3 {
     line-height: 36px;
     font-size: 14px;
 }
+
+.tud-lighter {
+    background-color: #84cfed;
+    color: #00305d;
+}
+
+.tud-light {
+    background-color: #00a1d9;
+    color: #fff;
+}
+
+.tud-dark {
+    background-color: #0077ae;
+    color: #fff;
+}
+
+.tud-primary {
+    background-color: #00305d;
+    color: #fff;
+}
