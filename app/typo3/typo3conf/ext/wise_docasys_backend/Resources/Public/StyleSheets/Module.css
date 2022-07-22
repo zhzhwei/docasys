@@ -224,23 +224,25 @@ h1, h2, h3 {
     /* background: rgba(255, 255, 255, 0.25); */
 }
 
-.reference-machine-link a.circle-link {
-    display: inline-block;
-    width: 40px;
-    line-height: 40px;
-    text-align: center;
-    border-radius: 20px;
+.reference-machine-link a.link {
+    width: 100%;
+    text-align: left;
     text-decoration: none;
     background-color: #0078E6;
     color: #fff;  
     visibility: hidden;  
 }
 
-.reference-machine-link:hover a.circle-link, .reference-machine-link a.circle-link.active {
+li {
+    visibility: hidden;
+}
+
+.reference-machine-link:hover a.link, .reference-machine-link:hover li, 
+.reference-machine-link a.link.active, .reference-machine-link li.active {
     visibility: visible;    
 }
 
-.reference-machine-link:hover a.circle-link:hover {
+.reference-machine-link:hover a.link:hover {
     background-color: #005DB3;    
 }
 
