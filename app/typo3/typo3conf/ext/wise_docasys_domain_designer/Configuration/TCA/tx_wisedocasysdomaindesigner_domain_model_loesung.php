@@ -18,11 +18,11 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-		'searchFields' => 'loesungsbezeichnung,teilprojektnummer,gestaltungsanforderungen,betrifft_hersteller,betrifft_betreiber,realisierungsrisiko,bemerkung,loesungsklasse,phase_der_thermischen_wirkkette,physikalischer_effekt,invasivitaetsgrad,wartungsintervall,loesungsart,nettofluss,ausgangsfluss,eingangsfluss,anwendungsfall,flexibilitaet,maschinensteuerungszugriff,maschinenstillstandsnotwendigkeit,hallenklimatisierung,nachruestbarkeit,gestaltungsart,arbeitsschritte,derzeitiger_einsatzort,komponentenauswirkung,auswirkung,ablauf,entscheidungen,input_ressource,input_modell,input_messmittel,input_daten,output_ressource,output_modell,output_daten,output_messmittel,output_methoden,komponentenbedingung',
+		'searchFields' => 'loesungsbezeichnung,teilprojektnummer,gestaltungsanforderungen,betrifft_hersteller,betrifft_betreiber,realisierungsrisiko,bemerkung,loesungsklasse,phase_der_thermischen_wirkkette,physikalischer_effekt,invasivitaetsgrad,wartungsintervall,loesungsart,nettofluss,ausgangsfluss,eingangsfluss,anwendungsfall,flexibilitaet,maschinensteuerungszugriff,maschinenstillstandsnotwendigkeit,hallenklimatisierung,nachruestbarkeit,technologiebereitschaft,gestaltungsart,arbeitsschritte,derzeitiger_einsatzort,komponentenauswirkung,auswirkung,ablauf,entscheidungen,input_ressource,input_modell,input_messmittel,input_daten,output_ressource,output_modell,output_daten,output_messmittel,output_methoden,komponentenbedingung',
         'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_loesung.gif'
     ],
     'interface' => [
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, loesungsbezeichnung, teilprojektnummer, gestaltungsanforderungen, betrifft_hersteller, betrifft_betreiber, realisierungsrisiko, bemerkung, loesungsklasse, phase_der_thermischen_wirkkette, physikalischer_effekt, invasivitaetsgrad, wartungsintervall, loesungsart, nettofluss, ausgangsfluss, eingangsfluss, anwendungsfall, flexibilitaet, maschinensteuerungszugriff, maschinenstillstandsnotwendigkeit, hallenklimatisierung, nachruestbarkeit, gestaltungsart, arbeitsschritte, derzeitiger_einsatzort, komponentenauswirkung, auswirkung, ablauf, entscheidungen, input_ressource, input_modell, input_messmittel, input_daten, output_ressource, output_modell, output_daten, output_messmittel, output_methoden, komponentenbedingung',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, loesungsbezeichnung, teilprojektnummer, gestaltungsanforderungen, betrifft_hersteller, betrifft_betreiber, realisierungsrisiko, bemerkung, loesungsklasse, phase_der_thermischen_wirkkette, physikalischer_effekt, invasivitaetsgrad, wartungsintervall, loesungsart, nettofluss, ausgangsfluss, eingangsfluss, anwendungsfall, flexibilitaet, maschinensteuerungszugriff, maschinenstillstandsnotwendigkeit, hallenklimatisierung, nachruestbarkeit, technologiebereitschaft, gestaltungsart, arbeitsschritte, derzeitiger_einsatzort, komponentenauswirkung, auswirkung, ablauf, entscheidungen, input_ressource, input_modell, input_messmittel, input_daten, output_ressource, output_modell, output_daten, output_messmittel, output_methoden, komponentenbedingung',
     ],
     'types' => [
         '1' => ['showitem' => '
@@ -339,7 +339,7 @@ return [
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesung.anwendungsfall',
 	        'config' => [
 			    'type' => 'select',
-			    'renderType' => 'selectCheckBox',
+			    'renderType' => 'selectSingleBox',
 			    'items' => [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:not_applicable', -1],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
@@ -430,6 +430,20 @@ return [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:nachruestbarkeit.1', 1],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:nachruestbarkeit.2', 2]
+			    ],
+			    'size' => 1,
+			    'maxitems' => 1,
+			    'eval' => ''
+			],
+	    ],
+	    'technologiebereitschaft' => [
+	        'exclude' => true,
+	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesung.technologiebereitschaft',
+	        'config' => [
+			    'type' => 'select',
+			    'renderType' => 'selectSingle',
+			    'items' => [
+			        ['-- Label --', 0],
 			    ],
 			    'size' => 1,
 			    'maxitems' => 1,

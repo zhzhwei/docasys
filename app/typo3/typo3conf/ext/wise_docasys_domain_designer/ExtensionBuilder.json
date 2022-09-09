@@ -260,7 +260,7 @@
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
                             "propertyName": "anwendungsfall",
-                            "propertyType": "Select",
+                            "propertyType": "String",
                             "uid": "183969280475"
                         },
                         {
@@ -312,6 +312,16 @@
                             "propertyName": "nachruestbarkeit",
                             "propertyType": "Select",
                             "uid": "1563903881903"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "technologiebereitschaft",
+                            "propertyType": "Select",
+                            "uid": "1235228483627"
                         }
                     ]
                 },
@@ -5781,7 +5791,7 @@
         }
     ],
     "log": {
-        "last_modified": "2022-06-11 02:16",
+        "last_modified": "2022-09-09 06:40",
         "extension_builder_version": "7.6.18",
         "be_user": "user26 (26)"
     }

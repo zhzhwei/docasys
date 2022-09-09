@@ -133,7 +133,7 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      * anwendungsfall
      *
-     * @var int
+     * @var string
      */
     protected $anwendungsfall = 0;
 
@@ -157,6 +157,20 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var int
      */
     protected $maschinenstillstandsnotwendigkeit = 0;
+
+    /**
+     * hallenklimatisierung
+     *
+     * @var int
+     */
+    protected $hallenklimatisierung = 0;
+
+    /**
+     * nachruestbarkeit
+     *
+     * @var int
+     */
+    protected $nachruestbarkeit = 0;
 
     /**
      * gestaltungsart
@@ -295,18 +309,11 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $komponentenbedingung = null;
 
     /**
-     * hallenklimatisierung
+     * technologiebereitschaft
      *
      * @var int
      */
-    protected $hallenklimatisierung = 0;
-
-    /**
-     * nachruestbarkeit
-     *
-     * @var int
-     */
-    protected $nachruestbarkeit = 0;
+    protected $technologiebereitschaft = 0;
 
     /**
      * Returns the loesungsbezeichnung
@@ -1392,27 +1399,6 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the anwendungsfall
-     *
-     * @return int $anwendungsfall
-     */
-    public function getAnwendungsfall()
-    {
-        return $this->anwendungsfall;
-    }
-
-    /**
-     * Sets the anwendungsfall
-     *
-     * @param int $anwendungsfall
-     * @return void
-     */
-    public function setAnwendungsfall($anwendungsfall)
-    {
-        $this->anwendungsfall = $anwendungsfall;
-    }
-
-    /**
      * Returns the flexibilitaet
      *
      * @return int $flexibilitaet
@@ -1557,5 +1543,47 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function setNachruestbarkeit($nachruestbarkeit)
     {
         $this->nachruestbarkeit = $nachruestbarkeit;
+    }
+
+    /**
+     * Returns the anwendungsfall
+     *
+     * @return string anwendungsfall
+     */
+    public function getAnwendungsfall()
+    {
+        return $this->anwendungsfall;
+    }
+
+    /**
+     * Sets the anwendungsfall
+     *
+     * @param int $anwendungsfall
+     * @return void
+     */
+    public function setAnwendungsfall($anwendungsfall)
+    {
+        $this->anwendungsfall = $anwendungsfall;
+    }
+
+    /**
+     * Returns the technologiebereitschaft
+     *
+     * @return int $technologiebereitschaft
+     */
+    public function getTechnologiebereitschaft()
+    {
+        return $this->technologiebereitschaft;
+    }
+
+    /**
+     * Sets the technologiebereitschaft
+     *
+     * @param int $technologiebereitschaft
+     * @return void
+     */
+    public function setTechnologiebereitschaft($technologiebereitschaft)
+    {
+        $this->technologiebereitschaft = $technologiebereitschaft;
     }
 }

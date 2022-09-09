@@ -389,15 +389,28 @@ class LoesungTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getAnwendungsfallReturnsInitialValueForInt()
+    public function getAnwendungsfallReturnsInitialValueForString()
     {
+        self::assertSame(
+            '',
+            $this->subject->getAnwendungsfall()
+        );
+
     }
 
     /**
      * @test
      */
-    public function setAnwendungsfallForIntSetsAnwendungsfall()
+    public function setAnwendungsfallForStringSetsAnwendungsfall()
     {
+        $this->subject->setAnwendungsfall('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'anwendungsfall',
+            $this->subject
+        );
+
     }
 
     /**
@@ -467,6 +480,20 @@ class LoesungTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
      * @test
      */
     public function setNachruestbarkeitForIntSetsNachruestbarkeit()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function getTechnologiebereitschaftReturnsInitialValueForInt()
+    {
+    }
+
+    /**
+     * @test
+     */
+    public function setTechnologiebereitschaftForIntSetsTechnologiebereitschaft()
     {
     }
 
