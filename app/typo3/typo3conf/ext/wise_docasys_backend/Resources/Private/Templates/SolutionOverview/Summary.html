@@ -189,11 +189,25 @@
                     <div class="row">
                         <div class="col-xs-6">
                             <div class="page-header margin-top">
-                                <h4>Ablaufmodell BPMN</h4>
+                                <h4>Ablaufmodelle BPMN, CMMN</h4>
                             </div>
                             <f:if condition="{solution.ablauf}">
-                                <ul class="list-group">
+                                <!-- <ul class="list-group"> -->
                                     <f:for each="{modelFiles.bpmn}" as="file">
+                                        <!-- <li class="list-group-item"> -->
+                                            <a href="{file.modelerReference}" title="Modell im Modeler anzeigen" target="_blank">{file.name}</a>
+                                        <!-- </li> -->
+                                    </f:for>
+                                <!-- </ul> -->
+                            </f:if>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="page-header margin-top">
+                                <h4>Entscheidungsmodelle DMN</h4>
+                            </div>
+                            <f:if condition="{solution.entscheidungen}">
+                                <ul class="list-group">
+                                    <f:for each="{modelFiles.dmn}" as="file">
                                         <li class="list-group-item">
                                             <a href="{file.modelerReference}" title="Modell im Modeler anzeigen" target="_blank">{file.name}</a>
                                         </li>
