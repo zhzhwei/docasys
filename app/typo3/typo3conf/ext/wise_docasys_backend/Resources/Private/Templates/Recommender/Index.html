@@ -96,6 +96,18 @@
 
                     <div class="row form-group">
                         <label class="control-label col-sm-2">
+                            Technology Readiness Level:
+                        </label>
+                        <div class="col-sm-2">
+                            <f:form.select property="operator.technology" options="{operators}" class="form-control" value="{values.operator.technology}" />
+                        </div>
+                        <div class="col-sm-8">
+                            <f:form.select property="technology" class="form-control" options="{wise:be.TcaOptions(property:'technologiebereitschaft',subject:'Wise\\WiseDocasysDomainDesigner\\Domain\\Model\\Loesung')}" value="{values.technology}" />
+                        </div>
+                    </div>
+
+                    <div class="row form-group">
+                        <label class="control-label col-sm-2">
                             Anwendungsfall:
                         </label>
                         <div class="col-sm-2">

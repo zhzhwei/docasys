@@ -307,33 +307,60 @@
                 'effect' => 'physikalischerEffekt',
                 'producer' => 'betrifftHersteller',
                 'consumer' => 'betrifftBetreiber',
+                'flexibility' => 'flexibilitaet',
                 'invasivity' => 'invasivitaetsgrad',
                 'maintenance' => 'wartungsintervall',
-                'flexibility' => 'flexibilitaet',
-                'useCase' => 'anwendungsfall',
+                'machineControlAccess' => 'maschinensteuerungszugriff',
                 'machineStopRequired' => 'maschinenstillstandsnotwendigkeit',
                 'hallAircondition' => 'hallenklimatisierung',
                 'modernization' => 'nachruestbarkeit',
+                'technology' => 'technologiebereitschaft',
+                'useCase' => 'anwendungsfall',
             ];
 
             foreach($owned as $formKey => $propertyName) {
-                if($search['operator'][$formKey] > 0) {
-                    switch ($search['operator'][$formKey]) {
-                        case 1:
-                            // Equal (=) - simple mapping
-                            $and[] = $query->equals($propertyName, $search[$formKey]);
-                            break;
-                        case 2:
-                            // Unequal (!=) - workaround with combined query
-                            $and[] = $query->logicalOr(
-                                [
-                                    $query->lessThan($propertyName, $search[$formKey]),
-                                    $query->greaterThan($propertyName, $search[$formKey]),
-                                ]
-                            );
-                            break;            
+                // echo '<pre>' , var_dump($formKey, $propertyName) , '</pre>';
+                if ($search['operator'][$formKey] > 0) {
+                    if ($formKey == 'useCase') {
+                        switch ($search['operator'][$formKey]) {
+                            case 1:
+                                // Equal (=) - simple mapping
+                                foreach ($search[$formKey] as $useCaseValue) {
+                                    $and[] = $query->equals($propertyName, $useCaseValue);
+                                }
+                                break;
+                            case 2:
+                                // Unequal (!=) - workaround with combined query
+                                foreach ($search[$formKey] as $useCaseValue) {
+                                    $and[] = $query->logicalOr(
+                                        $query->logicalOr(
+                                            [
+                                                $query->lessThan($propertyName, $useCaseValue),
+                                                $query->greaterThan($propertyName, $useCaseValue),
+                                            ]
+                                        )
+                                    );
+                                }
+                                break;
+                        }
+                    } else {
+                        switch ($search['operator'][$formKey]) {
+                            case 1:
+                                // Equal (=) - simple mapping
+                                $and[] = $query->equals($propertyName, $search[$formKey]);
+                                break;
+                            case 2:
+                                // Unequal (!=) - workaround with combined query
+                                $and[] = $query->logicalOr(
+                                    [
+                                        $query->lessThan($propertyName, $search[$formKey]),
+                                        $query->greaterThan($propertyName, $search[$formKey]),
+                                    ]
+                                );
+                                break;
+                        }
                     }
-                }         
+                }
             }
 
             if($search['operator']['name'] == 1) {
