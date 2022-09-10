@@ -80,6 +80,7 @@
             $filteredResults = [];
 
             if(isset($request['recommender-submit'])) {
+                // echo '<pre>' , var_dump($request['recommender-submit']) , '</pre>';
                 $results = $this->loesungRepository->getFilteredSolutions($request['recommender-submit']);
 
                 if(count($results) == 0) {
