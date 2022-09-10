@@ -3,6 +3,8 @@ return [
     'ctrl' => [
         'title'	=> 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_gestaltungsart',
         'label' => 'bezeichnung',
+        'label_userFunc' => 'Wise\\WiseDocasysDomainDesigner\\Userfuncs\\Tca->gestaltungsartTitle',
+        'default_sortby' => 'ORDER BY bezeichnung ASC',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
@@ -23,7 +25,10 @@ return [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bezeichnung, beschreibung, unterart',
     ],
     'types' => [
-		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bezeichnung, beschreibung, unterart, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => '
+            --div--; Allgemein, l10n_parent, l10n_diffsource, bezeichnung, beschreibung,
+            --div--; Unterarten, unterart
+        '],
     ],
     'columns' => [
 		'sys_language_uid' => [
@@ -122,7 +127,7 @@ return [
 	        'config' => [
 			    'type' => 'text',
 			    'cols' => 40,
-			    'rows' => 15,
+			    'rows' => 5,
 			    'eval' => 'trim'
 			]
 	    ],
@@ -135,7 +140,7 @@ return [
 			    'foreign_field' => 'gestaltungsart',
 			    'maxitems' => 9999,
 			    'appearance' => [
-			        'collapseAll' => 0,
+			        'collapseAll' => 1,
 			        'levelLinksPosition' => 'top',
 			        'showSynchronizationLink' => 1,
 			        'showPossibleLocalizationRecords' => 1,

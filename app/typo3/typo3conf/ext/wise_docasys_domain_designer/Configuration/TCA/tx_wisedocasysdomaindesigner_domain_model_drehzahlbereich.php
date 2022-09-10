@@ -6,6 +6,7 @@ return [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
+        'default_sortby' => 'ORDER BY drehzahlbereich_von ASC',
 		'versioningWS' => true,
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
@@ -17,13 +18,16 @@ return [
             'endtime' => 'endtime',
         ],
 		'searchFields' => 'drehzahlbereich_von,drehzahlbereich_bis',
-        'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_drehzahlbereich.gif'
+        'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_drehzahlbereich.gif',
+        'hideTable' => true,
     ],
     'interface' => [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, drehzahlbereich_von, drehzahlbereich_bis',
     ],
     'types' => [
-		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, drehzahlbereich_von, drehzahlbereich_bis, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => '
+            --div--; Allgemein, l10n_parent, l10n_diffsource, drehzahlbereich_von, drehzahlbereich_bis, 
+        '],
     ],
     'columns' => [
 		'sys_language_uid' => [

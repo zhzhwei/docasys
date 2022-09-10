@@ -23,7 +23,9 @@ return [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bezeichnung',
     ],
     'types' => [
-		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bezeichnung, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+		'1' => ['showitem' => '
+            --div--; Allgemein, l10n_parent, l10n_diffsource, bezeichnung, 
+        '],
     ],
     'columns' => [
 		'sys_language_uid' => [

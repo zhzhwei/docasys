@@ -7,6 +7,7 @@ return [
         'crdate' => 'crdate',
         'cruser_id' => 'cruser_id',
 		'versioningWS' => true,
+        'default_sortby' => 'ORDER BY steuerungsname ASC',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -23,7 +24,10 @@ return [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, steuerungsname, hersteller, ist_frei_programmierbar, hat_lizenzkosten, hat_offene_schnittstelle',
     ],
     'types' => [
-		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, steuerungsname, hersteller, ist_frei_programmierbar, hat_lizenzkosten, hat_offene_schnittstelle, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => '
+            --div--; Allgemein, l10n_parent, l10n_diffsource, steuerungsname, hersteller,
+            --div--; Eigenschaften, ist_frei_programmierbar, hat_lizenzkosten, hat_offene_schnittstelle, 
+        '],
     ],
     'columns' => [
 		'sys_language_uid' => [

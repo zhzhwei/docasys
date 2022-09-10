@@ -16,14 +16,18 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-		'searchFields' => 'bezeichnung,bemerkung,tendenz,wert,wert_von,wert_bis,zielparameter',
-        'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_auswirkung.gif'
+		'searchFields' => 'bezeichnung,bemerkung,wert,wert_von,wert_bis,zielparameter',
+        'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_auswirkung.gif',
+        'hideTable' => true,
     ],
     'interface' => [
 		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bezeichnung, bemerkung, tendenz, wert, wert_von, wert_bis, zielparameter',
     ],
     'types' => [
-		'1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, bezeichnung, bemerkung, tendenz, wert, wert_von, wert_bis, zielparameter, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+		'1' => ['showitem' => '
+            --div--; Allgemein, l10n_parent, l10n_diffsource, bezeichnung, bemerkung,
+            --div--; Zielrichtung, zielparameter, tendenz, wert, wert_von, wert_bis,
+        '],
     ],
     'columns' => [
 		'sys_language_uid' => [
@@ -111,9 +115,8 @@ return [
 	        'exclude' => true,
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_auswirkung.bezeichnung',
 	        'config' => [
-			    'type' => 'text',
-			    'cols' => 40,
-			    'rows' => 15,
+			    'type' => 'input',
+                'size' => 30,
 			    'eval' => 'trim'
 			]
 	    ],
@@ -123,23 +126,9 @@ return [
 	        'config' => [
 			    'type' => 'text',
 			    'cols' => 40,
-			    'rows' => 15,
+			    'rows' => 5,
 			    'eval' => 'trim'
 			]
-	    ],
-	    'tendenz' => [
-	        'exclude' => true,
-	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_auswirkung.tendenz',
-	        'config' => [
-			    'type' => 'select',
-			    'renderType' => 'selectSingle',
-			    'items' => [
-			        ['-- Label --', 0],
-			    ],
-			    'size' => 1,
-			    'maxitems' => 1,
-			    'eval' => ''
-			],
 	    ],
 	    'wert' => [
 	        'exclude' => true,
@@ -172,12 +161,13 @@ return [
 	        'exclude' => true,
 	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_auswirkung.zielparameter',
 	        'config' => [
-			    'type' => 'inline',
+			    'type' => 'select',
+                'renderType' => 'selectSingle',
 			    'foreign_table' => 'tx_wisedocasysdomaindesigner_domain_model_zielparameter',
-			    'foreign_field' => 'auswirkung',
-			    'maxitems' => 9999,
+			    'minitems' => 0,
+                'maxitems' => 1,
 			    'appearance' => [
-			        'collapseAll' => 0,
+			        'collapseAll' => 1,
 			        'levelLinksPosition' => 'top',
 			        'showSynchronizationLink' => 1,
 			        'showPossibleLocalizationRecords' => 1,
@@ -185,6 +175,24 @@ return [
 			    ],
 			],
 	    ],
+        'tendenz' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_auswirkung.tendenz',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectSingle',
+                'items' => [
+                        ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
+                        ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:tendenz.1', 1],
+                        ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:tendenz.2', 2],
+                        ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:tendenz.3', 3],
+                        ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:tendenz.4', 4],
+                    ],
+                'size' => 1,
+                'maxitems' => 1,
+                'eval' => ''
+            ],
+        ],
         'loesung' => [
             'config' => [
                 'type' => 'passthrough',
