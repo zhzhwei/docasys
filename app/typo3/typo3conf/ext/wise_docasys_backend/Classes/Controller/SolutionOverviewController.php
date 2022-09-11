@@ -428,6 +428,24 @@
             ]);    
         }
 
+        public function detailAction() 
+        {
+            $request = $this->request->getArguments();
+
+            if(isset($request['examination'])) {
+                $examinationUid = intval($request['examination']);
+                if($examinationUid > 0) {
+                    $examination = $this->loesungsuntersuchungRepository->findByUid($examinationUid);  
+                }
+                // echo '<pre>' , var_dump($examination->getUntersuchterLastfall()) , '</pre>';
+            }
+
+            $this->view->assignMultiple([
+                'examination' => $examination,
+            ]);    
+            
+        }
+
         public function examinationsFilterAction()
         {
             $request = $this->request->getArguments();

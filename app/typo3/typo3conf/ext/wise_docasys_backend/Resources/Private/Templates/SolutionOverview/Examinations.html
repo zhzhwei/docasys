@@ -88,9 +88,13 @@
                             </td>
                         </f:for>
                         <td class="right">
-                            <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_loesungsuntersuchung][{examination.uid}]=edit">
+                            <f:link.page>page link</f:link.page>
+                            <!-- <wise:be.editLink parameters="edit[tx_wisedocasysdomaindesigner_domain_model_loesungsuntersuchung][{examination.uid}]=edit">
                                 <span class="btn btn-primary">Detail</span>
-                            </wise:be.editLink>
+                            </wise:be.editLink> -->
+                            <a href="{f:uri.action(action:'detail', arguments: '{examination: \'{examination.uid}\'}')}">
+                                <span class="btn btn-primary">Detail</span>
+                            </a> 
                         </td>
                     </tr>
                 </f:for>

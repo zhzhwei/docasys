@@ -27,7 +27,7 @@ return [
         '1' => ['showitem' => '
                 --div--; Allgemein, l10n_parent, l10n_diffsource, untersuchte_loesung, pruefbezeichnung, datum, ort, verantwortlicher,
                 --div--; Untersuchung, untersuchungsmethode, untersuchter_lastfall, untersuchungstraeger, protokollbeschreibung, kommentar,
-                --div--; Ergebnisse, parameterpruefungen, produziertes_testwerkstueck, ergebniszusammenfassung, messergebnisse, grafische_auswertung
+                --div--; Ergebnisse, parameterpruefungen, produziertes_testwerkstueck, ergebniszusammenfassung, messergebnisse, grafischeauswertung
             '],
     ],
     'columns' => [
@@ -350,11 +350,11 @@ return [
                 $GLOBALS['TYPO3_CONF_VARS']['GFX']['imagefile_ext']
             ),
         ],
-        'grafische_auswertung' => [
+        'grafischeauswertung' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesungsuntersuchung.grafische_auswertung',
+            'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesungsuntersuchung.grafischeauswertung',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig(
-                'grafische_auswertung',
+                'grafischeauswertung',
                 [
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
