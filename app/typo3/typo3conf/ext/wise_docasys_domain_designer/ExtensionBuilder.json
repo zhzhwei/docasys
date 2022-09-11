@@ -3361,6 +3361,46 @@
                             "propertyName": "ergebniszusammenfassung",
                             "propertyType": "Text",
                             "uid": "1051209500400"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "protokollbeschreibung",
+                            "propertyType": "Image",
+                            "uid": "1007522376437"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "messergebnisse",
+                            "propertyType": "Image",
+                            "uid": "1431417421023"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "grafischeauswertung",
+                            "propertyType": "Image",
+                            "uid": "1592050121432"
+                        },
+                        {
+                            "allowedFileTypes": "",
+                            "maxItems": "1",
+                            "propertyDescription": "",
+                            "propertyIsExcludeField": true,
+                            "propertyIsRequired": false,
+                            "propertyName": "kommentar",
+                            "propertyType": "Text",
+                            "uid": "133088166910"
                         }
                     ]
                 },
@@ -5791,7 +5831,7 @@
         }
     ],
     "log": {
-        "last_modified": "2022-09-09 06:40",
+        "last_modified": "2022-09-11 06:06",
         "extension_builder_version": "7.6.18",
         "be_user": "user26 (26)"
     }

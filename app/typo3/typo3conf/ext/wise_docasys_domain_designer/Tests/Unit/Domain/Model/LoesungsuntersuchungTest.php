@@ -165,6 +165,117 @@ class LoesungsuntersuchungTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
+    public function getProtokollbeschreibungReturnsInitialValueForFileReference()
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getProtokollbeschreibung()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setProtokollbeschreibungForFileReferenceSetsProtokollbeschreibung()
+    {
+        $fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $this->subject->setProtokollbeschreibung($fileReferenceFixture);
+
+        self::assertAttributeEquals(
+            $fileReferenceFixture,
+            'protokollbeschreibung',
+            $this->subject
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function getMessergebnisseReturnsInitialValueForFileReference()
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getMessergebnisse()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setMessergebnisseForFileReferenceSetsMessergebnisse()
+    {
+        $fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $this->subject->setMessergebnisse($fileReferenceFixture);
+
+        self::assertAttributeEquals(
+            $fileReferenceFixture,
+            'messergebnisse',
+            $this->subject
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function getGrafischeauswertungReturnsInitialValueForFileReference()
+    {
+        self::assertEquals(
+            null,
+            $this->subject->getGrafischeauswertung()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setGrafischeauswertungForFileReferenceSetsGrafischeauswertung()
+    {
+        $fileReferenceFixture = new \TYPO3\CMS\Extbase\Domain\Model\FileReference();
+        $this->subject->setGrafischeauswertung($fileReferenceFixture);
+
+        self::assertAttributeEquals(
+            $fileReferenceFixture,
+            'grafischeauswertung',
+            $this->subject
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function getKommentarReturnsInitialValueForString()
+    {
+        self::assertSame(
+            '',
+            $this->subject->getKommentar()
+        );
+
+    }
+
+    /**
+     * @test
+     */
+    public function setKommentarForStringSetsKommentar()
+    {
+        $this->subject->setKommentar('Conceived at T3CON10');
+
+        self::assertAttributeEquals(
+            'Conceived at T3CON10',
+            'kommentar',
+            $this->subject
+        );
+
+    }
+
+    /**
+     * @test
+     */
     public function getUntersuchteLoesungReturnsInitialValueForLoesung()
     {
         self::assertEquals(

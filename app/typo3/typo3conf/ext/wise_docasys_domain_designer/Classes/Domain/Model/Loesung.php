@@ -173,6 +173,13 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $nachruestbarkeit = 0;
 
     /**
+     * technologiebereitschaft
+     *
+     * @var int
+     */
+    protected $technologiebereitschaft = 0;
+
+    /**
      * gestaltungsart
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Wise\WiseDocasysDomainDesigner\Domain\Model\Gestaltungsart>
@@ -307,13 +314,6 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @cascade remove
      */
     protected $komponentenbedingung = null;
-
-    /**
-     * technologiebereitschaft
-     *
-     * @var int
-     */
-    protected $technologiebereitschaft = 0;
 
     /**
      * Returns the loesungsbezeichnung

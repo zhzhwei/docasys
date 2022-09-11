@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2022-09-09T18:40:41Z" product-name="wise_docasys_domain_designer">
+	<file source-language="en" datatype="plaintext" original="messages" date="2022-09-11T18:06:18Z" product-name="wise_docasys_domain_designer">
 		<header/>
 		<body>
 			<trans-unit id="pruefbezeichnung.description">
@@ -17,6 +17,18 @@
 			</trans-unit>
 			<trans-unit id="ergebniszusammenfassung.description">
 				<source>ergebniszusammenfassung</source>
+			</trans-unit>
+			<trans-unit id="protokollbeschreibung.description">
+				<source>protokollbeschreibung</source>
+			</trans-unit>
+			<trans-unit id="messergebnisse.description">
+				<source>messergebnisse</source>
+			</trans-unit>
+			<trans-unit id="grafischeauswertung.description">
+				<source>grafischeauswertung</source>
+			</trans-unit>
+			<trans-unit id="kommentar.description">
+				<source>kommentar</source>
 			</trans-unit>
 			<trans-unit id="untersuchte_loesung.description">
 				<source>untersuchteLoesung</source>

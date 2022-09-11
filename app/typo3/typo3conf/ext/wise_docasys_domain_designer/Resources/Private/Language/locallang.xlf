@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2022-09-09T18:40:41Z" product-name="wise_docasys_domain_designer">
+	<file source-language="en" datatype="plaintext" original="messages" date="2022-09-11T18:06:17Z" product-name="wise_docasys_domain_designer">
 		<header/>
 		<body>
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_parametereinheit">
@@ -746,6 +746,18 @@
 			</trans-unit>
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesungsuntersuchung.ergebniszusammenfassung">
 				<source>Ergebniszusammenfassung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesungsuntersuchung.protokollbeschreibung">
+				<source>Protokollbeschreibung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesungsuntersuchung.messergebnisse">
+				<source>Messergebnisse</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesungsuntersuchung.grafischeauswertung">
+				<source>Grafischeauswertung</source>
+			</trans-unit>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesungsuntersuchung.kommentar">
+				<source>Kommentar</source>
 			</trans-unit>
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesungsuntersuchung.untersuchte_loesung">
 				<source>Untersuchte Loesung</source>

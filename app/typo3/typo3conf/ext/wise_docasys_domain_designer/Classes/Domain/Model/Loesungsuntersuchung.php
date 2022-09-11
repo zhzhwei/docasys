@@ -97,6 +97,37 @@ class Loesungsuntersuchung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntit
     protected $untersuchungstraeger = null;
 
     /**
+     * protokollbeschreibung
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @cascade remove
+     */
+    protected $protokollbeschreibung = null;
+
+    /**
+     * messergebnisse
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @cascade remove
+     */
+    protected $messergebnisse = null;
+
+    /**
+     * grafischeauswertung
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @cascade remove
+     */
+    protected $grafischeauswertung = null;
+
+    /**
+     * kommentar
+     *
+     * @var string
+     */
+    protected $kommentar = '';
+
+    /**
      * __construct
      */
     public function __construct()
@@ -392,5 +423,89 @@ class Loesungsuntersuchung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntit
     public function setUntersuchungstraeger(\Wise\WiseDocasysDomainDesigner\Domain\Model\Werkzeugmaschine $untersuchungstraeger)
     {
         $this->untersuchungstraeger = $untersuchungstraeger;
+    }
+
+    /**
+     * Returns the protokollbeschreibung
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $protokollbeschreibung
+     */
+    public function getProtokollbeschreibung()
+    {
+        return $this->protokollbeschreibung;
+    }
+
+    /**
+     * Sets the protokollbeschreibung
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $protokollbeschreibung
+     * @return void
+     */
+    public function setProtokollbeschreibung(\TYPO3\CMS\Extbase\Domain\Model\FileReference $protokollbeschreibung)
+    {
+        $this->protokollbeschreibung = $protokollbeschreibung;
+    }
+
+    /**
+     * Returns the messergebnisse
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $messergebnisse
+     */
+    public function getMessergebnisse()
+    {
+        return $this->messergebnisse;
+    }
+
+    /**
+     * Sets the messergebnisse
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $messergebnisse
+     * @return void
+     */
+    public function setMessergebnisse(\TYPO3\CMS\Extbase\Domain\Model\FileReference $messergebnisse)
+    {
+        $this->messergebnisse = $messergebnisse;
+    }
+
+    /**
+     * Returns the grafischeauswertung
+     *
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $grafischeauswertung
+     */
+    public function getGrafischeauswertung()
+    {
+        return $this->grafischeauswertung;
+    }
+
+    /**
+     * Sets the grafischeauswertung
+     *
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $grafischeauswertung
+     * @return void
+     */
+    public function setGrafischeauswertung(\TYPO3\CMS\Extbase\Domain\Model\FileReference $grafischeauswertung)
+    {
+        $this->grafischeauswertung = $grafischeauswertung;
+    }
+
+    /**
+     * Returns the kommentar
+     *
+     * @return string $kommentar
+     */
+    public function getKommentar()
+    {
+        return $this->kommentar;
+    }
+
+    /**
+     * Sets the kommentar
+     *
+     * @param string $kommentar
+     * @return void
+     */
+    public function setKommentar($kommentar)
+    {
+        $this->kommentar = $kommentar;
     }
 }
