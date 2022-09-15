@@ -31,31 +31,31 @@
                 <source>Nein</source>
             </trans-unit>
             <trans-unit id="technologiebereitschaft.1">
-                <source>Beobachtung und Beschreibung des Funktionsprinzips</source>
+                <source>TRL1-Beobachtung und Beschreibung des Funktionsprinzips</source>
             </trans-unit>
             <trans-unit id="technologiebereitschaft.2">
-                <source>Beschreibung des Technologiekonzepts</source>
+                <source>TRL2-Beschreibung des Technologiekonzepts</source>
             </trans-unit>
             <trans-unit id="technologiebereitschaft.3">
-                <source>Proof of Concept</source>
+                <source>TRL3-Proof of Concept</source>
             </trans-unit>
             <trans-unit id="technologiebereitschaft.4">
-                <source>Versuchsaufbau im Labor</source>
+                <source>TRL4-Versuchsaufbau im Labor</source>
             </trans-unit>
             <trans-unit id="technologiebereitschaft.5">
-                <source>Versuchsaufbau in Einsatzumgebung</source>
+                <source>TRL5-Versuchsaufbau in Einsatzumgebung</source>
             </trans-unit>
             <trans-unit id="technologiebereitschaft.6">
-                <source>Prototyp in Einsatzumgebung</source>
+                <source>TRL6-Prototyp in Einsatzumgebung</source>
             </trans-unit>
             <trans-unit id="technologiebereitschaft.7">
-                <source>Prototyp im Einsatz</source>
+                <source>TRL7-Prototyp im Einsatz</source>
             </trans-unit>
             <trans-unit id="technologiebereitschaft.8">
-                <source>Nachweis der Funktionstüchtigkeit im Einsatzbereich</source>
+                <source>TRL8-Nachweis der Funktionstüchtigkeit im Einsatzbereich</source>
             </trans-unit>
             <trans-unit id="technologiebereitschaft.9">
-                <source>Nachweis des erfolgreichen Einsatzes, Serienreife</source>
+                <source>TRL9-Nachweis des erfolgreichen Einsatzes, Serienreife</source>
             </trans-unit>
             <trans-unit id="unit.1">
                 <source>Kosten (in EUR)</source>
