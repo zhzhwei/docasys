@@ -326,19 +326,20 @@
                             case 1:
                                 // Equal (=) - simple mapping
                                 foreach ($search[$formKey] as $useCaseValue) {
-                                    $and[] = $query->equals($propertyName, $useCaseValue);
+                                    $and[] = $query->contains($propertyName, $useCaseValue);
                                 }
                                 break;
                             case 2:
                                 // Unequal (!=) - workaround with combined query
                                 foreach ($search[$formKey] as $useCaseValue) {
                                     $and[] = $query->logicalOr(
-                                        $query->logicalOr(
-                                            [
-                                                $query->lessThan($propertyName, $useCaseValue),
-                                                $query->greaterThan($propertyName, $useCaseValue),
-                                            ]
-                                        )
+                                        // $query->logicalOr(
+                                        //     [
+                                        //         $query->lessThan($propertyName, $useCaseValue),
+                                        //         $query->greaterThan($propertyName, $useCaseValue),
+                                        //     ]
+                                        // )
+                                        $query->logicalNot($query->contains($propertyName, $useCaseValue))
                                     );
                                 }
                                 break;
