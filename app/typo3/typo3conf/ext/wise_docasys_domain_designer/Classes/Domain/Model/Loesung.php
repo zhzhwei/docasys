@@ -173,11 +173,11 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     protected $nachruestbarkeit = 0;
 
     /**
-     * technologiebereitschaft
+     * technologyreadiness
      *
      * @var int
      */
-    protected $technologiebereitschaft = 0;
+    protected $technologyreadiness = 0;
 
     /**
      * gestaltungsart
@@ -1567,23 +1567,23 @@ class Loesung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     }
 
     /**
-     * Returns the technologiebereitschaft
+     * Returns the technologyreadiness
      *
-     * @return int $technologiebereitschaft
+     * @return int technologyreadiness
      */
-    public function getTechnologiebereitschaft()
+    public function getTechnologyreadiness()
     {
-        return $this->technologiebereitschaft;
+        return $this->technologyreadiness;
     }
 
     /**
-     * Sets the technologiebereitschaft
+     * Sets the technologyreadiness
      *
-     * @param int $technologiebereitschaft
+     * @param int $technologyreadiness
      * @return void
      */
-    public function setTechnologiebereitschaft($technologiebereitschaft)
+    public function setTechnologyreadiness($technologyreadiness)
     {
-        $this->technologiebereitschaft = $technologiebereitschaft;
+        $this->technologyreadiness = $technologyreadiness;
     }
 }

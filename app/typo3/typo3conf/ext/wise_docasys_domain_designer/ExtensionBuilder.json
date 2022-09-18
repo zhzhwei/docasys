@@ -319,7 +319,7 @@
                             "propertyDescription": "",
                             "propertyIsExcludeField": true,
                             "propertyIsRequired": false,
-                            "propertyName": "technologiebereitschaft",
+                            "propertyName": "technologyreadiness",
                             "propertyType": "Select",
                             "uid": "1235228483627"
                         }

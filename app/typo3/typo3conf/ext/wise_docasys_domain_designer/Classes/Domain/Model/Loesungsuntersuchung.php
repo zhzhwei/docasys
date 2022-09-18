@@ -54,6 +54,37 @@ class Loesungsuntersuchung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntit
     protected $ergebniszusammenfassung = '';
 
     /**
+     * protokollbeschreibung
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @cascade remove
+     */
+    protected $protokollbeschreibung = null;
+
+    /**
+     * messergebnisse
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @cascade remove
+     */
+    protected $messergebnisse = null;
+
+    /**
+     * grafischeauswertung
+     *
+     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @cascade remove
+     */
+    protected $grafischeauswertung = null;
+
+    /**
+     * kommentar
+     *
+     * @var string
+     */
+    protected $kommentar = '';
+
+    /**
      * untersuchteLoesung
      *
      * @var \Wise\WiseDocasysDomainDesigner\Domain\Model\Loesung
@@ -95,37 +126,6 @@ class Loesungsuntersuchung extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntit
      * @var \Wise\WiseDocasysDomainDesigner\Domain\Model\Werkzeugmaschine
      */
     protected $untersuchungstraeger = null;
-
-    /**
-     * protokollbeschreibung
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @cascade remove
-     */
-    protected $protokollbeschreibung = null;
-
-    /**
-     * messergebnisse
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @cascade remove
-     */
-    protected $messergebnisse = null;
-
-    /**
-     * grafischeauswertung
-     *
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     * @cascade remove
-     */
-    protected $grafischeauswertung = null;
-
-    /**
-     * kommentar
-     *
-     * @var string
-     */
-    protected $kommentar = '';
 
     /**
      * __construct

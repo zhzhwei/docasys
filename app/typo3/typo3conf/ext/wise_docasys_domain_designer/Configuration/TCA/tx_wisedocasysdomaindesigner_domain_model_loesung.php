@@ -18,11 +18,11 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-		'searchFields' => 'loesungsbezeichnung,teilprojektnummer,gestaltungsanforderungen,betrifft_hersteller,betrifft_betreiber,realisierungsrisiko,bemerkung,loesungsklasse,phase_der_thermischen_wirkkette,physikalischer_effekt,invasivitaetsgrad,wartungsintervall,loesungsart,nettofluss,ausgangsfluss,eingangsfluss,anwendungsfall,flexibilitaet,maschinensteuerungszugriff,maschinenstillstandsnotwendigkeit,hallenklimatisierung,nachruestbarkeit,technologiebereitschaft,gestaltungsart,arbeitsschritte,derzeitiger_einsatzort,komponentenauswirkung,auswirkung,ablauf,entscheidungen,input_ressource,input_modell,input_messmittel,input_daten,output_ressource,output_modell,output_daten,output_messmittel,output_methoden,komponentenbedingung',
+		'searchFields' => 'loesungsbezeichnung,teilprojektnummer,gestaltungsanforderungen,betrifft_hersteller,betrifft_betreiber,realisierungsrisiko,bemerkung,loesungsklasse,phase_der_thermischen_wirkkette,physikalischer_effekt,invasivitaetsgrad,wartungsintervall,loesungsart,nettofluss,ausgangsfluss,eingangsfluss,anwendungsfall,flexibilitaet,maschinensteuerungszugriff,maschinenstillstandsnotwendigkeit,hallenklimatisierung,nachruestbarkeit,technologyreadiness,gestaltungsart,arbeitsschritte,derzeitiger_einsatzort,komponentenauswirkung,auswirkung,ablauf,entscheidungen,input_ressource,input_modell,input_messmittel,input_daten,output_ressource,output_modell,output_daten,output_messmittel,output_methoden,komponentenbedingung',
         'iconfile' => 'EXT:wise_docasys_domain_designer/Resources/Public/Icons/tx_wisedocasysdomaindesigner_domain_model_loesung.gif'
     ],
     'interface' => [
-		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, loesungsbezeichnung, teilprojektnummer, gestaltungsanforderungen, betrifft_hersteller, betrifft_betreiber, realisierungsrisiko, bemerkung, loesungsklasse, phase_der_thermischen_wirkkette, physikalischer_effekt, invasivitaetsgrad, wartungsintervall, loesungsart, nettofluss, ausgangsfluss, eingangsfluss, anwendungsfall, flexibilitaet, maschinensteuerungszugriff, maschinenstillstandsnotwendigkeit, hallenklimatisierung, nachruestbarkeit, technologiebereitschaft, gestaltungsart, arbeitsschritte, derzeitiger_einsatzort, komponentenauswirkung, auswirkung, ablauf, entscheidungen, input_ressource, input_modell, input_messmittel, input_daten, output_ressource, output_modell, output_daten, output_messmittel, output_methoden, komponentenbedingung',
+		'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, loesungsbezeichnung, teilprojektnummer, gestaltungsanforderungen, betrifft_hersteller, betrifft_betreiber, realisierungsrisiko, bemerkung, loesungsklasse, phase_der_thermischen_wirkkette, physikalischer_effekt, invasivitaetsgrad, wartungsintervall, loesungsart, nettofluss, ausgangsfluss, eingangsfluss, anwendungsfall, flexibilitaet, maschinensteuerungszugriff, maschinenstillstandsnotwendigkeit, hallenklimatisierung, nachruestbarkeit, technologyreadiness, gestaltungsart, arbeitsschritte, derzeitiger_einsatzort, komponentenauswirkung, auswirkung, ablauf, entscheidungen, input_ressource, input_modell, input_messmittel, input_daten, output_ressource, output_modell, output_daten, output_messmittel, output_methoden, komponentenbedingung',
     ],
     'types' => [
         '1' => ['showitem' => '
@@ -31,7 +31,7 @@ return [
                 --div--; Anwendung und Arbeitsschritte, ablauf, entscheidungen, arbeitsschritte, gestaltungsanforderungen,
                 --div--; Lösungs-Output,                output_ressource, output_modell, output_daten, output_messmittel, output_methoden,
                 --div--; Generelle Voraussetzungen,     input_ressource, input_modell, input_messmittel, input_daten,
-                --div--; Bedingungen,                   komponentenbedingung, anwendungsfall, flexibilitaet, maschinensteuerungszugriff, maschinenstillstandsnotwendigkeit, hallenklimatisierung, nachruestbarkeit,
+                --div--; Bedingungen,                   komponentenbedingung, anwendungsfall, flexibilitaet, maschinensteuerungszugriff, maschinenstillstandsnotwendigkeit, hallenklimatisierung, nachruestbarkeit, technologyreadiness,
                 --div--; Auswirkungen,                  auswirkung, komponentenauswirkung, invasivitaetsgrad, wartungsintervall,
                 --div--; Risiken,                       realisierungsrisiko,
             '],
@@ -436,24 +436,24 @@ return [
 			    'eval' => ''
 			],
 	    ],
-	    'technologiebereitschaft' => [
+	    'technologyreadiness' => [
 	        'exclude' => true,
-	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesung.technologiebereitschaft',
+	        'label' => 'LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db.xlf:tx_wisedocasysdomaindesigner_domain_model_loesung.technologyreadiness',
 	        'config' => [
 			    'type' => 'select',
 			    'renderType' => 'selectSingle',
 			    'items' => [
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:not_applicable', -1],
                     ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:empty', 0],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologiebereitschaft.1', 1],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologiebereitschaft.2', 2],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologiebereitschaft.3', 3],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologiebereitschaft.4', 4],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologiebereitschaft.5', 5],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologiebereitschaft.6', 6],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologiebereitschaft.7', 7],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologiebereitschaft.8', 8],
-                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologiebereitschaft.9', 9],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologyreadiness.1', 1],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologyreadiness.2', 2],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologyreadiness.3', 3],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologyreadiness.4', 4],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologyreadiness.5', 5],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologyreadiness.6', 6],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologyreadiness.7', 7],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologyreadiness.8', 8],
+                    ['LLL:EXT:wise_docasys_domain_designer/Resources/Private/Language/locallang_db_selectfields.xlf:technologyreadiness.9', 9],
 			    ],
 			    'size' => 1,
 			    'maxitems' => 1,

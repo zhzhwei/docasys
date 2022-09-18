@@ -314,7 +314,7 @@
                 'machineStopRequired' => 'maschinenstillstandsnotwendigkeit',
                 'hallAircondition' => 'hallenklimatisierung',
                 'modernization' => 'nachruestbarkeit',
-                'technology' => 'technologiebereitschaft',
+                'technology' => 'technologyreadiness',
                 'useCase' => 'anwendungsfall',
             ];
 

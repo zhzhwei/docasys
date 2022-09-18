@@ -486,14 +486,14 @@ class LoesungTest extends \TYPO3\CMS\Core\Tests\UnitTestCase
     /**
      * @test
      */
-    public function getTechnologiebereitschaftReturnsInitialValueForInt()
+    public function getTechnologyreadinessReturnsInitialValueForInt()
     {
     }
 
     /**
      * @test
      */
-    public function setTechnologiebereitschaftForIntSetsTechnologiebereitschaft()
+    public function setTechnologyreadinessForIntSetsTechnologyreadiness()
     {
     }
 

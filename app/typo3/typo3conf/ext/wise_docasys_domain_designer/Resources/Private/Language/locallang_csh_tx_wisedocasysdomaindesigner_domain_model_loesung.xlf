@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2022-09-11T18:06:17Z" product-name="wise_docasys_domain_designer">
+	<file source-language="en" datatype="plaintext" original="messages" date="2022-09-18T16:11:08Z" product-name="wise_docasys_domain_designer">
 		<header/>
 		<body>
 			<trans-unit id="loesungsbezeichnung.description">
@@ -69,8 +69,8 @@
 			<trans-unit id="nachruestbarkeit.description">
 				<source>nachruestbarkeit</source>
 			</trans-unit>
-			<trans-unit id="technologiebereitschaft.description">
-				<source>technologiebereitschaft</source>
+			<trans-unit id="technologyreadiness.description">
+				<source>technologyreadiness</source>
 			</trans-unit>
 			<trans-unit id="gestaltungsart.description">
 				<source>gestaltungsart</source>

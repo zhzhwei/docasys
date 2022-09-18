@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2022-09-11T18:06:17Z" product-name="wise_docasys_domain_designer">
+	<file source-language="en" datatype="plaintext" original="messages" date="2022-09-18T16:11:08Z" product-name="wise_docasys_domain_designer">
 		<header/>
 		<body>
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_parametereinheit">
@@ -81,8 +81,8 @@
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.nachruestbarkeit">
 				<source>Nachruestbarkeit</source>
 			</trans-unit>
-			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.technologiebereitschaft">
-				<source>Technologiebereitschaft</source>
+			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.technologyreadiness">
+				<source>Technology Readiness Level</source>
 			</trans-unit>
 			<trans-unit id="tx_wisedocasysdomaindesigner_domain_model_loesung.gestaltungsart">
 				<source>Gestaltungsart</source>
