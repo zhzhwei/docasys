@@ -2,7 +2,10 @@
     namespace Wise\WiseDocasysBackend\Controller;
 
     use TYPO3\CMS\Backend\Utility\BackendUtility;
+    use TYPO3\CMS\Core\Utility\GeneralUtility;
     use TYPO3\CMS\Core\Messaging\FlashMessage;
+    use TYPO3\CMS\Core\Resource\FileRepository;
+    use TYPO3\CMS\Core\Resource\FileReference;
 
     class SolutionOverviewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
@@ -103,6 +106,11 @@
         * @inject
         */
         protected $eignungsprofilRepository;
+
+        // /**
+        // * @var TYPO3\CMS\Core\Resource\FileRepository
+        // */
+        // protected $fileRepository;
 
         public function indexAction()
         {
@@ -437,11 +445,13 @@
                 if($examinationUid > 0) {
                     $examination = $this->loesungsuntersuchungRepository->findByUid($examinationUid);  
                 }
-                // echo '<pre>' , var_dump($examination->getUntersuchterLastfall()) , '</pre>';
             }
-
+            $fileRepository = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\FileRepository::class);
+            $imageUid = $fileRepository->findFileReferenceByUid($examination->getGrafischeauswertung()->getUid());
+            
             $this->view->assignMultiple([
                 'examination' => $examination,
+                'grafischeauswertung' => $imageUid->getIdentifier()
             ]);    
             
         }

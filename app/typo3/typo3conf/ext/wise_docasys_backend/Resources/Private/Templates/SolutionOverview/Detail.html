@@ -2,6 +2,7 @@
 
 <f:layout name="SolutionOverview" />
 <f:section name="content">
+    <f:debug>{examination}</f:debug>
     <div class="row">
         <div class="col-md-12">
             <div class="page-header">
@@ -76,7 +77,7 @@
                         <div class="page-body">
                             <f:if condition="{examination.grafischeauswertung}">
                                 <p>
-                                    <f:format.nl2br>{examination.grafischeauswertung}</f:format.nl2br>
+                                    <f:image src="fileadmin/{grafischeauswertung}" width="150" height="100" treatIdAsReference="1" />
                                 </p>
                             </f:if>
                         </div>
