@@ -451,7 +451,8 @@
             
             $this->view->assignMultiple([
                 'examination' => $examination,
-                'grafischeauswertung' => $imageUid->getIdentifier()
+                // 'grafischeauswertung' => $imageUid->getIdentifier(),
+                'originalFile' => $imageUid -> getOriginalFile()
             ]);    
             
         }
