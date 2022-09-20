@@ -34,7 +34,27 @@
                         <div class="page-body">
                             <f:if condition="{examination.protokollbeschreibung}">
                                 <p>
-                                    <f:format.nl2br>{examination.protokollbeschreibung}</f:format.nl2br>
+                                    <a href="/fileadmin/{protokollBeschreibung.Identifier}">{protokollBeschreibung.name}</a>
+                                </p>
+                            </f:if>
+                        </div>
+                        <div class="page-header">
+                            <h4>Messergebnisse</h4>
+                        </div>
+                        <div class="page-body">
+                            <f:if condition="{examination.messergebnisse}">
+                                <p>
+                                    <a href="/fileadmin/{messErgebnisse.Identifier}">{messErgebnisse.name}</a>
+                                </p>
+                            </f:if>
+                        </div>
+                        <div class="page-header">
+                            <h4>Grafische Auswertung</h4>
+                        </div>
+                        <div class="page-body">
+                            <f:if condition="{examination.grafischeauswertung}">
+                                <p>
+                                    <a href="{f:uri.image(image: grafischeAuswertung)}">{grafischeAuswertung.name}</a>
                                 </p>
                             </f:if>
                         </div>
@@ -43,41 +63,10 @@
                         <div class="page-header">
                             <h4>Kommentar</h4>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="page-header">
-                            <h4>Messergebnisse</h4>
-                        </div>
-                        <div class="page-body">
-                            <f:if condition="{examination.messergebnisse}">
-                                <p>
-                                    <f:format.nl2br>{examination.messergebnisse}</f:format.nl2br>
-                                </p>
-                            </f:if>
-                        </div>
-                    </div>
-                    <div class="col-xs-6">
                         <div class="page-body">
                             <f:if condition="{examination.kommentar}">
                                 <p>
                                     <f:format.nl2br>{examination.kommentar}</f:format.nl2br>
-                                </p>
-                            </f:if>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <div class="page-header">
-                            <h4>Grafische Auswertung</h4>
-                        </div>
-                        <div class="page-body">
-                            <f:if condition="{examination.grafischeauswertung}">
-                                <p>
-                                    <!-- <f:image src="/fileadmin/{grafischeauswertung}"/> -->
-                                    <a href="{f:uri.image(image: originalFile)}">{originalFile.name}</a>
                                 </p>
                             </f:if>
                         </div>

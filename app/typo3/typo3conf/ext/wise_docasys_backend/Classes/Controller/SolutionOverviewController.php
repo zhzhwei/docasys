@@ -1,11 +1,7 @@
 <?php
     namespace Wise\WiseDocasysBackend\Controller;
 
-    use TYPO3\CMS\Backend\Utility\BackendUtility;
     use TYPO3\CMS\Core\Utility\GeneralUtility;
-    use TYPO3\CMS\Core\Messaging\FlashMessage;
-    use TYPO3\CMS\Core\Resource\FileRepository;
-    use TYPO3\CMS\Core\Resource\FileReference;
 
     class SolutionOverviewController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     {
@@ -106,11 +102,6 @@
         * @inject
         */
         protected $eignungsprofilRepository;
-
-        // /**
-        // * @var TYPO3\CMS\Core\Resource\FileRepository
-        // */
-        // protected $fileRepository;
 
         public function indexAction()
         {
@@ -365,8 +356,6 @@
                     $nodeRelationsWithConsumers[] = $add;
                 }    
             }
-            // echo '<pre>' , var_dump("11111") , '</pre>';
-            // echo '<pre>' , var_dump("11111") , '</pre>';
             // echo '<pre>' , var_dump($nodeRelationsWithConsumers) , '</pre>';
             
             $this->view->assignMultiple([
@@ -446,13 +435,26 @@
                     $examination = $this->loesungsuntersuchungRepository->findByUid($examinationUid);  
                 }
             }
+
             $fileRepository = GeneralUtility::makeInstance(\TYPO3\CMS\Core\Resource\FileRepository::class);
-            $imageUid = $fileRepository->findFileReferenceByUid($examination->getGrafischeauswertung()->getUid());
+            if ($examination->getGrafischeauswertung() != NULL) {
+                $imageUid = $fileRepository->findFileReferenceByUid($examination->getGrafischeauswertung()->getUid());
+                $grafischeAuswertung = $imageUid->getOriginalFile();
+            }
+            if ($examination->getMessergebnisse() != NULL) {
+                $resultUid = $fileRepository->findFileReferenceByUid($examination->getMessergebnisse()->getUid());
+                $messErgebnisse = $resultUid->getOriginalFile();
+            }
+            if ($examination->getProtokollbeschreibung()) {
+                $descriptionUid = $fileRepository->findFileReferenceByUid($examination->getProtokollbeschreibung()->getUid());
+                $protokollBeschreibung = $descriptionUid->getOriginalFile();
+            }
             
             $this->view->assignMultiple([
                 'examination' => $examination,
-                // 'grafischeauswertung' => $imageUid->getIdentifier(),
-                'originalFile' => $imageUid -> getOriginalFile()
+                'grafischeAuswertung' => $grafischeAuswertung,
+                'messErgebnisse' => $messErgebnisse,
+                'protokollBeschreibung' => $protokollBeschreibung
             ]);    
             
         }
