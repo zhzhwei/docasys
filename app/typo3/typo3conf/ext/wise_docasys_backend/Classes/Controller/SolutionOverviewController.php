@@ -428,7 +428,7 @@
         public function detailAction() 
         {
             $request = $this->request->getArguments();
-
+            
             if(isset($request['examination'])) {
                 $examinationUid = intval($request['examination']);
                 if($examinationUid > 0) {
@@ -465,14 +465,14 @@
 
             if(!is_array($request['examinationsFilter']['filterParameter'])) {
                 $this->addFlashMessage(
-                    utf8_encode('Es m�ssen Parameter ausgew�hlt werden.'),
+                    utf8_encode('Es muessen Parameter ausgewaehlt werden.'),
                     null,
                     \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR 
                 );
                 $this->redirect('examinations');    
             } elseif(intval($request['filterLoesung']) < 1) {
                 $this->addFlashMessage(
-                    utf8_encode('Es muss eine L�sung ausgew�hlt werden.'),
+                    utf8_encode('Es muss eine Loesung ausgewaehlt werden.'),
                     null,
                     \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR 
                 );
